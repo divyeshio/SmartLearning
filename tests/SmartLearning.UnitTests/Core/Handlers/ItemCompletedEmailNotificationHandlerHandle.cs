@@ -1,8 +1,8 @@
-﻿using SmartLearning.Core.Interfaces;
+﻿using Moq;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Core.ProjectAggregate.Events;
 using SmartLearning.Core.ProjectAggregate.Handlers;
-using Moq;
+using SmartLearning.Services;
 using Xunit;
 
 namespace SmartLearning.UnitTests.Core.Handlers;

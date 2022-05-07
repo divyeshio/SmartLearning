@@ -1,6 +1,7 @@
-﻿using SmartLearning.Core.ProjectAggregate;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.ProjectAggregate;
+using SmartLearning.Data;
 using SmartLearning.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace SmartLearning.Web;
 
@@ -25,8 +26,8 @@ public static class SeedData
 
   public static void Initialize(IServiceProvider serviceProvider)
   {
-    using (var dbContext = new AppDbContext(
-        serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
+    /*using (var dbContext = new ApplicationDbContext(
+        serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>(), null))
     {
       // Look for any TODO items.
       if (dbContext.ToDoItems.Any())
@@ -37,11 +38,11 @@ public static class SeedData
       PopulateTestData(dbContext);
 
 
-    }
+    }*/
   }
-  public static void PopulateTestData(AppDbContext dbContext)
+  public static void PopulateTestData(ApplicationDbContext dbContext)
   {
-    foreach (var item in dbContext.Projects)
+    /*foreach (var item in dbContext.Projects)
     {
       dbContext.Remove(item);
     }
@@ -56,6 +57,6 @@ public static class SeedData
     TestProject1.AddItem(ToDoItem3);
     dbContext.Projects.Add(TestProject1);
 
-    dbContext.SaveChanges();
+    dbContext.SaveChanges();*/
   }
 }

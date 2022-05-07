@@ -1,12 +1,19 @@
 ﻿using Ardalis.ListStartupServices;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using SmartLearning.Core;
-using SmartLearning.Infrastructure;
-using SmartLearning.Infrastructure.Data;
-using SmartLearning.Web;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using SmartLearning.Core;
+using SmartLearning.Data;
+using SmartLearning.Hubs;
+using SmartLearning.Infrastructure;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Services;
+using SmartLearning.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +27,10 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
   options.MinimumSameSitePolicy = SameSiteMode.None;
 });
 
-string connectionString = builder.Configuration.GetConnectionString("SqliteConnection");  //Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDbContext(connectionString);
-
-builder.Services.AddControllersWithViews().AddNewtonsoftJson();
+builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddSwaggerGen(c =>
@@ -42,12 +48,55 @@ builder.Services.Configure<ServiceConfig>(config =>
   config.Path = "/listservices";
 });
 
+builder.Services.ConfigureIdentity();
+
+builder.Services.AddAuthentication();
+                /*.AddGoogle(options =>
+                {
+                  options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+                  options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+                  options.ClaimActions.MapJsonKey("urn:google:picture", "picture", "url");
+                })
+                .AddFacebook(facebookOptions =>
+                {
+                  facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
+                  facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+                  facebookOptions.Fields.Add("picture");
+                })
+                .AddMicrosoftAccount(microsoftOptions =>
+                {
+                  microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
+                  microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
+                });*/
+
+builder.Services.AddAuthorization(options =>
+{
+  options.FallbackPolicy = new AuthorizationPolicyBuilder()
+      .RequireAuthenticatedUser()
+      .Build();
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+  options.Cookie.Name = "SmartLearning";
+  options.LoginPath = "/Account/Login";
+  options.AccessDeniedPath = "/Account/NotAuthorized";
+});
+
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
   containerBuilder.RegisterModule(new DefaultCoreModule());
   containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.EnvironmentName == "Development"));
 });
+builder.Services.AddTransient<IEmailSender, AuthMessageSender>();
+builder.Services.AddSignalR(e =>
+{
+  e.MaximumReceiveMessageSize = 1024000;
+  e.EnableDetailedErrors = true;
+});
+/*
+builder.Services.AddAutoMapper(typeof(SmartLearning.Web.WebMarker));*/
 
 //builder.Logging.AddAzureWebAppDiagnostics(); add this if deploying to Azure
 
@@ -63,11 +112,23 @@ else
   app.UseExceptionHandler("/Home/Error");
   app.UseHsts();
 }
-app.UseRouting();
 
 app.UseHttpsRedirection();
+app.UseDefaultFiles();
 app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseHttpsRedirection();
+app.UseStaticFiles(new StaticFileOptions
+{
+  FileProvider = new PhysicalFileProvider(
+                     Path.Combine(app.Environment.ContentRootPath, "StaticFiles")),
+  RequestPath = "/StaticFiles",
+});
 app.UseCookiePolicy();
+
 
 // Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
@@ -79,6 +140,8 @@ app.UseEndpoints(endpoints =>
 {
   endpoints.MapDefaultControllerRoute();
   endpoints.MapRazorPages();
+  endpoints.MapHub<ChatHub>("/chatHub");
+  endpoints.MapHub<LiveHub>("/LiveHub");
 });
 
 // Seed Database
@@ -88,8 +151,8 @@ using (var scope = app.Services.CreateScope())
 
   try
   {
-    var context = services.GetRequiredService<AppDbContext>();
-    //                    context.Database.Migrate();
+    var context = services.GetRequiredService<ApplicationDbContext>();
+                        context.Database.Migrate();
     context.Database.EnsureCreated();
     SeedData.Initialize(services);
   }

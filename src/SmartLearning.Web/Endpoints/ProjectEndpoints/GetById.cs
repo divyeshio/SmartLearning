@@ -1,8 +1,8 @@
 ﻿using Ardalis.ApiEndpoints;
+using Microsoft.AspNetCore.Mvc;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Core.ProjectAggregate.Specifications;
 using SmartLearning.SharedKernel.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace SmartLearning.Web.Endpoints.ProjectEndpoints;

@@ -1,8 +1,8 @@
-﻿using SmartLearning.Core.ProjectAggregate;
+﻿using Microsoft.AspNetCore.Mvc;
+using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Core.ProjectAggregate.Specifications;
 using SmartLearning.SharedKernel.Interfaces;
 using SmartLearning.Web.ApiModels;
-using Microsoft.AspNetCore.Mvc;
 
 namespace SmartLearning.Web.Api;
 

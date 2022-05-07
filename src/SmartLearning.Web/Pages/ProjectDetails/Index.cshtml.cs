@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Core.ProjectAggregate.Specifications;
 using SmartLearning.SharedKernel.Interfaces;
 using SmartLearning.Web.ApiModels;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SmartLearning.Web.Pages.ToDoRazorPage;
 

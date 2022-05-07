@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial"/>
+        <div class="content-body">
+            <section id="pricing-plan">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add User</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card row pricing-card">
+                    <div class="col-12 col-sm-offset-2 col-sm-10 col-md-12 col-lg-offset-2 col-lg-10 mx-auto">
+                        <div class="card-body row">
+                            <div class="col-12 col-md-4" >
+                                <a asp-action="AddAdmin">
+                                <div class="card basic-pricing text-center bg-gradient-primary">
+                                    <div class="card-body rounded "style="height: 400px;border-radius: 20%">
+                                        <h3 class="vertical-align-center menu-item height-150" style="color:white;">Admin</h3>
+                                        <i data-feather="plus" class="mx-auto" style="width: 32px; height: 32px;"></i>
+                                    </div>
+                                </div>
+                                    </a>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a asp-action="AddFaculty">
+                                    <div class="card basic-pricing text-center">
+                                        <div class="card-body bg-gradient-primary rounded" style="height: 400px;">
+                                            <h3 class="vertical-align-center menu-item height-150" style="color:white;">Faculty</h3>
+                                            <i data-feather="plus" class="mx-auto" style="width: 32px; height: 32px;"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a asp-action="AddStudent">
+                                    <div class="card basic-pricing text-center">
+                                        <div class="card-body bg-gradient-primary rounded" style="height: 400px;">
+                                            <h3 class="vertical-align-center menu-item height-150" style="color:white;">Student</h3>
+                                            <i data-feather="plus" class="mx-auto" style="width: 32px; height: 32px;"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>

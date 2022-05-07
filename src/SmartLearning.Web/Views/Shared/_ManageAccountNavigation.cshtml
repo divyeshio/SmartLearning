@@ -1,0 +1,43 @@
+﻿
+@section PageCSS{
+    <link rel="stylesheet" type="text/css" href="~/css/plugins/forms/form-validation.css">
+}
+
+<!-- left menu section -->
+<div class="col-md-3 mb-2 mb-md-0">
+    <ul class="nav nav-pills flex-column nav-left">
+        <!-- general -->
+        <li class="nav-item">
+            <a class="nav-link" asp-action="Index">
+                <i data-feather="user" class="font-medium-3 mr-1"></i>
+                <span class="font-weight-bold">General</span>
+            </a>
+        </li>
+        <!-- change password -->
+        <li class="nav-item">
+            <a class="nav-link" asp-action="Password">
+                <i data-feather="lock" class="font-medium-3 mr-1"></i>
+                <span class="font-weight-bold">Password</span>
+            </a>
+        </li>
+        <!-- social -->
+        <li class="nav-item">
+            <a class="nav-link" asp-action="ExternalLogins">
+                <i data-feather="link" class="font-medium-3 mr-1"></i>
+                <span class="font-weight-bold">External Logins</span>
+            </a>
+        </li>
+        <!-- notification -->
+        @*<li class="nav-item">
+            <a class="nav-link" asp-action="TwoFactorAuthentication">
+                <i data-feather="shield" class="font-medium-3 mr-1"></i>
+                <span class="font-weight-bold">Two Factor Authentication</span>
+            </a>
+        </li>*@
+    </ul>
+</div>
+<!--/ left menu section -->
+
+@section PageJS {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

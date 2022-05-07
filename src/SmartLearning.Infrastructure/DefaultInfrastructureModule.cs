@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using Autofac;
-using SmartLearning.Core.Interfaces;
-using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.Infrastructure.Data;
-using SmartLearning.SharedKernel.Interfaces;
 using MediatR;
 using MediatR.Pipeline;
+using SmartLearning.Core.ProjectAggregate;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Services;
+using SmartLearning.SharedKernel.Interfaces;
 using Module = Autofac.Module;
 
 namespace SmartLearning.Infrastructure;

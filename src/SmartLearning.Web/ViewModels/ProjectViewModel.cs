@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace SmartLearning.Web.ViewModels;
+﻿namespace SmartLearning.Web.ViewModels;
 
 public class ProjectViewModel
 {

@@ -1,3 +1,13 @@
 ﻿@{
-    Layout = "_Layout";
+    if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin") || User.IsInRole("Faculty"))
+            Layout = "_AdminLayout";
+        else if (User.IsInRole("Student"))
+            Layout = "_StudentLayout";
+    }
+    else
+    {
+        Layout = "_LayoutBlank";
+    }
 }

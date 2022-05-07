@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
-using SmartLearning.Core.Interfaces;
 using Microsoft.Extensions.Logging;
+using SmartLearning.Services;
 
 namespace SmartLearning.Infrastructure;
 
@@ -28,5 +28,10 @@ public class EmailSender : IEmailSender
     message.To.Add(new MailAddress(to));
     await emailClient.SendMailAsync(message);
     _logger.LogWarning("Sending email to {to} from {from} with subject {subject}.", to, from, subject);
+  }
+
+  Task IEmailSender.SendEmailAsync(string email, string subject, string message)
+  {
+    throw new NotImplementedException();
   }
 }

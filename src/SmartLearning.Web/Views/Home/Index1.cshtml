@@ -1,0 +1,756 @@
+﻿@{ ViewData["Title"] = "Welcome";
+                Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"] - Smart Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Divyesh">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="~/images/ico/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="~/home/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- tobii css -->
+    <link href="~/home/css/tobii.min.css" rel="stylesheet" type="text/css">
+    <!-- Slider -->
+    <link rel="stylesheet" href="~/home/css/tiny-slider.css">
+    <!-- Icons -->
+    <link href="~/home/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <!-- Main Css -->
+    <link href="~/home/css/style.css" rel="stylesheet" type="text/css" id="theme-opt">
+    <link href="~/home/css/colors/purple.css" rel="stylesheet" id="color-opt">
+
+    <style type="text/css" id="#jarallax-clip-0">
+        #jarallax-container-0 {
+            clip: rect(0 1903px 860px 0);
+            clip: rect(0, 1903px, 860px, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    @*<div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                    <div class="double-bounce1"></div>
+                </div>
+            </div>
+        </div> *@
+    <!-- Loader -->
+    <!-- Navbar STart -->
+    <header id="topnav" class="defaultscroll sticky">
+        <div class="container">
+            <!-- Logo container-->
+            <a class="logo" href="javascript:void(0);">
+                <img src="/images/logo/logo.svg" height="24" class="logo-light-mode" alt="">  <span class="text-primary jumbotron-fluid">Smart Learning</span>
+            </a>
+            @{ if (User.Identity.IsAuthenticated)
+                {
+    <div class="buy-button">
+        <a asp-action="Main" asp-controller="Dashboard">
+            <div class="btn btn-primary login-btn-primary">Dashboard</div>
+            <div class="btn btn-light login-btn-light">Dashboard</div>
+        </a>
+    </div> }
+else
+{
+<ul class="buy-button list-inline mb-0">
+    <li class="list-inline-item mb-0">
+        <div class="dropdown dropdown-primary">
+            <button type="button" class="btn btn-icon dropdown-toggle btn-light" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
+            <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-3 justify-content-center" style="width: 200px; margin: 0px;">
+                <a class="dropdown-item text-dark center" style="display: block; text-align: center;" asp-action="Login" asp-controller="Account">Login</a>
+                <div class="dropdown-divider my-3 border-top"></div>
+                <a class="dropdown-item text-dark" style="display: block; text-align: center;" asp-action="Register" asp-controller="Account">Register</a>
+            </div>
+        </div>
+    </li>
+</ul> } }
+
+            <!--end login button-->
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li><a href="#" class="sub-menu-item nav-item active">Home</a></li>
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Landing</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li>
+                                <ul>
+                                    <li><a href="index-saas.html" class="sub-menu-item">Saas</a></li>
+                                    <li><a href="index-classic-saas.html" class="sub-menu-item">Classic Saas</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Study Material</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li class="has-submenu parent-menu-item">
+                                <a href="javascript:void(0)"> Company </a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="page-aboutus.html" class="sub-menu-item"> About Us</a></li>
+                                    <li><a href="page-aboutus-two.html" class="sub-menu-item"> About Us Two </a></li>
+                                    <li><a href="page-services.html" class="sub-menu-item">Services</a></li>
+                                    <li><a href="page-history.html" class="sub-menu-item">History </a></li>
+                                    <li><a href="page-team.html" class="sub-menu-item"> Team</a></li>
+                                    <li><a href="page-pricing.html" class="sub-menu-item">Pricing</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu parent-menu-item">
+                                <a href="javascript:void(0)"> Study Material </a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="account-profile.html" class="sub-menu-item">Profile</a></li>
+                                    <li><a href="account-members.html" class="sub-menu-item">Members </a></li>
+                                    <li><a href="account-works.html" class="sub-menu-item">Works </a></li>
+                                    <li><a href="account-messages.html" class="sub-menu-item">Messages </a></li>
+                                    <li><a href="account-payments.html" class="sub-menu-item">Payments </a></li>
+                                    <li><a href="account-setting.html" class="sub-menu-item">Setting</a></li>
+                                    <li><a href="page-invoice.html" class="sub-menu-item">Invoice</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a asp-controller="Home" asp-action="About" class="sub-menu-item">About Us</a></li>
+                    <li><a asp-controller="Shop" asp-action="Index" class="sub-menu-item">Shop</a></li>
+                </ul><!--end navigation menu-->
+                <!--end login button-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+    </header>
+    <!--end header-->
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="bg-half-170 pb-auto bg-light d-table w-100 bg-home" style="background: url('home/images/shapes/shape2.png') top; z-index: 0;">
+        <div class="container">
+            <div class="row align-items-center pb-5 mt-5 mt-sm-0">
+                <div class="col-md-6">
+                    <div class="title-heading text-center text-md-start">
+                        <span class="badge rounded-pill bg-soft-primary">Learn from Best!</span>
+                        <h4 class="heading mb-3 mt-2">Get the Advantage of Excellent <span class="text-primary typewrite block-element" data-period="2000" data-type="[ &quot;Faculties&quot;, &quot;Smart Learning&quot;, &quot;Experience&quot;, &quot;Techniques&quot; ]"><span class="wrap">S</span></span></h4>
+                        <p class="text-muted mb-0 para-dark para-desc mx-auto ms-md-auto">Get started with <span class="bold accent">Smart Learning and Experience the Best of Education. A fun way to Learn</span>.</p>
+
+                        <div class="mt-4">
+                            <a asp-action="Register" asp-controller="Account" class="btn btn-primary">Sign up &amp; Start Learning</a>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                    <div class="freelance-hero position-relative">
+                        <div class="bg-shape position-relative">
+                            <img src="~/images/illustration/edu_ilastration.png" class="mx-auto d-block pb-2 img-fluid" alt="" />
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
+    <!-- Hero End -->
+    <!-- About Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="section-title mb-4 pb-2">
+                        <h4 class="title mb-4">What Will You Experience With Us?</h4>
+                        <p class="text-muted para-desc mx-auto mb-0">Start learning with <span class="text-primary fw-bold">Smart Learning</span> that will provide everything you need to score Top!!</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-12">
+                    <div class="features mt-5 text-center">
+                        <div class="image position-relative d-inline-block">
+                            <i class="uil uil-edit-alt h1 text-primary"></i>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h5>Curriculum Designing</h5>
+                            <p class="text-muted mb-0">Our Curriculum is designed such that you will <i class="mdi mdi-heart text-danger"></i> to learn everyday.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-md-4 col-12 mt-5">
+                    <div class="features text-center">
+                        <div class="image position-relative d-inline-block">
+                            <i class="uil uil-vector-square h1 text-primary"></i>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h5>Faculty &amp; Students</h5>
+                            <p class="text-muted mb-0">Faculties stay in touch with students through <span class="text-primary fw-bold">Live Chat Feature</span>.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-md-4 col-12 mt-5">
+                    <div class="features text-center">
+                        <div class="image position-relative d-inline-block">
+                            <i class="uil uil-file-search-alt h1 text-primary"></i>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h5>Powerful Techniques</h5>
+                            <p class="text-muted mb-0">Our Faculties teach with such powerful techniques that you will easily remember topics.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-md-4 col-12 mt-5">
+                    <div class="features text-center">
+                        <div class="image position-relative d-inline-block">
+                            <i class="uil uil-airplay h1 text-primary"></i>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h5>Live Interactive Classes</h5>
+                            <p class="text-muted mb-0">We also provide powerful <span class="text-primary fw-bold">Live Classes</span>.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-md-4 col-12 mt-5">
+                    <div class="features text-center">
+                        <div class="image position-relative d-inline-block">
+                            <i class="uil uil-calendar-alt h1 text-primary"></i>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h5>Regular Tests</h5>
+                            <p class="text-muted mb-0">Faculties prepare <span class="text-primary fw-bold">Tests</span> that student can give and check their grasp on the topic.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-md-4 col-12 mt-5">
+                    <div class="features text-center">
+                        <div class="image position-relative d-inline-block">
+                            <i class="uil uil-clock h1 text-primary"></i>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h5>Regular Batches</h5>
+                            <p class="text-muted mb-0">Each subject lectures are held at regular intervals so that everything stays fresh.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
+    <!--end section-->
+    <!-- About End -->
+    <!-- Parallax Image-->
+
+    <section class="bg-half-260 d-table w-100" data-jarallax="{&quot;speed&quot;: 0.5}" style="background: none center top / auto scroll; z-index: 0;" data-jarallax-original-styles="background:url('home/images/finance/bg.jpg') top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title-heading">
+                        <div class="alert alert-white alert-pills shadow" role="alert">
+                            <span class="badge rounded-pill bg-primary me-1">Approved</span>
+                            <span class="content"> Qualified and Experienced Faculties</span>
+                        </div>
+                        <h1 class="heading fw-bold mb-3">Get Yourself <span class="text-primary text-monospace">Smart Learning</span> <br> Growth up to NEXT level</h1>
+                        <p class="para-desc text-muted">Get <span class="text-primary typewrite" data-period="2000" data-type="[ &quot;Smarter&quot;, &quot;Sharper&quot;, &quot;Focused&quot; ]"><span class="wrap"></span></span> Everyday.</p>
+                        <div class="mt-4 pt-2">
+                            <a href="javascript:void(0)" class="btn btn-primary">Join Now</a>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+        <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: scroll; pointer-events: none; visibility: hidden; z-index: -100;"><div style="background-position: 50% 50%; background-size: 100%; background-repeat: no-repeat; background-image: url(&quot;home/images/finance/bg.jpg&quot;); position: fixed; top: 0px; left: 0px; width: 2008px; height: 1129.5px; overflow: hidden; pointer-events: none; margin-left: -52.5px; margin-top: -404.25px; visibility: visible; transform: translateY(134.75px) translateZ(0px);"></div></div>
+    </section>
+
+    <!-- Counter-->
+    <section class="section">
+        <div class="container mt-100 mt-60">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title text-center text-lg-start">
+                        <h4 class="title mb-4">Trusted client by over <br> <span class="text-primary">10000+</span> of the world’s</h4>
+                        <p class="text-muted mb-0 mx-auto para-desc">Start working with <span class="text-primary fw-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-6">
+                    <div class="row" id="counter">
+                        <div class="col-md-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
+                            <div class="content text-center">
+                                <h1 class="mb-0"><span class="counter-value" data-target="10000">1</span>+</h1>
+                                <ul class="list-unstyled mb-0 h5">
+                                    <li class="list-inline-item"><i class="uil uil-heart text-danger"></i></li>
+                                    <li class="list-inline-item"><i class="uil uil-heart text-danger"></i></li>
+                                    <li class="list-inline-item"><i class="uil uil-heart text-danger"></i></li>
+                                    <li class="list-inline-item"><i class="uil uil-heart text-danger"></i></li>
+                                    <li class="list-inline-item"><i class="uil uil-heart text-danger"></i></li>
+                                </ul>
+                                <h6>Trusted Users</h6>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
+                            <div class="content text-center">
+                                <h1 class="mb-0"><span class="counter-value" data-target="1402">1</span>+</h1>
+                                <ul class="list-unstyled mb-0 h5">
+                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                </ul>
+                                <h6>Users Review</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-ontent-center mt-4">
+                        <div class="col-lg-3 col-md-3 col-6 text-center py-4">
+                            <img src="images/client/amazon.svg" class="avatar avatar-ex-sm" alt="">
+                        </div><!--end col-->
+
+                        <div class="col-lg-3 col-md-3 col-6 text-center py-4">
+                            <img src="images/client/google.svg" class="avatar avatar-ex-sm" alt="">
+                        </div><!--end col-->
+
+                        <div class="col-lg-3 col-md-3 col-6 text-center py-4">
+                            <img src="images/client/lenovo.svg" class="avatar avatar-ex-sm" alt="">
+                        </div><!--end col-->
+
+                        <div class="col-lg-3 col-md-3 col-6 text-center py-4">
+                            <img src="images/client/paypal.svg" class="avatar avatar-ex-sm" alt="">
+                        </div><!--end col-->
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div>
+
+    </section>
+
+    <!-- Testi Start-->
+
+    <section class="section bg-light" style="background: url('home/images/shapes/shape2.png') center center;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title mb-4 pb-2 text-center">
+                        <h4 class="title mb-4">Yea, it actually works.</h4>
+                        <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary fw-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row justify-content-center">
+                <div class="col-lg-12 mt-4">
+                    <div class="tns-outer" id="tns1-ow">
+                        <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">1 to 3</span>  of 6</div>
+                        <div id="tns1-mw" class="tns-ovh">
+                            <div class="tns-inner" id="tns1-iw">
+                                <div class="tiny-three-item  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="tns1" style="transform: translate3d(0%, 0px, 0px);">
+                                    <div class="tiny-slide tns-item tns-slide-active" id="tns1-item0">
+                                        <div class="d-flex client-testi m-1">
+                                            <img src="home/images/client/01.jpg" class="avatar avatar-small client-image rounded shadow" alt="">
+                                            <div class="flex-1 content p-3 shadow rounded bg-white position-relative">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-muted mt-2">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. "</p>
+                                                <h6 class="text-primary">- Thomas Israel <small class="text-muted">C.E.O</small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tiny-slide tns-item tns-slide-active" id="tns1-item1">
+                                        <div class="d-flex client-testi m-1">
+                                            <img src="home/images/client/02.jpg" class="avatar avatar-small client-image rounded shadow" alt="">
+                                            <div class="flex-1 content p-3 shadow rounded bg-white position-relative">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-muted mt-2">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others. "</p>
+                                                <h6 class="text-primary">- Barbara McIntosh <small class="text-muted">M.D</small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tiny-slide tns-item tns-slide-active" id="tns1-item2">
+                                        <div class="d-flex client-testi m-1">
+                                            <img src="home/images/client/03.jpg" class="avatar avatar-small client-image rounded shadow" alt="">
+                                            <div class="flex-1 content p-3 shadow rounded bg-white position-relative">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-muted mt-2">" The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
+                                                <h6 class="text-primary">- Carl Oliver <small class="text-muted">P.A</small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tiny-slide tns-item" id="tns1-item3" aria-hidden="true" tabindex="-1">
+                                        <div class="d-flex client-testi m-1">
+                                            <img src="home/images/client/04.jpg" class="avatar avatar-small client-image rounded shadow" alt="">
+                                            <div class="flex-1 content p-3 shadow rounded bg-white position-relative">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-muted mt-2">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero. "</p>
+                                                <h6 class="text-primary">- Christa Smith <small class="text-muted">Manager</small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tiny-slide tns-item" id="tns1-item4" aria-hidden="true" tabindex="-1">
+                                        <div class="d-flex client-testi m-1">
+                                            <img src="home/images/client/05.jpg" class="avatar avatar-small client-image rounded shadow" alt="">
+                                            <div class="flex-1 content p-3 shadow rounded bg-white position-relative">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-muted mt-2">" There is now an abundance of readable dummy texts. These are usually used when a text is required. "</p>
+                                                <h6 class="text-primary">- Dean Tolle <small class="text-muted">Developer</small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tiny-slide tns-item" id="tns1-item5" aria-hidden="true" tabindex="-1">
+                                        <div class="d-flex client-testi m-1">
+                                            <img src="home/images/client/06.jpg" class="avatar avatar-small client-image rounded shadow" alt="">
+                                            <div class="flex-1 content p-3 shadow rounded bg-white position-relative">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-muted mt-2">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. "</p>
+                                                <h6 class="text-primary">- Jill Webb <small class="text-muted">Designer</small></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="tns-nav" aria-label="Carousel Pagination"><button type="button" data-nav="2" tabindex="-1" aria-controls="tns1" style="display:none" aria-label="Carousel Page 3"></button><button type="button" data-nav="3" tabindex="-1" aria-controls="tns1" style="display:none" aria-label="Carousel Page 4"></button><button type="button" data-nav="4" tabindex="-1" aria-controls="tns1" style="display:none" aria-label="Carousel Page 5"></button><button type="button" data-nav="5" tabindex="-1" aria-controls="tns1" style="display:none" aria-label="Carousel Page 6"></button></div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
+
+
+    <!-- Blog Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title mb-4 pb-2">
+                        <h4 class="title mb-4">Latest Blog</h4>
+                        <p class="text-muted para-desc mb-0">Frequently Updated <span class="text-primary fw-bold">Smart Learning</span> blog posts that can keeps you stay focused and motivated.</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card blog rounded border-0 shadow">
+                        <div class="position-relative">
+                            <img src="~/home/images/personal/1.jpg" class="card-img-top rounded-top" alt="...">
+                            <div class="overlay rounded-top bg-dark"></div>
+                        </div>
+                        <div class="card-body content">
+                            <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
+                            <div class="post-meta d-flex justify-content-between mt-3">
+                                <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
+                            </div>
+                        </div>
+                        <div class="author">
+                            <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
+                            <small class="text-light date"><i class="uil uil-calendar-alt"></i> 13th August, 2019</small>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card blog rounded border-0 shadow">
+                        <div class="position-relative">
+                            <img src="~/home/images/personal/2.jpg" class="card-img-top rounded-top" alt="...">
+                            <div class="overlay rounded-top bg-dark"></div>
+                        </div>
+                        <div class="card-body content">
+                            <h5><a href="javascript:void(0)" class="card-title title text-dark">How apps is changing the IT world</a></h5>
+                            <div class="post-meta d-flex justify-content-between mt-3">
+                                <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
+                            </div>
+                        </div>
+                        <div class="author">
+                            <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
+                            <small class="text-light date"><i class="uil uil-calendar-alt"></i> 13th August, 2019</small>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card blog rounded border-0 shadow">
+                        <div class="position-relative">
+                            <img src="~/home/images/personal/3.jpg" class="card-img-top rounded-top" alt="...">
+                            <div class="overlay rounded-top bg-dark"></div>
+                        </div>
+                        <div class="card-body content">
+                            <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
+                            <div class="post-meta d-flex justify-content-between mt-3">
+                                <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
+                            </div>
+                        </div>
+                        <div class="author">
+                            <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
+                            <small class="text-light date"><i class="uil uil-calendar-alt"></i> 13th August, 2019</small>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-12 mt-4 pt-2">
+                    <a href="page-blog-grid.html" class="btn btn-primary">See More <i class="uil uil-angle-right-b"></i></a>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+
+        <div class="container mt-100 mt-60" id="contact">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title mb-4 pb-2">
+                        <h4 class="title mb-4">Contact Us</h4>
+                        <p class="text-muted para-desc mb-0">Start working with <span class="text-primary fw-bold">Smart Learning</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6  mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body">
+                            <h4 class="card-title">Get In Touch !</h4>
+
+                            <div class="custom-form mt-3">
+                                <form method="post" name="myForm" onsubmit="return validateForm()">
+                                    <p id="error-msg" class="mb-0"></p>
+                                    <div id="simple-msg"></div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Name <span class="text-danger">*</span></label>
+                                                <div class="form-icon position-relative">
+                                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                                    <input name="name" id="name" type="text" class="form-control ps-5" placeholder="Name :">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Email <span class="text-danger">*</span></label>
+                                                <div class="form-icon position-relative">
+                                                    <i data-feather="mail" class="fea icon-sm icons"></i>
+                                                    <input name="email" id="email" type="email" class="form-control ps-5" placeholder="Email :">
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Subject</label>
+                                                <div class="form-icon position-relative">
+                                                    <i data-feather="book" class="fea icon-sm icons"></i>
+                                                    <input name="subject" id="subject" class="form-control ps-5" placeholder="subject :">
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Comments <span class="text-danger">*</span></label>
+                                                <div class="form-icon position-relative">
+                                                    <i data-feather="message-circle" class="fea icon-sm icons clearfix"></i>
+                                                    <textarea name="comments" id="comments" rows="4" class="form-control ps-5" placeholder="Message :"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button type="submit" id="submit" name="send" class="btn btn-primary">Send Message</button>
+                                            </div>
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+                                </form>
+                            </div><!--end custom-form-->
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-8 col-md-6 ps-md-3 pe-md-3 mt-4 pt-2">
+                    <div class="card border-0 shadow rounded">
+                        <div class="map map-height-two map-gray">
+                            <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=CB%20Patel+(Smart%20Learning)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" style="border:0" class="rounded" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
+    <!-- Blog End -->
+    <!-- Shape Start -->
+    <div class="position-relative">
+        <div class="shape overflow-hidden text-footer">
+            <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </div>
+    <!--Shape End-->
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                    <a href="#" class="logo-footer">
+                        <img src="images/logo/logo.svg" height="24" alt=""><span class="text-primary jumbotron-fluid"> Smart Learning</span>
+                    </a>
+                    <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                    <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
+                        <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+                    </ul><!--end icon-->
+                </div><!--end col-->
+
+                <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <h5 class="text-light footer-head">Company</h5>
+                    <ul class="list-unstyled footer-list mt-4">
+                        <li><a href="page-aboutus.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> About us</a></li>
+                        <li><a href="page-services.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Services</a></li>
+                        <li><a href="page-team.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Team</a></li>
+                        <li><a href="page-pricing.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Pricing</a></li>
+                        <li><a href="page-portfolio-modern.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Project</a></li>
+                        <li><a href="page-jobs.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Careers</a></li>
+                        <li><a href="page-blog-grid.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Blog</a></li>
+                        <li><a href="auth-cover-login.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
+                    </ul>
+                </div><!--end col-->
+
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <h5 class="text-light footer-head">Usefull Links</h5>
+                    <ul class="list-unstyled footer-list mt-4">
+                        <li><a href="page-terms.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>
+                        <li><a href="page-privacy.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>
+                        <li><a href="documentation.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Documentation</a></li>
+                        <li><a href="changelog.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Changelog</a></li>
+                        <li><a href="components.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Components</a></li>
+                    </ul>
+                </div><!--end col-->
+
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <h5 class="text-light footer-head">Newsletter</h5>
+                    <p class="mt-4">Sign up and receive the latest tips via email.</p>
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="foot-subscribe mb-3">
+                                    <label class="form-label">Write your email <span class="text-danger">*</span></label>
+                                    <div class="form-icon position-relative">
+                                        <i data-feather="mail" class="fea icon-sm icons"></i>
+                                        <input type="email" name="email" id="emailsubscribe" class="form-control ps-5 rounded" placeholder="Your email : " required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-grid">
+                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary" value="Subscribe">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </footer><!--end footer-->
+    <footer class="footer footer-bar">
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="text-sm-start">
+                        <p class="mb-0">© Smart Learning. Design with <i class="mdi mdi-heart text-danger"></i> by Divyesh</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </footer><!--end footer-->
+    <!-- Footer End -->
+    <!-- Back to top -->
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
+    <!-- Back to top -->
+
+    <script src="~/home/js/parallax.js "></script>
+    <!-- javascript -->
+    <script src="~/home/js/bootstrap.bundle.min.js"></script>
+    <!-- tobii js -->
+    <script src="~/home/js/tobii.min.js"></script>
+    <!-- SLIDER -->
+    <script src="~/home/js/tiny-slider.js "></script>
+    <!-- Contact -->
+    <script src="~/home/js/contact.js "></script>
+    <!-- Icons -->
+    <script src="~/home/js/feather.min.js"></script>
+    <!-- Main Js -->
+    <script src="~/home/js/plugins.init.js"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+
+    <script src="~/home/js/app.js"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+
+</body>
+</html>

@@ -1,5 +1,5 @@
-﻿using SmartLearning.Core.ProjectAggregate;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.ProjectAggregate;
 using Xunit;
 
 namespace SmartLearning.IntegrationTests.Data;

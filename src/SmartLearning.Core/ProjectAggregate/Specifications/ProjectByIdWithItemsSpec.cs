@@ -1,5 +1,4 @@
 ﻿using Ardalis.Specification;
-using SmartLearning.Core.ProjectAggregate;
 
 namespace SmartLearning.Core.ProjectAggregate.Specifications;
 

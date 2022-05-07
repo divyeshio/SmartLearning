@@ -1,25 +1,26 @@
-﻿using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.Infrastructure.Data;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using SmartLearning.Core.ProjectAggregate;
+using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.IntegrationTests.Data;
 
 public abstract class BaseEfRepoTestFixture
 {
-  protected AppDbContext _dbContext;
+  protected ApplicationDbContext _dbContext;
 
   protected BaseEfRepoTestFixture()
   {
     var options = CreateNewContextOptions();
     var mockMediator = new Mock<IMediator>();
 
-    _dbContext = new AppDbContext(options, mockMediator.Object);
+    _dbContext = new ApplicationDbContext(options, mockMediator.Object);
   }
 
-  protected static DbContextOptions<AppDbContext> CreateNewContextOptions()
+  protected static DbContextOptions<ApplicationDbContext> CreateNewContextOptions()
   {
     // Create a fresh service provider, and therefore a fresh
     // InMemory database instance.
@@ -29,7 +30,7 @@ public abstract class BaseEfRepoTestFixture
 
     // Create a new options instance telling the context to use an
     // InMemory database and the new service provider.
-    var builder = new DbContextOptionsBuilder<AppDbContext>();
+    var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
     builder.UseInMemoryDatabase("cleanarchitecture")
            .UseInternalServiceProvider(serviceProvider);
 

@@ -1,5 +1,4 @@
-﻿using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.SharedKernel;
+﻿using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.ProjectAggregate.Events;
 

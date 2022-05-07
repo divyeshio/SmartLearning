@@ -1,6 +1,6 @@
-﻿using SmartLearning.Core.ProjectAggregate;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SmartLearning.Core.ProjectAggregate;
 
 namespace SmartLearning.Infrastructure.Data.Config;
 

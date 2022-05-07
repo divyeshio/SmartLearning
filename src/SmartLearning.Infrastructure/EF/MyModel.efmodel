@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="3.0.6.1" Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" entityContainerName="MyModel" namespace="SmartLearning.EF.Generated" automaticMigrationsEnabled="false" entityOutputDirectory="EF\Generated\Entities" contextOutputDirectory="EF\Generated\Context" enumOutputDirectory="EF\Generated\Enum" connectionStringName="DefaultConnection" transformOnSave="false" showCascadeDeletes="false" databaseType="None" warnOnMissingDocumentation="false" structOutputDirectory="EF\Generated\Struct" showWarningsInDesigner="false" exposeForeignKeys="false" baseClass="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext" propertyAccessModeDefault="Field" generateDbContextFactory="false" showInterfaceIndicators="false" xmlns="http://schemas.microsoft.com/dsltools/EFModel">
+  <enums>
+    <modelRootHasEnums Id="e3f1a9cc-9a6e-4ca5-9846-d278bae3229f">
+      <modelEnum Id="2c482ad4-8719-4419-a21a-2e0f20007714" namespace="SmartLearning.Models" isNamespaceTracking="false" name="AccountTypeEnum" outputDirectory="EF\Generated\Enum">
+        <values>
+          <modelEnumHasValues Id="0d67002d-410f-4aea-8ba2-42db1c2e8a6e">
+            <modelEnumValue Id="dfdafeb7-b334-4de2-8485-7f55665f6a9c" name="Student" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="e1c89f82-c3cd-4259-a109-2f20b6032fd7">
+            <modelEnumValue Id="aa8be060-b725-4332-a556-520c42c912f1" name="Faculty" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="311e4d38-a56a-4ad1-8f65-72acd59f521f">
+            <modelEnumValue Id="ddfc7d78-a338-478a-8f4c-a0f5c463f293" name="Admin" />
+          </modelEnumHasValues>
+        </values>
+      </modelEnum>
+    </modelRootHasEnums>
+  </enums>
+  <classes>
+    <modelRootHasClasses Id="13837990-7e20-44a7-b5e6-bc057da9ecd2">
+      <modelClass Id="21474379-658b-49f9-b086-8457efa0357e" databaseSchema="dbo" namespace="SmartLearning.Models" isNamespaceTracking="false" name="Board" outputDirectory="EF\Generated\Entities" autoPropertyDefault="true" excludeFromMigrations="false">
+        <attributes>
+          <modelAttribute Id="343b3285-d7f1-49e1-bc9a-bfa6bc001bcd" type="Int64" isIdentity="true" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_id" databaseCollation="default" propertyAccessMode="Field" />
+          <modelAttribute Id="77c0e600-fda2-49ef-acc6-2f7672304a08" required="true" maxLength="10" indexed="false" indexedUnique="false" stringType="None" name="Name" autoProperty="true" minLength="0" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_name" databaseCollation="default" propertyAccessMode="Field" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="52cba95e-eb9f-4d38-8944-25f9e5fc38a2">
+      <modelClass Id="8d17d4a3-a6a7-4216-9173-34209801173b" databaseSchema="dbo" namespace="SmartLearning.Models" isNamespaceTracking="false" name="Standard" outputDirectory="EF\Generated\Entities" autoPropertyDefault="true" excludeFromMigrations="false">
+        <attributes>
+          <modelAttribute Id="4ec8a70b-dd39-48ae-b4d4-7f512bc72885" isIdentity="true" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_id" databaseCollation="default" propertyAccessMode="Field" />
+          <modelAttribute Id="70c75a74-7130-4a0e-b428-d87f5fa5b4ef" type="Int32" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" name="Name" autoProperty="true" minLength="0" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_name" databaseCollation="default" propertyAccessMode="Field" />
+          <modelAttribute Id="7596621e-b2d6-4fa4-8cce-f0e7c7f19deb" required="true" maxLength="2" indexed="false" indexedUnique="false" stringType="None" name="DisplayName" autoProperty="true" minLength="0" columnName="DisplayName" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_displayName" databaseCollation="default" propertyAccessMode="Field" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="bb809069-05a6-4f7d-88d4-788029630d34">
+      <modelClass Id="6e9906e7-3b54-47ae-85de-06f9e50a7c9c" databaseSchema="dbo" namespace="SmartLearning.Models" isNamespaceTracking="false" name="Subject" outputDirectory="EF\Generated\Entities" autoPropertyDefault="true" excludeFromMigrations="false">
+        <attributes>
+          <modelAttribute Id="148fc24f-ffc2-4dea-90f1-03d07cb6a38e" type="Int64" isIdentity="true" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_id" databaseCollation="default" propertyAccessMode="Field" />
+          <modelAttribute Id="4e8fd5e6-83c1-4d7a-9bab-3702f5a2ab73" required="true" maxLength="15" indexed="false" indexedUnique="false" stringType="None" name="Name" autoProperty="true" minLength="0" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_name" databaseCollation="default" propertyAccessMode="Field" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="a22fb953-2a6f-43bb-a77b-d82bd5dad318">
+      <modelClass Id="7355ea1a-5207-4e6f-8494-72f087ff680d" databaseSchema="dbo" namespace="SmartLearning.Models" isNamespaceTracking="false" name="Quote" outputDirectory="EF\Generated\Entities" autoPropertyDefault="true" excludeFromMigrations="false">
+        <attributes>
+          <modelAttribute Id="99161af6-daa3-41f3-9db3-09f018f6a648" type="Int64" isIdentity="true" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_id" databaseCollation="default" propertyAccessMode="Field" />
+          <modelAttribute Id="fbf741ad-be2d-48a4-bad4-7892d35ba0de" required="true" maxLength="20" indexed="false" indexedUnique="false" stringType="None" name="Name" autoProperty="true" minLength="3" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_name" databaseCollation="default" propertyAccessMode="Field" />
+          <modelAttribute Id="f97d5324-25b9-4713-b49a-b55f44f28b80" required="true" maxLength="1000" indexed="false" indexedUnique="false" stringType="None" name="Details" autoProperty="true" minLength="3" columnName="Details" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" backingFieldName="_details" databaseCollation="default" propertyAccessMode="Field" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+  </classes>
+  <diagrams>
+    <modelRootHasModelDiagrams Id="c756f6e5-5361-4b89-b2b9-a82eaee7135b">
+      <modelDiagramData name="MyModel" />
+    </modelRootHasModelDiagrams>
+  </diagrams>
+</modelRoot>
