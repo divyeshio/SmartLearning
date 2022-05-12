@@ -13,6 +13,7 @@ using SmartLearning.Hubs;
 using SmartLearning.Infrastructure;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Services;
+using SmartLearning.ViewModels;
 using SmartLearning.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -95,8 +96,11 @@ builder.Services.AddSignalR(e =>
   e.MaximumReceiveMessageSize = 1024000;
   e.EnableDetailedErrors = true;
 });
-/*
-builder.Services.AddAutoMapper(typeof(SmartLearning.Web.WebMarker));*/
+
+builder.Services.AddAutoMapper(typeof(WebMarker).Assembly);
+builder.Services.AddSingleton<List<StudentViewModel>>();
+builder.Services.AddSingleton<List<FacultyViewModel>>();
+builder.Services.AddSingleton<List<User>>();
 
 //builder.Logging.AddAzureWebAppDiagnostics(); add this if deploying to Azure
 

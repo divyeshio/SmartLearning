@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartLearning.Data;
+using SmartLearning.Models;
 using SmartLearning.ViewModels;
 
 namespace SmartLearning.Controllers
@@ -11,10 +13,11 @@ namespace SmartLearning.Controllers
   public class ProfileController : Controller
   {
     private readonly ApplicationDbContext _context;
-
-    public ProfileController(ApplicationDbContext context)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public ProfileController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
       _context = context;
+      _userManager = userManager;
     }
 
 
@@ -33,16 +36,22 @@ namespace SmartLearning.Controllers
       {
         User = user,
       };
-      return View();
+      return View(vm);
     }
 
     [Route("/MyProfile", Name = "MyProfile")]
     [HttpGet]
-    public IActionResult MyProfile()
+    public async Task<IActionResult> MyProfile()
     {
 
-
-      return View("Index");
+      var user = await _userManager.GetUserAsync(User);
+      if (user == null)
+        return View("Error");
+      var vm = new ProfileViewModel
+      {
+        User = user,
+      };
+      return View("Index",vm);
     }
   }
 }

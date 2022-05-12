@@ -1,0 +1,155 @@
+2022-05-09 22:41:26.602 +05:30 [INF] User profile is available. Using 'C:\Users\Divyesh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-05-09 22:41:34.864 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-05-09 22:41:35.095 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-05-09 22:41:43.020 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-05-09 22:41:43.077 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-05-09 22:41:43.082 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-05-09 22:41:43.086 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-05-09 22:41:43.130 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-05-09 22:41:43.151 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-05-09 22:41:43.154 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-05-09 22:41:44.204 +05:30 [INF] Executed DbCommand (1,045ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-05-09 22:41:44.415 +05:30 [INF] Now listening on: http://localhost:57679
+2022-05-09 22:41:44.419 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-09 22:41:44.421 +05:30 [INF] Hosting environment: Development
+2022-05-09 22:41:44.422 +05:30 [INF] Content root path: C:\Users\Divyesh\source\repos\SmartLearning\src\SmartLearning.Web\
+2022-05-09 22:41:50.051 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-05-09 22:41:50.190 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-05-09 22:41:50.473 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-05-09 22:41:51.118 +05:30 [INF] Executed DbCommand (173ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2022-05-09 22:41:51.804 +05:30 [INF] Executed DbCommand (473ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2022-05-09 22:41:51.969 +05:30 [INF] Executed DbCommand (131ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [UserRoles] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2022-05-09 22:41:51.992 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2022-05-09 22:41:52.017 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2022-05-09 22:41:52.035 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-05-09 22:41:52.073 +05:30 [INF] Executing endpoint 'SmartLearning.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-05-09 22:41:52.086 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Controllers.HomeController (SmartLearning.Web).
+2022-05-09 22:41:52.107 +05:30 [INF] Executing ViewResult, running view Index.
+2022-05-09 22:41:52.354 +05:30 [INF] Executed ViewResult - view Index executed in 253.5276ms.
+2022-05-09 22:41:52.361 +05:30 [INF] Executed action SmartLearning.Controllers.HomeController.Index (SmartLearning.Web) in 271.8305ms
+2022-05-09 22:41:52.363 +05:30 [INF] Executed endpoint 'SmartLearning.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-05-09 22:41:52.428 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 2384.9793ms
+2022-05-09 22:41:52.472 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - -
+2022-05-09 22:41:52.472 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - -
+2022-05-09 22:41:52.479 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - -
+2022-05-09 22:41:52.483 +05:30 [INF] The file /home/css/bootstrap.min.css was not modified
+2022-05-09 22:41:52.483 +05:30 [INF] The file /home/css/tiny-slider.css was not modified
+2022-05-09 22:41:52.483 +05:30 [INF] The file /home/css/tobii.min.css was not modified
+2022-05-09 22:41:52.485 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - - - 304 - text/css 5.4352ms
+2022-05-09 22:41:52.485 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - - - 304 - text/css 12.8001ms
+2022-05-09 22:41:52.486 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - - - 304 - text/css 14.2638ms
+2022-05-09 22:41:52.572 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - -
+2022-05-09 22:41:52.574 +05:30 [INF] The file /home/css/materialdesignicons.min.css was not modified
+2022-05-09 22:41:52.579 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - - - 304 - text/css 6.7887ms
+2022-05-09 22:41:52.596 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/style.css - -
+2022-05-09 22:41:52.598 +05:30 [INF] The file /home/css/style.css was not modified
+2022-05-09 22:41:52.600 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/style.css - - - 304 - text/css 3.3252ms
+2022-05-09 22:41:52.608 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - -
+2022-05-09 22:41:52.610 +05:30 [INF] The file /home/css/colors/purple.css was not modified
+2022-05-09 22:41:52.612 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - - - 304 - text/css 3.4094ms
+2022-05-09 22:41:52.667 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - -
+2022-05-09 22:41:52.669 +05:30 [INF] The file /home/js/parallax.js was not modified
+2022-05-09 22:41:52.671 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - -
+2022-05-09 22:41:52.672 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - - - 304 - application/javascript 5.0546ms
+2022-05-09 22:41:52.673 +05:30 [INF] The file /home/js/bootstrap.bundle.min.js was not modified
+2022-05-09 22:41:52.675 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - - - 304 - application/javascript 4.6685ms
+2022-05-09 22:41:52.697 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - -
+2022-05-09 22:41:52.698 +05:30 [INF] The file /home/js/tobii.min.js was not modified
+2022-05-09 22:41:52.699 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - - - 304 - application/javascript 2.6707ms
+2022-05-09 22:41:52.703 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - -
+2022-05-09 22:41:52.705 +05:30 [INF] The file /home/js/tiny-slider.js was not modified
+2022-05-09 22:41:52.706 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - - - 304 - application/javascript 2.8518ms
+2022-05-09 22:41:52.712 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - -
+2022-05-09 22:41:52.714 +05:30 [INF] The file /home/js/feather.min.js was not modified
+2022-05-09 22:41:52.715 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - - - 304 - application/javascript 2.7952ms
+2022-05-09 22:41:52.723 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - -
+2022-05-09 22:41:52.724 +05:30 [INF] The file /home/js/plugins.init.js was not modified
+2022-05-09 22:41:52.726 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - - - 304 - application/javascript 3.0991ms
+2022-05-09 22:41:52.727 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/app.js - -
+2022-05-09 22:41:52.730 +05:30 [INF] The file /home/js/app.js was not modified
+2022-05-09 22:41:52.731 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/app.js - - - 304 - application/javascript 3.5904ms
+2022-05-09 22:41:52.735 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-05-09 22:41:52.739 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 3.9338ms
+2022-05-09 22:41:52.751 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - -
+2022-05-09 22:41:52.753 +05:30 [INF] The file /images/logo/logo.svg was not modified
+2022-05-09 22:41:52.754 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - - - 304 - image/svg+xml 3.5400ms
+2022-05-09 22:41:53.204 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - -
+2022-05-09 22:41:53.207 +05:30 [INF] The file /home/fonts/materialdesignicons-webfont.woff2 was not modified
+2022-05-09 22:41:53.209 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - - - 304 - font/woff2 4.4442ms
+2022-05-09 22:41:53.269 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - -
+2022-05-09 22:41:53.271 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - -
+2022-05-09 22:41:53.272 +05:30 [INF] The file /home/images/finance/bg.jpg was not modified
+2022-05-09 22:41:53.273 +05:30 [INF] The file /home/images/shapes/shape2.png was not modified
+2022-05-09 22:41:53.274 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - - - 304 - image/jpeg 4.8435ms
+2022-05-09 22:41:53.275 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - - - 304 - image/png 3.7737ms
+2022-05-09 22:41:53.316 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - -
+2022-05-09 22:41:53.670 +05:30 [INF] The file /home/images/client/01.jpg was not modified
+2022-05-09 22:41:53.704 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - -
+2022-05-09 22:41:53.755 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - - - 304 - image/jpeg 438.9988ms
+2022-05-09 22:41:53.759 +05:30 [INF] The file /images/illustration/edu_ilastration.png was not modified
+2022-05-09 22:41:53.767 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - - - 304 - image/png 63.4774ms
+2022-05-09 22:41:54.517 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - -
+2022-05-09 22:41:54.518 +05:30 [INF] The file /home/images/client/04.jpg was not modified
+2022-05-09 22:41:54.519 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - - - 304 - image/jpeg 2.7979ms
+2022-05-09 22:41:54.524 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - -
+2022-05-09 22:41:54.525 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - -
+2022-05-09 22:41:54.525 +05:30 [INF] The file /home/images/client/03.jpg was not modified
+2022-05-09 22:41:54.526 +05:30 [INF] The file /home/images/client/02.jpg was not modified
+2022-05-09 22:41:54.527 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - - - 304 - image/jpeg 3.5038ms
+2022-05-09 22:41:54.529 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - - - 304 - image/jpeg 4.0058ms
+2022-05-09 22:41:54.530 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - -
+2022-05-09 22:41:54.532 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - -
+2022-05-09 22:41:54.533 +05:30 [INF] The file /home/images/client/05.jpg was not modified
+2022-05-09 22:41:54.533 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - -
+2022-05-09 22:41:54.534 +05:30 [INF] The file /home/images/client/06.jpg was not modified
+2022-05-09 22:41:54.535 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - - - 304 - image/jpeg 4.1741ms
+2022-05-09 22:41:54.536 +05:30 [INF] The file /home/images/personal/1.jpg was not modified
+2022-05-09 22:41:54.537 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - - - 304 - image/jpeg 4.6005ms
+2022-05-09 22:41:54.540 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - - - 304 - image/jpeg 6.8659ms
+2022-05-09 22:41:54.542 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - -
+2022-05-09 22:41:54.543 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - -
+2022-05-09 22:41:54.544 +05:30 [INF] The file /home/images/personal/2.jpg was not modified
+2022-05-09 22:41:54.545 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-05-09 22:41:54.545 +05:30 [INF] The file /home/images/personal/3.jpg was not modified
+2022-05-09 22:41:54.546 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - - - 304 - image/jpeg 4.2882ms
+2022-05-09 22:41:54.549 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - - - 304 - image/jpeg 5.8081ms
+2022-05-09 22:41:54.623 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 78.2492ms

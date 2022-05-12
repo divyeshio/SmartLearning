@@ -21,7 +21,7 @@ namespace SmartLearning.Models
       get { return FirstName + ' ' + LastName; }
       set { FullName = value; }
     }
-    public string? Avatar { get; set; }
+    public string? Avatar { get; set; } = "default.jpg";
 
     [Required]
     [DataType(DataType.Date)]

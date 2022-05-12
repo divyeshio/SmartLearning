@@ -39,7 +39,7 @@ namespace SmartLearning.ViewModels
     public bool isEnabled { get; set; }
 
 
-    public SelectList Boards { get; set; }
-    public SelectList Standards { get; set; }
+    public SelectList? Boards { get; set; }
+    public SelectList? Standards { get; set; }
   }
 }

@@ -41,8 +41,8 @@ namespace SmartLearning.ViewModels
     [Display(Name = "Standard")]
     public string StandardId { get; set; }
 
-    public SelectList Boards { get; set; }
-    public SelectList Standards { get; set; }
-    public SelectList Subjects { get; set; }
+    public SelectList? Boards { get; set; }
+    public SelectList? Standards { get; set; }
+    public SelectList? Subjects { get; set; }
   }
 }

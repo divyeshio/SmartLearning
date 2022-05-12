@@ -1,0 +1,115 @@
+2022-05-10 15:59:51.618 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-05-10 15:59:52.023 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-05-10 15:59:53.737 +05:30 [INF] Executed DbCommand (120ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2022-05-10 15:59:54.059 +05:30 [INF] Executed DbCommand (96ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ClaimType], [u].[ClaimValue], [u].[UserId]
+FROM [UserClaims] AS [u]
+WHERE [u].[UserId] = @__user_Id_0
+2022-05-10 15:59:54.703 +05:30 [INF] Executed DbCommand (538ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Name]
+FROM [UserRoles] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__userId_0
+2022-05-10 15:59:54.885 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [Roles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+2022-05-10 15:59:54.899 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [RoleClaims] AS [r]
+WHERE [r].[RoleId] = @__role_Id_0
+2022-05-10 15:59:54.921 +05:30 [INF] Executing endpoint 'SmartLearning.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-05-10 15:59:54.952 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Controllers.HomeController (SmartLearning.Web).
+2022-05-10 15:59:54.984 +05:30 [INF] Executing ViewResult, running view Index.
+2022-05-10 15:59:55.034 +05:30 [INF] Executed ViewResult - view Index executed in 65.8845ms.
+2022-05-10 15:59:55.035 +05:30 [INF] Executed action SmartLearning.Controllers.HomeController.Index (SmartLearning.Web) in 80.2469ms
+2022-05-10 15:59:55.036 +05:30 [INF] Executed endpoint 'SmartLearning.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-05-10 15:59:55.365 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 3752.9290ms
+2022-05-10 15:59:56.011 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - -
+2022-05-10 15:59:56.012 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - -
+2022-05-10 15:59:56.012 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - -
+2022-05-10 15:59:56.017 +05:30 [INF] The file /home/css/tobii.min.css was not modified
+2022-05-10 15:59:56.017 +05:30 [INF] The file /home/css/bootstrap.min.css was not modified
+2022-05-10 15:59:56.017 +05:30 [INF] The file /home/css/tiny-slider.css was not modified
+2022-05-10 15:59:56.018 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - - - 304 - text/css 7.0644ms
+2022-05-10 15:59:56.020 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - - - 304 - text/css 8.2649ms
+2022-05-10 15:59:56.021 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - - - 304 - text/css 9.2336ms
+2022-05-10 15:59:56.110 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - -
+2022-05-10 15:59:56.111 +05:30 [INF] The file /home/css/materialdesignicons.min.css was not modified
+2022-05-10 15:59:56.112 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - - - 304 - text/css 2.2009ms
+2022-05-10 15:59:56.218 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/style.css - -
+2022-05-10 15:59:56.221 +05:30 [INF] The file /home/css/style.css was not modified
+2022-05-10 15:59:56.221 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/style.css - - - 304 - text/css 3.1582ms
+2022-05-10 15:59:56.238 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - -
+2022-05-10 15:59:56.240 +05:30 [INF] The file /home/css/colors/purple.css was not modified
+2022-05-10 15:59:56.241 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - - - 304 - text/css 2.5151ms
+2022-05-10 15:59:56.346 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - -
+2022-05-10 15:59:56.346 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - -
+2022-05-10 15:59:56.347 +05:30 [INF] The file /home/js/bootstrap.bundle.min.js was not modified
+2022-05-10 15:59:56.348 +05:30 [INF] The file /home/js/parallax.js was not modified
+2022-05-10 15:59:56.351 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - - - 304 - application/javascript 4.7138ms
+2022-05-10 15:59:56.349 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - - - 304 - application/javascript 3.5868ms
+2022-05-10 15:59:57.223 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - -
+2022-05-10 15:59:57.224 +05:30 [INF] The file /home/js/tobii.min.js was not modified
+2022-05-10 15:59:57.226 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - - - 304 - application/javascript 3.3269ms
+2022-05-10 15:59:57.231 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - -
+2022-05-10 15:59:57.232 +05:30 [INF] The file /home/js/tiny-slider.js was not modified
+2022-05-10 15:59:57.234 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - - - 304 - application/javascript 2.9560ms
+2022-05-10 15:59:57.241 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - -
+2022-05-10 15:59:57.243 +05:30 [INF] The file /home/js/feather.min.js was not modified
+2022-05-10 15:59:57.244 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - - - 304 - application/javascript 3.3005ms
+2022-05-10 15:59:57.262 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - -
+2022-05-10 15:59:57.264 +05:30 [INF] The file /home/js/plugins.init.js was not modified
+2022-05-10 15:59:57.265 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - - - 304 - application/javascript 3.0356ms
+2022-05-10 15:59:57.274 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/app.js - -
+2022-05-10 15:59:57.276 +05:30 [INF] The file /home/js/app.js was not modified
+2022-05-10 15:59:57.277 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/app.js - - - 304 - application/javascript 2.8474ms
+2022-05-10 15:59:57.283 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-05-10 15:59:57.286 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 3.1600ms
+2022-05-10 15:59:57.290 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - -
+2022-05-10 15:59:57.290 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - -
+2022-05-10 15:59:57.292 +05:30 [INF] The file /images/logo/logo.svg was not modified
+2022-05-10 15:59:57.293 +05:30 [INF] The file /images/illustration/edu_ilastration.png was not modified
+2022-05-10 15:59:57.295 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - - - 304 - image/png 4.1503ms
+2022-05-10 15:59:57.294 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - - - 304 - image/svg+xml 3.5864ms
+2022-05-10 15:59:57.303 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - -
+2022-05-10 15:59:57.306 +05:30 [INF] The file /home/images/client/01.jpg was not modified
+2022-05-10 15:59:57.307 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - - - 304 - image/jpeg 3.9839ms
+2022-05-10 15:59:57.694 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - -
+2022-05-10 15:59:57.697 +05:30 [INF] The file /home/fonts/materialdesignicons-webfont.woff2 was not modified
+2022-05-10 15:59:57.698 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - - - 304 - font/woff2 3.6621ms
+2022-05-10 15:59:57.744 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - -
+2022-05-10 15:59:57.747 +05:30 [INF] The file /home/images/finance/bg.jpg was not modified
+2022-05-10 15:59:57.747 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - -
+2022-05-10 15:59:57.750 +05:30 [INF] The file /home/images/shapes/shape2.png was not modified
+2022-05-10 15:59:57.752 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - - - 304 - image/png 5.0519ms
+2022-05-10 15:59:57.748 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - - - 304 - image/jpeg 4.2829ms
+2022-05-10 15:59:57.758 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - -
+2022-05-10 15:59:57.759 +05:30 [INF] The file /home/images/client/04.jpg was not modified
+2022-05-10 15:59:57.761 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - - - 304 - image/jpeg 3.0898ms
+2022-05-10 15:59:57.767 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - -
+2022-05-10 15:59:57.768 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - -
+2022-05-10 15:59:57.769 +05:30 [INF] The file /home/images/client/03.jpg was not modified
+2022-05-10 15:59:57.770 +05:30 [INF] The file /home/images/client/02.jpg was not modified
+2022-05-10 15:59:57.771 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - - - 304 - image/jpeg 3.7609ms
+2022-05-10 15:59:57.772 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - - - 304 - image/jpeg 4.1423ms
+2022-05-10 15:59:57.780 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - -
+2022-05-10 15:59:57.782 +05:30 [INF] The file /home/images/client/05.jpg was not modified
+2022-05-10 15:59:57.782 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - -
+2022-05-10 15:59:57.783 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - - - 304 - image/jpeg 2.8837ms
+2022-05-10 15:59:57.784 +05:30 [INF] The file /home/images/client/06.jpg was not modified
+2022-05-10 15:59:57.786 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - - - 304 - image/jpeg 3.7533ms
+2022-05-10 15:59:57.791 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - -
+2022-05-10 15:59:57.793 +05:30 [INF] The file /home/images/personal/1.jpg was not modified
+2022-05-10 15:59:57.795 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - -
+2022-05-10 15:59:57.795 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - - - 304 - image/jpeg 4.0244ms
+2022-05-10 15:59:57.796 +05:30 [INF] The file /home/images/personal/2.jpg was not modified
+2022-05-10 15:59:57.798 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - - - 304 - image/jpeg 3.3419ms
+2022-05-10 15:59:57.804 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - -
+2022-05-10 15:59:57.805 +05:30 [INF] The file /home/images/personal/3.jpg was not modified
+2022-05-10 15:59:57.808 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-05-10 15:59:57.813 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - - - 304 - image/jpeg 9.2056ms
+2022-05-10 15:59:57.842 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 34.1541ms
