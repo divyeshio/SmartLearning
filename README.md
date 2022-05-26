@@ -14,16 +14,16 @@ CRUD operations on Notes, Sample Papers, etc.
 
 𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬 𝐮𝐬𝐞𝐝:
 
-C#
-JavaScript
-CSS
+C#,
+JavaScript,
+CSS,
 HTML
 
 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲 𝐒𝐭𝐚𝐜𝐤:
 
-Asp.NET Core
-SignalR Core (for Web Sockets)
-WebRTC
-Speech-to-Text API
-EF Core
+Asp.NET Core,
+SignalR Core (for Web Sockets),
+WebRTC,
+Speech-to-Text API,
+EF Core,
 Microsoft SQL Server
