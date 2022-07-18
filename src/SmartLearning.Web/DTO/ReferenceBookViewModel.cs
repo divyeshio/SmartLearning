@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartLearning.Helpers;
+using SmartLearning.Core.Helpers;
 
 namespace SmartLearning.Web.DTO
 {

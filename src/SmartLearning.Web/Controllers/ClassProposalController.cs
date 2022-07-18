@@ -1,52 +1,52 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Infrastructure.Data;
-using SmartLearning.Models;
 
 namespace SmartLearning.Web.Controllers
 {
-  [Authorize(Roles = "Admin")]
-  public class ClassProposalController : Controller
-  {
-    private readonly ApplicationDbContext _context;
-
-    public ClassProposalController(ApplicationDbContext context)
+    [Authorize(Roles = "Admin")]
+    public class ClassProposalController : Controller
     {
-      _context = context;
-    }
+        private readonly ApplicationDbContext _context;
 
-    // GET: ClassProposals
-    public async Task<IActionResult> Index()
-    {
-      var applicationDbContext = _context.ClassProposals.Include(c => c.Board).Include(c => c.Standard).Include(c => c.Subject);
-      return View(await applicationDbContext.ToListAsync());
-    }
+        public ClassProposalController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Approve(string id)
-    {
-      var classProposal = await _context.ClassProposals.FindAsync(id);
-      await _context.Classes.AddAsync(new Class { BoardId = classProposal.BoardId, SubjectId = classProposal.SubjectId, StandardId = classProposal.StandardId });
-      _context.ClassProposals.Remove(classProposal);
-      await _context.SaveChangesAsync();
-      return RedirectToAction(nameof(Index));
-    }
+        // GET: ClassProposals
+        public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _context.ClassProposals.Include(c => c.Board).Include(c => c.Standard).Include(c => c.Subject);
+            return View(await applicationDbContext.ToListAsync());
+        }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Reject(string id)
-    {
-      var classProposal = await _context.ClassProposals.FindAsync(id);
-      _context.ClassProposals.Remove(classProposal);
-      await _context.SaveChangesAsync();
-      return RedirectToAction(nameof(Index));
-    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Approve(string id)
+        {
+            var classProposal = await _context.ClassProposals.FindAsync(id);
+            await _context.Classes.AddAsync(new Class { BoardId = classProposal.BoardId, SubjectId = classProposal.SubjectId, StandardId = classProposal.StandardId });
+            _context.ClassProposals.Remove(classProposal);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-    private bool ClassProposalExists(string id)
-    {
-      return _context.ClassProposals.Any(e => e.Id == id);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Reject(string id)
+        {
+            var classProposal = await _context.ClassProposals.FindAsync(id);
+            _context.ClassProposals.Remove(classProposal);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool ClassProposalExists(string id)
+        {
+            return _context.ClassProposals.Any(e => e.Id == id);
+        }
     }
-  }
 }

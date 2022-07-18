@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
-using SmartLearning.Helpers;
+using SmartLearning.Core.Helpers;
 
 namespace SmartLearning.Web.DTO.ManageViewModels
 {

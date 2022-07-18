@@ -19,7 +19,7 @@ namespace SmartLearning.Web.Hubs
     public async Task Join(string username)
     {
       // Add the new user
-      _Users.Add(new Models.User
+      _Users.Add(new Core.Entities.User
       {
         Username = username,
         ConnectionId = Context.ConnectionId
