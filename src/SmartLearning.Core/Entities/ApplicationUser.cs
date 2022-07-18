@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.Common;
+using SmartLearning.Core.Entities.TestAggregate;
 
 namespace SmartLearning.Models
 {

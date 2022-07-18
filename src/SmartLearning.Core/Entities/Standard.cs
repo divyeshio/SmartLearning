@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Models
 {
   [Index(nameof(Name), IsUnique = true)]
-  public class Standard
+  public class Standard : BaseEntity
   {
 
     [Key]

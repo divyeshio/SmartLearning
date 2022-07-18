@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities.TestAggregate;
 using SmartLearning.ViewModels;
 
 namespace SmartLearning.Mappings

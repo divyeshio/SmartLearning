@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Data;
 using SmartLearning.Models;
 using SmartLearning.Services;

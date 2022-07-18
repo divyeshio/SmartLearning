@@ -3,6 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.Common;
+using SmartLearning.Core.Entities.LiveClassAggregate;
+using SmartLearning.Core.Entities.TestAggregate;
 using SmartLearning.Models;
 using SmartLearning.SharedKernel;
 

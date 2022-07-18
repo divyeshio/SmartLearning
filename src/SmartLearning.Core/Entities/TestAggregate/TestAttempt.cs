@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.Models;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.TestAggregate
 {
-  public class TestAttempt
+  public class TestAttempt : BaseEntity
   {
     [Key]
     [Required]

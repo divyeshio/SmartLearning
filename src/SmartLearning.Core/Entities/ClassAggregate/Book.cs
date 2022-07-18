@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.ClassAggregate
 {
-  public class Book
+  public class Book : BaseEntity
   {
     [Key]
     [Required]

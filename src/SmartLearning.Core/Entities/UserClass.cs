@@ -1,4 +1,6 @@
-﻿namespace SmartLearning.Models
+﻿using SmartLearning.Core.Entities.ClassAggregate;
+
+namespace SmartLearning.Models
 {
   public class UserClass
   {

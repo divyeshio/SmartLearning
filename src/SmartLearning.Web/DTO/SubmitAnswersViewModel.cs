@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities.TestAggregate;
 
 namespace SmartLearning.ViewModels
 {

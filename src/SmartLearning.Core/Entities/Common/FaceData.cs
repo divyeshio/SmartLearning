@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SmartLearning.Models;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.Common
 {
   public class FaceData
   {
@@ -15,11 +16,11 @@ namespace SmartLearning.Models
     {
       get
       {
-        return Array.ConvertAll(IFaceEncoding.Split(';'), Double.Parse);
+        return Array.ConvertAll(IFaceEncoding.Split(';'), double.Parse);
       }
       set
       {
-        IFaceEncoding = String.Join(";", value.Select(p => p.ToString()).ToArray());
+        IFaceEncoding = string.Join(";", value.Select(p => p.ToString()).ToArray());
       }
     }
 

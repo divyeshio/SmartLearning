@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.TestAggregate
 {
-  public class TestResult
+  public class TestResult : BaseEntity
   {
     [Key]
     public long Id { get; set; }

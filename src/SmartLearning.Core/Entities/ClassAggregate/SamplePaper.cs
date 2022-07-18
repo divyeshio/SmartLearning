@@ -2,8 +2,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
 using SmartLearning.Helpers;
+using SmartLearning.Models;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.ClassAggregate
 {
   public class SamplePaper
   {

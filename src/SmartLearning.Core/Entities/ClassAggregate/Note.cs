@@ -2,10 +2,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
 using SmartLearning.Helpers;
+using SmartLearning.Models;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.ClassAggregate
 {
-  public class Note
+  public class Note : BaseEntity
   {
     [Key]
     [Required]

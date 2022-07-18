@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Models;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.LiveClassAggregate
 {
   public class LiveClass
   {
     [Key]
-    public string Id { get; set; } = System.Guid.NewGuid().ToString();
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
     [Required]
     public string BroadcasterId { get; set; }

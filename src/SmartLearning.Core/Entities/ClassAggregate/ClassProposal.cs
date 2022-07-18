@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using SmartLearning.Models;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities.ClassAggregate
 {
-  public class ClassProposal
+  public class ClassProposal : BaseEntity
   {
     [Key]
     public string Id { get; set; } = Guid.NewGuid().ToString();

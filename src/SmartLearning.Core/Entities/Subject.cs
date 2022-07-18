@@ -1,8 +1,9 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Models
 {
-  public class Subject
+  public class Subject : BaseEntity
   {
 
     [Key]

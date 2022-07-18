@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Models
 {
-  public class Post
+  public class Post : BaseEntity
   {
     [Key]
     public int Id { get; set; }

@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Models
 {
-  public class Board
+  public class Board : BaseEntity
   {
     [Key]
     [Required]

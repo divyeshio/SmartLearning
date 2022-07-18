@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities.Common;
 using SmartLearning.Data;
 using SmartLearning.Models;
 using SmartLearning.ViewModels;
-using Class = SmartLearning.Models.Class;
+using Class = SmartLearning.Core.Entities.ClassAggregate.Class;
 
 namespace SmartLearning.Hubs
 {

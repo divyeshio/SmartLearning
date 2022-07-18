@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities.TestAggregate;
 
 namespace SmartLearning.ViewModels
 {
