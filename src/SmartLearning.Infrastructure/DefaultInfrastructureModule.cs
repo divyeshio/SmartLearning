@@ -2,9 +2,9 @@
 using Autofac;
 using MediatR;
 using MediatR.Pipeline;
+using SmartLearning.Core.Interfaces;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Infrastructure.Data;
-using SmartLearning.Services;
 using SmartLearning.SharedKernel.Interfaces;
 using Module = Autofac.Module;
 

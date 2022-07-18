@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SmartLearning.ViewModels.AccountViewModels
+namespace SmartLearning.Web.DTO.AccountViewModels
 {
   public class SendCodeViewModel
   {

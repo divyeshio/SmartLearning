@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
 
-namespace SmartLearning.ViewModels
+namespace SmartLearning.Web.DTO
 {
   public class ApplicationUserViewModel
   {

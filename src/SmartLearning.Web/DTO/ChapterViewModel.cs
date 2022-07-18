@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
 
-namespace SmartLearning.ViewModels
+namespace SmartLearning.Web.DTO
 {
   public class ChapterViewModel
   {

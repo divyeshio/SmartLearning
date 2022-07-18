@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Hubs
+namespace SmartLearning.Web.Hubs
 {
   public class LiveHub : Hub<ILiveClass>
   {

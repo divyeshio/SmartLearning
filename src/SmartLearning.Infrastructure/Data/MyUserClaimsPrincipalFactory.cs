@@ -1,9 +1,9 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
 
-namespace SmartLearning.Data
+namespace SmartLearning.Infrastructure.Data
 {
   public class MyUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>
   {

@@ -1,4 +1,4 @@
-﻿namespace SmartLearning.ViewModels.AccountViewModels
+﻿namespace SmartLearning.Web.DTO.AccountViewModels
 {
   public class RegisterConfirmationViewModel
   {

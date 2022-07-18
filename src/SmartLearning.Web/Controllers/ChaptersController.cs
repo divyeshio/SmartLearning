@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin,Faculty")]
   public class ChaptersController : Controller

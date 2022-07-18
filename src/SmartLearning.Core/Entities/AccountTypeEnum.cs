@@ -1,4 +1,4 @@
-﻿namespace SmartLearning.Models
+﻿namespace SmartLearning.Core.Entities
 {
   public enum AccountTypeEnum
   {

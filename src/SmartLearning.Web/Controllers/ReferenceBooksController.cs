@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class ReferenceBooksController : Controller
@@ -154,9 +154,9 @@ namespace SmartLearning.Controllers
     {
       string uniqueFileName = null;
 
-      string uploadsFolder = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks");
+      var uploadsFolder = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks");
       uniqueFileName = Path.GetRandomFileName() + Path.GetExtension(imageFile.FileName);
-      string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+      var filePath = Path.Combine(uploadsFolder, uniqueFileName);
       using (var fileStream = new FileStream(filePath, FileMode.Create))
       {
         imageFile.CopyTo(fileStream);
@@ -172,8 +172,8 @@ namespace SmartLearning.Controllers
 
       var note = await _context.ReferenceBooks.FindAsync(id);
       var path = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", note.FileUrl);
-      byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-      string fileName = note.FileUrl.Split("_")[1];
+      var fileBytes = System.IO.File.ReadAllBytes(path);
+      var fileName = note.FileUrl.Split("_")[1];
       return File(fileBytes, "application/octet-stream", fileName);
     }
 
@@ -185,7 +185,7 @@ namespace SmartLearning.Controllers
 
       var note = await _context.ReferenceBooks.FindAsync(id);
       var path = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", note.FileUrl);
-      FileStream ms = new FileStream(path, FileMode.Open);
+      var ms = new FileStream(path, FileMode.Open);
       return File(ms, "application/pdf");
     }
 
@@ -294,7 +294,7 @@ namespace SmartLearning.Controllers
     }
     private Task<bool> RemoveFile(string filename)
     {
-      string fullPath = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", filename);
+      var fullPath = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", filename);
       if (System.IO.File.Exists(fullPath))
       {
         System.IO.File.Delete(fullPath);
@@ -304,7 +304,7 @@ namespace SmartLearning.Controllers
     }
     private Task<bool> RemoveImage(string filename)
     {
-      string fullPath = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks", filename);
+      var fullPath = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks", filename);
       if (System.IO.File.Exists(fullPath))
       {
         System.IO.File.Delete(fullPath);
@@ -328,9 +328,9 @@ namespace SmartLearning.Controllers
 
     private Task<string> UploadedFile(IFormFile file)
     {
-      string uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks");
-      string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-      string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+      var uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks");
+      var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+      var filePath = Path.Combine(uploadsFolder, uniqueFileName);
       using (var fileStream = new FileStream(filePath, FileMode.Create))
       {
         file.CopyTo(fileStream);

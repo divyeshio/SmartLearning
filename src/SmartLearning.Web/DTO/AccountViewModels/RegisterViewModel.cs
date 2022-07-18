@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SmartLearning.ViewModels.AccountViewModels
+namespace SmartLearning.Web.DTO.AccountViewModels
 {
   public class RegisterViewModel
   {
@@ -30,7 +30,7 @@ namespace SmartLearning.ViewModels.AccountViewModels
 
     [DataType(DataType.Password)]
     [Display(Name = "Confirm password")]
-    [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
     [Required(ErrorMessage = "*")]
@@ -41,7 +41,7 @@ namespace SmartLearning.ViewModels.AccountViewModels
     [Display(Name = "Board")]
     public long? BoardId { get; set; }
 
-    public Microsoft.AspNetCore.Mvc.Rendering.SelectList Boards { get; set; }
+    public SelectList Boards { get; set; }
     public SelectList Standards { get; set; }
     public string ReturnUrl { get; set; }
     public List<AuthenticationScheme> ExternalLogins { get; set; }

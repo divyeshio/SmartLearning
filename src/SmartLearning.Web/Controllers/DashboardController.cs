@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
+using SmartLearning.Infrastructure.Data;
 using SmartLearning.ViewModels;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   public class DashboardController : Controller
   {
@@ -24,7 +24,7 @@ namespace SmartLearning.Controllers
     public async Task<IActionResult> Index()
     {
       var user = await _userManager.GetUserAsync(User);
-      switch (System.Enum.Parse(typeof(AccountTypeEnum), User.FindFirst(ClaimTypes.Role).Value))
+      switch (Enum.Parse(typeof(AccountTypeEnum), User.FindFirst(ClaimTypes.Role).Value))
       {
         case AccountTypeEnum.Admin:
           {

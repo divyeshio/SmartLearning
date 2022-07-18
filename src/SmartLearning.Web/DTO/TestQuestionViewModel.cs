@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartLearning.Core.Entities.TestAggregate;
 
-namespace SmartLearning.ViewModels
+namespace SmartLearning.Web.DTO
 {
   public class TestQuestionViewModel
   {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities
 {
   [Index(nameof(Name), IsUnique = true)]
   public class Standard : BaseEntity
@@ -11,7 +11,7 @@ namespace SmartLearning.Models
 
     [Key]
     [Required]
-    public string Id { get; set; } = System.Guid.NewGuid().ToString();
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
     [Required]
     [Display(Name = "Standard")]

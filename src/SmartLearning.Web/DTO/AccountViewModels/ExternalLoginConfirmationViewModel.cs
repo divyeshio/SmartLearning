@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
 
-namespace SmartLearning.ViewModels.AccountViewModels
+namespace SmartLearning.Web.DTO.AccountViewModels
 {
   public class ExternalLoginConfirmationViewModel
   {

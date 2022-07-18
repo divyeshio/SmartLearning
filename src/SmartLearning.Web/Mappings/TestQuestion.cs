@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using SmartLearning.Core.Entities.TestAggregate;
-using SmartLearning.ViewModels;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Mappings
+namespace SmartLearning.Web.Mappings
 {
   public class TestQuestionProfile : Profile
   {

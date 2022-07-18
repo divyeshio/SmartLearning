@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.Common;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 using Class = SmartLearning.Core.Entities.ClassAggregate.Class;
 
-namespace SmartLearning.Hubs
+namespace SmartLearning.Web.Hubs
 {
   [Authorize]
   public class ChatHub : Hub<IChatHub>

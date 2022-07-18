@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.ClassAggregate;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin")]
   public class UsersController : Controller
@@ -136,7 +136,7 @@ ReturnWithError:
           var result = await _userManager.CreateAsync(appUser, user.Password);
           if (result.Succeeded)
           {
-            foreach (Class group in groups)
+            foreach (var group in groups)
             {
               group.Users.Add(appUser);
             }
@@ -320,7 +320,7 @@ ReturnWithError:
           {
             appUser.Classes.Clear();
             var classes = await _context.Classes.Where(c => c.BoardId == appUser.BoardId && c.StandardId == appUser.StandardId && c.SubjectId == appUser.SubjectId).ToListAsync();
-            foreach (Class classa in classes)
+            foreach (var classa in classes)
             {
               appUser.Classes.Add(classa);
             }
@@ -395,7 +395,7 @@ ReturnWithError:
           {
             appUser.Classes.Clear();
             var classes = await _context.Classes.Where(c => c.BoardId == appUser.BoardId && c.StandardId == appUser.StandardId).ToListAsync();
-            foreach (Class classa in classes)
+            foreach (var classa in classes)
             {
               appUser.Classes.Add(classa);
             }

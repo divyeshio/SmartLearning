@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SmartLearning.ViewModels.AccountViewModels
+namespace SmartLearning.Web.DTO.AccountViewModels
 {
   public class RegisterFacultyViewModel
   {
@@ -29,7 +29,7 @@ namespace SmartLearning.ViewModels.AccountViewModels
 
     [DataType(DataType.Password)]
     [Display(Name = "Confirm password")]
-    [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
     [Required]

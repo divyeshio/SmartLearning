@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+  [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210622152739_Initial")]
     partial class Initial
     {

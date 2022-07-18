@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using SmartLearning.Models;
 using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.ClassAggregate

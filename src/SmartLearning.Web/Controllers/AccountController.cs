@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.ClassAggregate;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.Services;
-using SmartLearning.ViewModels.AccountViewModels;
+using SmartLearning.Core.Interfaces;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO.AccountViewModels;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class AccountController : Controller
@@ -54,7 +54,7 @@ namespace SmartLearning.Controllers
       await _context.Subjects.AddAsync(new Subject { Name = "Maths" });
       await _context.Subjects.AddAsync(new Subject { Name = "Science" });
       await _context.Subjects.AddAsync(new Subject { Name = "Economics" });
-      foreach (int value in Enumerable.Range(1, 12))
+      foreach (var value in Enumerable.Range(1, 12))
       {
         _context.Standards.Add(new Standard { Name = value, DisplayName = $"{value}" });
       };
@@ -77,11 +77,11 @@ namespace SmartLearning.Controllers
       var standards = await _context.Standards.ToListAsync();
       var subjects = await _context.Subjects.ToListAsync();
       var boards = await _context.Boards.ToListAsync();
-      foreach (Subject subject1 in subjects)
+      foreach (var subject1 in subjects)
       {
-        foreach (Standard standard1 in standards)
+        foreach (var standard1 in standards)
         {
-          foreach (Board board1 in boards)
+          foreach (var board1 in boards)
           {
             var group = new Class { Name = Class.GenerateGroupName(board1.Name, standard1.DisplayName, subject1.Name), Board = board1, Standard = standard1, Subject = subject1 };
             groups.Add(group);
@@ -93,7 +93,7 @@ namespace SmartLearning.Controllers
       await _context.Classes.AddRangeAsync(groups);
       await _context.SaveChangesAsync();
       var groups1 = await _context.Classes.Where(g => g.BoardId == StudentUser.BoardId && g.StandardId == StudentUser.StandardId).ToListAsync();
-      foreach (Class group in groups1)
+      foreach (var group in groups1)
       {
         group.Users.Add(StudentUser);
       }
@@ -158,7 +158,7 @@ namespace SmartLearning.Controllers
           }
           if (result.RequiresTwoFactor)
           {
-            return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, model.RememberMe });
           }
           if (result.IsLockedOut)
           {
@@ -231,7 +231,7 @@ ReturnWithError:
           // Send an email with this link
           var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
           code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-          var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+          var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: HttpContext.Request.Scheme);
           await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
               $"Please confirm your account by clicking this link: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
           //await _signInManager.SignInAsync(user, isPersistent: false);
@@ -291,7 +291,7 @@ ReturnWithError:
           // Send an email with this link
           var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
           code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-          var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+          var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: HttpContext.Request.Scheme);
           await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
               $"Please confirm your account by clicking this link: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
 
@@ -336,7 +336,7 @@ ReturnWithError:
       {
         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-        model.EmailConfirmationUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+        model.EmailConfirmationUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: HttpContext.Request.Scheme);
       }
 
       return View(model);
@@ -526,7 +526,7 @@ ReturnWithError:
     private async Task AddToClasses(ApplicationUser user)
     {
       var classes = await _context.Classes.Where(g => g.BoardId == user.BoardId && g.StandardId == user.StandardId).ToListAsync();
-      foreach (Class classa in classes)
+      foreach (var classa in classes)
       {
         classa.Users.Add(user);
       }
@@ -578,7 +578,7 @@ ReturnWithError:
       if (ModelState.IsValid)
       {
         var user = await _userManager.FindByEmailAsync(model.Email);
-        if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+        if (user == null || !await _userManager.IsEmailConfirmedAsync(user))
         {
           // Don't reveal that the user does not exist or is not confirmed
           return RedirectToAction(nameof(ResendEmailConfirmation));
@@ -586,7 +586,7 @@ ReturnWithError:
         // Send an email with this link
         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Scheme);
+        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: Request.Scheme);
         await _emailSender.SendEmailAsync(
             model.Email,
             "Confirm your email",
@@ -623,14 +623,14 @@ ReturnWithError:
       if (ModelState.IsValid)
       {
         var user = await _userManager.FindByEmailAsync(model.Email);
-        if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+        if (user == null || !await _userManager.IsEmailConfirmedAsync(user))
         {
           // Don't reveal that the user does not exist or is not confirmed
           return RedirectToAction(nameof(ForgotPasswordConfirmation));
         }
         // Send an email with this link
         var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-        var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+        var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code }, protocol: HttpContext.Request.Scheme);
         await _emailSender.SendEmailAsync(model.Email, "Reset Password",
            "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
         return RedirectToAction(nameof(ForgotPasswordConfirmation));
@@ -728,7 +728,7 @@ ReturnWithError:
 
       if (model.SelectedProvider == "Authenticator")
       {
-        return RedirectToAction(nameof(VerifyAuthenticatorCode), new { ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+        return RedirectToAction(nameof(VerifyAuthenticatorCode), new { model.ReturnUrl, model.RememberMe });
       }
 
       // Generate the token and send it
@@ -748,7 +748,7 @@ ReturnWithError:
         //await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
       }
 
-      return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+      return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
     }
 
     //

@@ -1,4 +1,4 @@
-namespace SmartLearning.Models
+namespace SmartLearning.Web.DTO
 {
   public class ErrorViewModel
   {

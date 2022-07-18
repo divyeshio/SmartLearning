@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [AllowAnonymous]
   public class HomeController : Controller

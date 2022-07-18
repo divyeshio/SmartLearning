@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities
 {
   public class Post : BaseEntity
   {

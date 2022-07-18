@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SmartLearning.Models;
 
 namespace SmartLearning.Core.Entities.Common
 {

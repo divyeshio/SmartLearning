@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartLearning.Core.Entities.ClassAggregate;
-using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   public class ShopController : Controller
   {

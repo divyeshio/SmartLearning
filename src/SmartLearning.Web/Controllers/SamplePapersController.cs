@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class SamplePapersController : Controller
@@ -147,8 +147,8 @@ namespace SmartLearning.Controllers
 
       var note = await _context.SamplePapers.FindAsync(id);
       var path = Path.Combine(_env.ContentRootPath, "Storage", "SamplePapers", note.SamplePaperUrl);
-      byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-      string fileName = note.SamplePaperUrl.Split("_")[1];
+      var fileBytes = System.IO.File.ReadAllBytes(path);
+      var fileName = note.SamplePaperUrl.Split("_")[1];
       return File(fileBytes, "application/octet-stream", fileName);
     }
 
@@ -160,7 +160,7 @@ namespace SmartLearning.Controllers
 
       var note = await _context.SamplePapers.FindAsync(id);
       var path = Path.Combine(_env.ContentRootPath, "Storage", "SamplePapers", note.SamplePaperUrl);
-      FileStream ms = new FileStream(path, FileMode.Open);
+      var ms = new FileStream(path, FileMode.Open);
       return File(ms, "application/pdf");
     }
 
@@ -247,7 +247,7 @@ namespace SmartLearning.Controllers
     }
     private Task<bool> RemoveFile(string filename)
     {
-      string fullPath = Path.Combine(_env.ContentRootPath, "Storage", "SamplePapers", filename);
+      var fullPath = Path.Combine(_env.ContentRootPath, "Storage", "SamplePapers", filename);
       if (System.IO.File.Exists(fullPath))
       {
         System.IO.File.Delete(fullPath);
@@ -276,9 +276,9 @@ namespace SmartLearning.Controllers
 
       if (file != null)
       {
-        string uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "SamplePapers");
+        var uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "SamplePapers");
         uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
         using (var fileStream = new FileStream(filePath, FileMode.Create))
         {
           file.CopyTo(fileStream);

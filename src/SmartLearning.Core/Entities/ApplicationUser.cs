@@ -5,7 +5,7 @@ using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Core.Entities.Common;
 using SmartLearning.Core.Entities.TestAggregate;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities
 {
   public class ApplicationUser : IdentityUser
   {

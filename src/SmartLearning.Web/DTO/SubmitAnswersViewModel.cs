@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SmartLearning.Core.Entities.TestAggregate;
 
-namespace SmartLearning.ViewModels
+namespace SmartLearning.Web.DTO
 {
   public class SubmitAnswersViewModel
   {

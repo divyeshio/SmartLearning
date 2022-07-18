@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SmartLearning.Core.Entities.ClassAggregate;
-using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin")]
   public class ClassController : Controller

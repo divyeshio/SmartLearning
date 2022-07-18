@@ -3,7 +3,7 @@ using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Core.ProjectAggregate.Specifications;
 using SmartLearning.SharedKernel.Interfaces;
 
-namespace SmartLearning.Web.Pages.ToDoRazorPage;
+namespace SmartLearning.Web.Pages.ProjectDetails;
 
 public class IncompleteModel : PageModel
 {

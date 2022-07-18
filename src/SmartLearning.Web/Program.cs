@@ -8,13 +8,12 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using SmartLearning.Core;
-using SmartLearning.Data;
-using SmartLearning.Hubs;
+using SmartLearning.Core.Interfaces;
 using SmartLearning.Infrastructure;
 using SmartLearning.Infrastructure.Data;
-using SmartLearning.Services;
-using SmartLearning.ViewModels;
 using SmartLearning.Web;
+using SmartLearning.Web.DTO;
+using SmartLearning.Web.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 

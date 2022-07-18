@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmartLearning.ViewModels
+namespace SmartLearning.Web.DTO
 {
   public class SubmitTestViewModel
   {

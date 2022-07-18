@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.Services;
-using SmartLearning.ViewModels.ManageViewModels;
+using SmartLearning.Core.Entities;
+using SmartLearning.Core.Interfaces;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO.ManageViewModels;
 
-namespace SmartLearnings.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class ManageAccountController : Controller
@@ -125,9 +125,9 @@ ReturnWithError:
 
       if (file != null)
       {
-        string uploadsFolder = Path.Combine(_env.ContentRootPath, "StaticFiles", "avatars");
+        var uploadsFolder = Path.Combine(_env.ContentRootPath, "StaticFiles", "avatars");
         uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
         using (var fileStream = new FileStream(filePath, FileMode.Create))
         {
           file.CopyTo(fileStream);
@@ -346,7 +346,7 @@ ReturnWithError:
 
     private Task<bool> RemoveFile(string filename)
     {
-      string fullPath = Path.Combine(_env.ContentRootPath, "StaticFiles", "avatars", filename);
+      var fullPath = Path.Combine(_env.ContentRootPath, "StaticFiles", "avatars", filename);
       if (System.IO.File.Exists(fullPath))
       {
         System.IO.File.Delete(fullPath);

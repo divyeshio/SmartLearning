@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using SmartLearning.Helpers;
 
-namespace SmartLearning.ViewModels.ManageViewModels
+namespace SmartLearning.Web.DTO.ManageViewModels
 {
   public class IndexViewModel
   {

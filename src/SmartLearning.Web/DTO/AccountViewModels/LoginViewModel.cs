@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authentication;
 
-namespace SmartLearning.ViewModels.AccountViewModels
+namespace SmartLearning.Web.DTO.AccountViewModels
 {
   public class LoginViewModel
   {

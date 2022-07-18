@@ -1,4 +1,4 @@
-﻿namespace SmartLearning.ViewModels.ManageViewModels
+﻿namespace SmartLearning.Web.DTO.ManageViewModels
 {
   public class RemoveLoginViewModel
   {

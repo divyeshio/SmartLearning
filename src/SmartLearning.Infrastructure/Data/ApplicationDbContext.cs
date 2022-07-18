@@ -3,14 +3,14 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Core.Entities.Common;
 using SmartLearning.Core.Entities.LiveClassAggregate;
 using SmartLearning.Core.Entities.TestAggregate;
-using SmartLearning.Models;
 using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Data
+namespace SmartLearning.Infrastructure.Data
 {
   public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {
@@ -90,7 +90,7 @@ namespace SmartLearning.Data
     }
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
-      int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+      var result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
       // ignore events if no dispatcher provided
       if (_mediator == null) return result;

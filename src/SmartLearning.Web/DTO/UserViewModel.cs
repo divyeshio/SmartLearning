@@ -1,4 +1,4 @@
-﻿namespace SmartLearning.ViewModels
+﻿namespace SmartLearning.Web.DTO
 {
   public class UserViewModel
   {

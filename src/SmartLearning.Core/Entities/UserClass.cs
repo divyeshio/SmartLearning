@@ -1,6 +1,6 @@
 ﻿using SmartLearning.Core.Entities.ClassAggregate;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities
 {
   public class UserClass
   {

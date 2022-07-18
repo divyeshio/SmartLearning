@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class LiveController : Controller
@@ -180,9 +180,9 @@ namespace SmartLearning.Controllers
     {
       if (FaceImage == null || ClassId == null)
         return Json(new { isError = true });
-      string uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "FaceData", "Temp");
-      string fileName = Guid.NewGuid().ToString() + FaceImage.FileName + ".png";
-      string filePath = Path.Combine(uploadsFolder, fileName);
+      var uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "FaceData", "Temp");
+      var fileName = Guid.NewGuid().ToString() + FaceImage.FileName + ".png";
+      var filePath = Path.Combine(uploadsFolder, fileName);
       using (var fileStream = new FileStream(filePath, FileMode.Create))
       {
         FaceImage.CopyTo(fileStream);

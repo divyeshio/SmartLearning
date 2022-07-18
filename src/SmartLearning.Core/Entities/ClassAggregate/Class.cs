@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using SmartLearning.Core.Entities.Common;
-using SmartLearning.Models;
 using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.ClassAggregate

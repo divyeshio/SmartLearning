@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using SmartLearning.Core.Entities.Common;
-using SmartLearning.ViewModels;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Mappings
+namespace SmartLearning.Web.Mappings
 {
   public class MessageProfile : Profile
   {

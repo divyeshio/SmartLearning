@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using MediatR;
+using SmartLearning.Core.Interfaces;
 using SmartLearning.Core.ProjectAggregate.Events;
-using SmartLearning.Services;
 
 namespace SmartLearning.Core.ProjectAggregate.Handlers;
 

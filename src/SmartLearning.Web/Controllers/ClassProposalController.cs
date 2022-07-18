@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 using SmartLearning.Models;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin")]
   public class ClassProposalController : Controller

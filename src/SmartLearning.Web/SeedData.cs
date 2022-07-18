@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.Data;
 using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Web;

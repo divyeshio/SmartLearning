@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.TestAggregate;
-using SmartLearning.Data;
+using SmartLearning.Infrastructure.Data;
 using SmartLearning.ViewModels;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class TestsController : Controller

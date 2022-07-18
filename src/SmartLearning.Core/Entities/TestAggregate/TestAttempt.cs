@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartLearning.Models;
 using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.TestAggregate

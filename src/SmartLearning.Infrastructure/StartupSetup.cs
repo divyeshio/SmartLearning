@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SmartLearning.Data;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
+using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Infrastructure;
 
