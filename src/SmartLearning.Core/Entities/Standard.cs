@@ -9,10 +9,6 @@ namespace SmartLearning.Core.Entities
   public class Standard : EntityBase
   {
 
-    [Key]
-    [Required]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
-
     [Required]
     [Display(Name = "Standard")]
     [Range(1, 99, ErrorMessage = "Please Enter upto 2 digits only")]

@@ -8,16 +8,16 @@ using SmartLearning.Infrastructure.Data;
 
 #nullable disable
 
-namespace SmartLearning.Migrations
+namespace SmartLearning.Infrastructure.Migrations
 {
-  [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -31,7 +31,7 @@ namespace SmartLearning.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Abbr")
+                    b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -144,18 +144,611 @@ namespace SmartLearning.Migrations
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Abbr")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId", "LoginProvider", "Abbr");
+                    b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.ApplicationUser", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.BoardAggregate.Board", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AbbrName")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Boards");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PublisherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Chapter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("SerialNo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("Chapters");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Class", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BoardId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsRegistrationAllowed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("StandardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BoardId");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.HasIndex("StandardId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Classes");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ClassProposal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BoardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StandardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BoardId");
+
+                    b.HasIndex("StandardId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("ClassProposals");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Note", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ChapterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NoteUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UploadedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChapterId");
+
+                    b.HasIndex("UploadedById");
+
+                    b.ToTable("Notes");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ReferenceBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("FileUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("ReferenceBooks");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.SamplePaper", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SamplePaperUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UploadedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<short>("Year")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("UploadedById");
+
+                    b.ToTable("SamplePapers");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Common.FaceData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("IFaceEncoding")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Faces");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Common.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ToClassId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FromUserId");
+
+                    b.HasIndex("ToClassId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.LiveClassAggregate.LiveClass", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BroadcasterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BroadcasterId");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("LiveClasses");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<byte[]>("Content")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Quote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Quotes");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Standard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Standards");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.Test", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ChapterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeSpan>("TestDuration")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChapterId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.ToTable("Tests");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.TestAttempt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("TestId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isCompleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("TestAttempts");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.TestQuestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Answer")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OptionA")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OptionB")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OptionC")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OptionD")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("TestQuestions");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.TestResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CorrectAnswers")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IncorrectAnswers")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TestAttemptId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("TimeTaken")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestAttemptId");
+
+                    b.ToTable("TestResults");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.UserClass", b =>
+                {
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ClassId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClass", (string)null);
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -173,8 +766,8 @@ namespace SmartLearning.Migrations
                     b.Property<string>("Avatar")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("BoardId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("BoardId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -187,8 +780,8 @@ namespace SmartLearning.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<long?>("FaceDataId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("FaceDataId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -226,11 +819,11 @@ namespace SmartLearning.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StandardId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("StandardId")
+                        .HasColumnType("int");
 
-                    b.Property<long?>("SubjectId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("SubjectId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -263,578 +856,6 @@ namespace SmartLearning.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.Board", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("Abbr")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Boards", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Book", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PublisherName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Books", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Chapter", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("ClassId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Abbr")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("SerialNo")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
-
-                    b.ToTable("Chapters", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Class", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("BoardId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("IsRegistrationAllowed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Abbr")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("StandardId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("SubjectId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BoardId");
-
-                    b.HasIndex("Abbr")
-                        .IsUnique();
-
-                    b.HasIndex("StandardId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("Classes", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.ClassProposal", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("BoardId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StandardId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("SubjectId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BoardId");
-
-                    b.HasIndex("StandardId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("ClassProposals", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.FaceData", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("IFaceEncoding")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Faces", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.LiveClass", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("BroadcasterId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ClassId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("isAdmin")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BroadcasterId");
-
-                    b.HasIndex("ClassId");
-
-                    b.ToTable("LiveClasses", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Message", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FromUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ToClassId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FromUserId");
-
-                    b.HasIndex("ToClassId");
-
-                    b.ToTable("Messages", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Note", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long>("ChapterId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NoteUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UploadedById")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChapterId");
-
-                    b.HasIndex("UploadedById");
-
-                    b.ToTable("Notes", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<byte[]>("Content")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.ToTable("Posts", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Quote", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Quotes", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.ReferenceBook", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("BookName")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ClassId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FileName")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("FileUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageName")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
-
-                    b.ToTable("ReferenceBooks", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.SamplePaper", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("ClassId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SamplePaperUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UploadedById")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<short>("Year")
-                        .HasColumnType("smallint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
-
-                    b.HasIndex("UploadedById");
-
-                    b.ToTable("SamplePapers", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Standard", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<int>("Abbr")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Abbr")
-                        .IsUnique();
-
-                    b.ToTable("Standards", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Subject", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("Abbr")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subjects", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Test", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long>("ChapterId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<TimeSpan>("TestDuration")
-                        .HasColumnType("time");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChapterId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Tests", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.TestAttempt", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long?>("TestId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("isCompleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TestId");
-
-                    b.ToTable("TestAttempts", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.TestQuestion", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<int>("Answer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OptionA")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OptionB")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OptionC")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OptionD")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("TestId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TestId");
-
-                    b.ToTable("TestQuestions", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.TestResult", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<int>("CorrectAnswers")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IncorrectAnswers")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TestAttemptId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<TimeSpan>("TimeTaken")
-                        .HasColumnType("time");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TestAttemptId");
-
-                    b.ToTable("TestResults", (string)null);
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.UserClass", b =>
-                {
-                    b.Property<string>("ClassId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ClassId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserClass", (string)null);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -846,7 +867,7 @@ namespace SmartLearning.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", null)
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -855,7 +876,7 @@ namespace SmartLearning.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", null)
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -870,7 +891,7 @@ namespace SmartLearning.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.ApplicationUser", null)
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -879,40 +900,16 @@ namespace SmartLearning.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", null)
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.ApplicationUser", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Chapter", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Board", "Board")
-                        .WithMany("Users")
-                        .HasForeignKey("BoardId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SmartLearning.Models.Standard", "Standard")
-                        .WithMany()
-                        .HasForeignKey("StandardId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SmartLearning.Models.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Board");
-
-                    b.Navigation("Standard");
-
-                    b.Navigation("Subject");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Chapter", b =>
-                {
-                    b.HasOne("SmartLearning.Models.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -921,21 +918,21 @@ namespace SmartLearning.Migrations
                     b.Navigation("Class");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.Class", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Class", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Board", "Board")
+                    b.HasOne("SmartLearning.Core.Entities.BoardAggregate.Board", "Board")
                         .WithMany()
                         .HasForeignKey("BoardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.Standard", "Standard")
+                    b.HasOne("SmartLearning.Core.Entities.Standard", "Standard")
                         .WithMany()
                         .HasForeignKey("StandardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.Subject", "Subject")
+                    b.HasOne("SmartLearning.Core.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -948,19 +945,21 @@ namespace SmartLearning.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.ClassProposal", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ClassProposal", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Board", "Board")
+                    b.HasOne("SmartLearning.Core.Entities.BoardAggregate.Board", "Board")
                         .WithMany()
                         .HasForeignKey("BoardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.Standard", "Standard")
+                    b.HasOne("SmartLearning.Core.Entities.Standard", "Standard")
                         .WithMany()
-                        .HasForeignKey("StandardId");
+                        .HasForeignKey("StandardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.Subject", "Subject")
+                    b.HasOne("SmartLearning.Core.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -973,43 +972,75 @@ namespace SmartLearning.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.FaceData", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Note", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "User")
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Chapter", "Chapter")
+                        .WithMany()
+                        .HasForeignKey("ChapterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "UploadedBy")
+                        .WithMany()
+                        .HasForeignKey("UploadedById")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Chapter");
+
+                    b.Navigation("UploadedBy");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ReferenceBook", b =>
+                {
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.SamplePaper", b =>
+                {
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "UploadedBy")
+                        .WithMany()
+                        .HasForeignKey("UploadedById")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("UploadedBy");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.Common.FaceData", b =>
+                {
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "User")
                         .WithOne("FaceData")
-                        .HasForeignKey("SmartLearning.Models.FaceData", "UserId")
+                        .HasForeignKey("SmartLearning.Core.Entities.Common.FaceData", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.LiveClass", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.Common.Message", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "Broadcaster")
-                        .WithMany()
-                        .HasForeignKey("BroadcasterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmartLearning.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId");
-
-                    b.Navigation("Broadcaster");
-
-                    b.Navigation("Class");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Message", b =>
-                {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "FromUser")
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "FromUser")
                         .WithMany("Messages")
                         .HasForeignKey("FromUserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.Class", "ToClass")
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "ToClass")
                         .WithMany("Messages")
                         .HasForeignKey("ToClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1020,92 +1051,67 @@ namespace SmartLearning.Migrations
                     b.Navigation("ToClass");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.Note", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.LiveClassAggregate.LiveClass", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Chapter", "Chapter")
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "Broadcaster")
                         .WithMany()
-                        .HasForeignKey("ChapterId")
+                        .HasForeignKey("BroadcasterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "UploadedBy")
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
                         .WithMany()
-                        .HasForeignKey("UploadedById")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Chapter");
+                    b.Navigation("Broadcaster");
 
-                    b.Navigation("UploadedBy");
+                    b.Navigation("Class");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.Post", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.Post", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "Author")
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.ReferenceBook", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.Test", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Class");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.SamplePaper", b =>
-                {
-                    b.HasOne("SmartLearning.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "UploadedBy")
-                        .WithMany()
-                        .HasForeignKey("UploadedById")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Class");
-
-                    b.Navigation("UploadedBy");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Test", b =>
-                {
-                    b.HasOne("SmartLearning.Models.Chapter", "Chapter")
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Chapter", "Chapter")
                         .WithMany()
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "CreatedBy")
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("Chapter");
 
                     b.Navigation("CreatedBy");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.TestAttempt", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.TestAttempt", b =>
                 {
-                    b.HasOne("SmartLearning.Models.ApplicationUser", null)
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", null)
                         .WithMany("TestAttempts")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "Student")
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("SmartLearning.Models.Test", "Test")
+                    b.HasOne("SmartLearning.Core.Entities.TestAggregate.Test", "Test")
                         .WithMany()
                         .HasForeignKey("TestId");
 
@@ -1114,9 +1120,9 @@ namespace SmartLearning.Migrations
                     b.Navigation("Test");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.TestQuestion", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.TestQuestion", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Test", "Test")
+                    b.HasOne("SmartLearning.Core.Entities.TestAggregate.Test", "Test")
                         .WithMany("Questions")
                         .HasForeignKey("TestId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1125,9 +1131,9 @@ namespace SmartLearning.Migrations
                     b.Navigation("Test");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.TestResult", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.TestResult", b =>
                 {
-                    b.HasOne("SmartLearning.Models.TestAttempt", "TestAttempt")
+                    b.HasOne("SmartLearning.Core.Entities.TestAggregate.TestAttempt", "TestAttempt")
                         .WithMany()
                         .HasForeignKey("TestAttemptId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1136,15 +1142,15 @@ namespace SmartLearning.Migrations
                     b.Navigation("TestAttempt");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.UserClass", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.UserClass", b =>
                 {
-                    b.HasOne("SmartLearning.Models.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Models.ApplicationUser", "User")
+                    b.HasOne("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1155,28 +1161,52 @@ namespace SmartLearning.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SmartLearning.Models.ApplicationUser", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", b =>
+                {
+                    b.HasOne("SmartLearning.Core.Entities.BoardAggregate.Board", "Board")
+                        .WithMany("Users")
+                        .HasForeignKey("BoardId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("SmartLearning.Core.Entities.Standard", "Standard")
+                        .WithMany()
+                        .HasForeignKey("StandardId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("SmartLearning.Core.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Board");
+
+                    b.Navigation("Standard");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.BoardAggregate.Board", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Class", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.Test", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.UsersAggregate.ApplicationUser", b =>
                 {
                     b.Navigation("FaceData");
 
                     b.Navigation("Messages");
 
                     b.Navigation("TestAttempts");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Board", b =>
-                {
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Class", b =>
-                {
-                    b.Navigation("Messages");
-                });
-
-            modelBuilder.Entity("SmartLearning.Models.Test", b =>
-                {
-                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

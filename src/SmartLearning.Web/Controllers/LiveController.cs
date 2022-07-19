@@ -10,7 +10,7 @@ using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Controllers
 {
-  [Authorize]
+    [Authorize]
     public class LiveController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -141,7 +141,7 @@ namespace SmartLearning.Web.Controllers
         }
 
         [Authorize(Roles = "Admin,Faculty,Student")]
-        public async Task<IActionResult> Class(string id)
+        public async Task<IActionResult> Class(int id)
         {
             if (id == null)
             {
@@ -176,7 +176,7 @@ namespace SmartLearning.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> FaceCheck(IFormFile FaceImage, string ClassId)
+        public async Task<JsonResult> FaceCheck(IFormFile FaceImage, int ClassId)
         {
             if (FaceImage == null || ClassId == null)
                 return Json(new { isError = true });
@@ -188,7 +188,7 @@ namespace SmartLearning.Web.Controllers
                 FaceImage.CopyTo(fileStream);
             }
             var user = await _userManager.GetUserAsync(User);
-            var liveClass = await _context.LiveClasses.Where(l => l.ClassId == ClassId).Select(s => s.Id).AsNoTracking().FirstOrDefaultAsync();
+            var liveClass = await _context.LiveClasses.AsNoTracking().Where(l => l.ClassId == ClassId).Select(s => s.Id).FirstOrDefaultAsync();
             if (liveClass == null)
                 return Json(new { isError = true });
             var isAllowed = await CompareFace(fileName, user.Id);
@@ -203,7 +203,7 @@ namespace SmartLearning.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Faculty")]
-        public async Task<IActionResult> StopLive(string id, string broadcasterId)
+        public async Task<IActionResult> StopLive(int id, string broadcasterId)
         {
             if (broadcasterId == null || id == null)
             {

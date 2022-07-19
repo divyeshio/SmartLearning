@@ -8,7 +8,7 @@ namespace SmartLearning.Web.DTO
   public class ChapterViewModel
   {
     [Required]
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [Display(Name = "Serial No")]
@@ -22,17 +22,17 @@ namespace SmartLearning.Web.DTO
 
     [Display(Name = "Board")]
     [Required]
-    public long BoardId { get; set; }
+    public int BoardId { get; set; }
     public Board Board { get; set; }
 
     [Display(Name = "Standard")]
     [Required]
-    public string StandardId { get; set; }
+    public int StandardId { get; set; }
     public Standard Standard { get; set; }
 
     [Display(Name = "Subject")]
     [Required]
-    public long SubjectId { get; set; }
+    public int SubjectId { get; set; }
     public Subject Subject { get; set; }
 
     public SelectList Boards { get; set; }

@@ -10,25 +10,23 @@ namespace SmartLearning.Core.Entities.ClassAggregate
   [Index(nameof(Name), IsUnique = true)]
   public class Class : EntityBase
   {
-    [Key]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
     [Required]
     [StringLength(20), MinLength(3)]
     public string Name { get; set; }
 
     [Required]
     [Display(Name = "Board")]
-    public long BoardId { get; set; }
+    public int BoardId { get; set; }
     public Board Board { get; set; }
 
     [Display(Name = "Standard")]
     [Required]
-    public string StandardId { get; set; }
+    public int StandardId { get; set; }
     public Standard Standard { get; set; }
 
     [Required]
     [Display(Name = "Subject")]
-    public long SubjectId { get; set; }
+    public int SubjectId { get; set; }
     public Subject Subject { get; set; }
 
     public bool IsRegistrationAllowed { get; set; } = true;

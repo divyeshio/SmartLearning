@@ -11,9 +11,9 @@ public static class ApiRoutes
     public static class Boards
     {
         public const string GetAll = "/boards";
-        public const string Add = "/board/";
-        public const string Update = "/board/{id:int}";
-        public const string Delete = "/board/{id:int}";
+        public const string Add = "/boards/";
+        public const string Update = "/boards/{boardId:int}";
+        public const string Delete = "/boards/{boardId:int}";
     }
 
     public static class Class

@@ -5,11 +5,11 @@ namespace SmartLearning.Web.DTO
   public class TestViewModel
   {
     [Required]
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     [Display(Name = "Chapter")]
     [Required]
-    public long ChapterId { get; set; }
+    public int ChapterId { get; set; }
 
     [Required]
     [Range(5, 1000, ErrorMessage = "Test Duration must be more than 5 minutes")]

@@ -25,7 +25,7 @@ namespace SmartLearning.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Approve(string id)
+        public async Task<IActionResult> Approve(int id)
         {
             var classProposal = await _context.ClassProposals.FindAsync(id);
             await _context.Classes.AddAsync(new Class { BoardId = classProposal.BoardId, SubjectId = classProposal.SubjectId, StandardId = classProposal.StandardId });
@@ -36,7 +36,7 @@ namespace SmartLearning.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reject(string id)
+        public async Task<IActionResult> Reject(int id)
         {
             var classProposal = await _context.ClassProposals.FindAsync(id);
             _context.ClassProposals.Remove(classProposal);
@@ -44,7 +44,7 @@ namespace SmartLearning.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClassProposalExists(string id)
+        private bool ClassProposalExists(int id)
         {
             return _context.ClassProposals.Any(e => e.Id == id);
         }

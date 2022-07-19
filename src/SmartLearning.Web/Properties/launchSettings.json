@@ -22,7 +22,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:57679/",
-      "launchUrl": "swagger/v1/swagger.json"
+      "launchUrl": "swagger/"
     }
   }
 }

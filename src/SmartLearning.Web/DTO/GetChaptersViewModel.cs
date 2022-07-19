@@ -5,10 +5,10 @@ namespace SmartLearning.Web.DTO
   public class GetChaptersViewModel
   {
     [Required(ErrorMessage = "Standard is required")]
-    public string Standard { get; set; }
+    public int Standard { get; set; }
     [Required(ErrorMessage = "Board is required")]
-    public long Board { get; set; }
+    public int Board { get; set; }
     [Required(ErrorMessage = "Subject is required")]
-    public long Subject { get; set; }
+    public int Subject { get; set; }
   }
 }

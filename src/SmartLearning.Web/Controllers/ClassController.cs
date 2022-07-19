@@ -18,7 +18,7 @@ namespace SmartLearning.Web.Controllers
     }
 
     // GET: Classes
-    public async Task<IActionResult> Index(long? subject, long? board, string standard)
+    public async Task<IActionResult> Index(long? subject, long? board, int? standard)
     {
       ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
       ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
@@ -41,7 +41,7 @@ namespace SmartLearning.Web.Controllers
     }
 
     // GET: Classes/Details/5
-    public async Task<IActionResult> Details(string id)
+    public async Task<IActionResult> Details(int id)
     {
       if (id == null)
       {
@@ -111,7 +111,7 @@ namespace SmartLearning.Web.Controllers
     }
 
     // GET: Classes/Edit/5
-    public async Task<IActionResult> Edit(string id)
+    public async Task<IActionResult> Edit(int id)
     {
       if (id == null)
       {
@@ -132,7 +132,7 @@ namespace SmartLearning.Web.Controllers
     // POST: Classes/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, [Bind("Id,Name,BoardId,StandardId,SubjectId")] Class group)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,BoardId,StandardId,SubjectId")] Class group)
     {
       if (id != group.Id)
       {
@@ -166,7 +166,7 @@ namespace SmartLearning.Web.Controllers
     }
 
     // GET: Classes/Delete/5
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(int id)
     {
       if (id == null)
       {
@@ -189,7 +189,7 @@ namespace SmartLearning.Web.Controllers
     // POST: Classes/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(string id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
       var group = await _context.Classes.Include(g => g.Users).FirstOrDefaultAsync(g => g.Id == id);
 
@@ -198,7 +198,7 @@ namespace SmartLearning.Web.Controllers
       return RedirectToAction(nameof(Index));
     }
 
-    private bool GroupExists(string id)
+    private bool GroupExists(int id)
     {
       return _context.Classes.Any(e => e.Id == id);
     }

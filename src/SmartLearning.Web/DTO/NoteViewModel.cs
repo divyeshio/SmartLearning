@@ -7,7 +7,7 @@ namespace SmartLearning.Web.DTO
     public class NoteViewModel
     {
         [Required]
-        public long Id { get; set; }
+        public int Id { get; set; }
         public SelectList Chapters { get; set; }
         public SelectList Boards { get; set; }
         public SelectList Standards { get; set; }
@@ -15,7 +15,7 @@ namespace SmartLearning.Web.DTO
 
         [Display(Name = "Chapter")]
         [Required(ErrorMessage = "Please Select A Chapter")]
-        public long ChapterId { get; set; }
+        public int ChapterId { get; set; }
 
         [AllowedFileExtensions(new string[] { ".pdf" })]
         public IFormFile NoteFile { get; set; }

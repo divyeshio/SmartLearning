@@ -7,7 +7,7 @@ namespace SmartLearning.Web.DTO
 {
   public class TestQuestionViewModel
   {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     [BindNever]
     [Display(Name = "Chapter")]

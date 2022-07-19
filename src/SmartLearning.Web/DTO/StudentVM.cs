@@ -30,10 +30,10 @@ namespace SmartLearning.Web.DTO
 
     [Required]
     [Display(Name = "Standard")]
-    public string StandardId { get; set; }
+    public int StandardId { get; set; }
     [Required]
     [Display(Name = "Board")]
-    public long BoardId { get; set; }
+    public int BoardId { get; set; }
 
     [Required]
     public bool isEnabled { get; set; }

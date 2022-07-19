@@ -51,7 +51,7 @@ namespace SmartLearning.Web.Hubs
       return groupsVM;
     }
 
-    public async Task SendMessage(string groupId, string message)
+    public async Task SendMessage(int groupId, string message)
     {
       try
       {
@@ -83,7 +83,7 @@ namespace SmartLearning.Web.Hubs
       }
     }
 
-    public IEnumerable<MessageViewModel> GetMessageHistory(string groupId)
+    public IEnumerable<MessageViewModel> GetMessageHistory(int groupId)
     {
       var messageHistory = _context.Messages.Where(m => m.ToClassId == groupId)
               .Include(m => m.FromUser)

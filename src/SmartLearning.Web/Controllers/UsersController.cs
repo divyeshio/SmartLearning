@@ -183,9 +183,9 @@ ReturnWithError:
           FirstName = user.FirstName,
           LastName = user.LastName,
           Email = user.Email,
-          SubjectId = (long)user.SubjectId,
-          BoardId = (long)user.BoardId,
-          StandardId = user.StandardId,
+          SubjectId = (int)user.SubjectId,
+          BoardId = (int)user.BoardId,
+          StandardId =(int) user.StandardId,
           Boards = await getBoards(),
           Standards = await getStandards(),
           Subjects = await getSubjects(),
@@ -202,8 +202,8 @@ ReturnWithError:
           FirstName = user.FirstName,
           LastName = user.LastName,
           Email = user.Email,
-          BoardId = (long)user.BoardId,
-          StandardId = user.StandardId,
+          BoardId = (int)user.BoardId,
+          StandardId = (int)user.StandardId,
           Boards = await getBoards(),
           Standards = await getStandards(),
           isEnabled = user.isEnabled
@@ -217,7 +217,7 @@ ReturnWithError:
     // POST: Users/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditAdmin(string id, [Bind("Id,FirstName,LastName,Email")] AdminVM user)
+    public async Task<IActionResult> EditAdmin(int id, [Bind("Id,FirstName,LastName,Email")] AdminVM user)
     {
       ModelState.Remove("Password");
       if (ModelState.IsValid)
@@ -259,7 +259,7 @@ ReturnWithError:
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditFaculty(string id, [Bind("Id,FirstName,LastName,Email,BoardId,SubjectId,StandardId,isEnabled")] FacultyVM user)
+    public async Task<IActionResult> EditFaculty(int id, [Bind("Id,FirstName,LastName,Email,BoardId,SubjectId,StandardId,isEnabled")] FacultyVM user)
     {
       ModelState.Remove("Password");
       if (ModelState.IsValid)
@@ -416,7 +416,7 @@ ReturnWithError:
     // POST: Users/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(int id)
     {
       if (id == null)
         return NotFound();
@@ -442,15 +442,15 @@ ReturnWithError:
 
 
 
-    public async Task<SelectList> getBoards(long? boardId = null)
+    public async Task<SelectList> getBoards(int? boardId = null)
     {
       return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
     }
-    public async Task<SelectList> getSubjects(long? subjectId = null)
+    public async Task<SelectList> getSubjects(int? subjectId = null)
     {
       return new SelectList(await _context.Subjects.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", subjectId);
     }
-    public async Task<SelectList> getStandards(string standardId = null)
+    public async Task<SelectList> getStandards(int? standardId = null)
     {
       return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
     }

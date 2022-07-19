@@ -21,7 +21,7 @@ namespace SmartLearning.Web.Controllers
         }
 
         // GET: Chapters
-        public async Task<IActionResult> Index(long? subject, long? board, string standard)
+        public async Task<IActionResult> Index(long? subject, long? board, int? standard)
         {
             if (HttpContext.User.IsInRole("Admin"))
             {
@@ -45,42 +45,42 @@ namespace SmartLearning.Web.Controllers
                 return View(await chapters.Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).ToListAsync());
             }
             else
-                return View(await _context.Chapters.Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).Where(c => c.Class.StandardId == HttpContext.User.FindFirst("StandardId").Value && c.Class.BoardId == long.Parse(User.FindFirst("BoardId").Value) && c.Class.SubjectId == long.Parse(HttpContext.User.FindFirst("SubjectId").Value)).ToListAsync());
+                return View(await _context.Chapters.Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).Where(c => c.Class.StandardId == int.Parse(HttpContext.User.FindFirst("StandardId").Value) && c.Class.BoardId == int.Parse(User.FindFirst("BoardId").Value) && c.Class.SubjectId == int.Parse(HttpContext.User.FindFirst("SubjectId").Value)).ToListAsync());
         }
 
         // GET: Chapters/Create
-       /* [Route("/Chapters/Add/Admin", Name = "AddChapter")]
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public async Task<IActionResult> AddChapter()
-        {
-            return View(new ChapterViewModel { Boards = await getBoards(), Standards = await getStandards(), Subjects = await getSubjects() });
-        }
+        /* [Route("/Chapters/Add/Admin", Name = "AddChapter")]
+         [Authorize(Roles = "Admin")]
+         [HttpGet]
+         public async Task<IActionResult> AddChapter()
+         {
+             return View(new ChapterViewModel { Boards = await getBoards(), Standards = await getStandards(), Subjects = await getSubjects() });
+         }
 
-        [HttpPost]
-        [Route("Chapters/Add/Admin", Name = "AddChapter")]
-        [Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddChapter([Bind("SerialNo,Name,BoardId,StandardId,SubjectId")] ChapterViewModel chapter)
-        {
-            var classa = await _context.Classes.Where(c => c.BoardId == chapter.BoardId && c.StandardId == chapter.StandardId && c.SubjectId == chapter.SubjectId).FirstOrDefaultAsync();
-            if (classa == null)
-            {
-                ModelState.AddModelError(string.Empty, "Please create a Class first");
-                chapter.Boards = await getBoards();
-                chapter.Standards = await getStandards();
-                chapter.Subjects = await getSubjects();
-                return View(chapter);
-            }
-            if (ModelState.IsValid)
-            {
-                await _context.Chapters.AddAsync(new Chapter { Class = classa, Name = chapter.Name, SerialNo = chapter.SerialNo });
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(chapter);
-        }
-*/
+         [HttpPost]
+         [Route("Chapters/Add/Admin", Name = "AddChapter")]
+         [Authorize(Roles = "Admin")]
+         [ValidateAntiForgeryToken]
+         public async Task<IActionResult> AddChapter([Bind("SerialNo,Name,BoardId,StandardId,SubjectId")] ChapterViewModel chapter)
+         {
+             var classa = await _context.Classes.Where(c => c.BoardId == chapter.BoardId && c.StandardId == chapter.StandardId && c.SubjectId == chapter.SubjectId).FirstOrDefaultAsync();
+             if (classa == null)
+             {
+                 ModelState.AddModelError(string.Empty, "Please create a Class first");
+                 chapter.Boards = await getBoards();
+                 chapter.Standards = await getStandards();
+                 chapter.Subjects = await getSubjects();
+                 return View(chapter);
+             }
+             if (ModelState.IsValid)
+             {
+                 await _context.Chapters.AddAsync(new Chapter { Class = classa, Name = chapter.Name, SerialNo = chapter.SerialNo });
+                 await _context.SaveChangesAsync();
+                 return RedirectToAction(nameof(Index));
+             }
+             return View(chapter);
+         }
+    */
         public IActionResult Add()
         {
             return View();
@@ -205,19 +205,19 @@ namespace SmartLearning.Web.Controllers
             return _context.Chapters.Any(e => e.Id == id);
         }
 
-        public async Task<SelectList> getBoards(long? boardId = null)
+        public async Task<SelectList> getBoards(int? boardId = null)
         {
             return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
         }
-        public async Task<SelectList> getSubjects(long? subjectId = null)
+        public async Task<SelectList> getSubjects(int? subjectId = null)
         {
             return new SelectList(await _context.Subjects.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", subjectId);
         }
-        public async Task<SelectList> getStandards(string standardId = null)
+        public async Task<SelectList> getStandards(int? standardId = null)
         {
             return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
         }
-        public async Task<SelectList> getChapters(long? chapterId = null)
+        public async Task<SelectList> getChapters(int? chapterId = null)
         {
             return new SelectList(await _context.Chapters.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", chapterId);
         }

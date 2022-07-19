@@ -12,7 +12,7 @@ using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Controllers
 {
-  [Authorize]
+    [Authorize]
     public class TestsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,7 +26,7 @@ namespace SmartLearning.Web.Controllers
             _userManager = userManager;
         }
         [Authorize(Roles = "Admin,Faculty")]
-        public async Task<IActionResult> List(long? subject, long? board, string standard)
+        public async Task<IActionResult> List(long? subject, long? board, int? standard)
         {
             if (User.IsInRole("Admin"))
             {
@@ -62,12 +62,12 @@ namespace SmartLearning.Web.Controllers
         public async Task<IActionResult> Index()
         {
             if (User.IsInRole("Student"))
-                return View(await _context.Classes.Where(c => c.StandardId == HttpContext.User.FindFirst("StandardId").Value && c.BoardId == long.Parse(User.FindFirst("BoardId").Value)).Include(c => c.Subject).AsNoTracking().ToListAsync());
+                return View(await _context.Classes.Where(c => c.StandardId == int.Parse(HttpContext.User.FindFirst("StandardId").Value) && c.BoardId == int.Parse(User.FindFirst("BoardId").Value)).Include(c => c.Subject).AsNoTracking().ToListAsync());
             return View(await _context.Classes.AsNoTracking().Include(c => c.Subject).ToListAsync());
         }
 
         [Authorize(Roles = "Student")]
-        public async Task<IActionResult> SelectChapter(string id)
+        public async Task<IActionResult> SelectChapter(int id)
         {
             if (id == null)
             {
@@ -130,7 +130,7 @@ namespace SmartLearning.Web.Controllers
         }
 
         [Authorize(Roles = "Student")]
-        public async Task<IActionResult> OnGoingTest(string id)
+        public async Task<IActionResult> OnGoingTest(int id)
         {
             if (id == null)
             {
@@ -272,7 +272,7 @@ namespace SmartLearning.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var classa = await _context.Classes.Where(c => c.StandardId == model.Standard && c.BoardId == model.Board && c.SubjectId == model.Subject).Select(c => c.Id).AsNoTracking().SingleAsync();
+                var classa = await _context.Classes.AsNoTracking().Where(c => c.StandardId == model.Standard && c.BoardId == model.Board && c.SubjectId == model.Subject).Select(c => c.Id).SingleAsync();
                 var data = await _context.Chapters.Where(c => c.ClassId == classa).Select(c => new Chapter { Id = c.Id, Name = c.Name, SerialNo = c.SerialNo }).OrderBy(c => c.SerialNo).ToListAsync();
                 return Json(data);
             }
@@ -283,7 +283,7 @@ namespace SmartLearning.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var classa = await _context.Classes.Where(c => c.StandardId == User.FindFirst("StandardId").Value && c.BoardId == long.Parse(User.FindFirst("BoardId").Value) && c.SubjectId == long.Parse(User.FindFirst("SubjectId").Value)).AsNoTracking().Select(c => c.Id).SingleAsync();
+            var classa = await _context.Classes.Where(c => c.StandardId == int.Parse(User.FindFirst("StandardId").Value) && c.BoardId == int.Parse(User.FindFirst("BoardId").Value) && c.SubjectId == int.Parse(User.FindFirst("SubjectId").Value)).AsNoTracking().Select(c => c.Id).SingleAsync();
             return View(new TestQuestionViewModel { Chapters = new SelectList(await _context.Chapters.Where(c => c.ClassId == classa).ToListAsync(), "Id", "Name") });
         }
 
@@ -314,7 +314,7 @@ namespace SmartLearning.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> ResetTestAttempt(string id)
+        public async Task<JsonResult> ResetTestAttempt(int id)
         {
             if (id == null)
                 return Json(new { isError = true });
@@ -331,24 +331,24 @@ namespace SmartLearning.Web.Controllers
             }
         }
 
-        public async Task<SelectList> getBoards(long? boardId = null)
+        public async Task<SelectList> getBoards(int? boardId = null)
         {
             return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
         }
-        public async Task<SelectList> getSubjects(long? subjectId = null)
+        public async Task<SelectList> getSubjects(int? subjectId = null)
         {
             return new SelectList(await _context.Subjects.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", subjectId);
         }
-        public async Task<SelectList> getStandards(string standardId = null)
+        public async Task<SelectList> getStandards(int? standardId = null)
         {
             return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
         }
-        public async Task<SelectList> getChapters(long? chapterId = null)
+        public async Task<SelectList> getChapters(int? chapterId = null)
         {
             return new SelectList(await _context.Chapters.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", chapterId);
         }
 
-        public async Task<TestQuestionViewModel> populateSBS(TestQuestionViewModel model, string standardId = null, long? boardId = null, long? subjectId = null)
+        public async Task<TestQuestionViewModel> populateSBS(TestQuestionViewModel model, int? standardId = null, int? boardId = null, int? subjectId = null)
         {
             model.Standards = await getStandards(standardId);
             model.Subjects = await getSubjects(subjectId);

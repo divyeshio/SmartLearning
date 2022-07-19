@@ -10,6 +10,6 @@ namespace SmartLearning.Web.DTO
     public List<SubmitAnswersViewModel> Questions { get; set; }
 
     [Required]
-    public string TestAttemptId { get; set; }
+    public int TestAttemptId { get; set; }
   }
 }

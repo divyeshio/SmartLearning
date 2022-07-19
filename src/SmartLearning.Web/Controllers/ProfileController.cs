@@ -8,7 +8,7 @@ using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Controllers
 {
-  [Authorize]
+    [Authorize]
     [Route("/Profile")]
     public class ProfileController : Controller
     {

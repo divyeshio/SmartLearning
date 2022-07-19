@@ -18,12 +18,12 @@ public class Add : EndpointBaseAsync
     _repository = repository;
   }
 
-  [HttpPost(ApiRoutes.Boards.Add)]
+  [HttpPost(AddBoardRequest.Route)]
   [SwaggerOperation(
       Summary = "Adds a new Board",
       Description = "Adds a new Board",
       OperationId = "Boards.Add",
-      Tags = new[] { "BoardsEndpoints" })
+      Tags = new[] { "BoardEndpoints" })
   ]
   public override async Task<ActionResult<AddBoardResponse>> HandleAsync(AddBoardRequest request,
       CancellationToken cancellationToken)
@@ -35,7 +35,7 @@ public class Add : EndpointBaseAsync
 
     var newBoard = new Board(request.AbbrName, request.Name);
 
-    var createdItem = await _repository.AddAsync(newBoard); // TODO: pass cancellation token
+    var createdItem = await _repository.AddAsync(newBoard);
 
     var response = new AddBoardResponse
     (

@@ -5,7 +5,7 @@ namespace SmartLearning.Web.DTO
 {
   public class SubmitAnswersViewModel
   {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     [EnumDataType(typeof(AnswerOptions))]
     public AnswerOptions Answer { get; set; }

@@ -9,13 +9,9 @@ namespace SmartLearning.Core.Entities.ClassAggregate
 {
   public class Note : EntityBase
   {
-    [Key]
-    [Required]
-    public long Id { get; set; }
-
     [Display(Name = "Chapter")]
     [Required(ErrorMessage = "Please Select A Chapter")]
-    public long ChapterId { get; set; }
+    public int ChapterId { get; set; }
     public Chapter Chapter { get; set; }
 
     [NotMapped, AllowedFileExtensions(new string[] { ".pdf" })]

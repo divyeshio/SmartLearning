@@ -6,9 +6,6 @@ namespace SmartLearning.Core.Entities
   public class Subject : EntityBase
   {
 
-    [Key]
-    [Required]
-    public long Id { get; set; }
     [Required]
     [Display(Name = "Subject Name")]
     [StringLength(15)]

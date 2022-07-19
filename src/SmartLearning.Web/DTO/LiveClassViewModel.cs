@@ -11,6 +11,6 @@ namespace SmartLearning.Web.DTO
     public string? ClassName { get; set; }
 
     [Required]
-    public string ClassId { get; set; }
+    public int ClassId { get; set; }
   }
 }

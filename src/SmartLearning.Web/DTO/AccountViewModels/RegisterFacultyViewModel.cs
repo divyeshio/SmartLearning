@@ -34,13 +34,13 @@ namespace SmartLearning.Web.DTO.AccountViewModels
 
     [Required]
     [Display(Name = "Subject")]
-    public long SubjectId { get; set; }
+    public int SubjectId { get; set; }
     [Required]
     [Display(Name = "Board")]
-    public long BoardId { get; set; }
+    public int BoardId { get; set; }
     [Required]
     [Display(Name = "Standard")]
-    public string StandardId { get; set; }
+    public int StandardId { get; set; }
 
     public SelectList Boards { get; set; }
     public SelectList Standards { get; set; }

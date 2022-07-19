@@ -7,13 +7,9 @@ namespace SmartLearning.Core.Entities.TestAggregate
 {
   public class Test : EntityBase
   {
-    [Key]
-    [Required]
-
-    public long Id { get; set; }
 
     [Display(Name = "Chapter")]
-    public long ChapterId { get; set; }
+    public int ChapterId { get; set; }
     public Chapter Chapter { get; set; }
 
     public string CreatedById { get; set; }

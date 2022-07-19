@@ -6,10 +6,6 @@ namespace SmartLearning.Core.Entities.ClassAggregate
   public class Chapter : EntityBase
   {
 
-    [Key]
-    [Required]
-    public long Id { get; set; }
-
     [Required]
     [Display(Name = "Serial No")]
     [Range(0, 99, ErrorMessage = "Please Enter upto 2 digits only")]
@@ -21,7 +17,7 @@ namespace SmartLearning.Core.Entities.ClassAggregate
     public string Name { get; set; }
 
     [Required]
-    public string ClassId { get; set; }
+    public int ClassId { get; set; }
     public Class Class { get; set; }
   }
 }

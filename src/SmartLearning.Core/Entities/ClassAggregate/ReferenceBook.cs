@@ -5,10 +5,6 @@ namespace SmartLearning.Core.Entities.ClassAggregate
 {
   public class ReferenceBook : EntityBase
   {
-    [Key]
-    [Required]
-    public long Id { get; set; }
-
     [StringLength(200, MinimumLength = 3)]
     public string FileName { get; set; }
     public string FileUrl { get; set; }
@@ -30,7 +26,7 @@ namespace SmartLearning.Core.Entities.ClassAggregate
     public string AuthorName { get; set; }
 
     [Required]
-    public string ClassId { get; set; }
+    public int ClassId { get; set; }
     public Class Class { get; set; }
   }
 }

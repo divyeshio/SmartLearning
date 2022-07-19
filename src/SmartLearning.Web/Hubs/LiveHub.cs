@@ -23,7 +23,7 @@ namespace SmartLearning.Web.Hubs
     }
 
     [Authorize(Roles = "Admin,Faculty")]
-    public async Task JoinFaculty(string userId, string liveClassId)
+    public async Task JoinFaculty(string userId, int liveClassId)
     {
       if (userId != null && liveClassId != null)
       {
@@ -54,7 +54,7 @@ namespace SmartLearning.Web.Hubs
     }
 
 
-    public async Task SendStudentsUpdates(string liveClassId, LiveClassStatusEnum status)
+    public async Task SendStudentsUpdates(int liveClassId, LiveClassStatusEnum status)
     {
 
       var list = _Students.Where(s => s.LiveClassId == liveClassId).ToList();
@@ -64,7 +64,7 @@ namespace SmartLearning.Web.Hubs
     }
 
     [Authorize(Roles = "Admin,Student")]
-    public async Task JoinClass(string userId, string liveClassId)
+    public async Task JoinClass(string userId, int liveClassId)
     {
       var liveClass = await _context.LiveClasses.Where(lc => lc.Id == liveClassId).FirstOrDefaultAsync();
       if (liveClass != null)
@@ -108,7 +108,7 @@ namespace SmartLearning.Web.Hubs
     }
 
     [Authorize(Roles = "Admin,Faculty")]
-    public async Task Accept(string userId, string facultyId, string liveClassId)
+    public async Task Accept(string userId, string facultyId, int liveClassId)
     {
       _Students.Where(s => s.UserId == userId).ToList().ForEach(s => s.isAccepted = true);
       var Student = _Students.Where(s => s.UserId == userId).FirstOrDefault();
@@ -118,7 +118,7 @@ namespace SmartLearning.Web.Hubs
       await Clients.Client(con.Value).LiveClassStatus(LiveClassStatusEnum.Approved.ToString());
     }
     [Authorize(Roles = "Admin,Faculty")]
-    public async Task Reject(string userId, string facultyId, string liveClassId)
+    public async Task Reject(string userId, string facultyId, int liveClassId)
     {
       _Students.Where(s => s.UserId == userId).ToList().ForEach(s => s.isAccepted = false);
       var Student = _Students.Where(s => s.UserId == userId).FirstOrDefault();
@@ -128,7 +128,7 @@ namespace SmartLearning.Web.Hubs
     }
 
 
-    private async Task SendStudentListUpdate(string facultyId, string liveClassId)
+    private async Task SendStudentListUpdate(string facultyId, int liveClassId)
     {
       var FacultyConnectionId = _ConnectionsMap.Where(c => c.Key == facultyId).FirstOrDefault();
 
@@ -153,7 +153,7 @@ namespace SmartLearning.Web.Hubs
     }
 
     [Authorize(Roles = "Admin,Faculty")]
-    public async Task StopLive(string broadcasterId, string liveClassId)
+    public async Task StopLive(string broadcasterId, int liveClassId)
     {
       var liveClass = await _context.LiveClasses.Where(c => c.Id == liveClassId && c.BroadcasterId == broadcasterId).FirstOrDefaultAsync();
       if (liveClass != null)

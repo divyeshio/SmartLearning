@@ -5,13 +5,15 @@ using SmartLearning.Core.Entities.BoardAggregate;
 using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Core.Entities.Common;
 using SmartLearning.Core.Entities.TestAggregate;
-using SmartLearning.SharedKernel;
 using SmartLearning.SharedKernel.Interfaces;
 
 namespace SmartLearning.Core.Entities.UsersAggregate
 {
   public class ApplicationUser : IdentityUser, IAggregateRoot
   {
+    [Key]
+    public string Id { get; set; }
+
     public bool? AdminApproved { get; set; }
     [Required]
     [Display(Name = "First Name")]
@@ -40,14 +42,14 @@ namespace SmartLearning.Core.Entities.UsersAggregate
     [Column(TypeName = "nvarchar(24)")]
     [Display(Name = "Account Type")]
     public AccountTypeEnum AccountType { get; set; }
-    public string? StandardId { get; set; }
+    public int? StandardId { get; set; }
     public Standard? Standard { get; set; }
-    public long? BoardId { get; set; }
+    public int? BoardId { get; set; }
     public Board? Board { get; set; }
-    public long? SubjectId { get; set; }
+    public int? SubjectId { get; set; }
     public Subject? Subject { get; set; }
 
-    public long? FaceDataId { get; set; }
+    public int? FaceDataId { get; set; }
     public FaceData? FaceData { get; set; }
     public ICollection<Class> Classes { get; } = new List<Class>();
     public ICollection<TestAttempt>? TestAttempts { get; set; }

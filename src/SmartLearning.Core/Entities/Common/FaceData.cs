@@ -1,14 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.Common
 {
-  public class FaceData
+  public class FaceData:EntityBase
   {
-    [Key]
-    public long Id { get; set; }
-
     [Required]
     public string IFaceEncoding { get; set; }
     [NotMapped]

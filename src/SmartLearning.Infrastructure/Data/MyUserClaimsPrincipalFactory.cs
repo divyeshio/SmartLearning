@@ -21,13 +21,13 @@ namespace SmartLearning.Infrastructure.Data
       if (user.AccountType == AccountTypeEnum.Faculty)
       {
         identity.AddClaim(new Claim("BoardId", user.BoardId.ToString(), ClaimValueTypes.Integer64));
-        identity.AddClaim(new Claim("StandardId", user.StandardId));
+        identity.AddClaim(new Claim("StandardId", user.StandardId.ToString()));
         identity.AddClaim(new Claim("SubjectId", user.SubjectId.ToString(), ClaimValueTypes.Integer64));
       }
       else if (user.AccountType == AccountTypeEnum.Student)
       {
         identity.AddClaim(new Claim("BoardId", user.BoardId.ToString()));
-        identity.AddClaim(new Claim("StandardId", user.StandardId));
+        identity.AddClaim(new Claim("StandardId", user.StandardId.ToString()));
       }
       identity.AddClaim(new Claim("avatar", user.Avatar ?? "default.jpg"));
       //identity.AddClaim(new Claim(ClaimTypes.Role, user.AccountType.ToString()));

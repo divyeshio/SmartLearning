@@ -52,7 +52,7 @@ namespace SmartLearning.Web.Controllers
     }
 
     // GET: Standards/Edit/5
-    public async Task<IActionResult> Edit(string id)
+    public async Task<IActionResult> Edit(int id)
     {
       if (id == null)
       {
@@ -70,7 +70,7 @@ namespace SmartLearning.Web.Controllers
     // POST: Standards/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, [Bind("Id,Name")] Standard standard)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Standard standard)
     {
       if (id != standard.Id)
       {
@@ -113,7 +113,7 @@ namespace SmartLearning.Web.Controllers
     // POST: Standards/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(int id)
     {
       var standard = await _context.Standards.FindAsync(id);
       _context.Standards.Remove(standard);
@@ -121,7 +121,7 @@ namespace SmartLearning.Web.Controllers
       return RedirectToAction(nameof(Index));
     }
 
-    private async Task<bool> StandardExists(string id)
+    private async Task<bool> StandardExists(int id)
     {
       return await _context.Standards.AnyAsync(e => e.Id == id);
     }

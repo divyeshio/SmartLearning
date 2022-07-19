@@ -16,7 +16,7 @@ namespace SmartLearning.Core.Entities.Common
     public ApplicationUser FromUser { get; set; }
 
     [Required]
-    public string ToClassId { get; set; }
+    public int ToClassId { get; set; }
     public Class ToClass { get; set; }
   }
 }

@@ -9,7 +9,7 @@ using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Controllers
 {
-  public class DashboardController : Controller
+    public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -76,7 +76,7 @@ namespace SmartLearning.Web.Controllers
         [Authorize(Roles = "Faculty")]
         public async Task<IActionResult> MyStudents()
         {
-            return View(await _context.Users.Where(u => u.AccountType == AccountTypeEnum.Student && u.BoardId == long.Parse(User.FindFirst("BoardId").Value) && u.StandardId == User.FindFirst("StandardId").Value).ToListAsync());
+            return View(await _context.Users.Where(u => u.AccountType == AccountTypeEnum.Student && u.BoardId == int.Parse(User.FindFirst("BoardId").Value) && u.StandardId == int.Parse(User.FindFirst("StandardId").Value)).ToListAsync());
         }
 
         [HttpGet]
@@ -85,7 +85,7 @@ namespace SmartLearning.Web.Controllers
         public async Task<IActionResult> MyCoWorkers()
         {
             var user = await _userManager.GetUserAsync(User);
-            var users = await _context.Users.Where(u => u.AccountType == AccountTypeEnum.Faculty && u.BoardId == long.Parse(User.FindFirst("BoardId").Value) && u.StandardId == User.FindFirst("StandardId").Value && u.AdminApproved == true).Include(u => u.Subject).ToListAsync();
+            var users = await _context.Users.Where(u => u.AccountType == AccountTypeEnum.Faculty && u.BoardId == int.Parse(User.FindFirst("BoardId").Value) && u.StandardId == int.Parse(User.FindFirst("StandardId").Value) && u.AdminApproved == true).Include(u => u.Subject).ToListAsync();
             users.Remove(user);
             return View(users);
         }
@@ -95,7 +95,7 @@ namespace SmartLearning.Web.Controllers
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> MyFaculties()
         {
-            return View(await _context.Users.Where(u => u.AccountType == AccountTypeEnum.Faculty && u.BoardId == long.Parse(User.FindFirst("BoardId").Value) && u.StandardId == User.FindFirst("StandardId").Value && u.AdminApproved == true).Include(u => u.Classes).ToListAsync());
+            return View(await _context.Users.Where(u => u.AccountType == AccountTypeEnum.Faculty && u.BoardId == int.Parse(User.FindFirst("BoardId").Value) && u.StandardId == int.Parse(User.FindFirst("StandardId").Value) && u.AdminApproved == true).Include(u => u.Classes).ToListAsync());
         }
 
     }

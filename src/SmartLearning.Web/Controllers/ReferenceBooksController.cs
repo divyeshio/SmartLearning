@@ -26,7 +26,7 @@ namespace SmartLearning.Web.Controllers
 
     // GET: SamplePapers
     [Authorize(Roles = "Admin,Faculty")]
-    public async Task<IActionResult> List(long? subject, long? board, string standard)
+    public async Task<IActionResult> List(long? subject, long? board, int? standard)
     {
       if (HttpContext.User.IsInRole("Admin"))
       {
@@ -50,18 +50,18 @@ namespace SmartLearning.Web.Controllers
         return View(await referenceBooks.Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).ToListAsync());
       }
       else
-        return View(await _context.ReferenceBooks.Include(c => c.Class).Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).Where(c => c.Class.StandardId == HttpContext.User.FindFirst("StandardId").Value && c.Class.BoardId == long.Parse(User.FindFirst("BoardId").Value) && c.Class.SubjectId == long.Parse(HttpContext.User.FindFirst("SubjectId").Value)).ToListAsync());
+        return View(await _context.ReferenceBooks.Include(c => c.Class).Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).Where(c => c.Class.StandardId == int.Parse(HttpContext.User.FindFirst("StandardId").Value) && c.Class.BoardId == int.Parse(User.FindFirst("BoardId").Value) && c.Class.SubjectId == int.Parse(HttpContext.User.FindFirst("SubjectId").Value)).ToListAsync());
     }
 
     [Authorize(Roles = "Admin,Student")]
     public async Task<IActionResult> Index()
     {
       if (User.IsInRole("Student"))
-        return View(await _context.Classes.Where(c => c.StandardId == HttpContext.User.FindFirst("StandardId").Value && c.BoardId == long.Parse(User.FindFirst("BoardId").Value)).Include(c => c.Subject).AsNoTracking().ToListAsync());
+        return View(await _context.Classes.Where(c => c.StandardId == int.Parse(HttpContext.User.FindFirst("StandardId").Value) && c.BoardId == int.Parse(User.FindFirst("BoardId").Value)).Include(c => c.Subject).AsNoTracking().ToListAsync());
       return View(await _context.Classes.AsNoTracking().Include(c => c.Subject).ToListAsync());
     }
 
-    public async Task<IActionResult> ViewReferenceBooks(string id)
+    public async Task<IActionResult> ViewReferenceBooks(int id)
     {
       if (id == null) return NotFound();
       ViewData["ClassName"] = await _context.Classes.Where(c => c.Id == id).Select(c => c.Name).AsNoTracking().FirstOrDefaultAsync();
@@ -136,7 +136,7 @@ namespace SmartLearning.Web.Controllers
         var referenceBook = new ReferenceBook
         {
           BookName = vm.BookName,
-          ClassId = await _context.Classes.Where(c => c.StandardId == User.FindFirst("StandardId").Value && c.BoardId == long.Parse(User.FindFirst("BoardId").Value) && c.SubjectId == long.Parse(User.FindFirst("SubjectId").Value)).Select(c => c.Id).FirstOrDefaultAsync(),
+          ClassId = await _context.Classes.Where(c => c.StandardId == int.Parse(User.FindFirst("StandardId").Value) && c.BoardId == int.Parse(User.FindFirst("BoardId").Value) && c.SubjectId == int.Parse(User.FindFirst("SubjectId").Value)).Select(c => c.Id).FirstOrDefaultAsync(),
           FileUrl = await UploadedFile(vm.File),
           FileName = Path.GetFileNameWithoutExtension(vm.File.FileName),
           ImageName = await UploadedImage(vm.ImageFile),
@@ -338,29 +338,29 @@ namespace SmartLearning.Web.Controllers
       }
       return Task.FromResult(uniqueFileName);
     }
-    private bool SamplePaperExists(long id)
+    private bool SamplePaperExists(int id)
     {
       return _context.SamplePapers.Any(e => e.Id == id);
     }
 
-    public async Task<SelectList> getBoards(long? boardId = null)
+    public async Task<SelectList> getBoards(int? boardId = null)
     {
       return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
     }
-    public async Task<SelectList> getSubjects(long? subjectId = null)
+    public async Task<SelectList> getSubjects(int? subjectId = null)
     {
       return new SelectList(await _context.Subjects.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", subjectId);
     }
-    public async Task<SelectList> getStandards(string standardId = null)
+    public async Task<SelectList> getStandards(int? standardId = null)
     {
       return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
     }
-    public async Task<SelectList> getClasses1(string classId = null)
+    public async Task<SelectList> getClasses1(int? classId = null)
     {
       return new SelectList(await _context.Classes.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", classId);
     }
 
-    public async Task<ReferenceBookViewModel> populateSBS(ReferenceBookViewModel model, string standardId = null, long? boardId = null, long? subjectId = null)
+    public async Task<ReferenceBookViewModel> populateSBS(ReferenceBookViewModel model, int? standardId = null, int? boardId = null, int? subjectId = null)
     {
       model.Standards = await getStandards(standardId);
       model.Subjects = await getSubjects(subjectId);

@@ -6,9 +6,6 @@ namespace SmartLearning.Core.Entities.TestAggregate
 {
   public class TestQuestion : EntityBase
   {
-    [Key]
-    [Required]
-    public long Id { get; set; }
     [Required]
 
     public string Question { get; set; }
@@ -27,7 +24,7 @@ namespace SmartLearning.Core.Entities.TestAggregate
     [EnumDataType(typeof(AnswerOptions))]
     public AnswerOptions Answer { get; set; }
 
-    public long TestId { get; set; }
+    public int TestId { get; set; }
     public Test Test { get; set; }
 
 

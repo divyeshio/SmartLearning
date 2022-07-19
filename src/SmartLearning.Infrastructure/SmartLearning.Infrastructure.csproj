@@ -6,6 +6,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Data\Config\ProjectConfiguration.cs" />
+    <Compile Remove="Data\Config\ToDoConfiguration.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.0.1" />
@@ -21,5 +26,9 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartLearning.Core\SmartLearning.Core.csproj" />
     <ProjectReference Include="..\SmartLearning.SharedKernel\SmartLearning.SharedKernel.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>

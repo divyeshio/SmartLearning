@@ -26,7 +26,7 @@ namespace SmartLearning.Web.DTO
 
     [Required]
     [Display(Name = "Standard")]
-    public string StandardId { get; set; }
+    public int StandardId { get; set; }
     public List<Standard> Standards { get; set; }
     [Required]
     [Display(Name = "Board")]

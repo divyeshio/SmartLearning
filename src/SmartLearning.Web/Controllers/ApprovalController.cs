@@ -29,7 +29,7 @@ namespace SmartLearning.Web.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Approve(string id)
+    public async Task<IActionResult> Approve(int id)
     {
       var user = await _context.Users.FindAsync(id);
       if (user == null)
@@ -47,7 +47,7 @@ namespace SmartLearning.Web.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Deny(string id)
+    public async Task<IActionResult> Deny(int id)
     {
       var user = await _context.Users.FindAsync(id);
       if (user == null)

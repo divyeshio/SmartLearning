@@ -8,7 +8,7 @@ namespace SmartLearning.Web.DTO
   public class ReferenceBookViewModel
   {
     [Required]
-    public long Id { get; set; }
+    public int Id { get; set; }
     public SelectList Boards { get; set; }
     public SelectList Standards { get; set; }
     public SelectList Subjects { get; set; }
@@ -36,7 +36,7 @@ namespace SmartLearning.Web.DTO
     public string AuthorName { get; set; }
 
     [Required]
-    public string ClassId { get; set; }
+    public int ClassId { get; set; }
 
     public string FileName { get; set; }
   }

@@ -19,13 +19,15 @@ public class Board : EntityBase, IAggregateRoot
 
   public Board(string abbrName, string name)
   {
-    Guard.Against.InvalidInput(abbrName, nameof(abbrName), abbr => abbr.Length > 10);
-    AbbrName = Guard.Against.NullOrEmpty(abbrName, nameof(abbrName)).ToUpperInvariant();
+    Guard.Against.NullOrEmpty(abbrName, nameof(AbbrName));
+    AbbrName = Guard.Against.InvalidInput(abbrName, nameof(abbrName), abbr => abbr.Length <= 10).ToUpperInvariant();
     Name = Guard.Against.NullOrEmpty(name, nameof(name));
   }
 
-  public void UpdateName(string newName)
+  public void UpdateNameAndAbbreviation(string newAbbrName,string newName)
   {
+    Guard.Against.NullOrEmpty(newAbbrName, nameof(newAbbrName));
+    AbbrName = Guard.Against.InvalidInput(newAbbrName, nameof(newAbbrName), abbr => abbr.Length <= 10).ToUpperInvariant();
     Name = Guard.Against.NullOrEmpty(newName, nameof(newName));
   }
   //public Board(string abbrName, string name, ICollection<ApplicationUser> users)public ICollection<Class> Classes { get; set; }

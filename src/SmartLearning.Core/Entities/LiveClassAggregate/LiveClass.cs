@@ -1,22 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.LiveClassAggregate
 {
-  public class LiveClass
+  public class LiveClass : EntityBase
   {
-    [Key]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
 
     [Required]
-    public string BroadcasterId { get; set; }
+    public string? BroadcasterId { get; set; }
 
-    public ApplicationUser Broadcaster { get; set; }
+    public ApplicationUser? Broadcaster { get; set; }
 
     public bool isAdmin { get; set; }
 
-    public string ClassId { get; set; }
+    public int ClassId { get; set; }
 
     public Class Class { get; set; }
   }

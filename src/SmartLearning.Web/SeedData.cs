@@ -1,11 +1,10 @@
-﻿using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.Infrastructure.Data;
+﻿using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Web;
 
 public static class SeedData
 {
-    public static readonly Project TestProject1 = new Project("Test Project", PriorityStatus.Backlog);
+    /*public static readonly Project TestProject1 = new Project("Test Project", PriorityStatus.Backlog);
     public static readonly ToDoItem ToDoItem1 = new ToDoItem
     {
         Title = "Get Sample Working",
@@ -20,7 +19,7 @@ public static class SeedData
     {
         Title = "Run and Review Tests",
         Description = "Make sure all the tests run and review what they are doing."
-    };
+    };*/
 
     public static void Initialize(IServiceProvider serviceProvider)
     {

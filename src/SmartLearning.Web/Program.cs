@@ -1,7 +1,7 @@
 ﻿using Ardalis.ListStartupServices;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
@@ -29,8 +29,10 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 builder.Services.AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews(op =>
+{
+  op.Filters.Add(new ProducesAttribute("application/json"));
+}).AddRazorRuntimeCompilation();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -124,7 +126,7 @@ app.UseRouting();
 app.UseSwagger();
 
 // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Smart Learning API V1"));
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -144,7 +146,6 @@ app.UseCookiePolicy();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
-    endpoints.MapRazorPages();
     endpoints.MapHub<ChatHub>("/chatHub");
     endpoints.MapHub<LiveHub>("/LiveHub");
 });
@@ -159,7 +160,7 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<ApplicationDbContext>();
         context.Database.Migrate();
         context.Database.EnsureCreated();
-        SeedData.Initialize(services);
+        //SeedData.Initialize(services);
     }
     catch (Exception ex)
     {

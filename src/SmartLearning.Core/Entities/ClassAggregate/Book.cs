@@ -5,10 +5,6 @@ namespace SmartLearning.Core.Entities.ClassAggregate
 {
   public class Book : EntityBase
   {
-    [Key]
-    [Required]
-    public long Id { get; set; }
-
     [Required]
     public string Title { get; set; }
     public int Price { get; set; }

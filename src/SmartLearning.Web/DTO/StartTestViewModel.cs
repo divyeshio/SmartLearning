@@ -10,6 +10,6 @@ namespace SmartLearning.Web.DTO
     public int Minutes { get; set; }
     public int Seconds { get; set; }
 
-    public string AttemptId { get; set; }
+    public int AttemptId { get; set; }
   }
 }

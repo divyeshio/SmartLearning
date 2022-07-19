@@ -13,7 +13,7 @@ using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Infrastructure.Data
 {
-  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         private readonly IDomainEventDispatcher? _dispatcher;
 
@@ -50,9 +50,9 @@ namespace SmartLearning.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApplicationUser>().HasOne(b => b.Board).WithMany(b => b.Users).OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<ApplicationUser>().HasOne(b => b.Standard).WithMany().OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<ApplicationUser>().HasOne(b => b.Subject).WithMany().OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<ApplicationUser>().HasOne(b => b.Board).WithMany(b => b.Users).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<ApplicationUser>().HasOne(b => b.Standard).WithMany().OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<ApplicationUser>().HasOne(b => b.Subject).WithMany().OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<SamplePaper>().HasOne(s => s.UploadedBy).WithMany().OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Test>().HasOne(s => s.CreatedBy).WithMany().OnDelete(DeleteBehavior.NoAction);
@@ -76,9 +76,7 @@ namespace SmartLearning.Infrastructure.Data
                                        .ToTable("UserClass")
                                        .HasKey(ug => new { ug.ClassId, ug.UserId });
 
-            modelBuilder.Entity<Class>().HasOne(g => g.Board).WithMany().OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Class>().HasOne(g => g.Standard).WithMany().OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Class>().HasOne(g => g.Subject).WithMany().OnDelete(DeleteBehavior.Cascade);
+           
 
             modelBuilder.Entity<ApplicationUser>(entity => entity.ToTable(name: "Users"));
             modelBuilder.Entity<IdentityRole>(entity => entity.ToTable(name: "Roles"));

@@ -3,15 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Core.Helpers;
+using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.ClassAggregate
 {
-  public class SamplePaper
+  public class SamplePaper : EntityBase
   {
-    [Key]
-    [Required]
-    public long Id { get; set; }
-
     [Required]
     [DataType(DataType.Url)]
     public string SamplePaperUrl { get; set; }
@@ -26,7 +23,7 @@ namespace SmartLearning.Core.Entities.ClassAggregate
     public int Year { get; set; }
 
     [Required]
-    public string ClassId { get; set; }
+    public int ClassId { get; set; }
     public Class Class { get; set; }
 
     public string UploadedById { get; set; }

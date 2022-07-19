@@ -35,7 +35,7 @@ namespace SmartLearning.Web.DTO.AccountViewModels
 
     [Required(ErrorMessage = "*")]
     [Display(Name = "Standard")]
-    public string StandardId { get; set; }
+    public int StandardId { get; set; }
 
     [Required(ErrorMessage = "*")]
     [Display(Name = "Board")]
