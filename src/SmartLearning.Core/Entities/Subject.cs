@@ -3,7 +3,7 @@ using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities
 {
-  public class Subject : BaseEntity
+  public class Subject : EntityBase
   {
 
     [Key]

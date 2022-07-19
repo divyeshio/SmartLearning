@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
+using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Core.Interfaces;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO.ManageViewModels;
@@ -52,12 +52,12 @@ namespace SmartLearning.Web.Controllers
       var subject = "";
       if (user.AccountType == AccountTypeEnum.Student)
       {
-        board = await _context.Boards.Where(b => b.Id == user.BoardId).Select(b => b.Name).AsNoTracking().FirstOrDefaultAsync();
+        board = await _context.Boards.Where(b => b.Id == user.BoardId).Select(b => b.AbbrName).AsNoTracking().FirstOrDefaultAsync();
         standard = await _context.Standards.Where(b => b.Id == user.StandardId).Select(b => b.DisplayName).AsNoTracking().FirstOrDefaultAsync();
       }
       if (user.AccountType == AccountTypeEnum.Faculty)
       {
-        board = await _context.Boards.Where(b => b.Id == user.BoardId).Select(b => b.Name).AsNoTracking().FirstOrDefaultAsync();
+        board = await _context.Boards.Where(b => b.Id == user.BoardId).Select(b => b.AbbrName).AsNoTracking().FirstOrDefaultAsync();
         standard = await _context.Standards.Where(b => b.Id == user.StandardId).Select(b => b.DisplayName).AsNoTracking().FirstOrDefaultAsync();
         subject = await _context.Subjects.Where(b => b.Id == user.SubjectId).Select(b => b.Name).AsNoTracking().FirstOrDefaultAsync();
       }

@@ -1,4 +1,4 @@
-﻿@using SmartLearning.Core.Entities
+﻿@using SmartLearning.Core.Entities.UsersAggregate
 @model IEnumerable<ApplicationUser>
 
 @{
@@ -43,7 +43,7 @@
                                                     <td>@i</td>
                                                     <td>@user.FirstName</td>
                                                     <td>@user.LastName</td>
-                                                    <td><span class="font-weight-bold">@user.Board.Name</span></td>
+                                                    <td><span class="font-weight-bold">@user.Board.AbbrName</span></td>
                                                     <td><span class="font-weight-bold">@user.Subject.Name</span></td>
                                                     <td><span class="font-weight-bold">@user.Standard.Name</span></td>
                                                     <td>

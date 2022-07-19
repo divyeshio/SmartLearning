@@ -14,7 +14,7 @@ public abstract class BaseEfRepoTestFixture
     protected BaseEfRepoTestFixture()
     {
         var options = CreateNewContextOptions();
-        var mockMediator = new Mock<IMediator>();
+        var mockMediator = new Mock<IDomainEventDispatcher>();
 
         _dbContext = new ApplicationDbContext(options, mockMediator.Object);
     }

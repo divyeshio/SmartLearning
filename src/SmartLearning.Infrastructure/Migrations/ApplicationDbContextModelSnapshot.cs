@@ -31,7 +31,7 @@ namespace SmartLearning.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Abbr")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -144,13 +144,13 @@ namespace SmartLearning.Migrations
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Abbr")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("UserId", "LoginProvider", "Abbr");
 
                     b.ToTable("UserTokens", (string)null);
                 });
@@ -271,7 +271,7 @@ namespace SmartLearning.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Abbr")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -332,7 +332,7 @@ namespace SmartLearning.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Abbr")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -358,7 +358,7 @@ namespace SmartLearning.Migrations
                     b.Property<bool>("IsRegistrationAllowed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Abbr")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -374,7 +374,7 @@ namespace SmartLearning.Migrations
 
                     b.HasIndex("BoardId");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Abbr")
                         .IsUnique();
 
                     b.HasIndex("StandardId");
@@ -665,12 +665,12 @@ namespace SmartLearning.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
-                    b.Property<int>("Name")
+                    b.Property<int>("Abbr")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Abbr")
                         .IsUnique();
 
                     b.ToTable("Standards", (string)null);
@@ -684,7 +684,7 @@ namespace SmartLearning.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Abbr")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");

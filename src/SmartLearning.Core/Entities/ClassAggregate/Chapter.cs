@@ -3,7 +3,7 @@ using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.ClassAggregate
 {
-  public class Chapter : BaseEntity
+  public class Chapter : EntityBase
   {
 
     [Key]

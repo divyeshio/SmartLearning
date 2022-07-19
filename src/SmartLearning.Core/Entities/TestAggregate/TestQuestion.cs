@@ -4,7 +4,7 @@ using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.TestAggregate
 {
-  public class TestQuestion : BaseEntity
+  public class TestQuestion : EntityBase
   {
     [Key]
     [Required]

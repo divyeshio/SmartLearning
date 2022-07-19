@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartLearning.Core.Entities;
+using SmartLearning.Core.Entities.UsersAggregate;
 
 namespace SmartLearning.Web.DTO.AccountViewModels
 {

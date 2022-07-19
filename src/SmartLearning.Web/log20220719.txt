@@ -1,0 +1,1525 @@
+2022-07-19 14:37:31.027 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:44:21.933 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:45:43.534 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:45:45.485 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:45:45.487 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:45:45.489 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:45:45.530 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:45:45.763 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:45:46.958 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:45:46.959 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:45:46.960 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:45:46.963 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:45:47.336 +05:30 [INF] Executed DbCommand (279ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [aspnet-SmartLearning-1F435B8B-AAE9-4FF2-B0D1-492ED53522B4];
+2022-07-19 14:45:47.419 +05:30 [INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [aspnet-SmartLearning-1F435B8B-AAE9-4FF2-B0D1-492ED53522B4] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2022-07-19 14:45:47.508 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:45:47.629 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2022-07-19 14:45:47.633 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:45:47.671 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:45:47.684 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:45:47.712 +05:30 [INF] Applying migration '20210622152739_Initial'.
+2022-07-19 14:45:47.834 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Boards] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Name] nvarchar(10) NOT NULL,
+    CONSTRAINT [PK_Boards] PRIMARY KEY ([Id])
+);
+2022-07-19 14:45:47.840 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Books] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Title] nvarchar(max) NOT NULL,
+    [Price] int NOT NULL,
+    [AuthorName] nvarchar(max) NOT NULL,
+    [PublisherName] nvarchar(max) NOT NULL,
+    [Year] int NOT NULL,
+    [Details] nvarchar(max) NOT NULL,
+    [ImageUrl] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Books] PRIMARY KEY ([Id])
+);
+2022-07-19 14:45:47.843 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Quotes] (
+    [Id] bigint NOT NULL IDENTITY,
+    [AuthorName] nvarchar(20) NOT NULL,
+    [Details] nvarchar(1000) NOT NULL,
+    CONSTRAINT [PK_Quotes] PRIMARY KEY ([Id])
+);
+2022-07-19 14:45:47.846 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2022-07-19 14:45:47.849 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Standards] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] int NOT NULL,
+    [DisplayName] nvarchar(2) NOT NULL,
+    CONSTRAINT [PK_Standards] PRIMARY KEY ([Id])
+);
+2022-07-19 14:45:47.852 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Subjects] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Name] nvarchar(15) NOT NULL,
+    CONSTRAINT [PK_Subjects] PRIMARY KEY ([Id])
+);
+2022-07-19 14:45:47.856 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [RoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_RoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_RoleClaims_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.860 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Classes] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(20) NOT NULL,
+    [BoardId] bigint NOT NULL,
+    [StandardId] nvarchar(450) NOT NULL,
+    [SubjectId] bigint NOT NULL,
+    [IsRegistrationAllowed] bit NOT NULL,
+    CONSTRAINT [PK_Classes] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Classes_Boards_BoardId] FOREIGN KEY ([BoardId]) REFERENCES [Boards] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Classes_Standards_StandardId] FOREIGN KEY ([StandardId]) REFERENCES [Standards] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Classes_Subjects_SubjectId] FOREIGN KEY ([SubjectId]) REFERENCES [Subjects] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.864 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ClassProposals] (
+    [Id] nvarchar(450) NOT NULL,
+    [BoardId] bigint NOT NULL,
+    [StandardId] nvarchar(450) NULL,
+    [SubjectId] bigint NOT NULL,
+    [Count] int NOT NULL,
+    CONSTRAINT [PK_ClassProposals] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ClassProposals_Boards_BoardId] FOREIGN KEY ([BoardId]) REFERENCES [Boards] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ClassProposals_Standards_StandardId] FOREIGN KEY ([StandardId]) REFERENCES [Standards] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ClassProposals_Subjects_SubjectId] FOREIGN KEY ([SubjectId]) REFERENCES [Subjects] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.870 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [AdminApproved] bit NULL,
+    [FirstName] nvarchar(10) NOT NULL,
+    [LastName] nvarchar(15) NOT NULL,
+    [Avatar] nvarchar(max) NULL,
+    [isEnabled] bit NOT NULL DEFAULT CAST(1 AS bit),
+    [AccountType] nvarchar(24) NOT NULL,
+    [StandardId] nvarchar(450) NULL,
+    [BoardId] bigint NULL,
+    [SubjectId] bigint NULL,
+    [FaceDataId] bigint NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Users_Boards_BoardId] FOREIGN KEY ([BoardId]) REFERENCES [Boards] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Users_Standards_StandardId] FOREIGN KEY ([StandardId]) REFERENCES [Standards] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Users_Subjects_SubjectId] FOREIGN KEY ([SubjectId]) REFERENCES [Subjects] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.874 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Chapters] (
+    [Id] bigint NOT NULL IDENTITY,
+    [SerialNo] int NOT NULL,
+    [Name] nvarchar(20) NOT NULL,
+    [ClassId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_Chapters] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Chapters_Classes_ClassId] FOREIGN KEY ([ClassId]) REFERENCES [Classes] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.878 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ReferenceBooks] (
+    [Id] bigint NOT NULL IDENTITY,
+    [FileName] nvarchar(200) NULL,
+    [FileUrl] nvarchar(max) NULL,
+    [ImageName] nvarchar(200) NULL,
+    [BookName] nvarchar(25) NOT NULL,
+    [Price] int NOT NULL,
+    [AuthorName] nvarchar(25) NOT NULL,
+    [ClassId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_ReferenceBooks] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ReferenceBooks_Classes_ClassId] FOREIGN KEY ([ClassId]) REFERENCES [Classes] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.881 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Faces] (
+    [Id] bigint NOT NULL IDENTITY,
+    [IFaceEncoding] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_Faces] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Faces_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.883 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [LiveClasses] (
+    [Id] nvarchar(450) NOT NULL,
+    [BroadcasterId] nvarchar(450) NOT NULL,
+    [isAdmin] bit NOT NULL,
+    [ClassId] nvarchar(450) NULL,
+    CONSTRAINT [PK_LiveClasses] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_LiveClasses_Classes_ClassId] FOREIGN KEY ([ClassId]) REFERENCES [Classes] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_LiveClasses_Users_BroadcasterId] FOREIGN KEY ([BroadcasterId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.886 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Messages] (
+    [Id] int NOT NULL IDENTITY,
+    [Content] nvarchar(max) NOT NULL,
+    [Timestamp] datetime2 NOT NULL,
+    [FromUserId] nvarchar(450) NOT NULL,
+    [ToClassId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Messages_Classes_ToClassId] FOREIGN KEY ([ToClassId]) REFERENCES [Classes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Messages_Users_FromUserId] FOREIGN KEY ([FromUserId]) REFERENCES [Users] ([Id])
+);
+2022-07-19 14:45:47.888 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Posts] (
+    [Id] int NOT NULL IDENTITY,
+    [Image] nvarchar(max) NOT NULL,
+    [Title] nvarchar(100) NOT NULL,
+    [Content] varbinary(max) NOT NULL,
+    [AuthorId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Posts] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Posts_Users_AuthorId] FOREIGN KEY ([AuthorId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION
+);
+2022-07-19 14:45:47.892 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [SamplePapers] (
+    [Id] bigint NOT NULL IDENTITY,
+    [SamplePaperUrl] nvarchar(max) NOT NULL,
+    [FileName] nvarchar(max) NOT NULL,
+    [Year] smallint NOT NULL,
+    [ClassId] nvarchar(450) NOT NULL,
+    [UploadedById] nvarchar(450) NULL,
+    CONSTRAINT [PK_SamplePapers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_SamplePapers_Classes_ClassId] FOREIGN KEY ([ClassId]) REFERENCES [Classes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_SamplePapers_Users_UploadedById] FOREIGN KEY ([UploadedById]) REFERENCES [Users] ([Id])
+);
+2022-07-19 14:45:47.896 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserClaims_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.900 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserClass] (
+    [UserId] nvarchar(450) NOT NULL,
+    [ClassId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_UserClass] PRIMARY KEY ([ClassId], [UserId]),
+    CONSTRAINT [FK_UserClass_Classes_ClassId] FOREIGN KEY ([ClassId]) REFERENCES [Classes] ([Id]),
+    CONSTRAINT [FK_UserClass_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.902 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_UserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_UserLogins_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.906 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_UserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRoles_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserRoles_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.911 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [UserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_UserTokens_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.914 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Notes] (
+    [Id] bigint NOT NULL IDENTITY,
+    [ChapterId] bigint NOT NULL,
+    [FileName] nvarchar(max) NOT NULL,
+    [NoteUrl] nvarchar(max) NOT NULL,
+    [UploadedById] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notes] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Notes_Chapters_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapters] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Notes_Users_UploadedById] FOREIGN KEY ([UploadedById]) REFERENCES [Users] ([Id])
+);
+2022-07-19 14:45:47.917 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Tests] (
+    [Id] bigint NOT NULL IDENTITY,
+    [ChapterId] bigint NOT NULL,
+    [CreatedById] nvarchar(450) NULL,
+    [TestDuration] time NOT NULL,
+    CONSTRAINT [PK_Tests] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Tests_Chapters_ChapterId] FOREIGN KEY ([ChapterId]) REFERENCES [Chapters] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Tests_Users_CreatedById] FOREIGN KEY ([CreatedById]) REFERENCES [Users] ([Id])
+);
+2022-07-19 14:45:47.920 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [TestAttempts] (
+    [Id] nvarchar(450) NOT NULL,
+    [TestId] bigint NULL,
+    [StudentId] nvarchar(450) NULL,
+    [isCompleted] bit NOT NULL,
+    [StartTime] datetime2 NOT NULL,
+    [ApplicationUserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_TestAttempts] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_TestAttempts_Tests_TestId] FOREIGN KEY ([TestId]) REFERENCES [Tests] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_TestAttempts_Users_ApplicationUserId] FOREIGN KEY ([ApplicationUserId]) REFERENCES [Users] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_TestAttempts_Users_StudentId] FOREIGN KEY ([StudentId]) REFERENCES [Users] ([Id]) ON DELETE SET NULL
+);
+2022-07-19 14:45:47.923 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [TestQuestions] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Question] nvarchar(max) NOT NULL,
+    [OptionA] nvarchar(max) NOT NULL,
+    [OptionB] nvarchar(max) NOT NULL,
+    [OptionC] nvarchar(max) NOT NULL,
+    [OptionD] nvarchar(max) NOT NULL,
+    [Answer] int NOT NULL,
+    [TestId] bigint NOT NULL,
+    CONSTRAINT [PK_TestQuestions] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_TestQuestions_Tests_TestId] FOREIGN KEY ([TestId]) REFERENCES [Tests] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.927 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [TestResults] (
+    [Id] bigint NOT NULL IDENTITY,
+    [CorrectAnswers] int NOT NULL,
+    [IncorrectAnswers] int NOT NULL,
+    [TimeTaken] time NOT NULL,
+    [TestAttemptId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_TestResults] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_TestResults_TestAttempts_TestAttemptId] FOREIGN KEY ([TestAttemptId]) REFERENCES [TestAttempts] ([Id]) ON DELETE CASCADE
+);
+2022-07-19 14:45:47.930 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Chapters_ClassId] ON [Chapters] ([ClassId]);
+2022-07-19 14:45:47.932 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Classes_BoardId] ON [Classes] ([BoardId]);
+2022-07-19 14:45:47.933 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Classes_Name] ON [Classes] ([Name]);
+2022-07-19 14:45:47.936 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Classes_StandardId] ON [Classes] ([StandardId]);
+2022-07-19 14:45:47.938 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Classes_SubjectId] ON [Classes] ([SubjectId]);
+2022-07-19 14:45:47.940 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ClassProposals_BoardId] ON [ClassProposals] ([BoardId]);
+2022-07-19 14:45:47.941 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ClassProposals_StandardId] ON [ClassProposals] ([StandardId]);
+2022-07-19 14:45:47.944 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ClassProposals_SubjectId] ON [ClassProposals] ([SubjectId]);
+2022-07-19 14:45:47.946 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Faces_UserId] ON [Faces] ([UserId]);
+2022-07-19 14:45:47.947 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_LiveClasses_BroadcasterId] ON [LiveClasses] ([BroadcasterId]);
+2022-07-19 14:45:47.949 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_LiveClasses_ClassId] ON [LiveClasses] ([ClassId]);
+2022-07-19 14:45:47.950 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Messages_FromUserId] ON [Messages] ([FromUserId]);
+2022-07-19 14:45:47.952 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Messages_ToClassId] ON [Messages] ([ToClassId]);
+2022-07-19 14:45:47.953 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Notes_ChapterId] ON [Notes] ([ChapterId]);
+2022-07-19 14:45:47.955 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Notes_UploadedById] ON [Notes] ([UploadedById]);
+2022-07-19 14:45:47.956 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Posts_AuthorId] ON [Posts] ([AuthorId]);
+2022-07-19 14:45:47.958 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ReferenceBooks_ClassId] ON [ReferenceBooks] ([ClassId]);
+2022-07-19 14:45:47.959 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_RoleClaims_RoleId] ON [RoleClaims] ([RoleId]);
+2022-07-19 14:45:47.962 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [Roles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2022-07-19 14:45:47.963 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_SamplePapers_ClassId] ON [SamplePapers] ([ClassId]);
+2022-07-19 14:45:47.965 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_SamplePapers_UploadedById] ON [SamplePapers] ([UploadedById]);
+2022-07-19 14:45:47.966 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Standards_Name] ON [Standards] ([Name]);
+2022-07-19 14:45:47.968 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_TestAttempts_ApplicationUserId] ON [TestAttempts] ([ApplicationUserId]);
+2022-07-19 14:45:47.969 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_TestAttempts_StudentId] ON [TestAttempts] ([StudentId]);
+2022-07-19 14:45:47.972 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_TestAttempts_TestId] ON [TestAttempts] ([TestId]);
+2022-07-19 14:45:47.974 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_TestQuestions_TestId] ON [TestQuestions] ([TestId]);
+2022-07-19 14:45:47.975 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_TestResults_TestAttemptId] ON [TestResults] ([TestAttemptId]);
+2022-07-19 14:45:47.977 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Tests_ChapterId] ON [Tests] ([ChapterId]);
+2022-07-19 14:45:47.978 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Tests_CreatedById] ON [Tests] ([CreatedById]);
+2022-07-19 14:45:47.980 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserClaims_UserId] ON [UserClaims] ([UserId]);
+2022-07-19 14:45:47.983 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserClass_UserId] ON [UserClass] ([UserId]);
+2022-07-19 14:45:47.984 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserLogins_UserId] ON [UserLogins] ([UserId]);
+2022-07-19 14:45:47.986 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_UserRoles_RoleId] ON [UserRoles] ([RoleId]);
+2022-07-19 14:45:47.987 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [Users] ([NormalizedEmail]);
+2022-07-19 14:45:47.988 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_BoardId] ON [Users] ([BoardId]);
+2022-07-19 14:45:47.990 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_StandardId] ON [Users] ([StandardId]);
+2022-07-19 14:45:47.991 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_SubjectId] ON [Users] ([SubjectId]);
+2022-07-19 14:45:47.993 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [Users] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2022-07-19 14:45:47.997 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20210622152739_Initial', N'6.0.4');
+2022-07-19 14:45:48.013 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:45:48.044 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:45:48.299 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:45:48.303 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:45:48.304 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:45:48.305 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:45:49.326 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:45:49.432 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:45:49.586 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:45:49.671 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:45:49.699 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:45:49.729 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:45:50.135 +05:30 [INF] Executed ViewResult - view Index executed in 412.4027ms.
+2022-07-19 14:45:50.145 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 441.7775ms
+2022-07-19 14:45:50.148 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:45:50.228 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - -
+2022-07-19 14:45:50.230 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/style.css - -
+2022-07-19 14:45:50.228 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - -
+2022-07-19 14:45:50.232 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - -
+2022-07-19 14:45:50.236 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - -
+2022-07-19 14:45:50.254 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 940.1271ms
+2022-07-19 14:45:50.269 +05:30 [INF] Sending file. Request path: '/home/css/colors/purple.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\colors\purple.css'
+2022-07-19 14:45:50.269 +05:30 [INF] Sending file. Request path: '/home/css/tiny-slider.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\tiny-slider.css'
+2022-07-19 14:45:50.272 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - - - 200 2181 text/css 44.5971ms
+2022-07-19 14:45:50.270 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - - - 200 8362 text/css 38.2352ms
+2022-07-19 14:45:50.304 +05:30 [INF] Sending file. Request path: '/home/css/materialdesignicons.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\materialdesignicons.min.css'
+2022-07-19 14:45:50.304 +05:30 [INF] Sending file. Request path: '/home/css/style.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\style.css'
+2022-07-19 14:45:50.304 +05:30 [INF] Sending file. Request path: '/home/css/tobii.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\tobii.min.css'
+2022-07-19 14:45:50.306 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - - - 200 274148 text/css 72.4432ms
+2022-07-19 14:45:50.307 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/style.css - - - 200 114199 text/css 77.2561ms
+2022-07-19 14:45:50.308 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - - - 200 4784 text/css 81.2126ms
+2022-07-19 14:45:50.324 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - -
+2022-07-19 14:45:50.324 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - -
+2022-07-19 14:45:50.337 +05:30 [INF] Sending file. Request path: '/home/css/bootstrap.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\bootstrap.min.css'
+2022-07-19 14:45:50.338 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - - - 200 153408 text/css 13.9241ms
+2022-07-19 14:45:50.347 +05:30 [INF] Sending file. Request path: '/home/js/parallax.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\parallax.js'
+2022-07-19 14:45:50.349 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - - - 200 25603 application/javascript 24.5184ms
+2022-07-19 14:45:50.509 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - -
+2022-07-19 14:45:50.509 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - -
+2022-07-19 14:45:50.524 +05:30 [INF] Sending file. Request path: '/home/js/tobii.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\tobii.min.js'
+2022-07-19 14:45:50.525 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - - - 200 17670 application/javascript 16.3130ms
+2022-07-19 14:45:50.526 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - -
+2022-07-19 14:45:50.552 +05:30 [INF] Sending file. Request path: '/home/js/bootstrap.bundle.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\bootstrap.bundle.min.js'
+2022-07-19 14:45:50.554 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - - - 200 80223 application/javascript 44.9155ms
+2022-07-19 14:45:50.555 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - -
+2022-07-19 14:45:50.560 +05:30 [INF] Sending file. Request path: '/home/js/tiny-slider.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\tiny-slider.js'
+2022-07-19 14:45:50.561 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - - - 200 31968 application/javascript 35.5091ms
+2022-07-19 14:45:50.563 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - -
+2022-07-19 14:45:50.583 +05:30 [INF] Sending file. Request path: '/home/js/plugins.init.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\plugins.init.js'
+2022-07-19 14:45:50.584 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - - - 200 16186 application/javascript 21.5477ms
+2022-07-19 14:45:50.586 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/app.js - -
+2022-07-19 14:45:50.598 +05:30 [INF] Sending file. Request path: '/home/js/feather.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\feather.min.js'
+2022-07-19 14:45:50.600 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - - - 200 75791 application/javascript 45.5766ms
+2022-07-19 14:45:50.601 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:45:50.608 +05:30 [INF] Sending file. Request path: '/home/js/app.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\app.js'
+2022-07-19 14:45:50.612 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/app.js - - - 200 6335 application/javascript 25.6938ms
+2022-07-19 14:45:50.614 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 12.3760ms
+2022-07-19 14:45:50.615 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - -
+2022-07-19 14:45:50.620 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - -
+2022-07-19 14:45:50.631 +05:30 [INF] Sending file. Request path: '/images/illustration/edu_ilastration.png'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\illustration\edu_ilastration.png'
+2022-07-19 14:45:50.633 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - - - 200 64784 image/png 13.5539ms
+2022-07-19 14:45:50.635 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - -
+2022-07-19 14:45:50.641 +05:30 [INF] Sending file. Request path: '/images/logo/logo.svg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\logo\logo.svg'
+2022-07-19 14:45:50.643 +05:30 [INF] Sending file. Request path: '/home/images/client/01.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\01.jpg'
+2022-07-19 14:45:50.646 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - - - 200 15145 image/svg+xml 30.8793ms
+2022-07-19 14:45:50.647 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - - - 200 31447 image/jpeg 11.7692ms
+2022-07-19 14:45:50.648 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - -
+2022-07-19 14:45:50.649 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - -
+2022-07-19 14:45:50.660 +05:30 [INF] Sending file. Request path: '/home/images/client/03.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\03.jpg'
+2022-07-19 14:45:50.660 +05:30 [INF] Sending file. Request path: '/home/images/client/04.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\04.jpg'
+2022-07-19 14:45:50.662 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - - - 200 26994 image/jpeg 12.2277ms
+2022-07-19 14:45:50.664 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - - - 200 32126 image/jpeg 15.4630ms
+2022-07-19 14:45:50.665 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - -
+2022-07-19 14:45:50.666 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - -
+2022-07-19 14:45:50.666 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - -
+2022-07-19 14:45:50.666 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - -
+2022-07-19 14:45:50.666 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - -
+2022-07-19 14:45:50.667 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - -
+2022-07-19 14:45:50.678 +05:30 [INF] Sending file. Request path: '/home/images/client/06.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\06.jpg'
+2022-07-19 14:45:50.681 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - - - 200 30409 image/jpeg 14.6448ms
+2022-07-19 14:45:50.681 +05:30 [INF] Sending file. Request path: '/home/images/client/02.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\02.jpg'
+2022-07-19 14:45:50.684 +05:30 [INF] Sending file. Request path: '/home/images/personal/2.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\personal\2.jpg'
+2022-07-19 14:45:50.683 +05:30 [INF] Sending file. Request path: '/home/images/personal/3.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\personal\3.jpg'
+2022-07-19 14:45:50.678 +05:30 [INF] Sending file. Request path: '/home/images/client/05.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\05.jpg'
+2022-07-19 14:45:50.685 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:45:50.685 +05:30 [INF] Sending file. Request path: '/home/images/personal/1.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\personal\1.jpg'
+2022-07-19 14:45:50.687 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - - - 200 24999 image/jpeg 22.7208ms
+2022-07-19 14:45:50.689 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - - - 200 83369 image/jpeg 22.9365ms
+2022-07-19 14:45:50.690 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - - - 200 85287 image/jpeg 22.8135ms
+2022-07-19 14:45:50.693 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - - - 200 22196 image/jpeg 27.2549ms
+2022-07-19 14:45:50.698 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - - - 200 67655 image/jpeg 31.8117ms
+2022-07-19 14:45:50.706 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - -
+2022-07-19 14:45:50.714 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - -
+2022-07-19 14:45:50.724 +05:30 [INF] Sending file. Request path: '/home/images/finance/bg.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\finance\bg.jpg'
+2022-07-19 14:45:50.729 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - - - 200 107786 image/jpeg 14.7938ms
+2022-07-19 14:45:50.731 +05:30 [INF] Sending file. Request path: '/home/images/shapes/shape2.png'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\shapes\shape2.png'
+2022-07-19 14:45:50.733 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - - - 200 475845 image/png 26.8888ms
+2022-07-19 14:45:50.795 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 110.2725ms
+2022-07-19 14:45:50.913 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - -
+2022-07-19 14:45:50.939 +05:30 [INF] Sending file. Request path: '/home/fonts/materialdesignicons-webfont.woff2'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\fonts\materialdesignicons-webfont.woff2'
+2022-07-19 14:45:50.940 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - - - 200 325244 font/woff2 27.7195ms
+2022-07-19 14:45:53.711 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/ico/favicon.ico - -
+2022-07-19 14:45:53.719 +05:30 [INF] Sending file. Request path: '/images/ico/favicon.ico'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\ico\favicon.ico'
+2022-07-19 14:45:53.721 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/ico/favicon.ico - - - 200 5430 image/x-icon 9.5356ms
+2022-07-19 14:46:10.626 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:46:11.995 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:46:11.997 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:46:11.999 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:46:12.038 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:46:12.260 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:46:12.756 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:46:12.828 +05:30 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:46:12.833 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:46:12.835 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:46:12.865 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:46:12.888 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:46:12.893 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:46:12.912 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:46:13.030 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:46:13.033 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:46:13.034 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:46:13.034 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:46:13.583 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:46:13.665 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:46:13.749 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:46:13.791 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:46:13.807 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:46:13.838 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:46:14.153 +05:30 [INF] Executed ViewResult - view Index executed in 326.1674ms.
+2022-07-19 14:46:14.162 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 350.504ms
+2022-07-19 14:46:14.166 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:46:14.221 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - -
+2022-07-19 14:46:14.221 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/style.css - -
+2022-07-19 14:46:14.221 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - -
+2022-07-19 14:46:14.221 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - -
+2022-07-19 14:46:14.221 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - -
+2022-07-19 14:46:14.234 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 656.6551ms
+2022-07-19 14:46:14.271 +05:30 [INF] Sending file. Request path: '/home/css/colors/purple.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\colors\purple.css'
+2022-07-19 14:46:14.275 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - -
+2022-07-19 14:46:14.277 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/colors/purple.css - - - 200 8362 text/css 55.8076ms
+2022-07-19 14:46:14.295 +05:30 [INF] Sending file. Request path: '/home/css/tobii.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\tobii.min.css'
+2022-07-19 14:46:14.295 +05:30 [INF] Sending file. Request path: '/home/css/style.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\style.css'
+2022-07-19 14:46:14.295 +05:30 [INF] Sending file. Request path: '/home/css/tiny-slider.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\tiny-slider.css'
+2022-07-19 14:46:14.295 +05:30 [INF] Sending file. Request path: '/home/css/materialdesignicons.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\materialdesignicons.min.css'
+2022-07-19 14:46:14.295 +05:30 [INF] Sending file. Request path: '/home/css/bootstrap.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\css\bootstrap.min.css'
+2022-07-19 14:46:14.296 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tobii.min.css - - - 200 4784 text/css 75.1863ms
+2022-07-19 14:46:14.297 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/style.css - - - 200 114199 text/css 76.0939ms
+2022-07-19 14:46:14.298 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/tiny-slider.css - - - 200 2181 text/css 77.0888ms
+2022-07-19 14:46:14.299 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/materialdesignicons.min.css - - - 200 274148 text/css 77.8370ms
+2022-07-19 14:46:14.300 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/css/bootstrap.min.css - - - 200 153408 text/css 25.0363ms
+2022-07-19 14:46:14.301 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - -
+2022-07-19 14:46:14.304 +05:30 [INF] Sending file. Request path: '/home/js/parallax.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\parallax.js'
+2022-07-19 14:46:14.305 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/parallax.js - - - 200 25603 application/javascript 4.6494ms
+2022-07-19 14:46:14.315 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - -
+2022-07-19 14:46:14.315 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - -
+2022-07-19 14:46:14.317 +05:30 [INF] Sending file. Request path: '/home/js/bootstrap.bundle.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\bootstrap.bundle.min.js'
+2022-07-19 14:46:14.318 +05:30 [INF] Sending file. Request path: '/home/js/tobii.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\tobii.min.js'
+2022-07-19 14:46:14.319 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/bootstrap.bundle.min.js - - - 200 80223 application/javascript 4.1338ms
+2022-07-19 14:46:14.320 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tobii.min.js - - - 200 17670 application/javascript 5.1317ms
+2022-07-19 14:46:14.320 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - -
+2022-07-19 14:46:14.321 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - -
+2022-07-19 14:46:14.322 +05:30 [INF] Sending file. Request path: '/home/js/tiny-slider.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\tiny-slider.js'
+2022-07-19 14:46:14.324 +05:30 [INF] Sending file. Request path: '/home/js/feather.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\feather.min.js'
+2022-07-19 14:46:14.324 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/tiny-slider.js - - - 200 31968 application/javascript 3.7563ms
+2022-07-19 14:46:14.326 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/feather.min.js - - - 200 75791 application/javascript 4.5105ms
+2022-07-19 14:46:14.327 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - -
+2022-07-19 14:46:14.329 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/js/app.js - -
+2022-07-19 14:46:14.330 +05:30 [INF] Sending file. Request path: '/home/js/plugins.init.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\plugins.init.js'
+2022-07-19 14:46:14.331 +05:30 [INF] Sending file. Request path: '/home/js/app.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\js\app.js'
+2022-07-19 14:46:14.331 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/plugins.init.js - - - 200 16186 application/javascript 4.8613ms
+2022-07-19 14:46:14.332 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/js/app.js - - - 200 6335 application/javascript 3.3122ms
+2022-07-19 14:46:14.333 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:46:14.333 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - -
+2022-07-19 14:46:14.335 +05:30 [INF] Sending file. Request path: '/images/logo/logo.svg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\logo\logo.svg'
+2022-07-19 14:46:14.336 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/logo/logo.svg - - - 200 15145 image/svg+xml 2.3730ms
+2022-07-19 14:46:14.336 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - -
+2022-07-19 14:46:14.338 +05:30 [INF] Sending file. Request path: '/images/illustration/edu_ilastration.png'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\illustration\edu_ilastration.png'
+2022-07-19 14:46:14.340 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/illustration/edu_ilastration.png - - - 200 64784 image/png 3.8234ms
+2022-07-19 14:46:14.340 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 7.4841ms
+2022-07-19 14:46:14.342 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - -
+2022-07-19 14:46:14.342 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - -
+2022-07-19 14:46:14.344 +05:30 [INF] Sending file. Request path: '/home/images/client/01.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\01.jpg'
+2022-07-19 14:46:14.345 +05:30 [INF] Sending file. Request path: '/home/images/client/04.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\04.jpg'
+2022-07-19 14:46:14.346 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/01.jpg - - - 200 31447 image/jpeg 4.0187ms
+2022-07-19 14:46:14.346 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/04.jpg - - - 200 32126 image/jpeg 3.9788ms
+2022-07-19 14:46:14.347 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - -
+2022-07-19 14:46:14.348 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - -
+2022-07-19 14:46:14.349 +05:30 [INF] Sending file. Request path: '/home/images/client/03.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\03.jpg'
+2022-07-19 14:46:14.351 +05:30 [INF] Sending file. Request path: '/home/images/client/02.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\02.jpg'
+2022-07-19 14:46:14.351 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/03.jpg - - - 200 26994 image/jpeg 4.2548ms
+2022-07-19 14:46:14.352 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/02.jpg - - - 200 24999 image/jpeg 3.9716ms
+2022-07-19 14:46:14.353 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - -
+2022-07-19 14:46:14.353 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - -
+2022-07-19 14:46:14.354 +05:30 [INF] Sending file. Request path: '/home/images/client/05.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\05.jpg'
+2022-07-19 14:46:14.355 +05:30 [INF] Sending file. Request path: '/home/images/client/06.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\client\06.jpg'
+2022-07-19 14:46:14.356 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/05.jpg - - - 200 22196 image/jpeg 3.1072ms
+2022-07-19 14:46:14.357 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/client/06.jpg - - - 200 30409 image/jpeg 3.8618ms
+2022-07-19 14:46:14.358 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - -
+2022-07-19 14:46:14.359 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - -
+2022-07-19 14:46:14.361 +05:30 [INF] Sending file. Request path: '/home/images/personal/1.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\personal\1.jpg'
+2022-07-19 14:46:14.362 +05:30 [INF] Sending file. Request path: '/home/images/personal/2.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\personal\2.jpg'
+2022-07-19 14:46:14.362 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/1.jpg - - - 200 67655 image/jpeg 4.5380ms
+2022-07-19 14:46:14.363 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/2.jpg - - - 200 83369 image/jpeg 3.6234ms
+2022-07-19 14:46:14.364 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - -
+2022-07-19 14:46:14.365 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:46:14.367 +05:30 [INF] Sending file. Request path: '/home/images/personal/3.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\personal\3.jpg'
+2022-07-19 14:46:14.368 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/personal/3.jpg - - - 200 85287 image/jpeg 4.6459ms
+2022-07-19 14:46:14.404 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.6883ms
+2022-07-19 14:46:14.850 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - -
+2022-07-19 14:46:14.852 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - -
+2022-07-19 14:46:14.855 +05:30 [INF] Sending file. Request path: '/home/images/shapes/shape2.png'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\shapes\shape2.png'
+2022-07-19 14:46:14.855 +05:30 [INF] Sending file. Request path: '/home/images/finance/bg.jpg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\images\finance\bg.jpg'
+2022-07-19 14:46:14.856 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/shapes/shape2.png - - - 200 475845 image/png 6.1656ms
+2022-07-19 14:46:14.858 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/images/finance/bg.jpg - - - 200 107786 image/jpeg 5.8782ms
+2022-07-19 14:46:15.001 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - -
+2022-07-19 14:46:15.004 +05:30 [INF] Sending file. Request path: '/home/fonts/materialdesignicons-webfont.woff2'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\Home\fonts\materialdesignicons-webfont.woff2'
+2022-07-19 14:46:15.006 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/home/fonts/materialdesignicons-webfont.woff2?v=5.9.55 - - - 200 325244 font/woff2 4.6160ms
+2022-07-19 14:46:17.203 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/ico/favicon.ico - -
+2022-07-19 14:46:17.205 +05:30 [INF] Sending file. Request path: '/images/ico/favicon.ico'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\ico\favicon.ico'
+2022-07-19 14:46:17.207 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/ico/favicon.ico - - - 200 5430 image/x-icon 3.5267ms
+2022-07-19 14:46:34.550 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/ - -
+2022-07-19 14:46:34.568 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:46:34.579 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:46:34.582 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/ - - - 302 0 - 31.3780ms
+2022-07-19 14:46:34.592 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - -
+2022-07-19 14:46:34.604 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:46:34.632 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:46:34.674 +05:30 [INF] Executing ViewResult, running view Login.
+2022-07-19 14:46:34.752 +05:30 [INF] Executed ViewResult - view Login executed in 80.2386ms.
+2022-07-19 14:46:34.753 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 119.1883ms
+2022-07-19 14:46:34.754 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:46:34.758 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - - - 200 - text/html;+charset=utf-8 166.0085ms
+2022-07-19 14:46:34.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/colors.css - -
+2022-07-19 14:46:34.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/vendors/css/vendors.min.css - -
+2022-07-19 14:46:34.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/bootstrap-extended.min.css - -
+2022-07-19 14:46:34.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/bootstrap.min.css - -
+2022-07-19 14:46:34.795 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/components.css - -
+2022-07-19 14:46:34.795 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/core/menu/menu-types/vertical-menu.css - -
+2022-07-19 14:46:34.826 +05:30 [INF] Sending file. Request path: '/css/components.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\components.css'
+2022-07-19 14:46:34.830 +05:30 [INF] Sending file. Request path: '/css/bootstrap-extended.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\bootstrap-extended.min.css'
+2022-07-19 14:46:34.826 +05:30 [INF] Sending file. Request path: '/vendors/css/vendors.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\vendors\css\vendors.min.css'
+2022-07-19 14:46:34.831 +05:30 [INF] Sending file. Request path: '/css/colors.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\colors.css'
+2022-07-19 14:46:34.833 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/components.css - - - 200 95378 text/css 37.8142ms
+2022-07-19 14:46:34.834 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/bootstrap-extended.min.css - - - 200 80326 text/css 41.9485ms
+2022-07-19 14:46:34.834 +05:30 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\bootstrap.min.css'
+2022-07-19 14:46:34.838 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/colors.css - - - 200 125869 text/css 46.2072ms
+2022-07-19 14:46:34.835 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/vendors/css/vendors.min.css - - - 200 51320 text/css 42.3149ms
+2022-07-19 14:46:34.840 +05:30 [INF] Sending file. Request path: '/css/core/menu/menu-types/vertical-menu.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\core\menu\menu-types\vertical-menu.css'
+2022-07-19 14:46:34.840 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/pages/page-auth.css - -
+2022-07-19 14:46:34.842 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/bootstrap.min.css - - - 200 195850 text/css 49.9666ms
+2022-07-19 14:46:34.843 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/js/core/app-menu.js - -
+2022-07-19 14:46:34.846 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/js/core/app.js - -
+2022-07-19 14:46:34.846 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/css/style.css - -
+2022-07-19 14:46:34.849 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/core/menu/menu-types/vertical-menu.css - - - 200 11643 text/css 54.2180ms
+2022-07-19 14:46:34.851 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/vendors/js/vendors.min.js - -
+2022-07-19 14:46:34.853 +05:30 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\style.css'
+2022-07-19 14:46:34.853 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/lib/jquery-validation/dist/jquery.validate.js - -
+2022-07-19 14:46:34.855 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/style.css - - - 200 0 text/css 8.3098ms
+2022-07-19 14:46:34.862 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2022-07-19 14:46:34.863 +05:30 [INF] Sending file. Request path: '/css/pages/page-auth.css'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\css\pages\page-auth.css'
+2022-07-19 14:46:34.866 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/css/pages/page-auth.css - - - 200 5752 text/css 26.5114ms
+2022-07-19 14:46:34.867 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/js/scripts/pages/page-auth-login.js - -
+2022-07-19 14:46:34.882 +05:30 [INF] Sending file. Request path: '/js/scripts/pages/page-auth-login.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\js\scripts\pages\page-auth-login.js'
+2022-07-19 14:46:34.884 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/js/scripts/pages/page-auth-login.js - - - 200 1215 application/javascript 17.0028ms
+2022-07-19 14:46:34.890 +05:30 [INF] Sending file. Request path: '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'
+2022-07-19 14:46:34.894 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:46:34.886 +05:30 [INF] Sending file. Request path: '/js/core/app-menu.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\js\core\app-menu.js'
+2022-07-19 14:46:34.890 +05:30 [INF] Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\lib\jquery-validation\dist\jquery.validate.js'
+2022-07-19 14:46:34.886 +05:30 [INF] Sending file. Request path: '/js/core/app.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\js\core\app.js'
+2022-07-19 14:46:34.895 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19798 application/javascript 34.1327ms
+2022-07-19 14:46:34.895 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.1619ms
+2022-07-19 14:46:34.897 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/js/core/app-menu.js - - - 200 34494 application/javascript 53.1763ms
+2022-07-19 14:46:34.898 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/lib/jquery-validation/dist/jquery.validate.js - - - 200 50276 application/javascript 44.4352ms
+2022-07-19 14:46:34.899 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/js/core/app.js - - - 200 39765 application/javascript 52.4751ms
+2022-07-19 14:46:34.900 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/images/pages/login-v2.svg - -
+2022-07-19 14:46:34.900 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:46:34.912 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.7685ms
+2022-07-19 14:46:34.916 +05:30 [INF] Sending file. Request path: '/images/pages/login-v2.svg'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\images\pages\login-v2.svg'
+2022-07-19 14:46:34.918 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/images/pages/login-v2.svg - - - 200 124208 image/svg+xml 17.9323ms
+2022-07-19 14:46:34.995 +05:30 [INF] Sending file. Request path: '/vendors/js/vendors.min.js'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\vendors\js\vendors.min.js'
+2022-07-19 14:46:34.996 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/vendors/js/vendors.min.js - - - 200 381841 application/javascript 144.8023ms
+2022-07-19 14:46:35.109 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - -
+2022-07-19 14:46:35.118 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:46:35.120 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:46:35.121 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - - - 401 0 - 12.0086ms
+2022-07-19 14:46:37.206 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:57679/Account/Login?returnurl=%2Fswagger%2Fv1%2F application/x-www-form-urlencoded 256
+2022-07-19 14:46:37.209 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:46:37.220 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmartLearning.Web.DTO.AccountViewModels.LoginViewModel, System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:46:37.265 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:46:37.996 +05:30 [ERR] Failed executing DbCommand (91ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[BoardId1], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM [Users] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2022-07-19 14:46:38.177 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'SmartLearning.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BoardId1'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:858a3c5d-ec11-4d28-849e-1c964b35afd0
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BoardId1'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:858a3c5d-ec11-4d28-849e-1c964b35afd0
+Error Number:207,State:1,Class:16
+2022-07-19 14:46:38.268 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 1045.3755ms
+2022-07-19 14:46:38.271 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:46:38.273 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BoardId1'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByEmailAsync(String email)
+   at SmartLearning.Web.Controllers.AccountController.Login(LoginViewModel model, String returnUrl) in D:\divyeshio\SmartLearning\src\SmartLearning.Web\Controllers\AccountController.cs:line 130
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:858a3c5d-ec11-4d28-849e-1c964b35afd0
+Error Number:207,State:1,Class:16
+2022-07-19 14:46:38.524 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:46:38.526 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:46:38.527 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:46:38.530 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:46:38.630 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:57679/Account/Login?returnurl=%2Fswagger%2Fv1%2F application/x-www-form-urlencoded 256 - 500 - text/html;+charset=utf-8 1424.1228ms
+2022-07-19 14:46:38.645 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:46:38.645 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:46:38.647 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 2.0019ms
+2022-07-19 14:46:38.661 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.8418ms
+2022-07-19 14:46:38.733 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/favicon.ico - -
+2022-07-19 14:46:38.740 +05:30 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'D:\divyeshio\SmartLearning\src\SmartLearning.Web\wwwroot\favicon.ico'
+2022-07-19 14:46:38.742 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/favicon.ico - - - 200 5430 image/x-icon 9.1672ms
+2022-07-19 14:46:41.184 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - -
+2022-07-19 14:46:41.187 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:46:41.190 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:46:41.193 +05:30 [INF] Executing ViewResult, running view Login.
+2022-07-19 14:46:41.200 +05:30 [INF] Executed ViewResult - view Login executed in 7.0349ms.
+2022-07-19 14:46:41.201 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 8.4445ms
+2022-07-19 14:46:41.201 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:46:41.204 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - - - 200 - text/html;+charset=utf-8 20.2908ms
+2022-07-19 14:46:41.236 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:46:41.237 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.2367ms
+2022-07-19 14:46:41.335 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - -
+2022-07-19 14:46:41.339 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:46:41.341 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:46:41.342 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - - - 401 0 - 6.5464ms
+2022-07-19 14:47:22.034 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:47:23.394 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:47:23.396 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:47:23.398 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:47:23.435 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:47:23.649 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:47:24.184 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:47:24.251 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:47:24.256 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:47:24.259 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:47:24.280 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:47:24.304 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:47:24.308 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:47:24.326 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:47:24.446 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:47:24.451 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:47:24.452 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:47:24.453 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:47:25.590 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:47:25.882 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:47:26.087 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:47:26.096 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:47:26.107 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:47:26.125 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:47:26.352 +05:30 [INF] Executed ViewResult - view Index executed in 227.5623ms.
+2022-07-19 14:47:26.360 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 246.5773ms
+2022-07-19 14:47:26.362 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:47:26.430 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 864.6024ms
+2022-07-19 14:47:26.471 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:47:26.485 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:47:26.487 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 16.7385ms
+2022-07-19 14:47:26.546 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 60.7558ms
+2022-07-19 14:47:34.086 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/ - -
+2022-07-19 14:47:34.099 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:47:34.105 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:47:34.107 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/ - - - 302 0 - 20.9984ms
+2022-07-19 14:47:34.117 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - -
+2022-07-19 14:47:34.131 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:47:34.152 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:47:34.195 +05:30 [INF] Executing ViewResult, running view Login.
+2022-07-19 14:47:34.273 +05:30 [INF] Executed ViewResult - view Login executed in 79.7866ms.
+2022-07-19 14:47:34.274 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 119.2811ms
+2022-07-19 14:47:34.275 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:47:34.280 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - - - 200 - text/html;+charset=utf-8 162.6946ms
+2022-07-19 14:47:34.320 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:47:34.321 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:47:34.321 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.4773ms
+2022-07-19 14:47:34.333 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.3793ms
+2022-07-19 14:47:34.478 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - -
+2022-07-19 14:47:34.487 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:47:34.491 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:47:34.494 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - - - 401 0 - 15.2971ms
+2022-07-19 14:48:09.323 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679//swagger/v1/swagger.json - -
+2022-07-19 14:48:09.335 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:48:09.338 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:48:09.339 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679//swagger/v1/swagger.json - - - 302 0 - 16.3154ms
+2022-07-19 14:48:09.355 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2F%2Fswagger%2Fv1%2Fswagger.json - -
+2022-07-19 14:48:09.357 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:48:09.358 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:48:09.362 +05:30 [INF] Executing ViewResult, running view Login.
+2022-07-19 14:48:09.372 +05:30 [INF] Executed ViewResult - view Login executed in 10.5322ms.
+2022-07-19 14:48:09.372 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 13.3823ms
+2022-07-19 14:48:09.373 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:48:09.377 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2F%2Fswagger%2Fv1%2Fswagger.json - - - 200 - text/html;+charset=utf-8 21.8127ms
+2022-07-19 14:48:09.417 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:48:09.417 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:48:09.418 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.2244ms
+2022-07-19 14:48:09.442 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.3233ms
+2022-07-19 14:48:09.490 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - -
+2022-07-19 14:48:09.495 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:48:09.496 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:48:09.499 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - - - 401 0 - 9.3998ms
+2022-07-19 14:48:21.696 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2F%2Fswagger%2Fv1%2Fswagger.json - -
+2022-07-19 14:48:21.699 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:48:21.704 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:48:21.708 +05:30 [INF] Executing ViewResult, running view Login.
+2022-07-19 14:48:21.722 +05:30 [INF] Executed ViewResult - view Login executed in 14.872ms.
+2022-07-19 14:48:21.723 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 16.937ms
+2022-07-19 14:48:21.723 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:48:21.728 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2F%2Fswagger%2Fv1%2Fswagger.json - - - 200 - text/html;+charset=utf-8 31.9589ms
+2022-07-19 14:48:21.766 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:48:21.767 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:48:21.768 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.4347ms
+2022-07-19 14:48:21.784 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.1221ms
+2022-07-19 14:48:21.840 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - -
+2022-07-19 14:48:21.871 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:48:21.873 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:48:21.874 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - - - 401 0 - 33.6490ms
+2022-07-19 14:48:23.812 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - -
+2022-07-19 14:48:23.818 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:48:23.820 +05:30 [INF] Route matched with {action = "Login", controller = "Account", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller SmartLearning.Web.Controllers.AccountController (SmartLearning.Web).
+2022-07-19 14:48:23.821 +05:30 [INF] Executing ViewResult, running view Login.
+2022-07-19 14:48:23.829 +05:30 [INF] Executed ViewResult - view Login executed in 7.2533ms.
+2022-07-19 14:48:23.830 +05:30 [INF] Executed action SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web) in 8.6225ms
+2022-07-19 14:48:23.830 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.AccountController.Login (SmartLearning.Web)'
+2022-07-19 14:48:23.840 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/Login?ReturnUrl=%2Fswagger%2Fv1%2F - - - 200 - text/html;+charset=utf-8 27.6163ms
+2022-07-19 14:48:23.891 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:48:23.893 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 2.0713ms
+2022-07-19 14:48:24.077 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - -
+2022-07-19 14:48:24.084 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-07-19 14:48:24.088 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2022-07-19 14:48:24.089 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Account/~/data/locales/en.json - - - 401 0 - 12.2515ms
+2022-07-19 14:48:24.832 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:48:24.837 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:48:24.838 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:48:24.840 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:48:24.852 +05:30 [INF] Executed ViewResult - view Index executed in 11.7872ms.
+2022-07-19 14:48:24.853 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 12.9228ms
+2022-07-19 14:48:24.853 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:48:25.180 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 348.6178ms
+2022-07-19 14:48:25.253 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:48:25.256 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 2.3457ms
+2022-07-19 14:48:30.898 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 14:48:31.073 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - SmartLearning.Web.Controllers.ChaptersController.AddChapter (SmartLearning.Web). See inner exception
+ ---> System.Reflection.AmbiguousMatchException: Ambiguous match found.
+   at System.RuntimeType.GetPropertyImpl(String name, BindingFlags bindingAttr, Binder binder, Type returnType, Type[] types, ParameterModifier[] modifiers)
+   at System.Type.GetProperty(String name, BindingFlags bindingAttr)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.PropertyInfo(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.CustomAttributes(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.<>c.<GenerateParameters>b__10_0(ApiParameterDescription apiParam)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 14:48:31.131 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 500 - text/html;+charset=utf-8 233.0372ms
+2022-07-19 14:48:31.155 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:48:31.155 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:48:31.156 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.4089ms
+2022-07-19 14:48:31.169 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.9179ms
+2022-07-19 14:51:46.777 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:51:48.162 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:51:48.164 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:51:48.167 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:51:48.205 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:51:48.426 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:51:48.930 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:51:48.986 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:51:48.996 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:51:48.997 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:51:49.017 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:51:49.043 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:51:49.047 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:51:49.068 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:51:49.190 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:51:49.194 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:51:49.196 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:51:49.196 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:51:50.157 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:51:50.344 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:51:50.743 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:51:50.752 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:51:50.772 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:51:50.793 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:51:51.045 +05:30 [INF] Executed ViewResult - view Index executed in 258.4127ms.
+2022-07-19 14:51:51.055 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 281.0507ms
+2022-07-19 14:51:51.058 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:51:51.142 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 1027.4107ms
+2022-07-19 14:51:51.173 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:51:51.177 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:51:51.188 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 14.6829ms
+2022-07-19 14:51:51.257 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 80.1575ms
+2022-07-19 14:52:02.406 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/ - -
+2022-07-19 14:52:02.422 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/ - - - 404 0 - 16.1445ms
+2022-07-19 14:52:08.736 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 14:52:08.882 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - SmartLearning.Web.Controllers.ChaptersController.AddChapter (SmartLearning.Web). See inner exception
+ ---> System.Reflection.AmbiguousMatchException: Ambiguous match found.
+   at System.RuntimeType.GetPropertyImpl(String name, BindingFlags bindingAttr, Binder binder, Type returnType, Type[] types, ParameterModifier[] modifiers)
+   at System.Type.GetProperty(String name, BindingFlags bindingAttr)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.PropertyInfo(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.CustomAttributes(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.<>c.<GenerateParameters>b__10_0(ApiParameterDescription apiParam)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 14:52:08.949 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 500 - text/html;+charset=utf-8 212.2149ms
+2022-07-19 14:52:08.964 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:52:08.965 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:52:08.966 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 1.4135ms
+2022-07-19 14:52:08.983 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 18.9716ms
+2022-07-19 14:54:04.907 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:54:06.302 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:54:06.304 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:54:06.306 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:54:06.345 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:54:06.556 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:54:07.062 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:54:07.127 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:54:07.133 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:54:07.134 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:54:07.153 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:54:07.177 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:54:07.180 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:54:07.205 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:54:07.321 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:54:07.325 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:54:07.327 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:54:07.327 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:54:08.340 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:54:08.703 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:54:08.940 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:54:08.945 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:54:08.957 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:54:08.972 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:54:09.198 +05:30 [INF] Executed ViewResult - view Index executed in 230.7017ms.
+2022-07-19 14:54:09.206 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 247.0988ms
+2022-07-19 14:54:09.208 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:54:09.273 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 952.7026ms
+2022-07-19 14:54:09.304 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:54:09.313 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:54:09.321 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 16.8462ms
+2022-07-19 14:54:09.385 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 72.1138ms
+2022-07-19 14:54:21.615 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/ - -
+2022-07-19 14:54:21.626 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/ - - - 404 0 - 10.5691ms
+2022-07-19 14:54:29.174 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 14:54:29.306 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - SmartLearning.Web.Controllers.ChaptersController.AddChapter (SmartLearning.Web). See inner exception
+ ---> System.Reflection.AmbiguousMatchException: Ambiguous match found.
+   at System.RuntimeType.GetPropertyImpl(String name, BindingFlags bindingAttr, Binder binder, Type returnType, Type[] types, ParameterModifier[] modifiers)
+   at System.Type.GetProperty(String name, BindingFlags bindingAttr)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.PropertyInfo(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.CustomAttributes(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.<>c.<GenerateParameters>b__10_0(ApiParameterDescription apiParam)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 14:54:29.362 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 500 - text/html;+charset=utf-8 187.5375ms
+2022-07-19 14:54:29.383 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:54:29.386 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:54:29.389 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 5.2318ms
+2022-07-19 14:54:29.411 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.2530ms
+2022-07-19 14:55:52.563 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:55:53.808 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:55:53.810 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:55:53.812 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:55:53.847 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:55:54.045 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:55:54.484 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:55:54.547 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:55:54.551 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:55:54.552 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:55:54.568 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:55:54.587 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:55:54.592 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:55:54.608 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:56:39.072 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:56:40.310 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:56:40.312 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:56:40.314 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:56:40.347 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:56:40.543 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:56:40.981 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:56:41.031 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:56:41.036 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:56:41.038 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:56:41.055 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:56:41.075 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:56:41.079 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:56:41.095 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:56:41.197 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:56:41.200 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:56:41.200 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:56:41.201 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:56:41.857 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/ - -
+2022-07-19 14:56:42.047 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:56:42.416 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:56:42.464 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:56:42.523 +05:30 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller SmartLearning.Web.Controllers.HomeController (SmartLearning.Web).
+2022-07-19 14:56:42.567 +05:30 [INF] Executing ViewResult, running view Index.
+2022-07-19 14:56:42.877 +05:30 [INF] Executed ViewResult - view Index executed in 326.2743ms.
+2022-07-19 14:56:42.885 +05:30 [INF] Executed action SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web) in 356.2847ms
+2022-07-19 14:56:42.888 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Controllers.HomeController.Index (SmartLearning.Web)'
+2022-07-19 14:56:42.969 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/ - - - 200 - text/html;+charset=utf-8 1121.6611ms
+2022-07-19 14:56:43.023 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:56:43.026 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:56:43.031 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 7.7709ms
+2022-07-19 14:56:43.106 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 79.2685ms
+2022-07-19 14:57:22.456 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 14:57:23.633 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:57:23.635 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:57:23.637 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 14:57:23.671 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 14:57:23.857 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 14:57:24.320 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:57:24.366 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:57:24.370 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:57:24.371 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 14:57:24.389 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 14:57:24.410 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 14:57:24.414 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 14:57:24.431 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 14:57:24.533 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 14:57:24.536 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 14:57:24.537 +05:30 [INF] Hosting environment: Development
+2022-07-19 14:57:24.537 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 14:57:25.285 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 14:57:25.457 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 14:57:25.865 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - SmartLearning.Web.Controllers.ChaptersController.AddChapter (SmartLearning.Web). See inner exception
+ ---> System.Reflection.AmbiguousMatchException: Ambiguous match found.
+   at System.RuntimeType.GetPropertyImpl(String name, BindingFlags bindingAttr, Binder binder, Type returnType, Type[] types, ParameterModifier[] modifiers)
+   at System.Type.GetProperty(String name, BindingFlags bindingAttr)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.PropertyInfo(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.CustomAttributes(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.<>c.<GenerateParameters>b__10_0(ApiParameterDescription apiParam)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 14:57:26.067 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:57:26.070 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 500 - text/html;+charset=utf-8 801.6527ms
+2022-07-19 14:57:26.084 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 16.1847ms
+2022-07-19 14:57:26.089 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:57:26.152 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 63.1045ms
+2022-07-19 14:58:33.225 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 14:58:33.231 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - SmartLearning.Web.Controllers.ChaptersController.AddChapter (SmartLearning.Web). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 14:58:33.246 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 500 - text/html;+charset=utf-8 21.3641ms
+2022-07-19 14:58:33.269 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 14:58:33.280 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 14:58:33.297 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 22.4369ms
+2022-07-19 14:58:33.312 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 43.6205ms
+2022-07-19 15:01:16.115 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 15:01:17.392 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 15:01:17.394 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 15:01:17.396 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 15:01:17.431 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 15:01:17.626 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 15:01:18.089 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 15:01:18.140 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 15:01:18.146 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 15:01:18.147 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 15:01:18.166 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 15:01:18.186 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 15:01:18.190 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 15:01:18.210 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 15:01:18.312 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 15:01:18.316 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 15:01:18.317 +05:30 [INF] Hosting environment: Development
+2022-07-19 15:01:18.318 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 15:01:19.132 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 15:01:19.488 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 15:01:19.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 887.9637ms
+2022-07-19 15:01:25.999 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1 - -
+2022-07-19 15:01:26.022 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 15:01:26.025 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1 - - - 404 0 - 26.5540ms
+2022-07-19 15:01:31.526 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger - -
+2022-07-19 15:01:31.529 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger - - - 301 0 - 2.8990ms
+2022-07-19 15:01:31.538 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 15:01:31.716 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui.css - -
+2022-07-19 15:01:31.717 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-standalone-preset.js - -
+2022-07-19 15:01:31.720 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 15:01:31.716 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-bundle.js - -
+2022-07-19 15:01:31.733 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 15.3383ms
+2022-07-19 15:01:31.736 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 197.4791ms
+2022-07-19 15:01:31.774 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-07-19 15:01:31.775 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2022-07-19 15:01:31.775 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-07-19 15:01:31.776 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-standalone-preset.js - - - 200 339486 application/javascript 58.6838ms
+2022-07-19 15:01:31.777 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui.css - - - 200 143943 text/css 61.0922ms
+2022-07-19 15:01:31.778 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-bundle.js - - - 200 1095087 application/javascript 61.7891ms
+2022-07-19 15:01:31.779 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 15:01:31.821 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 41.9937ms
+2022-07-19 15:01:32.006 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 15:01:32.028 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/favicon-32x32.png - -
+2022-07-19 15:01:32.030 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 23.9168ms
+2022-07-19 15:01:32.030 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2022-07-19 15:01:32.033 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/favicon-32x32.png - - - 200 628 image/png 4.1324ms
+2022-07-19 15:02:14.785 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:57679/board application/json 74
+2022-07-19 15:02:14.795 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync (SmartLearning.Web)'
+2022-07-19 15:02:14.824 +05:30 [INF] Route matched with {action = "Handle", controller = "Add", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.AddBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.AddBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Add (SmartLearning.Web).
+2022-07-19 15:02:14.937 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 15:02:15.321 +05:30 [ERR] Failed executing DbCommand (72ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Boards] ([AbbrName], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Boards]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2022-07-19 15:02:15.374 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'SmartLearning.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'AbbrName'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8c93f9cb-36fb-4635-aab3-728c1a7eaeee
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'AbbrName'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8c93f9cb-36fb-4635-aab3-728c1a7eaeee
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-07-19 15:02:15.481 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync (SmartLearning.Web) in 649.3679ms
+2022-07-19 15:02:15.485 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync (SmartLearning.Web)'
+2022-07-19 15:02:15.487 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'AbbrName'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:8c93f9cb-36fb-4635-aab3-728c1a7eaeee
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at SmartLearning.Infrastructure.Data.ApplicationDbContext.SaveChangesAsync(CancellationToken cancellationToken) in D:\divyeshio\SmartLearning\src\SmartLearning.Infrastructure\Data\ApplicationDbContext.cs:line 94
+   at Ardalis.Specification.EntityFrameworkCore.RepositoryBase`1.SaveChangesAsync(CancellationToken cancellationToken)
+   at Ardalis.Specification.EntityFrameworkCore.RepositoryBase`1.AddAsync(T entity, CancellationToken cancellationToken)
+   at SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync(AddBoardRequest request, CancellationToken cancellationToken) in D:\divyeshio\SmartLearning\src\SmartLearning.Web\Endpoints\BoardEndpoints\Add.cs:line 38
+   at lambda_method714(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 15:02:15.689 +05:30 [WRN] The foreign key property 'Class.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 15:02:15.691 +05:30 [WRN] The foreign key property 'ClassProposal.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 15:02:15.691 +05:30 [WRN] The foreign key property 'ApplicationUser.BoardId1' was created in shadow state because a conflicting property with the simple name 'BoardId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2022-07-19 15:02:15.693 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 15:02:15.773 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:57679/board application/json 74 - 500 - text/html;+charset=utf-8 987.3543ms

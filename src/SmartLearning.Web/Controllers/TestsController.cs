@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Core.Entities.TestAggregate;
+using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Controllers
 {
-    [Authorize]
+  [Authorize]
     public class TestsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -30,7 +30,7 @@ namespace SmartLearning.Web.Controllers
         {
             if (User.IsInRole("Admin"))
             {
-                ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", board);
+                ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
                 ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
                 ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name).ToList(), "Id", "Name", subject);
                 var tests = from s in _context.Tests
@@ -333,7 +333,7 @@ namespace SmartLearning.Web.Controllers
 
         public async Task<SelectList> getBoards(long? boardId = null)
         {
-            return new SelectList(await _context.Boards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
+            return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
         }
         public async Task<SelectList> getSubjects(long? subjectId = null)
         {

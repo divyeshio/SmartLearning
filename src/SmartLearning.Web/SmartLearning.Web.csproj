@@ -33,4 +33,8 @@
     <ProjectReference Include="..\SmartLearning.Infrastructure\SmartLearning.Infrastructure.csproj" />
   </ItemGroup>
   
+  <ItemGroup>
+    <Folder Include="Endpoints\ClassEndpoints\" />
+  </ItemGroup>
+  
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace SmartLearning.Core.Entities
+﻿namespace SmartLearning.Core.Entities.UsersAggregate
 {
   public enum AccountTypeEnum
   {

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
 using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Web.Controllers
@@ -16,11 +15,11 @@ namespace SmartLearning.Web.Controllers
       _context = context;
     }
 
-    // GET: Boards
+ /*   // GET: Boards
     public async Task<IActionResult> Index()
     {
       return View(await _context.Boards.AsNoTracking().ToListAsync());
-    }
+    }*/
 
 
     // GET: Boards/Add
@@ -30,22 +29,22 @@ namespace SmartLearning.Web.Controllers
     }
 
     // POST: Boards/Create
-    [HttpPost]
+    /*[HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Add([Bind("Id,Name")] Board board)
     {
       if (ModelState.IsValid)
       {
-        board.Name = board.Name.ToUpper();
+        board.AbbrName = board.AbbrName.ToUpper();
         _context.Add(board);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
       }
       return View(board);
-    }
+    }*/
 
     // GET: Boards/Edit/5
-    public async Task<IActionResult> Edit(long? id)
+/*    public async Task<IActionResult> Edit(long? id)
     {
       if (id == null)
       {
@@ -58,10 +57,10 @@ namespace SmartLearning.Web.Controllers
         return NotFound();
       }
       return View(board);
-    }
+    }*/
 
     // POST: Boards/Edit/5
-    [HttpPost]
+    /*[HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(long id, [Bind("Id,Name")] Board board)
     {
@@ -74,7 +73,7 @@ namespace SmartLearning.Web.Controllers
       {
         try
         {
-          board.Name = board.Name.ToUpper();
+          board.AbbrName = board.AbbrName.ToUpper();
           _context.Update(board);
           await _context.SaveChangesAsync();
         }
@@ -92,11 +91,11 @@ namespace SmartLearning.Web.Controllers
         return RedirectToAction(nameof(Index));
       }
       return View(board);
-    }
+    }*/
 
 
     // POST: Boards/Delete/5
-    [HttpPost]
+/*    [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(long id)
     {
@@ -110,6 +109,6 @@ namespace SmartLearning.Web.Controllers
     private bool BoardExists(long id)
     {
       return _context.Boards.Any(e => e.Id == id);
-    }
+    }*/
   }
 }

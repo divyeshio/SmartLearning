@@ -20,7 +20,7 @@ namespace SmartLearning.Web.Controllers
     // GET: Classes
     public async Task<IActionResult> Index(long? subject, long? board, string standard)
     {
-      ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", board);
+      ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
       ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
       ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", subject);
       var classes = from s in _context.Classes
@@ -65,7 +65,7 @@ namespace SmartLearning.Web.Controllers
     // GET: Classes/Add
     public IActionResult Add()
     {
-      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name");
+      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name");
       ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name");
       ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name");
       return View();
@@ -85,14 +85,14 @@ namespace SmartLearning.Web.Controllers
         ModelState.Remove("Name");
         if (await _context.Classes.Where(c => c.StandardId == standard.Id && c.SubjectId == subject.Id && c.BoardId == board.Id).FirstOrDefaultAsync() != null)
         {
-          ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", group.BoardId);
+          ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", group.BoardId);
           ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", group.StandardId);
           ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", group.SubjectId);
           ModelState.AddModelError(string.Empty, "Class Already Exists");
           return View(group);
         }
 
-        group.Name = Class.GenerateGroupName(board.Name, standard.DisplayName, subject.Name);
+        group.Name = Class.GenerateGroupName(board.AbbrName, standard.DisplayName, subject.Name);
         if (ModelState.IsValid)
         {
           _context.Add(group);
@@ -104,7 +104,7 @@ namespace SmartLearning.Web.Controllers
       {
         ModelState.AddModelError(string.Empty, "Invalid Details");
       }
-      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", group.BoardId);
+      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", group.BoardId);
       ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", group.StandardId);
       ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", group.SubjectId);
       return View(group);
@@ -123,7 +123,7 @@ namespace SmartLearning.Web.Controllers
       {
         return NotFound();
       }
-      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", group.BoardId);
+      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", group.BoardId);
       ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Id", group.StandardId);
       ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", group.SubjectId);
       return View(group);

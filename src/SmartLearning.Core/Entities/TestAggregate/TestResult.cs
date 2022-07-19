@@ -3,7 +3,7 @@ using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.TestAggregate
 {
-  public class TestResult : BaseEntity
+  public class TestResult : EntityBase
   {
     [Key]
     public long Id { get; set; }

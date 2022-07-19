@@ -25,4 +25,12 @@
     <ProjectReference Include="..\SmartLearning.SharedKernel\SmartLearning.SharedKernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\BoardAggregate\Events\" />
+    <Folder Include="Entities\BoardAggregate\Handlers\" />
+    <Folder Include="Entities\UsersAggregate\Handlers\" />
+    <Folder Include="Entities\UsersAggregate\Events\" />
+    <Folder Include="Entities\UsersAggregate\Specifications\" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using SmartLearning.Core.Entities;
+using SmartLearning.Core.Entities.UsersAggregate;
 
 namespace SmartLearning.Infrastructure.Data
 {

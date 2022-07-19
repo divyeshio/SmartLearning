@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO;
 
@@ -444,7 +444,7 @@ ReturnWithError:
 
     public async Task<SelectList> getBoards(long? boardId = null)
     {
-      return new SelectList(await _context.Boards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
+      return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
     }
     public async Task<SelectList> getSubjects(long? subjectId = null)
     {

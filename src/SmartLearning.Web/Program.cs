@@ -70,9 +70,9 @@ builder.Services.AddAuthentication();
 
 builder.Services.AddAuthorization(options =>
 {
-    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+    /*options.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
-        .Build();
+        .Build();*/
 });
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -119,6 +119,13 @@ app.UseHttpsRedirection();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseRouting();
+
+// Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwagger();
+
+// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -132,11 +139,7 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseCookiePolicy();
 
 
-// Enable middleware to serve generated Swagger as a JSON endpoint.
-app.UseSwagger();
 
-// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
 
 app.UseEndpoints(endpoints =>
 {

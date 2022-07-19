@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.LiveClassAggregate;
+using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Controllers
 {
-    [Authorize]
+  [Authorize]
     public class LiveController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -64,7 +64,7 @@ namespace SmartLearning.Web.Controllers
             {
                 return RedirectToAction(nameof(Class), new { id = liveClass.Id });
             }
-            ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name");
+            ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name");
             ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name");
             ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name");
             return View();
@@ -134,7 +134,7 @@ namespace SmartLearning.Web.Controllers
                     return RedirectToAction(nameof(Class), new { id = liveClass.Id });
                 }
             }
-            ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", vm.Boards);
+            ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", vm.Boards);
             ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", vm.Standard);
             ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", vm.Subject);
             return View(vm);

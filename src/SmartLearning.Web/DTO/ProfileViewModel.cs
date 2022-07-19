@@ -1,4 +1,4 @@
-﻿using SmartLearning.Core.Entities;
+﻿using SmartLearning.Core.Entities.UsersAggregate;
 
 namespace SmartLearning.Web.DTO
 {

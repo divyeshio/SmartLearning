@@ -25,7 +25,7 @@ namespace SmartLearning.Web.Controllers
         {
             if (HttpContext.User.IsInRole("Admin"))
             {
-                ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", board);
+                ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
                 ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
                 ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", subject);
                 var chapters = from s in _context.Chapters
@@ -49,7 +49,7 @@ namespace SmartLearning.Web.Controllers
         }
 
         // GET: Chapters/Create
-        [Route("/Chapters/Add/Admin", Name = "AddChapter")]
+       /* [Route("/Chapters/Add/Admin", Name = "AddChapter")]
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> AddChapter()
@@ -80,7 +80,7 @@ namespace SmartLearning.Web.Controllers
             }
             return View(chapter);
         }
-
+*/
         public IActionResult Add()
         {
             return View();
@@ -207,7 +207,7 @@ namespace SmartLearning.Web.Controllers
 
         public async Task<SelectList> getBoards(long? boardId = null)
         {
-            return new SelectList(await _context.Boards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
+            return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
         }
         public async Task<SelectList> getSubjects(long? subjectId = null)
         {

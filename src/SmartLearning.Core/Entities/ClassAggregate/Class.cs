@@ -1,12 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using SmartLearning.Core.Entities.BoardAggregate;
 using SmartLearning.Core.Entities.Common;
+using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.Entities.ClassAggregate
 {
   [Index(nameof(Name), IsUnique = true)]
-  public class Class : BaseEntity
+  public class Class : EntityBase
   {
     [Key]
     public string Id { get; set; } = Guid.NewGuid().ToString();

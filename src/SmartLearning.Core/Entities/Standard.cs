@@ -6,7 +6,7 @@ using SmartLearning.SharedKernel;
 namespace SmartLearning.Core.Entities
 {
   [Index(nameof(Name), IsUnique = true)]
-  public class Standard : BaseEntity
+  public class Standard : EntityBase
   {
 
     [Key]

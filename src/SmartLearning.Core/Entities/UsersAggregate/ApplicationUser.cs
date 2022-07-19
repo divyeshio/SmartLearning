@@ -1,13 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using SmartLearning.Core.Entities.BoardAggregate;
 using SmartLearning.Core.Entities.ClassAggregate;
 using SmartLearning.Core.Entities.Common;
 using SmartLearning.Core.Entities.TestAggregate;
+using SmartLearning.SharedKernel;
+using SmartLearning.SharedKernel.Interfaces;
 
-namespace SmartLearning.Core.Entities
+namespace SmartLearning.Core.Entities.UsersAggregate
 {
-  public class ApplicationUser : IdentityUser
+  public class ApplicationUser : IdentityUser, IAggregateRoot
   {
     public bool? AdminApproved { get; set; }
     [Required]

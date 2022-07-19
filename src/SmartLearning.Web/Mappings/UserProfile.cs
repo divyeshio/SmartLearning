@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SmartLearning.Core.Entities;
+using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Mappings
