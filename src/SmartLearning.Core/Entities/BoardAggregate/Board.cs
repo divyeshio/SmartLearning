@@ -9,7 +9,7 @@ namespace SmartLearning.Core.Entities.BoardAggregate;
 public class Board : EntityBase, IAggregateRoot
 {
 
-  [Display(Name = "Board Name")]
+  
   public string AbbrName { get; private set; }
   public string Name { get; private set; }
 

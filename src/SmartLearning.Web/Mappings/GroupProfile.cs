@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Mappings
@@ -8,8 +8,8 @@ namespace SmartLearning.Web.Mappings
   {
     public GroupProfile()
     {
-      CreateMap<Class, ClassViewModel>();
-      CreateMap<ClassViewModel, Class>();
+      CreateMap<Classroom, ClassViewModel>();
+      CreateMap<ClassViewModel, Classroom>();
     }
   }
 }

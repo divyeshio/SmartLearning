@@ -1,6 +1,6 @@
 ﻿using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Infrastructure.Data;
+namespace SmartLearning.SharedKernel.Interfaces;
 
 public interface IDomainEventDispatcher
 {

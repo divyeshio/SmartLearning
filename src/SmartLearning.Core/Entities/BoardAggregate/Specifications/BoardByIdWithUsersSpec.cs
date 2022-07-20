@@ -4,10 +4,10 @@ namespace SmartLearning.Core.Entities.BoardAggregate.Specifications;
 
 public class BoardByIdWithUsersSpec : Specification<Board>, ISingleResultSpecification
 {
-    public BoardByIdWithUsersSpec(int projectId)
+    public BoardByIdWithUsersSpec(int boardId)
     {
         Query
-            .Where(project => project.Id == projectId)
-            .Include(project => project.Users);
+            .Where(board => board.Id == boardId)
+            .Include(board => board.Users);
     }
 }

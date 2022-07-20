@@ -5,24 +5,26 @@ using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Core.Helpers;
 using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Core.Entities.ClassAggregate
+namespace SmartLearning.Core.Entities.ClassroomAggregate
 {
-  public class Note : EntityBase
+  public class SamplePaper : EntityBase
   {
-    [Display(Name = "Chapter")]
-    [Required(ErrorMessage = "Please Select A Chapter")]
-    public int ChapterId { get; set; }
-    public Chapter Chapter { get; set; }
-
-    [NotMapped, AllowedFileExtensions(new string[] { ".pdf" })]
-    public IFormFile NoteFile { get; set; }
-
+    [Required]
+    [DataType(DataType.Url)]
+    public string SamplePaperUrl { get; set; }
     [Required]
     public string FileName { get; set; }
+    [NotMapped, AllowedFileExtensions(new string[] { ".pdf" })]
+    public IFormFile File { get; set; }
 
     [Required]
-    [Display(Name = "Url")]
-    public string NoteUrl { get; set; }
+    [Column(TypeName = "smallint")]
+    [Range(1900, 3000)]
+    public int Year { get; set; }
+
+    [Required]
+    public int ClassId { get; set; }
+    public Classroom Class { get; set; }
 
     public string UploadedById { get; set; }
     public ApplicationUser UploadedBy { get; set; }

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.SharedKernel;
 

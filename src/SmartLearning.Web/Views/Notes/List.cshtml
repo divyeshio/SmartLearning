@@ -1,4 +1,4 @@
-﻿@using SmartLearning.Core.Entities.ClassAggregate
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
 @model IEnumerable<Note>
 
 @{
@@ -85,7 +85,7 @@
                                         @Html.DisplayFor(modelItem => item.Chapter.Class.Board.AbbrName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Chapter.Class.Standard.Name)
+                                        @Html.DisplayFor(modelItem => item.Chapter.Class.Standard.DisplayName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Chapter.Class.Subject.Name)

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO;
@@ -452,7 +452,7 @@ ReturnWithError:
     }
     public async Task<SelectList> getStandards(int? standardId = null)
     {
-      return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
+      return new SelectList(await _context.Standards.OrderBy(b => b.Level).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
     }
 
     private bool userExists(string id)

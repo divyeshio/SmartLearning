@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Web.Controllers
@@ -23,16 +23,16 @@ namespace SmartLearning.Web.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(int id)
         {
             var classProposal = await _context.ClassProposals.FindAsync(id);
-            await _context.Classes.AddAsync(new Class { BoardId = classProposal.BoardId, SubjectId = classProposal.SubjectId, StandardId = classProposal.StandardId });
+            await _context.Classes.AddAsync(new Classroom { BoardId = classProposal.BoardId, SubjectId = classProposal.SubjectId, StandardId = classProposal.StandardId });
             _context.ClassProposals.Remove(classProposal);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
+        }*/
 
         [HttpPost]
         [ValidateAntiForgeryToken]

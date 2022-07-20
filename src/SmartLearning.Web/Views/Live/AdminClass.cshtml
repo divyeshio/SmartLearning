@@ -19,7 +19,7 @@
                         <div class="card">
                             <div class="card-header text-center">
                                 @if (!String.IsNullOrEmpty(Model.Class.Name)) { 
-                                    <h3 class="card-title">Live for @(Model.Class.Board.AbbrName??"")-@(Model.Class.Standard.Name)-@(Model.Class.Subject.Name??"")</h3>
+                                    <h3 class="card-title">Live for @(Model.Class.Board.AbbrName??"")-@(Model.Class.Standard.Level)-@(Model.Class.Subject.Name??"")</h3>
                                 }
                                 <input type="hidden" data-bid="@Model.BroadcasterId" id="liveclass" data-cid="@Model.Id" />
                             </div>

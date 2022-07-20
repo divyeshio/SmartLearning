@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.SharedKernel;
 
@@ -17,6 +17,6 @@ namespace SmartLearning.Core.Entities.LiveClassAggregate
 
     public int ClassId { get; set; }
 
-    public Class Class { get; set; }
+    public Classroom Class { get; set; }
   }
 }

@@ -1,4 +1,4 @@
-﻿@using SmartLearning.Core.Entities.ClassAggregate
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
 @model IEnumerable<ClassProposal>
 
 @{
@@ -38,7 +38,7 @@
                                                 <tr>
                                                     <td>@prop.Id</td>
                                                     <td>@prop.Board.AbbrName</td>
-                                                    <td>@prop.Standard.Name</td>
+                                                    <td>@prop.Standard.DisplayName</td>
                                                     <td>@prop.Subject.Name</td>
                                                     <td><span class="font-weight-bold">@prop.Count</span></td>
                                                     <td>

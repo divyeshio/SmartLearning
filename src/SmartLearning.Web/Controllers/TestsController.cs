@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.TestAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
@@ -31,7 +31,7 @@ namespace SmartLearning.Web.Controllers
             if (User.IsInRole("Admin"))
             {
                 ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
-                ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
+                ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", standard);
                 ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name).ToList(), "Id", "Name", subject);
                 var tests = from s in _context.Tests
                             select s;
@@ -341,7 +341,7 @@ namespace SmartLearning.Web.Controllers
         }
         public async Task<SelectList> getStandards(int? standardId = null)
         {
-            return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
+            return new SelectList(await _context.Standards.OrderBy(b => b.Level).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
         }
         public async Task<SelectList> getChapters(int? chapterId = null)
         {

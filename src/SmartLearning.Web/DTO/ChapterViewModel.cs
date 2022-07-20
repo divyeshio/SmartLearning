@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.BoardAggregate;
+using SmartLearning.Core.Entities.StandardAggregate;
+using SmartLearning.Core.Entities.SubjectAggregate;
 
 namespace SmartLearning.Web.DTO
 {

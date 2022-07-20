@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Core.Entities.ClassAggregate
+namespace SmartLearning.Core.Entities.ClassroomAggregate
 {
   public class ReferenceBook : EntityBase
   {
@@ -27,6 +27,6 @@ namespace SmartLearning.Core.Entities.ClassAggregate
 
     [Required]
     public int ClassId { get; set; }
-    public Class Class { get; set; }
+    public Classroom Class { get; set; }
   }
 }

@@ -15,13 +15,28 @@
     <None Remove="Views\Project\**" />
     <None Remove="ApiModels\**" />
     <None Remove="Pages\ProjectDetails\**" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <None Remove="Api\ProjectsController.cs" />
     <None Remove="Controllers\ProjectController.cs" />
     <None Remove="ViewModels\ProjectViewModel.cs" />
     <None Remove="ViewModels\ToDoItemViewModel.cs" />
+
+    <Compile Remove="Endpoints\ProjectEndpoints\**" />
+    <Compile Remove="Views\Project\**" />
+    <Compile Remove="ApiModels\**" />
+    <Compile Remove="Pages\ProjectDetails\**" />
+    <Compile Remove="Api\ProjectsController.cs" />
+    <Compile Remove="Controllers\ProjectController.cs" />
+    <Compile Remove="ViewModels\ProjectViewModel.cs" />
+    <Compile Remove="ViewModels\ToDoItemViewModel.cs" />
+
+    <EmbeddedResource Remove="Endpoints\ProjectEndpoints\**" />
+    <EmbeddedResource Remove="Views\Project\**" />
+    <EmbeddedResource Remove="ApiModels\**" />
+    <EmbeddedResource Remove="Pages\ProjectDetails\**" />
+    <EmbeddedResource Remove="Api\ProjectsController.cs" />
+    <EmbeddedResource Remove="Controllers\ProjectController.cs" />
+    <EmbeddedResource Remove="ViewModels\ProjectViewModel.cs" />
+    <EmbeddedResource Remove="ViewModels\ToDoItemViewModel.cs" />
   </ItemGroup>
   
   <ItemGroup>

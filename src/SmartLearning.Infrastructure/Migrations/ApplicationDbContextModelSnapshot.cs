@@ -178,7 +178,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("Boards");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Book", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -217,7 +217,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Chapter", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Chapter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -243,46 +243,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("Chapters");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Class", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("BoardId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsRegistrationAllowed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("StandardId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BoardId");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.HasIndex("StandardId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("Classes");
-                });
-
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ClassProposal", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.ClassProposal", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -313,7 +274,43 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("ClassProposals");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Note", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BoardId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsRegistrationAllowed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("StandardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BoardId");
+
+                    b.HasIndex("StandardId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Classes");
+                });
+
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Note", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -345,7 +342,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("Notes");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ReferenceBook", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.ReferenceBook", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -390,7 +387,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("ReferenceBooks");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.SamplePaper", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.SamplePaper", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -562,7 +559,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.Standard", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.StandardAggregate.Standard", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -572,21 +569,17 @@ namespace SmartLearning.Infrastructure.Migrations
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Name")
+                    b.Property<int>("Level")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.ToTable("Standards");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.Subject", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.SubjectAggregate.Subject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -907,9 +900,9 @@ namespace SmartLearning.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Chapter", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Chapter", b =>
                 {
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -918,7 +911,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.Navigation("Class");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Class", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.ClassProposal", b =>
                 {
                     b.HasOne("SmartLearning.Core.Entities.BoardAggregate.Board", "Board")
                         .WithMany()
@@ -926,13 +919,13 @@ namespace SmartLearning.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Core.Entities.Standard", "Standard")
+                    b.HasOne("SmartLearning.Core.Entities.StandardAggregate.Standard", "Standard")
                         .WithMany()
                         .HasForeignKey("StandardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Core.Entities.Subject", "Subject")
+                    b.HasOne("SmartLearning.Core.Entities.SubjectAggregate.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -945,7 +938,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ClassProposal", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", b =>
                 {
                     b.HasOne("SmartLearning.Core.Entities.BoardAggregate.Board", "Board")
                         .WithMany()
@@ -953,13 +946,13 @@ namespace SmartLearning.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Core.Entities.Standard", "Standard")
+                    b.HasOne("SmartLearning.Core.Entities.StandardAggregate.Standard", "Standard")
                         .WithMany()
                         .HasForeignKey("StandardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Core.Entities.Subject", "Subject")
+                    b.HasOne("SmartLearning.Core.Entities.SubjectAggregate.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -972,9 +965,9 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Note", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Note", b =>
                 {
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Chapter", "Chapter")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Chapter", "Chapter")
                         .WithMany()
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -991,9 +984,9 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.Navigation("UploadedBy");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.ReferenceBook", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.ReferenceBook", b =>
                 {
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1002,9 +995,9 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.Navigation("Class");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.SamplePaper", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.SamplePaper", b =>
                 {
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1040,7 +1033,7 @@ namespace SmartLearning.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "ToClass")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", "ToClass")
                         .WithMany("Messages")
                         .HasForeignKey("ToClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1059,7 +1052,7 @@ namespace SmartLearning.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1083,7 +1076,7 @@ namespace SmartLearning.Infrastructure.Migrations
 
             modelBuilder.Entity("SmartLearning.Core.Entities.TestAggregate.Test", b =>
                 {
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Chapter", "Chapter")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Chapter", "Chapter")
                         .WithMany()
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1144,7 +1137,7 @@ namespace SmartLearning.Infrastructure.Migrations
 
             modelBuilder.Entity("SmartLearning.Core.Entities.UserClass", b =>
                 {
-                    b.HasOne("SmartLearning.Core.Entities.ClassAggregate.Class", "Class")
+                    b.HasOne("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", "Class")
                         .WithMany()
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -1168,12 +1161,12 @@ namespace SmartLearning.Infrastructure.Migrations
                         .HasForeignKey("BoardId")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("SmartLearning.Core.Entities.Standard", "Standard")
+                    b.HasOne("SmartLearning.Core.Entities.StandardAggregate.Standard", "Standard")
                         .WithMany()
                         .HasForeignKey("StandardId")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("SmartLearning.Core.Entities.Subject", "Subject")
+                    b.HasOne("SmartLearning.Core.Entities.SubjectAggregate.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.NoAction);
@@ -1190,7 +1183,7 @@ namespace SmartLearning.Infrastructure.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("SmartLearning.Core.Entities.ClassAggregate.Class", b =>
+            modelBuilder.Entity("SmartLearning.Core.Entities.ClassroomAggregate.Classroom", b =>
                 {
                     b.Navigation("Messages");
                 });

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Web.DTO;
 
 namespace SmartLearning.Web.Mappings

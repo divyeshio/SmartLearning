@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO;
@@ -31,7 +31,7 @@ namespace SmartLearning.Web.Controllers
       if (HttpContext.User.IsInRole("Admin"))
       {
         ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
-        ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
+        ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", standard);
         ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", subject);
         var referenceBooks = from s in _context.ReferenceBooks
                              select s;
@@ -314,17 +314,17 @@ namespace SmartLearning.Web.Controllers
       return Task.FromResult(false);
     }
 
-    [Authorize(Roles = "Admin")]
+  /*  [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<JsonResult> getClasses([FromBody] GetChaptersViewModel model)
     {
       if (ModelState.IsValid)
       {
-        var classa = await _context.Classes.Where(c => c.StandardId == model.Standard && c.BoardId == model.Board && c.SubjectId == model.Subject).Select(c => new Class { Id = c.Id, Name = c.Name }).AsNoTracking().SingleAsync();
+        var classa = await _context.Classes.Where(c => c.StandardId == model.Standard && c.BoardId == model.Board && c.SubjectId == model.Subject).Select(c => new Classroom { Id = c.Id, Name = c.Name }).AsNoTracking().SingleAsync();
         return Json(classa);
       }
       return Json(new { });
-    }
+    }*/
 
 
     private Task<string> UploadedFile(IFormFile file)
@@ -353,7 +353,7 @@ namespace SmartLearning.Web.Controllers
     }
     public async Task<SelectList> getStandards(int? standardId = null)
     {
-      return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
+      return new SelectList(await _context.Standards.OrderBy(b => b.Level).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
     }
     public async Task<SelectList> getClasses1(int? classId = null)
     {

@@ -37,8 +37,4 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartLearning.SharedKernel\SmartLearning.SharedKernel.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
 </Project>

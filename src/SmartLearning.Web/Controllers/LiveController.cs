@@ -65,7 +65,7 @@ namespace SmartLearning.Web.Controllers
                 return RedirectToAction(nameof(Class), new { id = liveClass.Id });
             }
             ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name");
-            ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name");
+            ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name");
             ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name");
             return View();
         }
@@ -135,7 +135,7 @@ namespace SmartLearning.Web.Controllers
                 }
             }
             ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", vm.Boards);
-            ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", vm.Standard);
+            ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", vm.Standard);
             ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", vm.Subject);
             return View(vm);
         }

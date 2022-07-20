@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SmartLearning.Infrastructure.Data;
+using SmartLearning.SharedKernel.Interfaces;
 
 namespace SmartLearning.SharedKernel;
 public class DomainEventDispatcher : IDomainEventDispatcher

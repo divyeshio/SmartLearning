@@ -8,7 +8,7 @@ using SmartLearning.Core.Entities.Common;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.Web.DTO;
-using Class = SmartLearning.Core.Entities.ClassAggregate.Class;
+using Classroom = SmartLearning.Core.Entities.ClassroomAggregate.Classroom;
 
 namespace SmartLearning.Web.Hubs
 {
@@ -36,7 +36,7 @@ namespace SmartLearning.Web.Hubs
       {
         foreach (var group in await _context.Classes.ToListAsync())
         {
-          groupsVM.Add(_mapper.Map<Class, ClassViewModel>(group));
+          groupsVM.Add(_mapper.Map<Classroom, ClassViewModel>(group));
           await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
         }
       }
@@ -44,7 +44,7 @@ namespace SmartLearning.Web.Hubs
       {
         foreach (var group in await _context.Users.Where(u => u.UserName == IdentityName).SelectMany(u => u.Classes).ToListAsync())
         {
-          groupsVM.Add(_mapper.Map<Class, ClassViewModel>(group));
+          groupsVM.Add(_mapper.Map<Classroom, ClassViewModel>(group));
           await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
         }
       }

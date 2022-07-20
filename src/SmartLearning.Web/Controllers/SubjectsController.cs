@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
+using SmartLearning.Core.Entities.SubjectAggregate;
 using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Web.Controllers

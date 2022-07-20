@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities;
+using SmartLearning.Core.Entities.StandardAggregate;
 using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.Web.Controllers
@@ -17,7 +17,7 @@ namespace SmartLearning.Web.Controllers
     // GET: Standards
     public async Task<IActionResult> Index()
     {
-      return View(await _context.Standards.OrderBy(s => s.Name).ToListAsync());
+      return View(await _context.Standards.OrderBy(s => s.Level).ToListAsync());
     }
 
 
@@ -35,9 +35,9 @@ namespace SmartLearning.Web.Controllers
       ModelState.Remove("DisplayName");
       if (ModelState.IsValid)
       {
-        if (!await _context.Standards.AnyAsync(s => s.Name == standard.Name))
+        if (!await _context.Standards.AnyAsync(s => s.Level == standard.Level))
         {
-          standard.DisplayName = standard.Name.ToString();
+          standard.DisplayName = standard.Level.ToString();
           await _context.Standards.AddAsync(standard);
           await _context.SaveChangesAsync();
           return RedirectToAction(nameof(Index));
@@ -81,9 +81,9 @@ namespace SmartLearning.Web.Controllers
       {
         try
         {
-          if (!await _context.Standards.AnyAsync(s => s.Name == standard.Name))
+          if (!await _context.Standards.AnyAsync(s => s.Level == standard.Level))
           {
-            standard.DisplayName = standard.Name.ToString();
+            standard.DisplayName = standard.Level.ToString();
             _context.Update(standard);
             await _context.SaveChangesAsync();
           }

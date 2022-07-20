@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.BoardAggregate;
+using SmartLearning.Core.Entities.StandardAggregate;
+using SmartLearning.Core.Entities.SubjectAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 
 namespace SmartLearning.Web.DTO

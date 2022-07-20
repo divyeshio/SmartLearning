@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SmartLearning.Core.Entities.BoardAggregate;
+using SmartLearning.Core.Entities.StandardAggregate;
+using SmartLearning.Core.Entities.SubjectAggregate;
 using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Core.Entities.ClassAggregate
+namespace SmartLearning.Core.Entities.ClassroomAggregate
 {
   public class ClassProposal : EntityBase
   {

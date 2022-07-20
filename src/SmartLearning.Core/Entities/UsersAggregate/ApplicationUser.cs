@@ -2,8 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 using SmartLearning.Core.Entities.BoardAggregate;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.Common;
+using SmartLearning.Core.Entities.StandardAggregate;
+using SmartLearning.Core.Entities.SubjectAggregate;
 using SmartLearning.Core.Entities.TestAggregate;
 using SmartLearning.SharedKernel.Interfaces;
 
@@ -51,7 +53,7 @@ namespace SmartLearning.Core.Entities.UsersAggregate
 
     public int? FaceDataId { get; set; }
     public FaceData? FaceData { get; set; }
-    public ICollection<Class> Classes { get; } = new List<Class>();
+    public ICollection<Classroom> Classes { get; } = new List<Classroom>();
     public ICollection<TestAttempt>? TestAttempts { get; set; }
     public ICollection<Message> Messages { get; } = new List<Message>();
   }

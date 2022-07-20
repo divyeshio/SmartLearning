@@ -4,16 +4,19 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SmartLearning.Core.Entities;
 using SmartLearning.Core.Entities.BoardAggregate;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.Common;
 using SmartLearning.Core.Entities.LiveClassAggregate;
+using SmartLearning.Core.Entities.StandardAggregate;
+using SmartLearning.Core.Entities.SubjectAggregate;
 using SmartLearning.Core.Entities.TestAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.SharedKernel;
+using SmartLearning.SharedKernel.Interfaces;
 
 namespace SmartLearning.Infrastructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         private readonly IDomainEventDispatcher? _dispatcher;
 
@@ -30,7 +33,7 @@ namespace SmartLearning.Infrastructure.Data
         public DbSet<Note> Notes { get; set; }
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<ReferenceBook> ReferenceBooks { get; set; }
-        public DbSet<Class> Classes { get; set; }
+        public DbSet<Classroom> Classes { get; set; }
         public DbSet<ClassProposal> ClassProposals { get; set; }
         public DbSet<UserClass> UserClass { get; set; }
         public DbSet<SamplePaper> SamplePapers { get; set; }

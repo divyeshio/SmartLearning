@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Core.Entities.ClassAggregate;
+using SmartLearning.Core.Entities.ClassroomAggregate;
 using SmartLearning.Core.Entities.UsersAggregate;
 using SmartLearning.Core.Interfaces;
 using SmartLearning.Infrastructure.Data;
@@ -901,7 +901,7 @@ ReturnWithError:
         }
         public async Task<SelectList> getStandards(long? standardId = null)
         {
-            return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
+            return new SelectList(await _context.Standards.OrderBy(b => b.Level).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
         }
         public async Task<List<AuthenticationScheme>> getExternalLogins()
         {
