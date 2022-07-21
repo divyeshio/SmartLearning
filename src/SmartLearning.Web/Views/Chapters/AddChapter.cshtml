@@ -1,0 +1,65 @@
+﻿@using SmartLearning.Web.DTO
+@model ChapterViewModel
+
+@{
+    ViewData["Title"] = "Add Chapter";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header"><h2 >Add Chapter</h2></div>
+                <hr />
+                <div class="card-body row">
+                    <form asp-action="Add" class="auth-register-form mt-2">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="SerialNo" class="control-label"></label>
+                            <input asp-for="SerialNo" class="form-control" placeholder="Serial No" />
+                            <span asp-validation-for="SerialNo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Chapter Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group d-flex justify-content-center align-items-center">
+                            <label asp-for="BoardId" class="form-label mr-1"></label>
+                            <div class="btn-group align-justify mr-1">
+                                <select asp-items="Model.Boards" asp-for="BoardId" class="form-control mb-1">
+                                    <option label="Select Board" hidden></option>
+                                </select>
+                            </div>
+                            <label asp-for="StandardId" class="form-label mr-1"></label>
+                            <div class="btn-group">
+                                <select asp-items="Model.Standards" asp-for="StandardId" class="form-control mb-1">
+                                    <option label="Select Standard" hidden></option>
+                                </select>
+                            </div>
+                            <label asp-for="SubjectId" class="form-label mr-1"></label>
+                            <div class="btn-group">
+                                <select asp-items="Model.Subjects" asp-for="SubjectId" class="form-control mb-1">
+                                    <option label="Select Subject" hidden></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

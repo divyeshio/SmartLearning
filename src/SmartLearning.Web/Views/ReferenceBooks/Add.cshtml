@@ -1,0 +1,91 @@
+﻿@using SmartLearning.Web.DTO
+@model ReferenceBookViewModel
+
+@{
+    ViewData["Title"] = "Add Reference Book";
+}
+@section PageCSS{
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h2>Add New Reference Book</h2>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <form asp-action="Add" class="auth-register-form mt-2" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="BookName" class="control-label"></label>
+                            <input asp-for="BookName" class="form-control" />
+                            <span asp-validation-for="BookName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AuthorName" class="control-label"></label>
+                            <input asp-for="AuthorName" class="form-control" />
+                            <span asp-validation-for="AuthorName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">&#x20B9;</span>
+                                </div>
+                                <input asp-for="Price" class="form-control" placeholder="100" aria-label="Amount (to the nearest Rupee)">
+                            </div>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <a href="javascript:void(0);" class="mr-25">
+                                <img src="/StaticFiles/ReferenceBooks/@Model.ImageName" id="account-upload-img" class="rounded mr-50" alt="book image" height="400" width="250" />
+                            </a>
+                            <label for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75">Upload Image</label>
+                            <input type="file" id="account-upload" asp-for="ImageFile" hidden accept="image/*" />
+                            <p>Allowed JPG, GIF or PNG. Max size of 2 MB</p>
+                            <span asp-validation-for="AuthorName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="File" type="file" accept="application/pdf" />
+                            <span asp-validation-for="File" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <div>
+                        <a asp-action="List">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        var accountUploadImg = $('#account-upload-img'),
+            accountUploadBtn = $('#account-upload');
+
+        // Update user photo on click of button
+        if (accountUploadBtn) {
+            accountUploadBtn.on('change', function (e) {
+                var reader = new FileReader(),
+                    files = e.target.files;
+                reader.onload = function () {
+                    if (accountUploadImg) {
+                        accountUploadImg.attr('src', reader.result);
+                    }
+                };
+                reader.readAsDataURL(files[0]);
+            });
+        }
+
+    </script>
+}

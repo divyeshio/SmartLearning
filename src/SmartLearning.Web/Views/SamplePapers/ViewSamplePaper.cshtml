@@ -1,0 +1,52 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<SamplePaper>
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial"/>
+        <div class="content-body">
+            <!-- Accordion with hover start -->
+            <section id="accordion-hover">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="card collapse-icon">
+                            <div class="card-header bg-primary">
+                                <h4 class="card-title text-white">Year Wise Sample Papers</h4>
+                            </div>
+                            <div class="card-body ">
+                                <div class="accordion mt-5" id="accordionExample3" data-toggle-hover="true">
+                                    <div class="collapse-default">
+                                        @{
+                                            foreach (var samplepaper in Model)
+                                            {
+                                                <div class="card bg-accent-4">
+                                                    <div class="card-header text-accent-2" id="heading@(samplepaper.Id)" data-toggle="collapse" role="button" data-target="#collapse@(samplepaper.Id)" aria-expanded="false" aria-controls="collapse@(samplepaper.Id)">
+                                                        <p class="lead collapse-title collapse-hover-title">Year - <span class="badge badge-primary">@samplepaper.Year</span></p>
+                                                    </div>
+                                                    <div id="collapse@(samplepaper.Id)" class="collapse" aria-labelledby="heading@(samplepaper.Id)" data-parent="#accordionExample3">
+                                                        <div class="card-body d-flex justify-content-around">
+                                                            <a asp-action="ViewPdf" asp-route-id="@samplepaper.Id" class="btn btn-primary">View</a>
+                                                            <a asp-action="Download" asp-route-id="@samplepaper.Id" class="btn btn-primary">Download</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Accordion with hover end -->
+
+        </div>
+    </div>
+</div>
+
+@section PageJS{ 
+    <script src="~/js/scripts/components/components-collapse.js"></script>
+}

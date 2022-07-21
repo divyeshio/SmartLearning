@@ -1,0 +1,70 @@
+﻿@using SmartLearning.Web.DTO
+@model FacultyVM
+@{
+    ViewData["Title"] = "Add Faculty";
+}
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header"><h2>Add Faculty</h2></div>
+                <hr />
+                <div class="card-body">
+                    <form asp-action="AddFaculty" method="post" class="auth-register-form mt-2">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="form-label"></label>
+                            <input asp-for="FirstName" class="form-control" type="text" placeholder="First Name" autofocus="" tabindex="1" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName" class="form-label"></label>
+                            <input asp-for="LastName" class="form-control" type="text" placeholder="Last Name" autofocus="" tabindex="2" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" id="register-username" type="text" placeholder="example@mail.com" aria-describedby="register-email" autofocus="" tabindex="3" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="form-label"></label>
+                            <div class="input-group input-group-merge form-password-toggle">
+                                <input asp-for="Password" class="form-control form-control-merge" id="register-password" placeholder="············" aria-describedby="register-password" tabindex="4" />
+                                <div class="input-group-append"><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span></div>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group d-flex justify-content-center align-items-center ">
+                            <label asp-for="SubjectId" class="form-label mr-1"></label>
+                            <div class="btn-group align-justify mr-1">
+                                <select asp-items="Model.Subjects" asp-for="SubjectId" class="form-control mb-1">
+                                </select>
+                            </div>
+                            <label asp-for="BoardId" class="form-label mr-1"></label>
+                            <div class="btn-group align-justify mr-1">
+                                <select asp-items="Model.Boards" asp-for="BoardId" class="form-control mb-1">
+                                </select>
+                            </div>
+                            <label asp-for="StandardId" class="form-label mr-1"></label>
+                            <div class="btn-group align-justify mr-1">
+                                <select asp-items="Model.Standards" asp-for="StandardId" class="form-control mb-1">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"><button class="btn btn-primary btn-block" tabindex="7">Add</button></div>
+                    </form>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section PageJS {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

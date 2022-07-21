@@ -1,0 +1,170 @@
+﻿@using SmartLearning.Web.DTO
+@model TestInsightsViewModel
+
+@{
+    ViewData["Title"] = "Insights";
+    var i = 1;
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section id="dashboard-analytics">
+                <div class="row match-height d-flex justify-content-between">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="card card-congratulations">
+                            <div class="card-body text-center">
+                                <div class="avatar avatar-xl bg-primary shadow">
+                                    <div class="avatar-content">
+                                        <i data-feather="edit" class="font-large-1"></i>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <h1 class="mb-1 text-white">@Model.Test.Chapter.SerialNo - @Model.Test.Chapter.Name</h1>
+                                    <p class="card-text m-auto w-75">
+                                        @Model.Test.Chapter.Class.Name
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-header flex-column align-items-start pb-0">
+                                <div class="avatar bg-light-primary p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="users" class="font-large-1"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text pt-1">Test Created By</p>
+                                <h2 class="font-weight-bolder mt-1">@Model.Test.CreatedBy.FullName</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-header flex-row pb-0 ">
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="clock" class="font-large-1"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text">Test Duration</p>
+                                <h2 class="font-weight-bolder mt-1">@Model.Test.TestDuration.ToString(@"hh\:mm\:ss")</h2>
+                            </div>
+                            <div class="card-header flex-row pb-0">
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="edit-3" class="font-large-1"></i>
+                                    </div>
+                                </div>
+                                <p class="card-text">Total Questions</p>
+                                <h2 class="font-weight-bolder mt-1">@Model.TotalQuestions</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row match-height">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row pb-50">
+                                    <div class="col-sm-6 col-12 d-flex justify-content-between flex-column order-sm-1 order-2 mt-1 mt-sm-0">
+                                        <div class="mb-1 mb-sm-0">
+                                            <h2 class="font-weight-bolder mb-25">Total Users Appeared : @Model.Results.Count()</h2>
+                                            <p class="card-text font-weight-bold mb-2"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12 d-flex justify-content-between flex-column text-right order-sm-2 order-1">
+                                        <div id="avg-sessions-chart"></div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Taken On</th>
+                                            <th>Time Taken</th>
+                                            <th>Score</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @Html.AntiForgeryToken()
+                                        @foreach (var item in Model.Results)
+                                        {
+                                        <tr>
+                                            <td>
+                                                <div class="media d-flex align-items-center col">
+                                                    <h2 class="mr-1">@i</h2>
+                                                    <div class="media-left mr-2">
+                                                        <img src="@(item.TestAttempt.Student.Avatar ?? "/StaticFiles/avatars/default.jpg")" alt="avatar" height="64" width="64" class="cursor-pointer rounded-circle">
+                                                    </div>
+                                                    <h4 class="media-heading text-primary">@item.TestAttempt.Student.FullName</h4>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="align-self-center align-items-center align-content-center"><p>@item.TestAttempt.StartTime.ToString("f")</p></div>
+                                            </td>
+                                            <td>
+                                                <div class="align-self-center align-items-center align-content-center"><p>@item.TimeTaken.ToString(@"hh\:mm\:ss")</p></div>
+                                            </td>
+                                            <td>
+                                                <div class="align -content-end align-self-center"><p>@item.CorrectAnswers/@Model.TotalQuestions</p></div>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void(0);" onClick="resetTestAttempt('@item.TestAttemptId')">Reset</a>
+                                            </td>
+                                        </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section PageJS{ 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    async function resetTestAttempt(id) {
+        fetch('/Tests/ResetTestAttempt/' + id, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[0].value
+            },
+        }).then( async (response) => {
+            response = await response.json();
+            if (response.iserror) {
+                Swal.fire(
+                    'Error',
+                    'There was an error',
+                    'error'
+                )
+            } else {
+                Swal.fire(
+                    'Reset Success!',
+                    'Test Attempt has been deleted.',
+                    'success'
+                ).then(res => {
+                    if (res.isConfirmed)
+                        location = location;})
+            }
+            console.log(response)
+        });
+    }
+</script>
+}

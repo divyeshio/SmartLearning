@@ -1,0 +1,61 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model SamplePaper
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header"><h2>Edit Sample Paper</h2></div>
+                <hr />
+                <div class="card-body">
+                    <form asp-action="Edit" class="auth-register-form mt-2" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Id" class="form-label"></label>
+                            <input asp-for="Id" class="form-control" type="text" tabindex="1" readonly="readonly" />
+                        </div>
+                        <div class="form-group">
+                            <label for="FileName" class="form-label">Current File</label>
+                            <input asp-for="FileName" class="form-control" type="text" tabindex="1" readonly="readonly" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UploadedBy.FullName" class="form-label">Uploaded By</label>
+                            <input asp-for="UploadedBy.FullName" class="form-control" type="text" tabindex="1" readonly="readonly" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Class" class="control-label"></label>
+                            <input asp-for="Class.Name" class="form-control" type="text" tabindex="1" readonly="readonly" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Year" class="control-label"></label>
+                            <input asp-for="Year" class="form-control" />
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="File" type="file" accept="application/pdf" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <div>
+                        <a asp-action="List">Back to List</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

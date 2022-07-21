@@ -1,0 +1,70 @@
+﻿@using SmartLearning.Web.DTO.ManageViewModels
+@model ExternalLoginsViewModel
+@{
+    ViewData["Title"] = "External Logins";
+}
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="row">
+                <!-- left menu section -->
+                <partial name="_ManageAccountNavigation" />
+                <!--/ left menu section -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- social header -->
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i data-feather="link" class="font-medium-3"></i>
+                                        <h4 class="mb-0 ml-75">Social Links</h4>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-1">
+                                    <div class="row">
+                                        @if (Model.CurrentLogins?.Count > 0)
+                                        {
+                                            foreach (var login in Model.CurrentLogins)
+                                            {
+                                                <div class="col-6 col-md-4 text-center mb-1">
+                                                    <p class="font-weight-bold mb-2">@login.Info.ProviderDisplayName</p>
+                                                    <input asp-for="@login.Info.LoginProvider" name="LoginProvider" type="hidden" form="remove-login" />
+                                                    <input asp-for="@login.Info.ProviderKey" name="ProviderKey" type="hidden" form="remove-login" />
+                                                    <div class="avatar mb-1 block">
+                                                        <span class="avatar-content">
+                                                            <img src="@login.ProfileUrl" alt="avatar img" width="40" height="40">
+                                                        </span>
+                                                    </div>
+                                                    <p class="mb-0">johndoe</p>
+                                                    <a onclick="javascript : document.getElementById('remove-login').submit()" class="active" href="#">Remove</a>
+                                                </div>
+                                            }
+                                            <form id="remove-login" asp-action="RemoveLogin" method="post">
+                                            </form>
+                                        }
+                                        @if (Model.OtherLogins?.Count > 0)
+                                        {
+                                            @foreach (var login in Model.OtherLogins)
+                                            {
+                                                <div class="col-6 col-md-4 text-center mb-1">
+                                                    <p class="font-weight-bold mb-2">@login.DisplayName</p>
+                                                    <button value="@login.Name" type="submit" name="provider" class="btn btn-outline-primary" form="link-login">Connect</button>
+                                                </div>
+                                            }
+                                            <form id="link-login" asp-action="LinkLogin" method="post">
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

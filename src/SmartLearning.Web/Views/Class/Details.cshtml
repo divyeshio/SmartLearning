@@ -1,0 +1,98 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@using SmartLearning.Core.Entities.UsersAggregate
+@model Classroom
+
+@{
+    ViewData["Title"] = "Class Details";
+}
+
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <!-- Collapse start -->
+            <section id="collapsible">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card collapse-icon text-center">
+                            <div class="card-header bg-primary">
+                                <h4 class="card-title text-center text-white">@Model.Name</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="collapse-default">
+                                    <div class="card">
+                                        <div id="headingCollapse1" class="card-header collapsed" data-toggle="collapse" role="button" data-target="#faculties" aria-expanded="false" aria-controls="collapse1">
+                                            <span class="lead collapse-title"> Faculties </span>
+                                        </div>
+                                        <div id="faculties" role="tabpanel" aria-labelledby="headingCollapse1" class="collapse" style="">
+                                            @foreach (var item in Model.Users)
+                                            {
+                                                if(item.AccountType == AccountTypeEnum.Faculty) { 
+                                                    <p> @item.FullName</p>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div id="headingCollapse2" class="card-header collapse-header collapsed" data-toggle="collapse" role="button" data-target="#students" aria-expanded="false" aria-controls="collapse2">
+                                            <span class="lead collapse-title"> Students </span>
+                                        </div>
+                                        <div id="students" role="tabpanel" aria-labelledby="headingCollapse2" class="collapse" aria-expanded="false" style="">
+                                            @foreach (var item in Model.Users)
+                                            {
+                                                if (item.AccountType == AccountTypeEnum.Student)
+                                                {
+                                                    <p> @item.FullName</p>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Collapse end -->
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Standard)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Standard.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Board)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Board.AbbrName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subject.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

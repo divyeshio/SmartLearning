@@ -1,8 +1,8 @@
 ﻿using Ardalis.ApiEndpoints;
+using Microsoft.AspNetCore.Mvc;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.Core.ProjectAggregate.Specifications;
 using SmartLearning.SharedKernel.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace SmartLearning.Web.Endpoints.ProjectEndpoints;
@@ -29,7 +29,7 @@ public class GetById : EndpointBaseAsync
       CancellationToken cancellationToken)
   {
     var spec = new ProjectByIdWithItemsSpec(request.ProjectId);
-    var entity = await _repository.GetBySpecAsync(spec); // TODO: pass cancellation token
+    var entity = await _repository.GetBySpecAsync(spec);
     if (entity == null) return NotFound();
 
     var response = new GetProjectByIdResponse

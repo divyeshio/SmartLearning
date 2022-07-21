@@ -1,0 +1,129 @@
+﻿@using SmartLearning.Web.DTO
+@model NoteViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section PageCSS{
+    <link rel="stylesheet" type="text/css" href="~/css/plugins/forms/form-file-uploader.css">
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-9">
+                <div class="card-header">
+                    <h2>Add New Note</h2>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <form id="queryForm" onsubmit="javascript: event.preventDefault();" asp-action="getChaptersApi">
+                        <label class="form-label mr-1">Board</label>
+                        <div class="btn-group flex-fill mr-1">
+                            <select name="board" asp-items="Model.Boards" class="form-control mb-1" data-val="true" data-val-required="*">
+                                <option label="Select Board"></option>
+                            </select>
+                            <span data-valmsg-for="board" data-valmsg-replace="true" class="text-danger field-validation-valid"></span>
+                        </div>
+                        <label class="form-label mr-1">Standard</label>
+                        <div class="btn-group flex-fill mr-1">
+                            <select name="standard" asp-items="Model.Standards" class="form-control mb-1" data-val="true" data-val-required="*">
+                                <option label="Select Standard"></option>
+                            </select>
+                            <span data-valmsg-for="standard" data-valmsg-replace="true" class="text-danger field-validation-valid"></span>
+                        </div>
+                        <label class="form-label mr-1">Subject</label>
+                        <div class="btn-group mr-1">
+                            <select name="subject" asp-items="Model.Subjects" class="form-control mb-1" data-val="true" data-val-required="*">
+                                <option label="Select Subject"></option>
+                            </select>
+                            <span data-valmsg-for="subject" data-valmsg-replace="true" class="text-danger field-validation-valid"></span>
+                        </div>
+                        <div class="btn-group mr-1">
+                            <button class="btn btn-primary waves-effect waves-float waves-light" style="position: relative;top: -6px;" id="goBtn">Go</button>
+                        </div>
+                    </form>
+                    <form asp-route="AddAdmin" class="auth-register-form mt-4" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group mt-4">
+                            <label class="form-label mr-1">Chapter</label>
+                            <div class="btn-group mr-1" id="chapterDiv">
+                                <select asp-for="ChapterId" class="form-control mb-1" required>
+                                    <option label="Search Chapter"></option>
+                                </select>
+                                <span id="chapterValidSpan" asp-validation-for="ChapterId" class="text-danger" style="display : none">Please select a Chapter</span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <input asp-for="NoteFile" type="file" accept="application/pdf" />
+                            <span asp-validation-for="NoteFile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-4">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <div class="mt-4">
+                        <a asp-action="List">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    @*<script src="~/js/scripts/forms/form-file-uploader.js"></script>*@
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        document.getElementById('goBtn').onclick = async () => {
+            var form = document.getElementById('queryForm');
+            $('#queryForm').validate();
+            if (form.elements["subject"].value != "" && form.elements["board"].value != "" && form.elements["standard"].value != "") {
+                var data = {
+                    Standard: form.elements["standard"].value,
+                    Board: form.elements["board"].value,
+                    Subject: form.elements["subject"].value,
+                }
+                var response = await fetch('/Tests/getChaptersApi/', {
+                    method: "post",
+                    credentials: "include",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                var options = await response.json();
+                var selectElement = document.getElementById("ChapterId");
+                selectElement.innerHTML = "";
+                if (options.length == 0) {
+                    var optionElement = document.createElement("option");
+                    optionElement.label = `No Chapters Found`;
+                    selectElement.add(optionElement);
+                }
+                else {
+                    var optionElement = document.createElement("option");
+                    optionElement.label = `Select Chapter`;
+                    optionElement.hidden = true;
+                    selectElement.add(optionElement);
+                    options.forEach(option => {
+                        var optionElement = document.createElement("option");
+                        optionElement.value = option.id;
+                        optionElement.text = `${option.serialNo} - ${option.name}`;
+                        selectElement.add(optionElement);
+                    })
+                }
+            }
+        }
+
+        document.getElementById('ChapterId').addEventListener('change', event => {
+            $('#chapterValidSpan').hide();
+        })
+
+    </script>
+}

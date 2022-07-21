@@ -1,0 +1,187 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SmartLearning.Core.Entities.UsersAggregate
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "Chats";
+    var user = await _userManager.GetUserAsync(User);
+}
+
+@section PageCSS{
+    <link rel="stylesheet" type="text/css" href="~/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pages/app-chat.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pages/app-chat-list.css">
+    <script>
+        window.paceOptions = { ajax: { ignoreURLs: ['chatHub', '__browserLink', 'browserLinkSignalR'], trackWebSockets: false } }
+    </script>
+}
+
+<div class="app-content content chat-application">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-area-wrapper">
+        <div class="sidebar-left">
+            <div class="sidebar">
+                <!-- Admin user profile area -->
+                <div class="chat-profile-sidebar">
+                    <header class="chat-profile-header">
+                        <span class="close-icon">
+                            <i data-feather="x"></i>
+                        </span>
+                        <!-- User Information -->
+                        <div class="header-profile-sidebar">
+                            <div class="avatar box-shadow-1 avatar-xl avatar-border">
+                                <img src="/StaticFiles/avatars/@User.FindFirst("avatar").Value" alt="user_avatar">
+                                <span class="avatar-status-online avatar-status-xl"></span>
+                            </div>
+                            <h4 class="chat-user-name">@User.Identity.Name</h4>
+                            <span class="user-post">@user.AccountType</span>
+                        </div>
+                        <!--/ User Information -->
+                    </header>
+                    <!-- User Details start -->
+                    <div class="profile-sidebar-area ps ps--active-y">
+                        <!--/ Logout Button -->
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 196px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 59px;"></div></div>
+                    </div>
+                    <!-- User Details end -->
+                </div>
+                <!--/ Admin user profile area -->
+                <!-- Chat Sidebar area -->
+                <div class="sidebar-content">
+                    <span class="sidebar-close-icon">
+                        <i data-feather="x"></i>
+                    </span>
+                    <!-- Sidebar header start -->
+                    <div class="chat-fixed-search">
+                        <div class="d-flex align-items-center w-100">
+                            <div class="sidebar-profile-toggle">
+                                <div class="avatar avatar-border">
+                                    <img src="/StaticFiles/avatars/@User.FindFirst("avatar").Value" alt="user_avatar" height="42" width="42">
+                                    <span class="avatar-status-online"></span>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-merge ml-1 w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text round"><i data-feather="search" class="text-muted"></i></span>
+                                </div>
+                                <input type="text" class="form-control round" id="chat-search" placeholder="Search or start a new chat" aria-label="Search..." aria-describedby="chat-search">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar header end -->
+                    <!-- Sidebar Users start -->
+                    <div id="users-list" class="chat-user-list-wrapper list-group ps ps--active-y">
+                        <h4 class="chat-list-title">Chats</h4>
+                        <ul class="chat-users-list chat-list media-list">
+                            <li class="no-results">
+                                <h6 class="mb-0">No Chats Found</h6>
+                            </li>
+                        </ul>
+                        <div class="ps__rail-x" style="left: 0px; bottom: -551px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 551px; height: 331px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 207px; height: 124px;"></div></div>
+                    </div>
+                    <!-- Sidebar Users end -->
+                </div>
+                <!--/ Chat Sidebar area -->
+
+            </div>
+        </div>
+        <div class="content-right">
+            <div class="content-wrapper">
+                <div class="content-header row">
+                </div>
+                <div class="content-body">
+                    <div class="body-content-overlay"></div>
+                    <!-- Main chat area -->
+                    <section class="chat-app-window">
+                        <!-- To load Conversation -->
+                        <div class="start-chat-area">
+                            <div class="mb-1 start-chat-icon">
+                                <i data-feather="message-square"></i>
+                            </div>
+                            <h4 class="sidebar-toggle start-chat-text">Start Conversation</h4>
+                        </div>
+                        <!--/ To load Conversation -->
+                        <!-- Active Chat -->
+                        <div class="active-chat d-none">
+                            <!-- Chat Header -->
+                            <div class="chat-navbar">
+                                <header class="chat-header">
+                                    <div class="d-flex align-items-center">
+                                        <div class="sidebar-toggle d-block d-lg-none mr-1">
+                                            <i data-feather="menu" class="font-medium-5"></i>
+                                        </div>
+                                        <div class="avatar avatar-border user-profile-toggle m-0 mr-1">
+                                            <img src="~/images/ico/favicon.ico" alt="avatar" height="36" width="36" style="background-color:papayawhip">
+                                        </div>
+                                        <h6 class="mb-0" id="chatHeadName"></h6>
+                                    </div>
+                                </header>
+                            </div>
+                            <!--/ Chat Header -->
+                            <!-- User Chat messages -->
+                            <div class="user-chats ps">
+                                <div class="chats">
+                                    <div class="chat">
+                                        
+                                    </div>
+                                </div>
+                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                            </div>
+                            <!-- User Chat messages -->
+                            <!-- Submit Chat form -->
+                            <form class="chat-app-form" action="javascript:void(0);" onsubmit="enterChat();">
+                                <div class="input-group input-group-merge mr-1 form-send-message">
+                                    <div class="input-group-prepend">
+                                        <span class="speech-to-text input-group-text"><i data-feather="mic" class="cursor-pointer"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control message" placeholder="Type your message or use speech to text">
+                                    @*<div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <label for="attach-doc" class="attachment-icon mb-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image cursor-pointer lighten-2 text-secondary"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                                <input type="file" id="attach-doc" hidden="">
+                                            </label>
+                                        </span>
+                                    </div>*@
+                                </div>
+                                <button type="button" class="btn btn-primary send waves-effect waves-float waves-light" id="sendButton" disabled onclick="enterChat();">
+                                    <i data-feather="send" class="d-lg-none"></i>
+                                    <span class="d-none d-lg-block">Send</span>
+                                </button>
+                            </form>
+                            <!--/ Submit Chat form -->
+                        </div>
+                        <!--/ Active Chat -->
+                    </section>
+                    <!--/ Main chat area -->
+                    <!-- User Chat profile right area -->
+
+                    <!--/ User Chat profile right area -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section PageJS{
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/scripts/pages/app-chat.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        if (!Notification) {
+            alert('Desktop notifications not available in your browser. Try Chromium.');
+            return;
+        }
+
+        if (Notification.permission !== 'granted')
+            Notification.requestPermission();
+    });
+    setTimeout(function () {
+        $('.modern-nav-toggle').trigger('click');
+        $('.main-menu').trigger('mouseleave');
+    }, 30);
+</script>
+}

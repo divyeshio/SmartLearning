@@ -1,0 +1,52 @@
+﻿<div class="navbar-container main-menu-content" data-menu="menu-container">
+    <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+        @*<li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Dashboard" asp-action="Index"><i data-feather="home"></i><span data-i18n="Dashboard">Dashboard</span></a>
+        </li>*@
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Chat" asp-action="Index"><i data-feather="message-square"></i><span data-i18n="Chats">Chat</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Live" asp-action="Index"><i data-feather="video"></i><span data-i18n="LiveClasses">Live Classes</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Notes" asp-action="Index"><i data-feather="package"></i><span data-i18n="Notes">Notes</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="SamplePapers" asp-action="Index"><i data-feather="layers"></i><span data-i18n="SamplePapers">Sample Papers</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Tests" asp-action="Index"><i data-feather="edit"></i><span data-i18n="Tests">Tests</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="ReferenceBooks" asp-action="Index"><i data-feather="server"></i><span data-i18n="ReferenceBooks">Reference Books</span></a>
+        </li>
+        @*<li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Shop" asp-action="Index"><i data-feather="shopping-cart"></i><span data-i18n="Shop">Shop</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-controller="Blog" asp-action="Index"><i data-feather="archive"></i><span data-i18n="Blog">Blog</span></a>
+        </li>*@
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" asp-route="MyFaculties"><i data-feather="user"></i><span data-i18n="MyFaculties">My Faculties</span></a>
+        </li>
+        <li class="dropdown nav-item" data-menu="dropdown">
+            <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-toggle="dropdown"><i data-feather="package"></i><span data-i18n="Other">Other</span></a>
+            <ul class="dropdown-menu">
+                <li data-menu="">
+                    <a class="dropdown-item d-flex align-items-center" asp-route="AboutUs"><i data-feather="grid"></i><span data-i18n="Aboutus">About Us</span></a>
+                </li>
+                <li data-menu="">
+                    <a class="dropdown-item d-flex align-items-center" asp-route="PrivacyPolicy" data-toggle="dropdown" data-i18n="Chat"><i data-feather="aperture"></i><span data-i18n="PrivacyPolicy">Privacy Policy</span></a>
+                </li>
+                <li data-menu="">
+                    <a class="dropdown-item d-flex align-items-center" asp-route="TermsAndConditions" data-toggle="dropdown" data-i18n="Todo"><i data-feather="check-square"></i><span data-i18n="T&C">Terms And Conditions</span></a>
+                </li>
+                <li data-menu="">
+                    <a class="dropdown-item d-flex align-items-center" asp-route="FAQ" data-toggle="dropdown" data-i18n="FAQ"><i data-feather="help-circle"></i><span data-i18n="FAQ">FAQ</span></a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>

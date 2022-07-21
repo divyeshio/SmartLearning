@@ -1,0 +1,211 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Shop";
+}
+@section PageCSS{
+    <link rel="stylesheet" type="text/css" href="~/css/pages/app-ecommerce.css">
+    <link rel="stylesheet" type="text/css" href="~/css/plugins/extensions/ext-component-toastr.css">
+}
+
+<div class="app-content content ecommerce-application">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-detached content-right">
+            <div class="content-body">
+                <!-- E-commerce Content Section Starts -->
+                <section id="ecommerce-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="ecommerce-header-items">
+                                <div class="result-toggler">
+                                    <button class="navbar-toggler shop-sidebar-toggler" type="button" data-toggle="collapse">
+                                        <span class="navbar-toggler-icon d-block d-lg-none"><i data-feather="menu"></i></span>
+                                    </button>
+                                    <div class="search-results">16285 results found</div>
+                                </div>
+                                <div class="view-options d-flex">
+                                    <div class="btn-group dropdown-sort">
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="active-sorting">Featured</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" asp-route-filter="lowest">Lowest</a>
+                                            <a class="dropdown-item" asp-route-filter="highest">Highest</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- E-commerce Content Section Starts -->
+                <!-- background Overlay when sidebar is shown  starts-->
+                <div class="body-content-overlay"></div>
+                <!-- background Overlay when sidebar is shown  ends-->
+                <!-- E-commerce Search Bar Starts -->
+                <section id="ecommerce-searchbar" class="ecommerce-searchbar">
+                    <div class="row mt-1">
+                        <div class="col-sm-12">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control search-product" id="shop-search" placeholder="Search Product" aria-label="Search..." aria-describedby="shop-search" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i data-feather="search" class="text-muted"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- E-commerce Search Bar Ends -->
+                <!-- E-commerce Products Starts -->
+                <section id="ecommerce-products" class="grid-view">
+                    @foreach (var item in Model)
+                    {
+                        <div class="card ecommerce-card">
+                            <div class="item-img text-center">
+                                <a href="app-ecommerce-details.html">
+                                    <img class="img-fluid card-img-top" src="~/images/shop/@item.ImageUrl" alt="img-placeholder" />
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-wrapper">
+                                    <div>
+                                        <h6 class="item-price">₹@item.Price</h6>
+                                    </div>
+                                </div>
+                                <h6 class="item-name">
+                                    <a class="text-body" href="app-ecommerce-details.html">@item.Title</a>
+                                    <span class="card-text item-company">By <a href="javascript:void(0)" class="company-name">@item.Year</a></span>
+                                </h6>
+                                <p class="card-text item-description">
+                                    On Retina display that never sleeps, so it’s easy to see the time and other important information, without
+                                    raising or tapping the display. New location features, from a built-in compass to current elevation, help users
+                                    better navigate their day, while international emergency calling1 allows customers to call emergency services
+                                    directly from Apple Watch in over 150 countries, even without iPhone nearby. Apple Watch Series 5 is available
+                                    in a wider range of materials, including aluminium, stainless steel, ceramic and an all-new titanium.
+                                </p>
+                            </div>
+                            <div class="item-options text-center">
+                                <div class="item-wrapper">
+                                    <div class="item-cost">
+                                        <h4 class="item-price">$339.99</h4>
+                                    </div>
+                                </div>
+                                <a href="javascript:void(0)" class="btn btn-light btn-wishlist">
+                                    <i data-feather="heart"></i>
+                                    <span>Wishlist</span>
+                                </a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-cart">
+                                    <i data-feather="shopping-cart"></i>
+                                    <span class="add-to-cart">Add to cart</span>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </section>
+                <!-- E-commerce Products Ends -->
+                <!-- E-commerce Pagination Starts -->
+                @*<section id="ecommerce-pagination">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center mt-2">
+                                        <li class="page-item prev-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                                        <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                                        <li class="page-item" aria-current="page"><a class="page-link" href="javascript:void(0);">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">5</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">6</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">7</a></li>
+                                        <li class="page-item next-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </section>*@
+                <!-- E-commerce Pagination Ends -->
+
+            </div>
+        </div>
+        <div class="sidebar-detached sidebar-left">
+            <div class="sidebar">
+                <!-- Ecommerce Sidebar Starts -->
+                <div class="sidebar-shop">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6 class="filter-heading d-none d-lg-block">Filters</h6>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Price Filter starts -->
+                            <div class="multi-range-price">
+                                <h6 class="filter-title mt-0">Multi Range</h6>
+                                <ul class="list-unstyled price-range" id="price-range">
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="priceAll" name="price-range" class="custom-control-input" checked />
+                                            <label class="custom-control-label" for="priceAll">All</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="priceRange1" name="price-range" class="custom-control-input" />
+                                            <label class="custom-control-label" for="priceRange1">&lt;=10</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="priceRange2" name="price-range" class="custom-control-input" />
+                                            <label class="custom-control-label" for="priceRange2">10 - 100</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="priceARange3" name="price-range" class="custom-control-input" />
+                                            <label class="custom-control-label" for="priceARange3">100 - $500</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="priceRange4" name="price-range" class="custom-control-input" />
+                                            <label class="custom-control-label" for="priceRange4">&gt;= 500</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Price Filter ends -->
+                            <!-- Price Slider starts -->
+                            <div class="price-slider">
+                                <h6 class="filter-title">Price Range</h6>
+                                <div class="price-slider">
+                                    <div class="range-slider mt-2" id="price-slider"></div>
+                                </div>
+                            </div>
+                            <!-- Price Range ends -->
+                            <!-- Clear Filters Starts -->
+                            <div id="clear-filters">
+                                <button type="button" class="btn btn-block btn-primary">Clear All Filters</button>
+                            </div>
+                            <!-- Clear Filters Ends -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Ecommerce Sidebar Ends -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageVendorJS{
+
+    <script src="~/vendors/js/extensions/toastr.min.js"></script>
+}
+
+@section PageJS{
+    <script src="~/js/scripts/pages/app-ecommerce.js"></script>
+}

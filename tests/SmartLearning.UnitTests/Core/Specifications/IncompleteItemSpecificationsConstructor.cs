@@ -1,6 +1,4 @@
-﻿using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.Core.ProjectAggregate.Specifications;
-using Xunit;
+﻿using Xunit;
 
 namespace SmartLearning.UnitTests.Core.Specifications;
 

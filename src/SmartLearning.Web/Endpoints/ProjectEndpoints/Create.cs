@@ -1,7 +1,7 @@
 ﻿using Ardalis.ApiEndpoints;
+using Microsoft.AspNetCore.Mvc;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.SharedKernel.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace SmartLearning.Web.Endpoints.ProjectEndpoints;
@@ -34,7 +34,7 @@ public class Create : EndpointBaseAsync
 
     var newProject = new Project(request.Name, PriorityStatus.Backlog);
 
-    var createdItem = await _repository.AddAsync(newProject); // TODO: pass cancellation token
+    var createdItem = await _repository.AddAsync(newProject);
 
     var response = new CreateProjectResponse
     (

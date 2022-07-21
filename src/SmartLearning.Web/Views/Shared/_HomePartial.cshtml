@@ -1,0 +1,13 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+
+    <a class="navbar-btn" asp-controller="Dashboard" asp-action="Main">Dashboard</a>
+}
+else
+{
+    <a href="#">Login/Register <i class="ti-angle-down"></i></a>
+    <ul class="submenu">
+        <li><a class="login btn-sm navbar-btn" asp-controller="Account" asp-action="Login">Login</a></li>
+        <li><a class="login btn-sm navbar-btn" asp-controller="Account" asp-action="Register">Register</a></li>
+    </ul>
+}

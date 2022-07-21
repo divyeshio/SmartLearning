@@ -1,0 +1,140 @@
+﻿@using SmartLearning.Web.DTO.ManageViewModels
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Manage your account";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <script>
+            document.querySelector('.breadcrumb-item.active').innerText = "General";
+        </script>
+        <div class="content-body">
+            <div class="row col-12">
+                <!-- left menu section -->
+                <partial name="_ManageAccountNavigation" />
+                <!--/ left menu section -->
+                <!-- right content section -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- general tab -->
+                            <!-- header media -->
+                            <!--/ header media -->
+                            <!-- form -->
+                            <form asp-action="RemoveAvatar" id="removeAvatar" name="removeAvatar" method="post"></form>
+                            <form asp-action="Index" method="post" class="validate-form mt-2" enctype="multipart/form-data">
+                                <div class="media mb-2">
+                                    <a href="javascript:void(0);" class="mr-25">
+                                        <img src="/StaticFiles/avatars/@(Model.Avatar ?? "default.jpg")" id="account-upload-img" class="rounded mr-50" alt="profile image" height="80" width="80" />
+                                    </a>
+                                    <!-- upload and reset button -->
+                                    <div class="media-body mt-75 ml-1">
+                                        <label for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>
+                                        <input type="file" id="account-upload" asp-for="AvatarFile" hidden accept="image/*" />
+                                        <p>Allowed JPG, GIF or PNG. Max size of 2 MB</p>
+                                        @if (!String.IsNullOrEmpty(Model.Avatar)) { <button class="btn btn-sm btn-outline-secondary mb-75" type="submit" form="removeAvatar">Remove</button>}
+                                    </div>
+                                    <!--/ upload and reset button -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="FirstName">First Name</label>
+                                            <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="LastName">Last Name</label>
+                                            <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="Email"></label>
+                                            <input asp-for="Email" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Account Type</label>
+                                            <input asp-for="AccountType" readonly disabled class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="PhoneNumber"></label>
+                                            <div class="input-group input-group-merge">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">IN (+91)</span>
+                                                </div>
+                                                <input type="phone" asp-for="PhoneNumber" class="form-control phone-number-mask" placeholder="00 000 000 0000" id="phone-number">
+                                            </div>
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    @if (!String.IsNullOrEmpty(Model.Board))
+                                    {
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="Board"></label>
+                                                <input asp-for="Board" readonly disabled class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="Standard"></label>
+                                                <input asp-for="Standard" readonly disabled class="form-control" />
+                                            </div>
+                                        </div>
+                                        @if (!String.IsNullOrEmpty(Model.Subject))
+                                        {
+                                            <div class="col-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label asp-for="Subject"></label>
+                                                    <input asp-for="Subject" readonly disabled class="form-control" />
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mt-2 mr-1">Save changes</button>
+                                        <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ form -->
+                            <!--/ general tab -->
+                        </div>
+                    </div>
+                </div>
+                <!--/ right content section -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    <script>
+        var accountUploadImg = $('#account-upload-img'),
+            accountUploadBtn = $('#account-upload');
+
+        // Update user photo on click of button
+        if (accountUploadBtn) {
+            accountUploadBtn.on('change', function (e) {
+                var reader = new FileReader(),
+                    files = e.target.files;
+                reader.onload = function () {
+                    if (accountUploadImg) {
+                        accountUploadImg.attr('src', reader.result);
+                    }
+                };
+                reader.readAsDataURL(files[0]);
+            });
+        }
+    </script>
+}

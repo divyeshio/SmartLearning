@@ -1,0 +1,57 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<Note>
+
+@{ 
+    ViewData["Title"] = "Notes";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial"/>
+        <div class="content-body">
+            <!-- Accordion with hover start -->
+            <section id="accordion-hover">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card collapse-icon">
+                            <div class="card-header bg-primary">
+                                <h4 class="card-title text-white">Chapter Wise Notes for @ViewData["ClassName"]</h4>
+                            </div>
+                            <div class="card-body d-flex justify-content-center">
+                                <img class="img-fluid my-2" src="~/images/subjects/@(ViewData["SubjectName"]).jpg" alt="Card image cap" />
+                                <div class="accordion" id="accordionExample3" data-toggle-hover="true">
+                                    <div class="collapse-default">
+                                        @{
+                                            foreach (Note note in Model)
+                                            {
+                                                <div class="card">
+                                                    <div class="card-header" id="heading@(note.Id)" data-toggle="collapse" role="button" data-target="#collapse@(note.Id)" aria-expanded="false" aria-controls="collapse@(note.Id)">
+                                                        <span class="lead collapse-title collapse-hover-title">Chapter @note.Chapter.SerialNo - @note.Chapter.Name</span>
+                                                    </div>
+                                                    <div id="collapse@(note.Id)" class="collapse" aria-labelledby="heading@(note.Id)" data-parent="#accordionExample3">
+                                                        <div class="card-body d-flex justify-content-around">
+                                                            <a asp-action="ViewPdf" asp-route-id="@note.Id" class="btn btn-primary mr-2">View</a>
+                                                            <a asp-action="Download" asp-route-id="@note.Id" class="btn btn-primary" target="_blank">Download</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Accordion with hover end -->
+
+        </div>
+    </div>
+</div>
+
+@section PageJS{ 
+    <script src="~/js/scripts/components/components-collapse.js"></script>
+}

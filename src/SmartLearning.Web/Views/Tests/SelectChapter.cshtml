@@ -1,0 +1,65 @@
+﻿@using SmartLearning.Web.DTO
+@model SelectChapterViewModel
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <section id="accordion-hover">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card collapse-icon">
+                            <div class="card-header bg-primary">
+                                <h4 class="card-title text-white">Chapter Wise Test for @Model.ClassName</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="accordion" id="accordionExample3" data-toggle-hover="true">
+                                    <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Chapter</th>
+                                            <th>Results</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.Tests)
+                                            {
+                                                <tr>
+                                                    <td>@item.Test.Chapter.SerialNo - @item.Test.Chapter.Name</td>
+                                                    <td>
+                                                        @if (item.isAttempted)
+                                                        {
+                                                            if (item.isCompleted)
+                                                            {
+                                                            <p>@item.TestResult.CorrectAnswers/@item.Test.Questions.Count()</p>
+                                                            }
+                                                            else {
+                                                                <a asp-action="StartTest" asp-route-id="@item.Test.Id" class="btn btn-primary">Go To Test</a>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <a asp-action="StartTest" asp-route-id="@item.Test.Id" class="btn btn-primary">Start Test</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    <script src="~/js/scripts/components/components-collapse.js"></script>
+}

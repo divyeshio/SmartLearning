@@ -1,0 +1,45 @@
+﻿@using SmartLearning.Core.Entities.UsersAggregate
+@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "My Co-Workers";
+    var i = 1;
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="col-xl-6 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">My Co-Workers</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="media-list media-bordered">
+                            @foreach (var item in Model)
+                            {
+                                <div class="media row d-flex align-items-center">
+                                    <h2 class="mr-1">@i</h2>
+                                    <div class="media-left mr-3">
+                                        <img src="@(item.Avatar ?? "/StaticFiles/avatars/default.jpg")" alt="avatar" height="64" width="64" class="cursor-pointer rounded-circle">
+                                    </div>
+                                    <div class="media-body row d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="media-heading text-primary">@item.FullName</h4>
+                                            <div class="badge badge-primary">@item.Subject.Name</div>
+                                        </div>
+                                        <a asp-controller="Profile" asp-route-id="@item.Id" asp-action="Index" class="media-heading btn btn-gradient-primary align-self-end">View Profile</a>
+                                    </div>
+                                </div>
+                                i++;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

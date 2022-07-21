@@ -1,0 +1,61 @@
+﻿@using SmartLearning.Core.Entities.LiveClassAggregate
+@model IEnumerable<LiveClass>
+
+@{
+    ViewData["Title"] = "Live Classes";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Live Classes</h1>
+                </div>
+                <hr />
+                <div class="card-body">
+                    @Html.AntiForgeryToken()
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Faculty</th>
+                                <th>Class</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Broadcaster.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Class.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.isAdmin)
+                                    </td>
+                                </tr>
+                            }
+                            @if (Model.Count() == 0)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>No Live Classes</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

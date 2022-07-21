@@ -1,0 +1,96 @@
+﻿@using SmartLearning.Core.Entities.SubjectAggregate
+@model IEnumerable<Subject>
+
+@{
+    ViewData["Title"] = "All Subjects";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center header-actions mx-1 row mt-75">
+                        <h2 class="card-title">All Subjects</h2>
+                    </div>
+                    <a class="btn add-new btn-primary mt-50" asp-action="Add"><i data-feather="plus"></i>Add New</a>
+                </div>
+                <br />
+                <div class="card-body">
+                    @Html.AntiForgeryToken()
+                    <table class="table table-hover-animation">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a onclick="deleteConfirmation(@item.Id,this)" href="javascript:void(0);">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function deleteConfirmation(id, a) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#5cb85c',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    fetch('/Subjects/Delete/' + id, {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[0].value
+                        }
+                    }).then(response => {
+                        if (response.status == 200) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Subject has been deleted.',
+                                'success'
+                            ).then(() => window.location.href = window.location.href);
+                        }
+                        console.log(response)
+                    });
+                }
+            });
+        }
+    </script>
+}

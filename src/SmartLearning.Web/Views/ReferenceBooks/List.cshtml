@@ -1,0 +1,165 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<ReferenceBook>
+
+@{
+    ViewData["Title"] = "Reference Books List";
+    var isAdmin = User.IsInRole("Admin");
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="card">
+                <div class="card-header">
+                    <h1>All Reference Books</h1>
+                    @if (isAdmin)
+                    {
+                        <a class="btn add-new btn-primary mt-50" asp-route="AddReferenceBook"><i data-feather="plus"></i>Add New</a>
+                    }
+                    else
+                    {
+                        <a class="btn add-new btn-primary mt-50" asp-action="Add"><i data-feather="plus"></i>Add New</a>
+                    }
+                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="d-flex justify-content-center align-items-center header-actions row">
+                        <form id="queryForm" onsubmit="return formValidate();">
+                            <label class="form-label mr-1">Board</label>
+                            <div class="btn-group flex-fill mr-1">
+                                <select name="board" asp-items="@ViewData["Boards"] as SelectList" class="form-control mb-1">
+                                    <option label="All"></option>
+                                </select>
+                            </div>
+                            <label class="form-label mr-1">Standard</label>
+                            <div class="btn-group flex-fill mr-1">
+                                <select name="standard" asp-items="@ViewData["Standards"] as SelectList" class="form-control mb-1">
+                                    <option label="All"></option>
+                                </select>
+                            </div>
+                            <label class="form-label mr-1">Subject</label>
+                            <div class="btn-group mr-1">
+                                <select name="subject" asp-items="@ViewData["Subjects"] as SelectList" class="form-control mb-1">
+                                    <option label="All"></option>
+                                </select>
+                            </div>
+                            <div class="btn-group mr-1">
+                                <button class="btn btn-primary" style="top: -6px;">Go</button>
+                            </div>
+                        </form>
+                    </div>
+                }
+                <hr />
+                <div class="card-body">
+                    @Html.AntiForgeryToken()
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>File</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Author Name</th>
+                                <th>Class</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FileName)
+                                </td>
+                                <td>
+                                    <img src="/StaticFiles/ReferenceBooks/@item.ImageName" class="rounded mr-50" alt="Book image" height="400" width="250" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AuthorName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Class.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="ViewPdf" asp-route-id="@item.Id">View</a> |
+                                    <a asp-action="Download" asp-route-id="@item.Id">Download</a> |
+                                    <a onclick="deleteConfirmation('@item.Id',this)" href="javascript:void(0);">Delete</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section PageJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function deleteConfirmation(id, a) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#5cb85c',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    fetch('/ReferenceBooks/Delete/' + id, {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[1].value
+                        }
+                    }).then(response => {
+                        if (response.status == 200) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            ).then(() => window.location.href = window.location.href);
+                        }
+                        console.log(response)
+                    });
+                }
+            });
+        }
+
+    </script>
+    @if (isAdmin)
+    {
+        <script>
+            var form = document.getElementById('queryForm');
+            function formValidate() {
+                //event.preventDefault();
+                if (form.elements["subject"].value == "")
+                    form.elements["subject"].remove();
+                if (form.elements["board"].value == "")
+                    form.elements["board"].remove();
+                if (form.elements["standard"].value == "")
+                    form.elements["standard"].remove();
+                console.log(form.elements);
+                return true;
+            }
+        </script>
+    }
+}
+}

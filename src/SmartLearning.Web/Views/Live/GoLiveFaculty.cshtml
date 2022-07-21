@@ -1,0 +1,32 @@
+﻿@using SmartLearning.Web.DTO
+@model LiveClassViewModel
+
+@{
+    ViewData["Title"] = Model.ClassName;
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h4 class="card-title">Live Class for @Model.ClassName</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-primary" role="alert">
+                        <div class="alert-body">
+                            Please Allow Permissions asked on Next Page.
+                        </div>
+                    </div>
+                    <form asp-controller="Live" asp-action="GoLive" method="post">
+                        <input type="hidden" asp-for="@Model.ClassId" />
+                        <button class="btn btn-primary btn-block" tabindex="5">Start Live</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

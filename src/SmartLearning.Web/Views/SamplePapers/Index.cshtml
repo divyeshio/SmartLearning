@@ -1,0 +1,36 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<Classroom>
+
+@{ 
+    ViewData["Title"] = "Sample Papers";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial"/>
+        <div class="content-body">
+            <!-- Examples -->
+            <section id="card-demo-example">
+                <div class="row match-height">
+                    @{ 
+                        foreach(Classroom classa in Model) { 
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h4 class="card-title">@classa.Subject.Name</h4>
+                                    <img class="img-fluid my-2" src="images/subjects/@(classa.Subject.Name).jpg" alt="Card image cap" />
+                                    <a asp-route-id="@classa.Id" asp-action="ViewSamplePaper" class="btn btn-outline-primary">See Papers</a>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    }
+                </div>
+            </section>
+            <!-- Examples -->
+        </div>
+    </div>
+</div>
+

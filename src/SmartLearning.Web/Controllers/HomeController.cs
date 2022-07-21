@@ -1,22 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace SmartLearning.Web.Controllers;
-
-/// <summary>
-/// A sample MVC controller that uses views.
-/// Razor Pages provides a better way to manage view-based content, since the behavior, viewmodel, and view are all in one place,
-/// rather than spread between 3 different folders in your Web project. Look in /Pages to see examples.
-/// See: https://ardalis.com/aspnet-core-razor-pages-%E2%80%93-worth-checking-out/
-/// </summary>
-public class HomeController : Controller
+namespace SmartLearning.Web.Controllers
 {
-  public IActionResult Index()
+  [AllowAnonymous]
+  public class HomeController : Controller
   {
-    return View();
-  }
 
-  public IActionResult Error()
-  {
-    return View();
+    [HttpGet]
+    public IActionResult Index()
+    {
+      return View();
+    }
+
   }
 }

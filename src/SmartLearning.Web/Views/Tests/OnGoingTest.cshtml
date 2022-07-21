@@ -1,0 +1,186 @@
+﻿@using SmartLearning.Web.DTO
+@model StartTestViewModel
+
+@{
+    ViewData["Title"] = "Start Test";
+    var i = 0;
+    var j = 1;
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-body">
+            <section class="form-control-repeater">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Test for Chapter - @Model.Test.Chapter.Name - @Model.Test.Chapter.Class.Name</h2>
+                                <div id="countdownExample">
+                                    <p>Time Remaining  :  <span class="values alert-danger" id="time"></span></p>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="TestId" id="TestId" value="@Model.Test.Id">
+                                <input type="hidden" name="TestAttemptId" id="TestAttemptId" value="@Model.AttemptId">
+                                <form asp-action="SubmitTest" onsubmit="javascript : event.preventDefault();" id="submitform" method="post">
+                                    <div data-repeater-list="questions" >
+                                        @{
+                                            foreach (var item in Model.Test.Questions)
+                                            {
+                                                <div data-repeater-item class="pb-3">
+                                                    <div class="row d-flex align-items-end">
+                                                        <div class="col-md-4 col-12">
+                                                            <label for="question">Question @j</label>
+                                                            <p>@item.Question</p>
+                                                            <input type="hidden" name="questions[@i][Id]" value="@item.Id" />
+                                                        </div>
+
+                                                        <div class="col-md-2 col-12">
+                                                            <div class="form-group">
+                                                                <label asp-for="@item.OptionA">Option A</label>
+                                                                <div class="row ">
+                                                                    <input type="radio" name="questions[@i][Answer]" value="OptionA">
+                                                                    <label class="" for="questions[@i][Answer]">@item.OptionA</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-12">
+                                                            <label asp-for="@item.OptionB">Option B</label>
+                                                            <div class="row custom-control custom-radio">
+                                                                <input type="radio" name="questions[@i][Answer]" value="OptionB">
+                                                                <label class="" for="questions[@i][Answer]">@item.OptionB</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-12">
+                                                            <label asp-for="@item.OptionC">Option C</label>
+                                                            <div class="row custom-control custom-radio">
+                                                                <input type="radio" name="questions[@i][Answer]" value="OptionC">
+                                                                <label class="" for="questions[@i][Answer]">@item.OptionC</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-12">
+                                                            <label asp-for="@item.OptionD">Option D</label>
+                                                            <div class="row custom-control custom-radio">
+                                                                <input type="radio" name="questions[@i][Answer]" value="OptionD">
+                                                                <label class="" for="questions[@i][Answer]">@item.OptionC</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                i++;
+                                                j++;
+                                                <hr/>
+                                            }
+                                        }
+                                    </div>
+                                    <button onclick="submitTest()" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Invoice repeater -->
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+
+
+</script>
+
+@section PageVendorJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/jquery.repeater.js.js"></script>
+}
+@section PageJS{
+    <script src="~/js/easytimer.min.js"></script>
+    <script>
+        var timer = new easytimer.Timer();
+        timer.start({ countdown: true, startValues: { seconds: @Model.Seconds, minutes:@Model.Minutes,hours:@Model.Hours } });
+        $('#time').html(timer.getTimeValues().toString());
+
+        timer.addEventListener('secondsUpdated', function (e) {
+            $('#time').html(timer.getTimeValues().toString());
+        });
+
+        timer.addEventListener('targetAchieved', function (e) {
+            finalSubmit();
+        });
+        $('#submitform').repeater();
+        async function submitTest() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#5cb85c',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Submit!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    finalSubmit();
+                }
+            })
+            
+        }
+
+        async function finalSubmit() {
+            var formdata = $('#submitform').repeaterVal();
+            var questions = formdata.questions;
+            var data = {
+                TestId: document.getElementById('TestId').value,
+                TestAttemptId: document.getElementById('TestAttemptId').value,
+                Questions: questions,
+            }
+            var response = await fetch('/Tests/SubmitTest', {
+                method: "post",
+                credentials: "include",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[1].value
+                },
+                body: JSON.stringify(data),
+            });
+            response = await response.json();
+            console.log(response)
+            if (!response.error) {
+                Swal.fire({
+                    title: "Success",
+                    text: "Submitted Successfully!!",
+                    icon: "success",
+                }).then(res => {
+                    if (res.isConfirmed)
+                        location = response.location;
+                });
+            } else {
+                var ul = document.createElement('ul');
+                response.errorMessages.forEach(message => {
+                    var li = document.createElement('li');
+                    li.textContent = message;
+                    ul.appendChild(li);
+
+                });
+
+                Swal.fire({
+                    title: "Error!",
+                    html: ul.innerHTML,
+                    icon: "error",
+                });
+            }
+        }
+    </script>
+}

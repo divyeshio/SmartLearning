@@ -1,0 +1,74 @@
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<ClassProposal>
+
+@{
+    ViewData["Title"] = "Class Proposals";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="row" id="table-hover-animation">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Class Proposals</h4><span>Total : @Model.Count()</span>
+                        </div>
+                        <div class="table-responsive">
+                            <form method="post">
+                                <table class="table table-hover-animation">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Board</th>
+                                            <th>Standard</th>
+                                            <th>Subject</th>
+                                            <th>Count</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @{
+                                            foreach (ClassProposal prop in Model)
+                                            {
+                                                <tr>
+                                                    <td>@prop.Id</td>
+                                                    <td>@prop.Board.AbbrName</td>
+                                                    <td>@prop.Standard.DisplayName</td>
+                                                    <td>@prop.Subject.Name</td>
+                                                    <td><span class="font-weight-bold">@prop.Count</span></td>
+                                                    <td>
+                                                        <input name="id" type="hidden" value="@prop.Id" />
+                                                        <button type="submit" asp-action="Approve" class="btn btn-success">Approve</button>
+                                                        <button type="submit" asp-action="Reject" class="btn btn-danger">Reject</button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            if (Model.Count() == 0)
+                                            {
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

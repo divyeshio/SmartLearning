@@ -1,9 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
+using MediatR;
 using SmartLearning.Core.Interfaces;
 using SmartLearning.Core.ProjectAggregate.Events;
-using MediatR;
 
 namespace SmartLearning.Core.ProjectAggregate.Handlers;
 

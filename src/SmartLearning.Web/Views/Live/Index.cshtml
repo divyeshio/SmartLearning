@@ -1,0 +1,33 @@
+﻿@using SmartLearning.Core.Entities.LiveClassAggregate
+@model IEnumerable<LiveClass>
+
+@{ 
+    ViewData["Title"] = "Live Classes";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="row match-height">
+                @{
+                    foreach (LiveClass liveClass in Model)
+                    {
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h4 class="card-title">@liveClass.Class.Subject.Name</h4>
+                                    <img class="img-fluid my-2" src="images/subjects/@(liveClass.Class.Subject.Name).jpg" alt="Card image cap" />
+                                    <a asp-route-id="@liveClass.ClassId" asp-action="FaceCheck" asp-controller="Live" class="btn btn-outline-primary">Join Class</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

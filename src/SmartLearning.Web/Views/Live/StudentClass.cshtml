@@ -1,0 +1,49 @@
+﻿@model LiveClass
+@using Microsoft.AspNetCore.Identity
+@using SmartLearning.Core.Entities.LiveClassAggregate
+@using SmartLearning.Core.Entities.UsersAggregate
+@inject UserManager<ApplicationUser> _userManager
+
+
+@section PageCSS{
+    <script>
+        window.paceOptions = { ajax: { ignoreURLs: ['liveHub', '__browserLink', 'browserLinkSignalR'], trackWebSockets: false } }
+    </script>
+}
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            @if (!String.IsNullOrEmpty(Model.Class.Name))
+                            {
+                                <h3 class="card-title">Live for @(Model.Class.Name)</h3>
+                            }
+                            <input type="hidden" data-bid="@Model.BroadcasterId" id="liveclass" data-uid="@_userManager.GetUserId(User)" data-cid="@Model.Id" />
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="video-player" id="plyr-video-player" style="position:relative;padding-bottom:56.25%; max-width: 1280px;max-height: 720px;">
+                                <video id="othervideo" muted autoplay playsinline style="pointer-events: none; width:100%;height:100%;position:absolute;left:0px;top:0px;" width="1280" height="720" />
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-primary" id="fullscreenToggle" disabled><i data-feather="maximize"></i> Full Screen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    <script src="~/js/scripts/extensions/ext-component-blockui.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/vendors/js/ui/jquery.sticky.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="~/js/studentLive.js"></script>
+}

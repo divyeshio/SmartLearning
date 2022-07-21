@@ -1,0 +1,125 @@
+﻿@using SmartLearning.Core.Entities.UsersAggregate
+@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "All Users";
+}
+
+
+@section PageVendorCSS{
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+
+        <div class="content-body">
+            <div class="row">
+            </div>
+            <!-- Basic table -->
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <table class="datatables-basic table table-hover-animation">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Account Type</th>
+                                        <th>Action</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td>@item.Id</td>
+                                            <td>@item.Id</td>
+                                            <td>@item.FirstName @item.LastName</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.AccountType</td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-route="ViewProfile" asp-route-id="@item.Id">Profile</a> |
+                                                <a onclick="deleteConfirmation('@item.Id',this)" href="javascript:void(0);">Delete</a>
+                                            </td>
+                                            <td>@item.Avatar</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                @Html.AntiForgeryToken()
+                <!-- Modal to add new record -->
+            </section>
+            <!--/ Basic table -->
+        </div>
+    </div>
+</div>
+
+@section PageVendorJS{
+    <script src="~/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+    <script src="~/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="~/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="~/vendors/js/tables/datatable/buttons.print.min.js"></script>
+}
+
+@section PageJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/scripts/tables/table-datatables-basic.js"></script>
+    <script>
+        function deleteConfirmation(id,a) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#5cb85c',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    fetch('/Users/Delete/' + id, {
+                        method: "POST",
+                        credentials: "same-origin",
+                        headers: {
+                        'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[0].value
+                        }
+                    }).then(response => {
+                        if (response.status == 200) {
+                            var row = a.parentElement.parentElement;
+                            $('.datatables-basic').DataTable().row(row).remove().draw();
+                            Swal.fire(
+                                'Deleted!',
+                                'User has been deleted.',
+                                'success'
+                            )
+                        }
+                        console.log(response)
+                    });
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,50 @@
+﻿@using SmartLearning.Web.DTO
+@model SamplePaperViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section PageCSS{
+    <link rel="stylesheet" type="text/css" href="~/css/plugins/forms/form-file-uploader.css">
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h2>Add New Sample Paper</h2>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <form asp-action="Add" class="auth-register-form mt-2" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Year" class="control-label"></label>
+                            <input asp-for="Year" class="form-control"/>
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="File" type="file" accept="application/pdf" />
+                            <span asp-validation-for="File" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <div>
+                        <a asp-action="List">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    <script src="~/js/scripts/forms/form-file-uploader.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

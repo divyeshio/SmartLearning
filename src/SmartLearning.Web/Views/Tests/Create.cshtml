@@ -1,0 +1,244 @@
+﻿@using SmartLearning.Core.Entities.TestAggregate
+@using SmartLearning.Web.DTO
+@model TestQuestionViewModel
+
+@{
+    ViewData["Title"] = "Create Test";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-body">
+            <section class="form-control-repeater">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Create New Test</h2>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center header-actions row">
+                                <label class="form-label mr-1">Chapter</label>
+                                <div class="btn-group mr-1" id="chapterDiv">
+                                    <select asp-for="ChapterId" class="form-control mb-1" asp-items="Model.Chapters" form="test-repeater" required>
+                                        <option label="Select Chapter" hidden></option>
+                                    </select>
+                                    <span id="chapterValidSpan" asp-validation-for="ChapterId" class="text-danger" style="display : none">Please select a Chapter</span>
+                                </div>
+                                <label class="form-label mr-1">Test Duration</label>
+                                <div class="btn-group mr-1 form-vertical" id="durationDiv">
+                                    <div class="col">
+                                        <label>Hours</label>
+                                        <input name="Hours" id="Hours" class="form-control mb-1" form="test-repeater" required type="number" value="0" />
+                                    </div>
+                                    <div class="col">
+                                        <label>Minutes</label>
+                                        <input name="Minutes" id="Minutes" class="form-control mb-1" form="test-repeater" required type="number" value="5" />
+                                    </div>
+                                    <span id="durationValidationSpan" data-valmsg-for="Minutes" class="text-danger" style="display : none">Please enter Test Duration</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @Html.AntiForgeryToken()
+                                <form onsubmit="javascript: event.preventDefault();" method="post" id="test-repeater" asp-antiforgery="false">
+                                    <div data-repeater-list="questions">
+                                        <div data-repeater-item>
+                                            <div class="row d-flex align-items-end">
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-group">
+                                                        <label for="question">Question</label>
+                                                        <span asp-validation-for="Answer" class="text-danger"></span>
+                                                        <input asp-for="Question" class="form-control">
+                                                        <span asp-validation-for="Question" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2 col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="OptionA">Option A</label>
+                                                        @Html.RadioButtonFor(m => m.Answer, System.Enum.GetNames(typeof(AnswerOptions))[1], new { @id = "" })
+                                                        <input asp-for="OptionA" class="form-control">
+                                                        <span asp-validation-for="OptionA" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2 col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="OptionB">Option B</label>
+                                                        @Html.RadioButtonFor(m => m.Answer, System.Enum.GetNames(typeof(AnswerOptions))[2], new { @id = "" })
+                                                        <input asp-for="OptionB" class="form-control">
+                                                        <span asp-validation-for="OptionB" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2 col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="OptionC">Option C</label>
+                                                        @Html.RadioButtonFor(m => m.Answer, System.Enum.GetNames(typeof(AnswerOptions))[3], new { @id = "" })
+                                                        <input asp-for="OptionC" class="form-control">
+                                                        <span asp-validation-for="OptionC" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2 col-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="OptionD">Option D</label>
+                                                        @Html.RadioButtonFor(m => m.Answer, System.Enum.GetNames(typeof(AnswerOptions))[4], new { @id = "" })
+                                                        <input asp-for="OptionD" class="form-control">
+                                                        <span asp-validation-for="OptionD" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2 col-12 mb-50">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-outline-danger text-nowrap px-1 waves-effect" data-repeater-delete="" type="button">
+                                                            <i data-feather="x"></i>
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 d-flex">
+                                            <button class="btn btn-icon btn-primary waves-effect waves-float waves-light" type="button" data-repeater-create="">
+                                                <i data-feather="plus"></i>
+                                                <span>Add Question</span>
+                                            </button>
+                                            
+                                            <button class="btn btn-icon btn-primary waves-effect waves-float waves-light ml-auto" id="submitForm" type="button">
+                                                <i data-feather="plus"></i>
+                                                <span>Create Test</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Invoice repeater -->
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+
+
+</script>
+
+@section PageVendorJS{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/jquery.repeater.js.js"></script>
+}
+@section PageJS{
+
+    <script>
+        // form repeater jquery
+        $('#test-repeater').repeater({
+            initEmpty: false,
+            show: function () {
+                $(this).slideDown();
+                // Feather Icons
+                if (feather) {
+                    feather.replace({ width: 14, height: 14 });
+                }
+                //$('#test-repeater').validate().destroy();
+                $("#test-repeater").initValidation();
+
+                $('#test-repeater').validate();
+            },
+            hide: function (deleteElement) {
+                $(this).slideUp(deleteElement);
+            },
+            isFirstItemUndeletable: true,
+            errorMessage: true,
+            errorMessageClass: 'text-danger',
+        });
+
+        @*$("#test-repeater").validate({
+            rules: {
+                'questions[]': { minlength: 10 },
+            }
+        });*@
+
+        document.getElementById('ChapterId').addEventListener('change', event => {
+            $('#chapterValidSpan').hide();
+        })
+
+        document.getElementById('submitForm').onclick = async () => {
+            var isNull = document.getElementById('ChapterId').value == "" || document.getElementById('ChapterId').value == null || document.getElementById('ChapterId').value == undefined;
+            if (isNull) {
+                $('#chapterValidSpan').show();
+            }
+
+            $("#test-repeater").initValidation();
+            $("#test-repeater").validate();
+            if ($('#test-repeater').valid() && !isNull) {
+                var formdata = $('#test-repeater').repeaterVal();
+                var data = {
+                    ChapterId: document.getElementById('ChapterId').value,
+                    Hours: document.getElementById('Hours').value,
+                    Minutes: document.getElementById('Minutes').value,
+                    Questions: formdata.questions,
+                }
+                var response = await fetch('/Tests/Create', {
+                    method: "post",
+                    credentials: "include",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[1].value
+                    },
+                    body: JSON.stringify(data),
+                })
+
+                response = await response.json();
+                if (response.isError) {
+
+                    var ul = document.createElement('ul');
+                    response.errorMessages.forEach(message => {
+                        var li = document.createElement('li');
+                        li.textContent = message;
+                        ul.appendChild(li);
+
+                    });
+
+                    Swal.fire({
+                        title: "Error!",
+                        html: ul.innerHTML,
+                        icon: "error",
+                    });
+                } else if (!response.isError) {
+                    window.location.href = "/Tests/List"
+                }
+            }
+        }
+
+        (function ($) {
+
+            $.fn.initValidation = function () {
+
+                $(this).removeData("validator");
+                $(this).removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(this);
+
+                return this;
+            };
+
+        }(jQuery));
+
+
+    </script>
+}

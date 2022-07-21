@@ -3,7 +3,7 @@ using SmartLearning.SharedKernel;
 
 namespace SmartLearning.Core.ProjectAggregate;
 
-public class ToDoItem : BaseEntity
+public class ToDoItem : EntityBase
 {
   public string Title { get; set; } = string.Empty;
   public string Description { get; set; } = string.Empty;
@@ -15,7 +15,7 @@ public class ToDoItem : BaseEntity
     {
       IsDone = true;
 
-      Events.Add(new ToDoItemCompletedEvent(this));
+      base.RegisterDomainEvent(new ToDoItemCompletedEvent(this));
     }
   }
 

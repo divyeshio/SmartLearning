@@ -1,0 +1,40 @@
+﻿@using SmartLearning.Core.Entities.UsersAggregate
+@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "My Faculties";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body">
+            <div class="row match-height d-flex justify-content-center">
+                @{
+                    foreach (var item in Model)
+                    {
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <a asp-route="ViewProfile" asp-route-id="@item.Id">
+                                        <h4 class="card-title">@item.FullName</h4>
+                                        <img class="img-fluid my-2" src="/StaticFiles/avatars/@(item.Avatar ?? "default.jpg")" alt="Card image cap" />
+                                        <div class="col-12">
+                                            <div class="alert alert-primary" role="alert">
+                                                <div class="alert-body">
+                                                    <strong>@item.Classes.FirstOrDefault().Name</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

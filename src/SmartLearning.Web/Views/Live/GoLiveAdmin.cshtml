@@ -1,0 +1,51 @@
+﻿@using SmartLearning.Web.DTO
+@model AdminLiveClassViewModel
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <partial name="_BreadCrumbPartial" />
+        <div class="content-body d-flex justify-content-center">
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h1>Go Live</h1>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <form asp-route="GoLiveAdmin">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Board" class="control-label">Board</label>
+                            <select asp-for="Board" class="form-control" asp-items="@ViewData["Boards"] as SelectList">
+                                <option label="All"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Standard" class="control-label">Standard</label>
+                            <select asp-for="Standard" class="form-control" asp-items="@ViewData["Standards"] as SelectList">
+                                <option label="All"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Subject" class="control-label">Subject</label>
+                            <select asp-for="Subject" class="form-control" asp-items="@ViewData["Subjects"] as SelectList">
+                                <option label="All"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Go Live" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJS{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

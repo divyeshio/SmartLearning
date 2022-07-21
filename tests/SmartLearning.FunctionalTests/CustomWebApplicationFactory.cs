@@ -1,14 +1,13 @@
-﻿using SmartLearning.Infrastructure.Data;
-using SmartLearning.UnitTests;
-using SmartLearning.Web;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.UnitTests;
+using SmartLearning.Web;
 
 namespace SmartLearning.FunctionalTests;
 
@@ -29,11 +28,11 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
     var serviceProvider = host.Services;
 
     // Create a scope to obtain a reference to the database
-    // context (AppDbContext).
+    // context (ApplicationDbContext).
     using (var scope = serviceProvider.CreateScope())
     {
       var scopedServices = scope.ServiceProvider;
-      var db = scopedServices.GetRequiredService<AppDbContext>();
+      var db = scopedServices.GetRequiredService<ApplicationDbContext>();
 
       var logger = scopedServices
           .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
@@ -47,7 +46,7 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
         //if (!db.ToDoItems.Any())
         //{
         // Seed the database with test data.
-          SeedData.PopulateTestData(db);
+        SeedData.PopulateTestData(db);
         //}
       }
       catch (Exception ex)
@@ -65,24 +64,24 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
     builder
         .ConfigureServices(services =>
         {
-              // Remove the app's ApplicationDbContext registration.
-              var descriptor = services.SingleOrDefault(
-              d => d.ServiceType ==
-                  typeof(DbContextOptions<AppDbContext>));
+          // Remove the app's ApplicationDbContext registration.
+          var descriptor = services.SingleOrDefault(
+          d => d.ServiceType ==
+              typeof(DbContextOptions<ApplicationDbContext>));
 
           if (descriptor != null)
           {
             services.Remove(descriptor);
           }
 
-              // This should be set for each individual test run
-              string inMemoryCollectionName = Guid.NewGuid().ToString();
+          // This should be set for each individual test run
+          string inMemoryCollectionName = Guid.NewGuid().ToString();
 
-              // Add ApplicationDbContext using an in-memory database for testing.
-              services.AddDbContext<AppDbContext>(options =>
-          {
-          options.UseInMemoryDatabase(inMemoryCollectionName);
-        });
+          // Add ApplicationDbContext using an in-memory database for testing.
+          services.AddDbContext<ApplicationDbContext>(options =>
+      {
+        options.UseInMemoryDatabase(inMemoryCollectionName);
+      });
 
           services.AddScoped<IMediator, NoOpMediator>();
         });

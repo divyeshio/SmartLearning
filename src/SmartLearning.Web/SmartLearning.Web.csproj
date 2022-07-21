@@ -11,23 +11,55 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <None Remove="Endpoints\ProjectEndpoints\**" />
+    <None Remove="Views\Project\**" />
+    <None Remove="ApiModels\**" />
+    <None Remove="Pages\ProjectDetails\**" />
+    <None Remove="Api\ProjectsController.cs" />
+    <None Remove="Controllers\ProjectController.cs" />
+    <None Remove="ViewModels\ProjectViewModel.cs" />
+    <None Remove="ViewModels\ToDoItemViewModel.cs" />
+
+    <Compile Remove="Endpoints\ProjectEndpoints\**" />
+    <Compile Remove="Views\Project\**" />
+    <Compile Remove="ApiModels\**" />
+    <Compile Remove="Pages\ProjectDetails\**" />
+    <Content Remove="Pages\ProjectDetails\**" />
+    <Content Remove="Views\Project\**" />
+    <Compile Remove="Api\ProjectsController.cs" />
+    <Compile Remove="Controllers\ProjectController.cs" />
+    <Compile Remove="ViewModels\ProjectViewModel.cs" />
+    <Compile Remove="ViewModels\ToDoItemViewModel.cs" />
+
+    <EmbeddedResource Remove="Endpoints\ProjectEndpoints\**" />
+    <EmbeddedResource Remove="Views\Project\**" />
+    <EmbeddedResource Remove="ApiModels\**" />
+    <EmbeddedResource Remove="Pages\ProjectDetails\**" />
+    <EmbeddedResource Remove="Api\ProjectsController.cs" />
+    <EmbeddedResource Remove="Controllers\ProjectController.cs" />
+    <EmbeddedResource Remove="ViewModels\ProjectViewModel.cs" />
+    <EmbeddedResource Remove="ViewModels\ToDoItemViewModel.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
-    <PackageReference Include="Ardalis.ListStartupServices" Version="1.1.3" />
-    <PackageReference Include="Ardalis.Result" Version="3.1.2" />
-    <PackageReference Include="Ardalis.Result.AspNetCore" Version="3.1.2" />
-    <PackageReference Include="MediatR" Version="10.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="all" Version="6.0.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" PrivateAssets="All" Version="6.0.2" />
-    <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="3.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Ardalis.ListStartupServices" Version="1.1.4" />
+    <PackageReference Include="Ardalis.Result" Version="4.0.0" />
+    <PackageReference Include="Ardalis.Result.AspNetCore" Version="4.0.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="6.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" PrivateAssets="All" Version="6.0.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\SmartLearning.Infrastructure\SmartLearning.Infrastructure.csproj" />
   </ItemGroup>
-  
 </Project>

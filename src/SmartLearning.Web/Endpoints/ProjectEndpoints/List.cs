@@ -1,7 +1,7 @@
 ﻿using Ardalis.ApiEndpoints;
+using Microsoft.AspNetCore.Mvc;
 using SmartLearning.Core.ProjectAggregate;
 using SmartLearning.SharedKernel.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace SmartLearning.Web.Endpoints.ProjectEndpoints;
@@ -27,7 +27,7 @@ public class List : EndpointBaseAsync
   public override async Task<ActionResult<ProjectListResponse>> HandleAsync(CancellationToken cancellationToken)
   {
     var response = new ProjectListResponse();
-    response.Projects = (await _repository.ListAsync()) // TODO: pass cancellation token
+    response.Projects = (await _repository.ListAsync())
         .Select(project => new ProjectRecord(project.Id, project.Name))
         .ToList();
 
