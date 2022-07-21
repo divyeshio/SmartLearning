@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities.ClassroomAggregate;
+using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin")]
   public class UsersController : Controller
@@ -135,7 +136,7 @@ ReturnWithError:
           var result = await _userManager.CreateAsync(appUser, user.Password);
           if (result.Succeeded)
           {
-            foreach (Class group in groups)
+            foreach (var group in groups)
             {
               group.Users.Add(appUser);
             }
@@ -182,9 +183,9 @@ ReturnWithError:
           FirstName = user.FirstName,
           LastName = user.LastName,
           Email = user.Email,
-          SubjectId = (long)user.SubjectId,
-          BoardId = (long)user.BoardId,
-          StandardId = user.StandardId,
+          SubjectId = (int)user.SubjectId,
+          BoardId = (int)user.BoardId,
+          StandardId =(int) user.StandardId,
           Boards = await getBoards(),
           Standards = await getStandards(),
           Subjects = await getSubjects(),
@@ -201,8 +202,8 @@ ReturnWithError:
           FirstName = user.FirstName,
           LastName = user.LastName,
           Email = user.Email,
-          BoardId = (long)user.BoardId,
-          StandardId = user.StandardId,
+          BoardId = (int)user.BoardId,
+          StandardId = (int)user.StandardId,
           Boards = await getBoards(),
           Standards = await getStandards(),
           isEnabled = user.isEnabled
@@ -216,7 +217,7 @@ ReturnWithError:
     // POST: Users/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditAdmin(string id, [Bind("Id,FirstName,LastName,Email")] AdminVM user)
+    public async Task<IActionResult> EditAdmin(int id, [Bind("Id,FirstName,LastName,Email")] AdminVM user)
     {
       ModelState.Remove("Password");
       if (ModelState.IsValid)
@@ -258,7 +259,7 @@ ReturnWithError:
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditFaculty(string id, [Bind("Id,FirstName,LastName,Email,BoardId,SubjectId,StandardId,isEnabled")] FacultyVM user)
+    public async Task<IActionResult> EditFaculty(int id, [Bind("Id,FirstName,LastName,Email,BoardId,SubjectId,StandardId,isEnabled")] FacultyVM user)
     {
       ModelState.Remove("Password");
       if (ModelState.IsValid)
@@ -319,7 +320,7 @@ ReturnWithError:
           {
             appUser.Classes.Clear();
             var classes = await _context.Classes.Where(c => c.BoardId == appUser.BoardId && c.StandardId == appUser.StandardId && c.SubjectId == appUser.SubjectId).ToListAsync();
-            foreach (Class classa in classes)
+            foreach (var classa in classes)
             {
               appUser.Classes.Add(classa);
             }
@@ -394,7 +395,7 @@ ReturnWithError:
           {
             appUser.Classes.Clear();
             var classes = await _context.Classes.Where(c => c.BoardId == appUser.BoardId && c.StandardId == appUser.StandardId).ToListAsync();
-            foreach (Class classa in classes)
+            foreach (var classa in classes)
             {
               appUser.Classes.Add(classa);
             }
@@ -415,7 +416,7 @@ ReturnWithError:
     // POST: Users/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(int id)
     {
       if (id == null)
         return NotFound();
@@ -441,17 +442,17 @@ ReturnWithError:
 
 
 
-    public async Task<SelectList> getBoards(long? boardId = null)
+    public async Task<SelectList> getBoards(int? boardId = null)
     {
-      return new SelectList(await _context.Boards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
+      return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
     }
-    public async Task<SelectList> getSubjects(long? subjectId = null)
+    public async Task<SelectList> getSubjects(int? subjectId = null)
     {
       return new SelectList(await _context.Subjects.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", subjectId);
     }
-    public async Task<SelectList> getStandards(string standardId = null)
+    public async Task<SelectList> getStandards(int? standardId = null)
     {
-      return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
+      return new SelectList(await _context.Standards.OrderBy(b => b.Level).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
     }
 
     private bool userExists(string id)

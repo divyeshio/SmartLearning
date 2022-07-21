@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Test>
+﻿@using SmartLearning.Core.Entities.TestAggregate
+@model IEnumerable<Test>
 
 @{
     ViewData["Title"] = "All Tests";
@@ -81,10 +82,10 @@
                                         @Html.DisplayFor(modelItem => item.TestDuration)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Chapter.Class.Board.Name)
+                                        @Html.DisplayFor(modelItem => item.Chapter.Class.Board.AbbrName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Chapter.Class.Standard.Name)
+                                        @Html.DisplayFor(modelItem => item.Chapter.Class.Standard.Level)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Chapter.Class.Subject.Name)

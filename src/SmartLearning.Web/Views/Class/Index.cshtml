@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SmartLearning.Models.Class>
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@model IEnumerable<Classroom>
 
 @{
     ViewData["Title"] = "Classes";
@@ -76,10 +77,10 @@
                                             @Html.DisplayFor(modelItem => item.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Standard.Name)
+                                            @Html.DisplayFor(modelItem => item.Standard.DisplayName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Board.Name)
+                                            @Html.DisplayFor(modelItem => item.Board.AbbrName)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Subject.Name)

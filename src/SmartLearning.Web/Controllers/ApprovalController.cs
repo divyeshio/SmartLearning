@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.Infrastructure.Data;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin")]
   public class ApprovalController : Controller
@@ -29,7 +29,7 @@ namespace SmartLearning.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Approve(string id)
+    public async Task<IActionResult> Approve(int id)
     {
       var user = await _context.Users.FindAsync(id);
       if (user == null)
@@ -47,7 +47,7 @@ namespace SmartLearning.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Deny(string id)
+    public async Task<IActionResult> Deny(int id)
     {
       var user = await _context.Users.FindAsync(id);
       if (user == null)

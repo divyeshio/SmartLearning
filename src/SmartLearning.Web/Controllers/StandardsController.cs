@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities.StandardAggregate;
+using SmartLearning.Infrastructure.Data;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   public class StandardsController : Controller
   {
@@ -17,7 +17,7 @@ namespace SmartLearning.Controllers
     // GET: Standards
     public async Task<IActionResult> Index()
     {
-      return View(await _context.Standards.OrderBy(s => s.Name).ToListAsync());
+      return View(await _context.Standards.OrderBy(s => s.Level).ToListAsync());
     }
 
 
@@ -35,9 +35,9 @@ namespace SmartLearning.Controllers
       ModelState.Remove("DisplayName");
       if (ModelState.IsValid)
       {
-        if (!await _context.Standards.AnyAsync(s => s.Name == standard.Name))
+        if (!await _context.Standards.AnyAsync(s => s.Level == standard.Level))
         {
-          standard.DisplayName = standard.Name.ToString();
+          standard.DisplayName = standard.Level.ToString();
           await _context.Standards.AddAsync(standard);
           await _context.SaveChangesAsync();
           return RedirectToAction(nameof(Index));
@@ -52,7 +52,7 @@ namespace SmartLearning.Controllers
     }
 
     // GET: Standards/Edit/5
-    public async Task<IActionResult> Edit(string id)
+    public async Task<IActionResult> Edit(int id)
     {
       if (id == null)
       {
@@ -70,7 +70,7 @@ namespace SmartLearning.Controllers
     // POST: Standards/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, [Bind("Id,Name")] Standard standard)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Standard standard)
     {
       if (id != standard.Id)
       {
@@ -81,9 +81,9 @@ namespace SmartLearning.Controllers
       {
         try
         {
-          if (!await _context.Standards.AnyAsync(s => s.Name == standard.Name))
+          if (!await _context.Standards.AnyAsync(s => s.Level == standard.Level))
           {
-            standard.DisplayName = standard.Name.ToString();
+            standard.DisplayName = standard.Level.ToString();
             _context.Update(standard);
             await _context.SaveChangesAsync();
           }
@@ -113,7 +113,7 @@ namespace SmartLearning.Controllers
     // POST: Standards/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(int id)
     {
       var standard = await _context.Standards.FindAsync(id);
       _context.Standards.Remove(standard);
@@ -121,7 +121,7 @@ namespace SmartLearning.Controllers
       return RedirectToAction(nameof(Index));
     }
 
-    private async Task<bool> StandardExists(string id)
+    private async Task<bool> StandardExists(int id)
     {
       return await _context.Standards.AnyAsync(e => e.Id == id);
     }

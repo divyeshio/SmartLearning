@@ -1,4 +1,6 @@
-﻿@model SmartLearning.Models.Board
+﻿@using SmartLearning.Core.Entities;
+@using SmartLearning.Core.Entities.BoardAggregate
+@model Board
 
 @{
     ViewData["Title"] = "Edit Board";
@@ -18,9 +20,9 @@
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <input type="hidden" asp-for="Id" />
                         <div class="form-group">
-                            <label asp-for="Name" class="control-label"></label>
-                            <input asp-for="Name" class="form-control" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <label asp-for="AbbrName" class="control-label"></label>
+                            <input asp-for="AbbrName" class="form-control" />
+                            <span asp-validation-for="AbbrName" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Save" class="btn btn-primary" />

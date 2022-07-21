@@ -31,7 +31,7 @@ public class Update : EndpointBaseAsync
     {
       return BadRequest();
     }
-    var existingProject = await _repository.GetByIdAsync(request.Id); // TODO: pass cancellation token
+    var existingProject = await _repository.GetByIdAsync(request.Id);
 
     if (existingProject == null)
     {
@@ -39,7 +39,7 @@ public class Update : EndpointBaseAsync
     }
     existingProject.UpdateName(request.Name);
 
-    await _repository.UpdateAsync(existingProject); // TODO: pass cancellation token
+    await _repository.UpdateAsync(existingProject);
 
     var response = new UpdateProjectResponse(
         project: new ProjectRecord(existingProject.Id, existingProject.Name)

@@ -6,6 +6,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\BaseEfRepoTestFixture.cs" />
+    <Compile Remove="Data\EfRepositoryAdd.cs" />
+    <Compile Remove="Data\EfRepositoryDelete.cs" />
+    <Compile Remove="Data\EfRepositoryUpdate.cs" />
+    <None Remove="Data\BaseEfRepoTestFixture.cs" />
+    <None Remove="Data\EfRepositoryAdd.cs" />
+    <None Remove="Data\EfRepositoryDelete.cs" />
+    <None Remove="Data\EfRepositoryUpdate.cs" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
@@ -30,6 +42,10 @@
     <None Update="xunit.runner.json">
 	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

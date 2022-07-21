@@ -9,8 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\Services\ToDoItemSearchService_GetAllIncompleteItems.cs" />
-    <Compile Remove="Core\Services\ToDoItemSearchService_GetNextIncompleteItem.cs" />
+    <Compile Remove="Core\ProjectAggregate\**" />
+    <Compile Remove="Core\Services\**" />
+    <Compile Remove="Core\Specifications\**" />
+    <EmbeddedResource Remove="Core\ProjectAggregate\**" />
+    <EmbeddedResource Remove="Core\Services\**" />
+    <EmbeddedResource Remove="Core\Specifications\**" />
+    <None Remove="Core\ProjectAggregate\**" />
+    <None Remove="Core\Services\**" />
+    <None Remove="Core\Specifications\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ToDoItemBuilder.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,10 +47,6 @@
     <None Update="xunit.runner.json">
 	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Core\Services\" />
   </ItemGroup>
 
 </Project>

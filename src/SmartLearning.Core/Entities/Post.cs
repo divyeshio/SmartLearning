@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities
 {
-  public class Post
+  public class Post : EntityBase
   {
     [Key]
     public int Id { get; set; }

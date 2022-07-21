@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace SmartLearning.Helpers
+namespace SmartLearning.Core.Helpers
 {
   public class MaxFileSizeAttribute : ValidationAttribute
   {

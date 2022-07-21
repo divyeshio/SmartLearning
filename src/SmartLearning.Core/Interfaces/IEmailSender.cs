@@ -1,4 +1,4 @@
-﻿namespace SmartLearning.Services
+﻿namespace SmartLearning.Core.Interfaces
 {
   public interface IEmailSender
   {

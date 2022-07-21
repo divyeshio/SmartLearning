@@ -1,5 +1,4 @@
 ﻿using Ardalis.Specification.EntityFrameworkCore;
-using SmartLearning.Data;
 using SmartLearning.SharedKernel.Interfaces;
 
 namespace SmartLearning.Infrastructure.Data;

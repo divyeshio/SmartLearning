@@ -1,0 +1,954 @@
+2022-07-19 19:01:36.445 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:01:38.369 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:01:38.590 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:01:39.079 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:01:39.153 +05:30 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:01:39.158 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:01:39.160 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:01:39.179 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:01:39.202 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:01:39.206 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:01:39.222 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:01:39.338 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:01:39.343 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:01:39.344 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:01:39.344 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:01:40.436 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:01:40.553 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:01:41.031 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:01:41.035 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 612.0579ms
+2022-07-19 19:01:41.051 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:01:41.061 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 9.2085ms
+2022-07-19 19:01:41.081 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 49.8475ms
+2022-07-19 19:01:41.209 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:01:41.431 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 221.3655ms
+2022-07-19 19:08:13.388 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:08:15.058 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:08:15.268 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:08:15.752 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:08:15.829 +05:30 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:08:15.835 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:08:15.838 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:08:15.857 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:08:15.880 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:08:15.884 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:08:15.900 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:08:16.011 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:08:16.014 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:08:16.015 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:08:16.016 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:08:17.414 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:08:17.651 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:08:17.992 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:08:17.999 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 594.0657ms
+2022-07-19 19:08:18.023 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:08:18.031 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 7.2843ms
+2022-07-19 19:08:18.052 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 59.7160ms
+2022-07-19 19:08:18.167 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:08:18.399 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 231.8570ms
+2022-07-19 19:09:03.776 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:09:05.484 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:09:05.699 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:09:06.232 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:09:06.292 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:09:06.298 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:09:06.300 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:09:06.320 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:09:06.344 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:09:06.349 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:09:06.368 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:09:06.479 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:09:06.483 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:09:06.484 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:09:06.485 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:09:07.790 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:09:07.894 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:09:08.268 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:09:08.274 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 5.4173ms
+2022-07-19 19:09:08.301 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 517.9820ms
+2022-07-19 19:09:08.307 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:09:08.346 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.3645ms
+2022-07-19 19:09:08.454 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:09:08.704 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 249.9929ms
+2022-07-19 19:09:23.302 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:09:23.320 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:09:23.323 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - - - 404 0 - 20.4140ms
+2022-07-19 19:09:29.337 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:09:29.339 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - - - 404 0 - 1.9804ms
+2022-07-19 19:09:33.407 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:09:33.409 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - - - 404 0 - 1.2103ms
+2022-07-19 19:09:43.136 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:09:43.137 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/{boardId} - - - 404 0 - 1.2515ms
+2022-07-19 19:10:04.067 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards - -
+2022-07-19 19:10:04.079 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:10:04.104 +05:30 [INF] Route matched with {action = "Handle", controller = "List", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse]] HandleAsync(System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.List (SmartLearning.Web).
+2022-07-19 19:10:04.151 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:10:04.564 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+2022-07-19 19:10:04.704 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse'.
+2022-07-19 19:10:04.717 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web) in 605.3703ms
+2022-07-19 19:10:04.721 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:10:04.733 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards - - - 200 - application/json;+charset=utf-8 665.4303ms
+2022-07-19 19:10:26.200 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:10:26.201 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/{boardId} - - - 404 0 - 1.7775ms
+2022-07-19 19:10:44.269 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:10:44.271 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/{boardId} - - - 404 0 - 1.2862ms
+2022-07-19 19:11:51.908 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:11:53.493 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:11:53.706 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:11:54.231 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:11:54.300 +05:30 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:11:54.305 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:11:54.307 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:11:54.327 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:11:54.350 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:11:54.353 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:11:54.370 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:11:54.490 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:11:54.495 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:11:54.495 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:11:54.496 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:11:55.491 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:11:55.603 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:11:56.226 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:11:56.244 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 756.9933ms
+2022-07-19 19:11:56.263 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:11:56.273 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 9.9498ms
+2022-07-19 19:11:56.296 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 69.4428ms
+2022-07-19 19:11:56.440 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:11:56.687 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 246.7854ms
+2022-07-19 19:12:12.046 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:12:12.064 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:12:12.068 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/{boardId} - - - 404 0 - 22.1665ms
+2022-07-19 19:12:17.127 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/{boardId} - -
+2022-07-19 19:12:17.129 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/{boardId} - - - 404 0 - 2.3675ms
+2022-07-19 19:14:43.005 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/Projects/1 - -
+2022-07-19 19:14:43.015 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.ProjectEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:14:43.044 +05:30 [INF] Route matched with {action = "Handle", controller = "GetById", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.ProjectEndpoints.GetProjectByIdResponse]] HandleAsync(SmartLearning.Web.Endpoints.ProjectEndpoints.GetProjectByIdRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.ProjectEndpoints.GetById (SmartLearning.Web).
+2022-07-19 19:14:43.107 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:14:43.190 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.ProjectEndpoints.GetById.HandleAsync (SmartLearning.Web) in 138.7591ms
+2022-07-19 19:14:43.193 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.ProjectEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:14:43.195 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Cannot create a DbSet for 'Project' because this type is not included in the model for the context.
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Ardalis.Specification.WhereEvaluator.GetQuery[T](IQueryable`1 query, ISpecification`1 specification)
+   at Ardalis.Specification.EntityFrameworkCore.SpecificationEvaluator.GetQuery[T](IQueryable`1 query, ISpecification`1 specification, Boolean evaluateCriteriaOnly)
+   at Ardalis.Specification.EntityFrameworkCore.RepositoryBase`1.GetBySpecAsync[Spec](Spec specification, CancellationToken cancellationToken)
+   at SmartLearning.Web.Endpoints.ProjectEndpoints.GetById.HandleAsync(GetProjectByIdRequest request, CancellationToken cancellationToken) in D:\divyeshio\SmartLearning\src\SmartLearning.Web\Endpoints\ProjectEndpoints\GetById.cs:line 32
+   at lambda_method713(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Ardalis.ListStartupServices.ShowAllServicesMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-19 19:14:43.264 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/Projects/1 - - - 500 - text/plain;+charset=utf-8 259.6317ms
+2022-07-19 19:15:40.182 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:15:41.856 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:15:42.069 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:15:42.568 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:15:42.646 +05:30 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:15:42.651 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:15:42.652 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:15:42.675 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:15:42.698 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:15:42.701 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:15:42.717 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:15:42.834 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:15:42.838 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:15:42.839 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:15:42.840 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:15:43.796 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:15:44.120 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:15:44.510 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:15:44.514 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 728.5395ms
+2022-07-19 19:15:44.534 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:15:44.541 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 7.2279ms
+2022-07-19 19:15:44.560 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 50.9894ms
+2022-07-19 19:15:44.675 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:15:44.899 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 224.1413ms
+2022-07-19 19:16:11.738 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/1 - -
+2022-07-19 19:16:11.758 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:16:11.764 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:16:11.792 +05:30 [INF] Route matched with {action = "Handle", controller = "GetById", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.GetById (SmartLearning.Web).
+2022-07-19 19:16:31.195 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:16:31.984 +05:30 [INF] Executed DbCommand (90ms) [Parameters=[@__projectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AbbrName], [t].[Name], [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+    FROM [Boards] AS [b]
+    WHERE [b].[Id] = @__projectId_0
+) AS [t]
+LEFT JOIN [Users] AS [u] ON [t].[Id] = [u].[BoardId]
+ORDER BY [t].[Id]
+2022-07-19 19:16:36.700 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse'.
+2022-07-19 19:16:36.730 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web) in 24929.5631ms
+2022-07-19 19:16:36.734 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:16:36.743 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/1 - - - 200 - application/json;+charset=utf-8 25004.8980ms
+2022-07-19 19:17:20.688 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:17:22.170 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:17:22.381 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:17:22.904 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:17:22.970 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:17:22.976 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:17:22.978 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:17:22.997 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:17:23.021 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:17:23.025 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:17:23.041 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:17:23.149 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:17:23.153 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:17:23.154 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:17:23.154 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:17:23.951 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:17:24.089 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:17:24.543 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:17:24.545 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 603.0283ms
+2022-07-19 19:17:24.559 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 15.5549ms
+2022-07-19 19:17:24.562 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:17:24.603 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.5577ms
+2022-07-19 19:17:24.707 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:17:24.926 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 218.5889ms
+2022-07-19 19:17:37.999 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/0 - -
+2022-07-19 19:17:38.018 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:17:38.025 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:17:38.050 +05:30 [INF] Route matched with {action = "Handle", controller = "GetById", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.GetById (SmartLearning.Web).
+2022-07-19 19:17:41.627 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:17:42.359 +05:30 [INF] Executed DbCommand (74ms) [Parameters=[@__projectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AbbrName], [t].[Name], [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+    FROM [Boards] AS [b]
+    WHERE [b].[Id] = @__projectId_0
+) AS [t]
+LEFT JOIN [Users] AS [u] ON [t].[Id] = [u].[BoardId]
+ORDER BY [t].[Id]
+2022-07-19 19:17:42.397 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-07-19 19:17:42.412 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web) in 4352.5682ms
+2022-07-19 19:17:42.415 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:17:42.425 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/0 - - - 404 - application/problem+json;+charset=utf-8 4425.8343ms
+2022-07-19 19:17:50.515 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/1 - -
+2022-07-19 19:17:50.517 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:17:50.518 +05:30 [INF] Route matched with {action = "Handle", controller = "GetById", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.GetById (SmartLearning.Web).
+2022-07-19 19:17:50.571 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:17:50.578 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__projectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AbbrName], [t].[Name], [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+    FROM [Boards] AS [b]
+    WHERE [b].[Id] = @__projectId_0
+) AS [t]
+LEFT JOIN [Users] AS [u] ON [t].[Id] = [u].[BoardId]
+ORDER BY [t].[Id]
+2022-07-19 19:17:50.663 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse'.
+2022-07-19 19:17:50.667 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web) in 147.0541ms
+2022-07-19 19:17:50.669 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:17:50.671 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/1 - - - 200 - application/json;+charset=utf-8 155.9059ms
+2022-07-19 19:21:57.065 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:21:58.655 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:21:58.882 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:21:59.367 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:21:59.433 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:21:59.439 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:21:59.440 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:21:59.460 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:21:59.482 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:21:59.487 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:21:59.503 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:21:59.619 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:21:59.624 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:21:59.624 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:21:59.625 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:22:00.522 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:22:00.682 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:22:01.298 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:22:01.299 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 765.1822ms
+2022-07-19 19:22:01.312 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:22:01.322 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 9.5386ms
+2022-07-19 19:22:01.351 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 53.0412ms
+2022-07-19 19:22:01.466 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:22:01.779 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 313.3136ms
+2022-07-19 19:22:31.191 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/0 - -
+2022-07-19 19:22:31.208 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:22:31.215 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:22:31.240 +05:30 [INF] Route matched with {action = "Handle", controller = "Delete", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.DeleteBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Delete (SmartLearning.Web).
+2022-07-19 19:22:31.300 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:22:31.936 +05:30 [INF] Executed DbCommand (87ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:22:31.981 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-07-19 19:22:31.996 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web) in 745.2461ms
+2022-07-19 19:22:32.000 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:22:32.007 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/0 - - - 404 - application/problem+json;+charset=utf-8 815.9855ms
+2022-07-19 19:22:36.876 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/1 - -
+2022-07-19 19:22:36.877 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:22:36.879 +05:30 [INF] Route matched with {action = "Handle", controller = "Delete", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.DeleteBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Delete (SmartLearning.Web).
+2022-07-19 19:22:36.932 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:22:36.938 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:22:37.201 +05:30 [INF] Executed DbCommand (41ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Boards]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2022-07-19 19:22:37.255 +05:30 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2022-07-19 19:22:37.257 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web) in 376.3561ms
+2022-07-19 19:22:37.258 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:22:37.260 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/1 - - - 204 - - 384.1331ms
+2022-07-19 19:22:44.645 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards - -
+2022-07-19 19:22:44.646 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:22:44.651 +05:30 [INF] Route matched with {action = "Handle", controller = "List", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse]] HandleAsync(System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.List (SmartLearning.Web).
+2022-07-19 19:22:44.660 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:22:44.671 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+2022-07-19 19:22:44.681 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse'.
+2022-07-19 19:22:44.684 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web) in 30.8094ms
+2022-07-19 19:22:44.685 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:22:44.685 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards - - - 200 - application/json;+charset=utf-8 40.8030ms
+2022-07-19 19:24:15.137 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:24:15.160 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 22.7865ms
+2022-07-19 19:24:15.174 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:24:15.185 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 10.6592ms
+2022-07-19 19:24:15.200 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:24:15.236 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.7987ms
+2022-07-19 19:24:15.362 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:24:15.402 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 40.0008ms
+2022-07-19 19:27:56.807 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:27:58.297 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:27:58.507 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:27:59.040 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:27:59.109 +05:30 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:27:59.114 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:27:59.115 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:27:59.134 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:27:59.156 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:27:59.159 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:27:59.176 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:27:59.284 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:27:59.287 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:27:59.287 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:27:59.288 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:28:00.472 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:28:00.552 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:28:00.936 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:28:00.940 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 475.3893ms
+2022-07-19 19:28:00.942 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 5.9708ms
+2022-07-19 19:28:00.956 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:28:01.002 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 46.2347ms
+2022-07-19 19:28:01.097 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:28:01.362 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 264.8468ms
+2022-07-19 19:31:45.086 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:31:45.359 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:31:45.860 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:31:45.931 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:31:45.936 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:31:45.938 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:31:45.958 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:31:45.980 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:31:45.984 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:31:46.008 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:31:46.052 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:31:46.175 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:31:46.179 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:31:46.181 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:31:46.181 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:31:46.758 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:31:46.822 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:31:47.164 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:31:47.171 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 417.1270ms
+2022-07-19 19:31:47.196 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:31:47.202 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 5.3082ms
+2022-07-19 19:31:47.224 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 59.5304ms
+2022-07-19 19:31:47.345 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:31:47.578 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 233.3386ms
+2022-07-19 19:32:33.541 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:57679/boards application/json 46
+2022-07-19 19:32:33.564 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:32:33.571 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:32:33.597 +05:30 [INF] Route matched with {action = "Handle", controller = "Add", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.AddBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.AddBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Add (SmartLearning.Web).
+2022-07-19 19:32:33.687 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:32:34.102 +05:30 [INF] Executed DbCommand (99ms) [Parameters=[@p0='?' (Size = 10), @p1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Boards] ([AbbrName], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Boards]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2022-07-19 19:32:34.215 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.AddBoardResponse'.
+2022-07-19 19:32:34.230 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync (SmartLearning.Web) in 625.5705ms
+2022-07-19 19:32:34.233 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Add.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:32:34.241 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:57679/boards application/json 46 - 200 - application/json;+charset=utf-8 699.5774ms
+2022-07-19 19:32:56.293 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards - -
+2022-07-19 19:32:56.295 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:32:56.301 +05:30 [INF] Route matched with {action = "Handle", controller = "List", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse]] HandleAsync(System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.List (SmartLearning.Web).
+2022-07-19 19:32:56.357 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:32:56.667 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+2022-07-19 19:32:56.698 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse'.
+2022-07-19 19:32:56.701 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web) in 398.5882ms
+2022-07-19 19:32:56.703 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:32:56.705 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards - - - 200 - application/json;+charset=utf-8 411.7699ms
+2022-07-19 19:37:59.477 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:57679/Boards application/json 33
+2022-07-19 19:37:59.485 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:37:59.487 +05:30 [INF] Route matched with {action = "Handle", controller = "Update", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Update (SmartLearning.Web).
+2022-07-19 19:37:59.494 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:37:59.691 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:37:59.698 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-07-19 19:37:59.699 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web) in 211.2116ms
+2022-07-19 19:37:59.700 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:37:59.701 +05:30 [INF] Request finished HTTP/1.1 PUT http://localhost:57679/Boards application/json 33 - 404 - application/json;+charset=utf-8 224.0404ms
+2022-07-19 19:38:53.918 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:57679/Boards application/json 31
+2022-07-19 19:38:53.923 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:38:53.924 +05:30 [INF] Route matched with {action = "Handle", controller = "Update", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Update (SmartLearning.Web).
+2022-07-19 19:38:53.926 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:38:53.934 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:38:53.977 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 10), @p1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Boards] SET [AbbrName] = @p0, [Name] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2022-07-19 19:38:53.982 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse'.
+2022-07-19 19:38:53.983 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web) in 57.9476ms
+2022-07-19 19:38:53.984 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:38:53.985 +05:30 [INF] Request finished HTTP/1.1 PUT http://localhost:57679/Boards application/json 31 - 200 - application/json;+charset=utf-8 66.5043ms
+2022-07-19 19:39:10.021 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/2 - -
+2022-07-19 19:39:10.022 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:39:10.027 +05:30 [INF] Route matched with {action = "Handle", controller = "GetById", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.GetById (SmartLearning.Web).
+2022-07-19 19:39:10.045 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:39:10.208 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__projectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AbbrName], [t].[Name], [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+    FROM [Boards] AS [b]
+    WHERE [b].[Id] = @__projectId_0
+) AS [t]
+LEFT JOIN [Users] AS [u] ON [t].[Id] = [u].[BoardId]
+ORDER BY [t].[Id]
+2022-07-19 19:39:10.221 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse'.
+2022-07-19 19:39:10.222 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web) in 194.7161ms
+2022-07-19 19:39:10.223 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:39:10.224 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/2 - - - 200 - application/json;+charset=utf-8 202.8520ms
+2022-07-19 19:43:11.744 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:43:12.001 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:43:12.458 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:43:12.521 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:43:12.526 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:43:12.527 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:43:12.544 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:43:12.562 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:43:12.564 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:43:12.580 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:43:12.615 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:43:12.714 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:43:12.716 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:43:12.717 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:43:12.717 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:43:13.172 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:43:13.207 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:43:13.500 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:43:13.506 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 336.4896ms
+2022-07-19 19:43:13.507 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 7.3389ms
+2022-07-19 19:43:13.527 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:43:13.592 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 64.7125ms
+2022-07-19 19:43:13.681 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:43:13.871 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 189.9315ms
+2022-07-19 19:43:46.888 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:57679/Boards application/json 31
+2022-07-19 19:43:46.918 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:43:46.923 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:43:46.947 +05:30 [INF] Route matched with {action = "Handle", controller = "Update", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Update (SmartLearning.Web).
+2022-07-19 19:43:47.004 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:43:47.588 +05:30 [INF] Executed DbCommand (64ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:47:51.276 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:47:51.501 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:47:51.939 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:47:51.989 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:47:51.993 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:47:51.995 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:47:52.015 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:47:52.035 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:47:52.038 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:47:52.054 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:47:52.092 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:47:52.203 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:47:52.207 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:47:52.208 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:47:52.209 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:47:52.901 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:47:52.949 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:47:53.241 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:47:53.244 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 346.5896ms
+2022-07-19 19:47:53.264 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:47:53.270 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 5.9674ms
+2022-07-19 19:47:53.288 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 47.0907ms
+2022-07-19 19:47:53.392 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:47:53.589 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 197.3054ms
+2022-07-19 19:48:18.641 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:48:18.880 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:48:19.326 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:48:19.378 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:48:19.383 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:48:19.384 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:48:19.401 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:48:19.420 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:48:19.425 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:48:19.440 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:48:19.477 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:48:19.577 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:48:19.581 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:48:19.582 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:48:19.583 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:48:20.259 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:48:20.318 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:48:20.596 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:48:20.601 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 345.8540ms
+2022-07-19 19:48:20.604 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 6.9692ms
+2022-07-19 19:48:20.620 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:48:20.656 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.6303ms
+2022-07-19 19:48:20.747 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:48:20.943 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 196.0969ms
+2022-07-19 19:48:32.359 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards/2 - -
+2022-07-19 19:48:32.377 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:48:32.381 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:48:32.409 +05:30 [INF] Route matched with {action = "Handle", controller = "GetById", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.GetById (SmartLearning.Web).
+2022-07-19 19:48:32.453 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:48:33.250 +05:30 [INF] Executed DbCommand (82ms) [Parameters=[@__projectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AbbrName], [t].[Name], [u].[Id], [u].[AccessFailedCount], [u].[AccountType], [u].[AdminApproved], [u].[Avatar], [u].[BoardId], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FaceDataId], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[StandardId], [u].[SubjectId], [u].[TwoFactorEnabled], [u].[UserName], [u].[isEnabled]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+    FROM [Boards] AS [b]
+    WHERE [b].[Id] = @__projectId_0
+) AS [t]
+LEFT JOIN [Users] AS [u] ON [t].[Id] = [u].[BoardId]
+ORDER BY [t].[Id]
+2022-07-19 19:48:33.360 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.GetBoardByIdResponse'.
+2022-07-19 19:48:33.374 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web) in 957.5127ms
+2022-07-19 19:48:33.376 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.GetById.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:48:33.383 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards/2 - - - 200 - application/json;+charset=utf-8 1024.8169ms
+2022-07-19 19:49:31.802 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:57679/boards application/json 57
+2022-07-19 19:49:31.803 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:49:31.807 +05:30 [INF] Route matched with {action = "Handle", controller = "Update", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Update (SmartLearning.Web).
+2022-07-19 19:49:31.866 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:49:31.881 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:49:32.033 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 10), @p1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Boards] SET [AbbrName] = @p0, [Name] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2022-07-19 19:49:32.084 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse'.
+2022-07-19 19:49:32.090 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web) in 281.0049ms
+2022-07-19 19:49:32.091 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:49:32.092 +05:30 [INF] Request finished HTTP/1.1 PUT http://localhost:57679/boards application/json 57 - 200 - application/json;+charset=utf-8 289.9074ms
+2022-07-19 19:49:54.584 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:57679/boards application/json 85
+2022-07-19 19:49:54.585 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:49:54.586 +05:30 [INF] Route matched with {action = "Handle", controller = "Update", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse]] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Update (SmartLearning.Web).
+2022-07-19 19:49:54.588 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:49:54.595 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:49:54.599 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 10), @p1='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Boards] SET [AbbrName] = @p0, [Name] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2022-07-19 19:49:54.612 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.UpdateBoardResponse'.
+2022-07-19 19:49:54.613 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web) in 25.5489ms
+2022-07-19 19:49:54.613 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Update.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:49:54.614 +05:30 [INF] Request finished HTTP/1.1 PUT http://localhost:57679/boards application/json 85 - 200 - application/json;+charset=utf-8 29.5447ms
+2022-07-19 19:50:00.471 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards - -
+2022-07-19 19:50:00.471 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:50:00.475 +05:30 [INF] Route matched with {action = "Handle", controller = "List", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse]] HandleAsync(System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.List (SmartLearning.Web).
+2022-07-19 19:50:00.480 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:50:00.489 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+2022-07-19 19:50:00.499 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse'.
+2022-07-19 19:50:00.500 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web) in 24.1083ms
+2022-07-19 19:50:00.501 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:50:00.501 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards - - - 200 - application/json;+charset=utf-8 30.4026ms
+2022-07-19 19:50:14.475 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:57679/boards/3 - -
+2022-07-19 19:50:14.475 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:50:14.490 +05:30 [INF] Route matched with {action = "Handle", controller = "Delete", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] HandleAsync(SmartLearning.Web.Endpoints.BoardEndpoints.DeleteBoardRequest, System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.Delete (SmartLearning.Web).
+2022-07-19 19:50:14.496 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:50:14.500 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+WHERE [b].[Id] = @__p_0
+2022-07-19 19:50:14.556 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Boards]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2022-07-19 19:50:14.569 +05:30 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2022-07-19 19:50:14.570 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web) in 76.9723ms
+2022-07-19 19:50:14.571 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.Delete.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:50:14.571 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:57679/boards/3 - - - 204 - - 96.8723ms
+2022-07-19 19:50:22.639 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/boards - -
+2022-07-19 19:50:22.640 +05:30 [INF] Executing endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:50:22.641 +05:30 [INF] Route matched with {action = "Handle", controller = "List", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse]] HandleAsync(System.Threading.CancellationToken) on controller SmartLearning.Web.Endpoints.BoardEndpoints.List (SmartLearning.Web).
+2022-07-19 19:50:22.644 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:50:22.647 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[AbbrName], [b].[Name]
+FROM [Boards] AS [b]
+2022-07-19 19:50:22.648 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartLearning.Web.Endpoints.BoardEndpoints.BoardListResponse'.
+2022-07-19 19:50:22.649 +05:30 [INF] Executed action SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web) in 5.972ms
+2022-07-19 19:50:22.650 +05:30 [INF] Executed endpoint 'SmartLearning.Web.Endpoints.BoardEndpoints.List.HandleAsync (SmartLearning.Web)'
+2022-07-19 19:50:22.651 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/boards - - - 200 - application/json;+charset=utf-8 11.4450ms
+2022-07-19 19:51:33.410 +05:30 [WRN] The 'bool' property 'isEnabled' on entity type 'ApplicationUser' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2022-07-19 19:51:33.639 +05:30 [INF] Entity Framework Core 6.0.4 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+2022-07-19 19:51:34.075 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:51:34.124 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:51:34.128 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:51:34.130 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-07-19 19:51:34.146 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-07-19 19:51:34.166 +05:30 [INF] No migrations were applied. The database is already up to date.
+2022-07-19 19:51:34.169 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-07-19 19:51:34.184 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2022-07-19 19:51:34.218 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-19 19:51:34.316 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-19 19:51:34.319 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-19 19:51:34.320 +05:30 [INF] Hosting environment: Development
+2022-07-19 19:51:34.320 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web\
+2022-07-19 19:51:35.099 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-19 19:51:35.147 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-19 19:51:35.412 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-19 19:51:35.418 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 321.5559ms
+2022-07-19 19:51:35.434 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-19 19:51:35.443 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 9.1491ms
+2022-07-19 19:51:35.458 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 45.7813ms
+2022-07-19 19:51:35.558 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-19 19:51:35.768 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 209.3278ms

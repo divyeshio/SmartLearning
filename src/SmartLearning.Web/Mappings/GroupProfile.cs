@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities.ClassroomAggregate;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Mappings
+namespace SmartLearning.Web.Mappings
 {
   public class GroupProfile : Profile
   {
     public GroupProfile()
     {
-      CreateMap<Class, ClassViewModel>();
-      CreateMap<ClassViewModel, Class>();
+      CreateMap<Classroom, ClassViewModel>();
+      CreateMap<ClassViewModel, Classroom>();
     }
   }
 }

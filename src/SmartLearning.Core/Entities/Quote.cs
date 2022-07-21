@@ -1,13 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using SmartLearning.SharedKernel;
 
-namespace SmartLearning.Models
+namespace SmartLearning.Core.Entities
 {
-  public class Quote
+  public class Quote : EntityBase
   {
-    [Key]
-
-    public long Id { get; set; }
-
     [Required]
     [StringLength(20, MinimumLength = 3)]
     public string AuthorName { get; set; } = "Unknown";

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Mappings
+namespace SmartLearning.Web.Mappings
 {
   public class UserProfile : Profile
   {

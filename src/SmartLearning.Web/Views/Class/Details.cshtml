@@ -1,4 +1,6 @@
-﻿@model SmartLearning.Models.Class
+﻿@using SmartLearning.Core.Entities.ClassroomAggregate
+@using SmartLearning.Core.Entities.UsersAggregate
+@model Classroom
 
 @{
     ViewData["Title"] = "Class Details";
@@ -80,7 +82,7 @@
             @Html.DisplayNameFor(model => model.Board)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Board.Name)
+            @Html.DisplayFor(model => model.Board.AbbrName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Subject)

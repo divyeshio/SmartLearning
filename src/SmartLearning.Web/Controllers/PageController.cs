@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   public class PageController : Controller
   {

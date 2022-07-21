@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace SmartLearning.Services
+namespace SmartLearning.Core.Interfaces
 {
   public class AuthMessageSender : IEmailSender, ISmsSender
   {

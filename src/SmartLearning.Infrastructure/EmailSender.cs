@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 using Microsoft.Extensions.Logging;
-using SmartLearning.Services;
+using SmartLearning.Core.Interfaces;
 
 namespace SmartLearning.Infrastructure;
 

@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities.ClassroomAggregate;
+using SmartLearning.Infrastructure.Data;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize(Roles = "Admin")]
   public class ClassController : Controller
@@ -18,10 +18,10 @@ namespace SmartLearning.Controllers
     }
 
     // GET: Classes
-    public async Task<IActionResult> Index(long? subject, long? board, string standard)
+    public async Task<IActionResult> Index(long? subject, long? board, int? standard)
     {
-      ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", board);
-      ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
+      ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
+      ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", standard);
       ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", subject);
       var classes = from s in _context.Classes
                     select s;
@@ -41,7 +41,7 @@ namespace SmartLearning.Controllers
     }
 
     // GET: Classes/Details/5
-    public async Task<IActionResult> Details(string id)
+    public async Task<IActionResult> Details(int id)
     {
       if (id == null)
       {
@@ -65,8 +65,8 @@ namespace SmartLearning.Controllers
     // GET: Classes/Add
     public IActionResult Add()
     {
-      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name");
-      ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name");
+      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name");
+      ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name");
       ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name");
       return View();
     }
@@ -74,7 +74,7 @@ namespace SmartLearning.Controllers
     // POST: Classes/Add
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Add([Bind("BoardId,StandardId,SubjectId")] Class group)
+    public async Task<IActionResult> Add([Bind("BoardId,StandardId,SubjectId")] Classroom group)
     {
       var board = await _context.Boards.FindAsync(group.BoardId);
       var standard = await _context.Standards.FindAsync(group.StandardId);
@@ -85,14 +85,14 @@ namespace SmartLearning.Controllers
         ModelState.Remove("Name");
         if (await _context.Classes.Where(c => c.StandardId == standard.Id && c.SubjectId == subject.Id && c.BoardId == board.Id).FirstOrDefaultAsync() != null)
         {
-          ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", group.BoardId);
-          ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", group.StandardId);
+          ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", group.BoardId);
+          ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", group.StandardId);
           ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", group.SubjectId);
           ModelState.AddModelError(string.Empty, "Class Already Exists");
           return View(group);
         }
 
-        group.Name = Class.GenerateGroupName(board.Name, standard.DisplayName, subject.Name);
+        group.Name = Classroom.GenerateGroupName(board.AbbrName, standard.DisplayName, subject.Name);
         if (ModelState.IsValid)
         {
           _context.Add(group);
@@ -104,14 +104,14 @@ namespace SmartLearning.Controllers
       {
         ModelState.AddModelError(string.Empty, "Invalid Details");
       }
-      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", group.BoardId);
-      ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", group.StandardId);
+      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", group.BoardId);
+      ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", group.StandardId);
       ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", group.SubjectId);
       return View(group);
     }
 
     // GET: Classes/Edit/5
-    public async Task<IActionResult> Edit(string id)
+    public async Task<IActionResult> Edit(int id)
     {
       if (id == null)
       {
@@ -123,8 +123,8 @@ namespace SmartLearning.Controllers
       {
         return NotFound();
       }
-      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", group.BoardId);
-      ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Id", group.StandardId);
+      ViewData["BoardId"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", group.BoardId);
+      ViewData["StandardId"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Id", group.StandardId);
       ViewData["SubjectId"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", group.SubjectId);
       return View(group);
     }
@@ -132,7 +132,7 @@ namespace SmartLearning.Controllers
     // POST: Classes/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, [Bind("Id,Name,BoardId,StandardId,SubjectId")] Class group)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,BoardId,StandardId,SubjectId")] Classroom group)
     {
       if (id != group.Id)
       {
@@ -166,7 +166,7 @@ namespace SmartLearning.Controllers
     }
 
     // GET: Classes/Delete/5
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(int id)
     {
       if (id == null)
       {
@@ -189,7 +189,7 @@ namespace SmartLearning.Controllers
     // POST: Classes/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(string id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
       var group = await _context.Classes.Include(g => g.Users).FirstOrDefaultAsync(g => g.Id == id);
 
@@ -198,7 +198,7 @@ namespace SmartLearning.Controllers
       return RedirectToAction(nameof(Index));
     }
 
-    private bool GroupExists(string id)
+    private bool GroupExists(int id)
     {
       return _context.Classes.Any(e => e.Id == id);
     }

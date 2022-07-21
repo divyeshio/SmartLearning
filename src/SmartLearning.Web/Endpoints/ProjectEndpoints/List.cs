@@ -27,7 +27,7 @@ public class List : EndpointBaseAsync
   public override async Task<ActionResult<ProjectListResponse>> HandleAsync(CancellationToken cancellationToken)
   {
     var response = new ProjectListResponse();
-    response.Projects = (await _repository.ListAsync()) // TODO: pass cancellation token
+    response.Projects = (await _repository.ListAsync())
         .Select(project => new ProjectRecord(project.Id, project.Name))
         .ToList();
 

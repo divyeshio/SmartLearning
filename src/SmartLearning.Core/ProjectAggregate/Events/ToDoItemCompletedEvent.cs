@@ -2,7 +2,7 @@
 
 namespace SmartLearning.Core.ProjectAggregate.Events;
 
-public class ToDoItemCompletedEvent : BaseDomainEvent
+public class ToDoItemCompletedEvent : DomainEventBase
 {
   public ToDoItem CompletedItem { get; set; }
 

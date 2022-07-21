@@ -1,9 +1,16 @@
-﻿namespace SmartLearning.SharedKernel;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-// This can be modified to BaseEntity<TId> to support multiple key types (e.g. Guid)
-public abstract class BaseEntity
+namespace SmartLearning.SharedKernel;
+
+// This can be modified to EntityBase<TId> to support multiple key types (e.g. Guid)
+public abstract class EntityBase
 {
   public int Id { get; set; }
 
-  public List<BaseDomainEvent> Events = new List<BaseDomainEvent>();
+  private List<DomainEventBase> _domainEvents = new();
+  [NotMapped]
+  public IEnumerable<DomainEventBase> DomainEvents => _domainEvents.AsReadOnly();
+
+  protected void RegisterDomainEvent(DomainEventBase domainEvent) => _domainEvents.Add(domainEvent);
+  internal void ClearDomainEvents() => _domainEvents.Clear();
 }

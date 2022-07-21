@@ -1,9 +1,6 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using SmartLearning.Core.ProjectAggregate;
-using SmartLearning.Data;
 using SmartLearning.Infrastructure.Data;
 
 namespace SmartLearning.IntegrationTests.Data;
@@ -15,7 +12,7 @@ public abstract class BaseEfRepoTestFixture
   protected BaseEfRepoTestFixture()
   {
     var options = CreateNewContextOptions();
-    var mockMediator = new Mock<IMediator>();
+    var mockMediator = new Mock<IDomainEventDispatcher>();
 
     _dbContext = new ApplicationDbContext(options, mockMediator.Object);
   }
@@ -37,8 +34,8 @@ public abstract class BaseEfRepoTestFixture
     return builder.Options;
   }
 
-  protected EfRepository<Project> GetRepository()
+  /*protected EfRepository<Project> GetRepository()
   {
     return new EfRepository<Project>(_dbContext);
-  }
+  }*/
 }

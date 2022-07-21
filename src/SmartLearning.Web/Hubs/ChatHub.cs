@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
-using Class = SmartLearning.Models.Class;
+using SmartLearning.Core.Entities.Common;
+using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
+using Classroom = SmartLearning.Core.Entities.ClassroomAggregate.Classroom;
 
-namespace SmartLearning.Hubs
+namespace SmartLearning.Web.Hubs
 {
   [Authorize]
   public class ChatHub : Hub<IChatHub>
@@ -35,7 +36,7 @@ namespace SmartLearning.Hubs
       {
         foreach (var group in await _context.Classes.ToListAsync())
         {
-          groupsVM.Add(_mapper.Map<Class, ClassViewModel>(group));
+          groupsVM.Add(_mapper.Map<Classroom, ClassViewModel>(group));
           await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
         }
       }
@@ -43,14 +44,14 @@ namespace SmartLearning.Hubs
       {
         foreach (var group in await _context.Users.Where(u => u.UserName == IdentityName).SelectMany(u => u.Classes).ToListAsync())
         {
-          groupsVM.Add(_mapper.Map<Class, ClassViewModel>(group));
+          groupsVM.Add(_mapper.Map<Classroom, ClassViewModel>(group));
           await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
         }
       }
       return groupsVM;
     }
 
-    public async Task SendMessage(string groupId, string message)
+    public async Task SendMessage(int groupId, string message)
     {
       try
       {
@@ -82,7 +83,7 @@ namespace SmartLearning.Hubs
       }
     }
 
-    public IEnumerable<MessageViewModel> GetMessageHistory(string groupId)
+    public IEnumerable<MessageViewModel> GetMessageHistory(int groupId)
     {
       var messageHistory = _context.Messages.Where(m => m.ToClassId == groupId)
               .Include(m => m.FromUser)

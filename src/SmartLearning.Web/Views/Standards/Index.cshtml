@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SmartLearning.Models.Standard>
+﻿@using SmartLearning.Core.Entities.StandardAggregate
+@model IEnumerable<Standard>
 
 @{
     ViewData["Title"] = "All Standards";
@@ -26,7 +27,7 @@
                                     @Html.DisplayNameFor(model => model.Id)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.DisplayName)
                                 </th>
                                 <th>Actions</th>
                             </tr>
@@ -39,7 +40,7 @@
                                         @Html.DisplayFor(modelItem => item.Id)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.DisplayName)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

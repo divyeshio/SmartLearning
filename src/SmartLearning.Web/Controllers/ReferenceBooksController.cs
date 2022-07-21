@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SmartLearning.Data;
-using SmartLearning.Models;
-using SmartLearning.ViewModels;
+using SmartLearning.Core.Entities.ClassroomAggregate;
+using SmartLearning.Core.Entities.UsersAggregate;
+using SmartLearning.Infrastructure.Data;
+using SmartLearning.Web.DTO;
 
-namespace SmartLearning.Controllers
+namespace SmartLearning.Web.Controllers
 {
   [Authorize]
   public class ReferenceBooksController : Controller
@@ -25,12 +26,12 @@ namespace SmartLearning.Controllers
 
     // GET: SamplePapers
     [Authorize(Roles = "Admin,Faculty")]
-    public async Task<IActionResult> List(long? subject, long? board, string standard)
+    public async Task<IActionResult> List(long? subject, long? board, int? standard)
     {
       if (HttpContext.User.IsInRole("Admin"))
       {
-        ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.Name), "Id", "Name", board);
-        ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Name), "Id", "Name", standard);
+        ViewData["Boards"] = new SelectList(_context.Boards.OrderBy(b => b.AbbrName), "Id", "Name", board);
+        ViewData["Standards"] = new SelectList(_context.Standards.OrderBy(b => b.Level), "Id", "Name", standard);
         ViewData["Subjects"] = new SelectList(_context.Subjects.OrderBy(b => b.Name), "Id", "Name", subject);
         var referenceBooks = from s in _context.ReferenceBooks
                              select s;
@@ -49,18 +50,18 @@ namespace SmartLearning.Controllers
         return View(await referenceBooks.Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).ToListAsync());
       }
       else
-        return View(await _context.ReferenceBooks.Include(c => c.Class).Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).Where(c => c.Class.StandardId == HttpContext.User.FindFirst("StandardId").Value && c.Class.BoardId == long.Parse(User.FindFirst("BoardId").Value) && c.Class.SubjectId == long.Parse(HttpContext.User.FindFirst("SubjectId").Value)).ToListAsync());
+        return View(await _context.ReferenceBooks.Include(c => c.Class).Include(c => c.Class.Board).Include(c => c.Class.Standard).Include(c => c.Class.Subject).Where(c => c.Class.StandardId == int.Parse(HttpContext.User.FindFirst("StandardId").Value) && c.Class.BoardId == int.Parse(User.FindFirst("BoardId").Value) && c.Class.SubjectId == int.Parse(HttpContext.User.FindFirst("SubjectId").Value)).ToListAsync());
     }
 
     [Authorize(Roles = "Admin,Student")]
     public async Task<IActionResult> Index()
     {
       if (User.IsInRole("Student"))
-        return View(await _context.Classes.Where(c => c.StandardId == HttpContext.User.FindFirst("StandardId").Value && c.BoardId == long.Parse(User.FindFirst("BoardId").Value)).Include(c => c.Subject).AsNoTracking().ToListAsync());
+        return View(await _context.Classes.Where(c => c.StandardId == int.Parse(HttpContext.User.FindFirst("StandardId").Value) && c.BoardId == int.Parse(User.FindFirst("BoardId").Value)).Include(c => c.Subject).AsNoTracking().ToListAsync());
       return View(await _context.Classes.AsNoTracking().Include(c => c.Subject).ToListAsync());
     }
 
-    public async Task<IActionResult> ViewReferenceBooks(string id)
+    public async Task<IActionResult> ViewReferenceBooks(int id)
     {
       if (id == null) return NotFound();
       ViewData["ClassName"] = await _context.Classes.Where(c => c.Id == id).Select(c => c.Name).AsNoTracking().FirstOrDefaultAsync();
@@ -135,7 +136,7 @@ namespace SmartLearning.Controllers
         var referenceBook = new ReferenceBook
         {
           BookName = vm.BookName,
-          ClassId = await _context.Classes.Where(c => c.StandardId == User.FindFirst("StandardId").Value && c.BoardId == long.Parse(User.FindFirst("BoardId").Value) && c.SubjectId == long.Parse(User.FindFirst("SubjectId").Value)).Select(c => c.Id).FirstOrDefaultAsync(),
+          ClassId = await _context.Classes.Where(c => c.StandardId == int.Parse(User.FindFirst("StandardId").Value) && c.BoardId == int.Parse(User.FindFirst("BoardId").Value) && c.SubjectId == int.Parse(User.FindFirst("SubjectId").Value)).Select(c => c.Id).FirstOrDefaultAsync(),
           FileUrl = await UploadedFile(vm.File),
           FileName = Path.GetFileNameWithoutExtension(vm.File.FileName),
           ImageName = await UploadedImage(vm.ImageFile),
@@ -154,9 +155,9 @@ namespace SmartLearning.Controllers
     {
       string uniqueFileName = null;
 
-      string uploadsFolder = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks");
+      var uploadsFolder = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks");
       uniqueFileName = Path.GetRandomFileName() + Path.GetExtension(imageFile.FileName);
-      string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+      var filePath = Path.Combine(uploadsFolder, uniqueFileName);
       using (var fileStream = new FileStream(filePath, FileMode.Create))
       {
         imageFile.CopyTo(fileStream);
@@ -172,8 +173,8 @@ namespace SmartLearning.Controllers
 
       var note = await _context.ReferenceBooks.FindAsync(id);
       var path = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", note.FileUrl);
-      byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-      string fileName = note.FileUrl.Split("_")[1];
+      var fileBytes = System.IO.File.ReadAllBytes(path);
+      var fileName = note.FileUrl.Split("_")[1];
       return File(fileBytes, "application/octet-stream", fileName);
     }
 
@@ -185,7 +186,7 @@ namespace SmartLearning.Controllers
 
       var note = await _context.ReferenceBooks.FindAsync(id);
       var path = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", note.FileUrl);
-      FileStream ms = new FileStream(path, FileMode.Open);
+      var ms = new FileStream(path, FileMode.Open);
       return File(ms, "application/pdf");
     }
 
@@ -294,7 +295,7 @@ namespace SmartLearning.Controllers
     }
     private Task<bool> RemoveFile(string filename)
     {
-      string fullPath = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", filename);
+      var fullPath = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks", filename);
       if (System.IO.File.Exists(fullPath))
       {
         System.IO.File.Delete(fullPath);
@@ -304,7 +305,7 @@ namespace SmartLearning.Controllers
     }
     private Task<bool> RemoveImage(string filename)
     {
-      string fullPath = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks", filename);
+      var fullPath = Path.Combine(_env.ContentRootPath, "StaticFiles", "ReferenceBooks", filename);
       if (System.IO.File.Exists(fullPath))
       {
         System.IO.File.Delete(fullPath);
@@ -313,53 +314,53 @@ namespace SmartLearning.Controllers
       return Task.FromResult(false);
     }
 
-    [Authorize(Roles = "Admin")]
+  /*  [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<JsonResult> getClasses([FromBody] GetChaptersViewModel model)
     {
       if (ModelState.IsValid)
       {
-        var classa = await _context.Classes.Where(c => c.StandardId == model.Standard && c.BoardId == model.Board && c.SubjectId == model.Subject).Select(c => new Class { Id = c.Id, Name = c.Name }).AsNoTracking().SingleAsync();
+        var classa = await _context.Classes.Where(c => c.StandardId == model.Standard && c.BoardId == model.Board && c.SubjectId == model.Subject).Select(c => new Classroom { Id = c.Id, Name = c.Name }).AsNoTracking().SingleAsync();
         return Json(classa);
       }
       return Json(new { });
-    }
+    }*/
 
 
     private Task<string> UploadedFile(IFormFile file)
     {
-      string uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks");
-      string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-      string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+      var uploadsFolder = Path.Combine(_env.ContentRootPath, "Storage", "ReferenceBooks");
+      var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+      var filePath = Path.Combine(uploadsFolder, uniqueFileName);
       using (var fileStream = new FileStream(filePath, FileMode.Create))
       {
         file.CopyTo(fileStream);
       }
       return Task.FromResult(uniqueFileName);
     }
-    private bool SamplePaperExists(long id)
+    private bool SamplePaperExists(int id)
     {
       return _context.SamplePapers.Any(e => e.Id == id);
     }
 
-    public async Task<SelectList> getBoards(long? boardId = null)
+    public async Task<SelectList> getBoards(int? boardId = null)
     {
-      return new SelectList(await _context.Boards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
+      return new SelectList(await _context.Boards.OrderBy(b => b.AbbrName).AsNoTracking().ToListAsync(), "Id", "Name", boardId);
     }
-    public async Task<SelectList> getSubjects(long? subjectId = null)
+    public async Task<SelectList> getSubjects(int? subjectId = null)
     {
       return new SelectList(await _context.Subjects.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", subjectId);
     }
-    public async Task<SelectList> getStandards(string standardId = null)
+    public async Task<SelectList> getStandards(int? standardId = null)
     {
-      return new SelectList(await _context.Standards.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
+      return new SelectList(await _context.Standards.OrderBy(b => b.Level).AsNoTracking().ToListAsync(), "Id", "Name", standardId);
     }
-    public async Task<SelectList> getClasses1(string classId = null)
+    public async Task<SelectList> getClasses1(int? classId = null)
     {
       return new SelectList(await _context.Classes.OrderBy(b => b.Name).AsNoTracking().ToListAsync(), "Id", "Name", classId);
     }
 
-    public async Task<ReferenceBookViewModel> populateSBS(ReferenceBookViewModel model, string standardId = null, long? boardId = null, long? subjectId = null)
+    public async Task<ReferenceBookViewModel> populateSBS(ReferenceBookViewModel model, int? standardId = null, int? boardId = null, int? subjectId = null)
     {
       model.Standards = await getStandards(standardId);
       model.Subjects = await getSubjects(subjectId);

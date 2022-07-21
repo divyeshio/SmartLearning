@@ -29,7 +29,7 @@ public class GetById : EndpointBaseAsync
       CancellationToken cancellationToken)
   {
     var spec = new ProjectByIdWithItemsSpec(request.ProjectId);
-    var entity = await _repository.GetBySpecAsync(spec); // TODO: pass cancellation token
+    var entity = await _repository.GetBySpecAsync(spec);
     if (entity == null) return NotFound();
 
     var response = new GetProjectByIdResponse

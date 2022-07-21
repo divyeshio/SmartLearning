@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using SmartLearning.Models;
+using SmartLearning.Core.Entities;
 
-namespace SmartLearning.Hubs
+namespace SmartLearning.Web.Hubs
 {
   public class ConnectionHub : Hub<IConnectionHub>
   {
-    private readonly List<Models.User> _Users;
+    private readonly List<Core.Entities.User> _Users;
     private readonly List<UserCall> _UserCalls;
     private readonly List<CallOffer> _CallOffers;
 
-    public ConnectionHub(List<Models.User> users, List<UserCall> userCalls, List<CallOffer> callOffers)
+    public ConnectionHub(List<Core.Entities.User> users, List<UserCall> userCalls, List<CallOffer> callOffers)
     {
       _Users = users;
       _UserCalls = userCalls;
@@ -19,7 +19,7 @@ namespace SmartLearning.Hubs
     public async Task Join(string username)
     {
       // Add the new user
-      _Users.Add(new Models.User
+      _Users.Add(new Core.Entities.User
       {
         Username = username,
         ConnectionId = Context.ConnectionId
@@ -43,7 +43,7 @@ namespace SmartLearning.Hubs
       await base.OnDisconnectedAsync(exception);
     }
 
-    public async Task CallUser(Models.User targetConnectionId)
+    public async Task CallUser(Core.Entities.User targetConnectionId)
     {
       var callingUser = _Users.SingleOrDefault(u => u.ConnectionId == Context.ConnectionId);
       var targetUser = _Users.SingleOrDefault(u => u.ConnectionId == targetConnectionId.ConnectionId);
@@ -74,7 +74,7 @@ namespace SmartLearning.Hubs
       });
     }
 
-    public async Task AnswerCall(bool acceptCall, Models.User targetConnectionId)
+    public async Task AnswerCall(bool acceptCall, Core.Entities.User targetConnectionId)
     {
       var callingUser = _Users.SingleOrDefault(u => u.ConnectionId == Context.ConnectionId);
       var targetUser = _Users.SingleOrDefault(u => u.ConnectionId == targetConnectionId.ConnectionId);
@@ -123,7 +123,7 @@ namespace SmartLearning.Hubs
       // Create a new call to match these folks up
       _UserCalls.Add(new UserCall
       {
-        Users = new List<Models.User> { callingUser, targetUser }
+        Users = new List<Core.Entities.User> { callingUser, targetUser }
       });
 
       // Tell the original caller that the call was accepted
@@ -194,7 +194,7 @@ namespace SmartLearning.Hubs
 
     private async Task SendUserListUpdate()
     {
-      _Users.ForEach(u => u.InCall = (GetUserCall(u.ConnectionId) != null));
+      _Users.ForEach(u => u.InCall = GetUserCall(u.ConnectionId) != null);
       await Clients.All.UpdateUserList(_Users);
     }
 
@@ -209,11 +209,11 @@ namespace SmartLearning.Hubs
   }
   public interface IConnectionHub
   {
-    Task UpdateUserList(List<Models.User> userList);
-    Task CallAccepted(Models.User acceptingUser);
-    Task CallDeclined(Models.User decliningUser, string reason);
-    Task IncomingCall(Models.User callingUser);
-    Task ReceiveSignal(Models.User signalingUser, string signal);
-    Task CallEnded(Models.User signalingUser, string signal);
+    Task UpdateUserList(List<Core.Entities.User> userList);
+    Task CallAccepted(Core.Entities.User acceptingUser);
+    Task CallDeclined(Core.Entities.User decliningUser, string reason);
+    Task IncomingCall(Core.Entities.User callingUser);
+    Task ReceiveSignal(Core.Entities.User signalingUser, string signal);
+    Task CallEnded(Core.Entities.User signalingUser, string signal);
   }
 }

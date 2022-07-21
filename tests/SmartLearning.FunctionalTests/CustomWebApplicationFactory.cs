@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SmartLearning.Data;
 using SmartLearning.Infrastructure.Data;
 using SmartLearning.UnitTests;
 using SmartLearning.Web;

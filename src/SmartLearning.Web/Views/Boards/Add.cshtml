@@ -1,4 +1,5 @@
-﻿@model SmartLearning.Models.Board
+﻿@using SmartLearning.Web.Endpoints.BoardEndpoints
+@model AddBoardRequest
 
 @{
     ViewData["Title"] = "Add Board";
@@ -18,6 +19,11 @@
                 <div class="card-body">
                     <form asp-action="Add">
                         <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="AbbrName" class="control-label"></label>
+                            <input asp-for="AbbrName" class="form-control" />
+                            <span asp-validation-for="AbbrName" class="text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <label asp-for="Name" class="control-label"></label>
                             <input asp-for="Name" class="form-control" />

@@ -5,7 +5,7 @@ using SmartLearning.Core.ProjectAggregate.Specifications;
 using SmartLearning.SharedKernel.Interfaces;
 using SmartLearning.Web.ApiModels;
 
-namespace SmartLearning.Web.Pages.ToDoRazorPage;
+namespace SmartLearning.Web.Pages.ProjectDetails;
 
 public class IndexModel : PageModel
 {
