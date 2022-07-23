@@ -29,15 +29,15 @@ public class GetById : EndpointBaseAsync
       CancellationToken cancellationToken)
   {
     var spec = new BoardByIdWithUsersSpec(request.BoardId);
-    var entity = await _repository.GetBySpecAsync(spec);
-    if (entity == null) return NotFound();
+    var board = await _repository.FirstOrDefaultAsync(spec);
+    if (board == null) return NotFound();
 
     var response = new GetBoardByIdResponse
     (
-        id: entity.Id,
-        name: entity.Name,
-        abbrName: entity.AbbrName,
-        users: entity.Users.Select(item => new UsersRecord(item.Id, item.FullName)).ToList()
+        id: board.Id,
+        name: board.Name,
+        abbrName: board.AbbrName,
+        users: board.Users.Select(item => new UsersRecord(item.Id, item.FullName)).ToList()
     );
     return Ok(response);
   }
