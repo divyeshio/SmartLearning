@@ -1,15 +1,14 @@
 ﻿using Ardalis.Specification;
-using SmartLearning.Core.Entities.ClassroomAggregate;
 
 namespace SmartLearning.Core.Entities.ClassroomAggregate.Specifications;
 
 public class ClassroomByIdWithUsersSpec : Specification<Classroom>, ISingleResultSpecification
 {
 
-  public ClassroomByIdWithUsersSpec(int classroomId)
-  {
-    Query
-      .Where(classroom => classroom.Id == classroomId)
-            .Include(project => project.Users);
-  }
+    public ClassroomByIdWithUsersSpec(int classroomId)
+    {
+        Query
+          .Where(classroom => classroom.Id == classroomId)
+                .Include(project => project.Users);
+    }
 }

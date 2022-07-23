@@ -7,8 +7,8 @@ public class CheckIfStandardExistsSpec : Specification<Standard>, ISingleResultS
 {
     public CheckIfStandardExistsSpec(int standardId)
     {
-    Query
-        .Where(standard => standard.Id == standardId);
-            
+        Query
+            .Where(standard => standard.Id == standardId);
+
     }
 }

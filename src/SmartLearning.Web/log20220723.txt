@@ -1,0 +1,84 @@
+2022-07-23 17:01:33.114 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-23 17:01:35.467 +05:30 [ERR] An error occurred seeding the DB. An exception was thrown while activating SmartLearning.Infrastructure.Data.ApplicationDbContext.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating SmartLearning.Infrastructure.Data.ApplicationDbContext.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'SmartLearning.Infrastructure.Data.ApplicationDbContext' can be invoked with the available services and parameters:
+Cannot resolve parameter 'SmartLearning.SharedKernel.Interfaces.IDomainEventDispatcher dispatcher' of constructor 'Void .ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1[SmartLearning.Infrastructure.Data.ApplicationDbContext], SmartLearning.SharedKernel.Interfaces.IDomainEventDispatcher)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<>c__DisplayClass12_0.<UseSingleConstructorActivation>b__0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at SmartLearning.Web.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env) in D:\divyeshio\SmartLearning\src\SmartLearning.Web\Startup.cs:line 169
+2022-07-23 17:01:35.822 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-23 17:01:35.827 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-23 17:01:35.829 +05:30 [INF] Hosting environment: Development
+2022-07-23 17:01:35.829 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web
+2022-07-23 17:01:36.728 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/ - -
+2022-07-23 17:01:36.802 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-23 17:01:36.976 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/ - - - 301 0 - 250.4299ms
+2022-07-23 17:01:37.011 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-23 17:01:37.316 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui.css - -
+2022-07-23 17:01:37.325 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-bundle.js - -
+2022-07-23 17:01:37.338 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-standalone-preset.js - -
+2022-07-23 17:01:37.344 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-23 17:01:37.345 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-23 17:01:37.352 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 6.8282ms
+2022-07-23 17:01:37.365 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 353.6177ms
+2022-07-23 17:01:37.401 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2022-07-23 17:01:37.401 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-07-23 17:01:37.404 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui.css - - - 200 143943 text/css 87.6135ms
+2022-07-23 17:01:37.406 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-standalone-preset.js - - - 200 339486 application/javascript 67.9160ms
+2022-07-23 17:01:37.411 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-07-23 17:01:37.415 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/swagger-ui-bundle.js - - - 200 1096145 application/javascript 90.6291ms
+2022-07-23 17:01:37.451 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 107.0646ms
+2022-07-23 17:01:37.641 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-23 17:01:37.662 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/favicon-32x32.png - -
+2022-07-23 17:01:37.665 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2022-07-23 17:01:37.666 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/favicon-32x32.png - - - 200 628 image/png 3.4765ms
+2022-07-23 17:01:37.874 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 232.6229ms
+2022-07-23 17:22:49.705 +05:30 [INF] User profile is available. Using 'C:\Users\NL012\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-23 17:22:50.611 +05:30 [ERR] An error occurred seeding the DB. An exception was thrown while activating SmartLearning.Infrastructure.Data.ApplicationDbContext.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating SmartLearning.Infrastructure.Data.ApplicationDbContext.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'SmartLearning.Infrastructure.Data.ApplicationDbContext' can be invoked with the available services and parameters:
+Cannot resolve parameter 'SmartLearning.SharedKernel.Interfaces.IDomainEventDispatcher dispatcher' of constructor 'Void .ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1[SmartLearning.Infrastructure.Data.ApplicationDbContext], SmartLearning.SharedKernel.Interfaces.IDomainEventDispatcher)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<>c__DisplayClass12_0.<UseSingleConstructorActivation>b__0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at SmartLearning.Web.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env) in D:\divyeshio\SmartLearning\src\SmartLearning.Web\Startup.cs:line 160
+2022-07-23 17:22:50.766 +05:30 [INF] Now listening on: http://localhost:57679
+2022-07-23 17:22:50.770 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-23 17:22:50.771 +05:30 [INF] Hosting environment: Development
+2022-07-23 17:22:50.771 +05:30 [INF] Content root path: D:\divyeshio\SmartLearning\src\SmartLearning.Web
+2022-07-23 17:22:51.523 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/index.html - -
+2022-07-23 17:22:51.599 +05:30 [WRN] Failed to determine the https port for redirect.
+2022-07-23 17:22:51.902 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - -
+2022-07-23 17:22:51.910 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_framework/aspnetcore-browser-refresh.js - - - 200 12004 application/javascript;+charset=utf-8 7.2464ms
+2022-07-23 17:22:51.910 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/index.html - - - 200 - text/html;charset=utf-8 393.8066ms
+2022-07-23 17:22:51.923 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/_vs/browserLink - -
+2022-07-23 17:22:51.962 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.9219ms
+2022-07-23 17:22:52.189 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - -
+2022-07-23 17:22:52.419 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:57679/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 230.4351ms

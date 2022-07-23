@@ -1,8 +1,6 @@
-﻿using SmartLearning.SharedKernel;
-
-namespace SmartLearning.SharedKernel.Interfaces;
+﻿namespace SmartLearning.SharedKernel.Interfaces;
 
 public interface IDomainEventDispatcher
 {
-  Task DispatchAndClearEvents(IEnumerable<EntityBase> entitiesWithEvents);
+    Task DispatchAndClearEvents(IEnumerable<EntityBase> entitiesWithEvents);
 }

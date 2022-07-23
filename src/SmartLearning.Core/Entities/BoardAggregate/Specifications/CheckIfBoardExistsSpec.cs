@@ -6,8 +6,8 @@ public class CheckIfBoardExistsSpec : Specification<Board>, ISingleResultSpecifi
 {
     public CheckIfBoardExistsSpec(int boardId)
     {
-    Query
-        .Where(board => board.Id == boardId);
-            
+        Query
+            .Where(board => board.Id == boardId);
+
     }
 }

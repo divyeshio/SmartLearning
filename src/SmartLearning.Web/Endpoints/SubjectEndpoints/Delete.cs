@@ -1,6 +1,5 @@
 ﻿using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
-using SmartLearning.Core.Constants;
 using SmartLearning.Core.Entities.SubjectAggregate;
 using SmartLearning.SharedKernel.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
@@ -11,28 +10,28 @@ public class Delete : EndpointBaseAsync
     .WithRequest<DeleteSubjectRequest>
     .WithoutResult
 {
-  private readonly IRepository<Subject> _repository;
+    private readonly IRepository<Subject> _repository;
 
-  public Delete(IRepository<Subject> repository)
-  {
-    _repository = repository;
-  }
+    public Delete(IRepository<Subject> repository)
+    {
+        _repository = repository;
+    }
 
-  [HttpDelete(DeleteSubjectRequest.Route)]
-  [SwaggerOperation(
-      Summary = "Deletes a Subject",
-      Description = "Deletes a Subject",
-      OperationId = "Subjects.Delete",
-      Tags = new[] { "SubjectEndpoints" })
-  ]
-  public override async Task<ActionResult> HandleAsync([FromRoute] DeleteSubjectRequest request,
-      CancellationToken cancellationToken)
-  {
-    var aggregateToDelete = await _repository.GetByIdAsync(request.SubjectId);
-    if (aggregateToDelete == null) return NotFound();
+    [HttpDelete(DeleteSubjectRequest.Route)]
+    [SwaggerOperation(
+        Summary = "Deletes a Subject",
+        Description = "Deletes a Subject",
+        OperationId = "Subjects.Delete",
+        Tags = new[] { "SubjectEndpoints" })
+    ]
+    public override async Task<ActionResult> HandleAsync([FromRoute] DeleteSubjectRequest request,
+        CancellationToken cancellationToken)
+    {
+        var aggregateToDelete = await _repository.GetByIdAsync(request.SubjectId);
+        if (aggregateToDelete == null) return NotFound();
 
-    await _repository.DeleteAsync(aggregateToDelete);
+        await _repository.DeleteAsync(aggregateToDelete);
 
-    return NoContent();
-  }
+        return NoContent();
+    }
 }
