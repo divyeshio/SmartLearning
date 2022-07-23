@@ -7,8 +7,8 @@ public class CheckIfSubjectExistsSpec : Specification<Subject>, ISingleResultSpe
 {
     public CheckIfSubjectExistsSpec(int subjectId)
     {
-    Query
-        .Where(subject => subject.Id == subjectId);
-            
+        Query
+            .Where(subject => subject.Id == subjectId);
+
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
-using SmartLearning.Core.Constants;
 using SmartLearning.Core.Entities.StandardAggregate;
 using SmartLearning.SharedKernel.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
@@ -11,35 +10,35 @@ public class Add : EndpointBaseAsync
     .WithRequest<AddStandardRequest>
     .WithActionResult<AddStandardResponse>
 {
-  private readonly IRepository<Standard> _repository;
+    private readonly IRepository<Standard> _repository;
 
-  public Add(IRepository<Standard> repository)
-  {
-    _repository = repository;
-  }
+    public Add(IRepository<Standard> repository)
+    {
+        _repository = repository;
+    }
 
-  [HttpPost(AddStandardRequest.Route)]
-  [SwaggerOperation(
-      Summary = "Adds a new Standard",
-      Description = "Adds a new Standard",
-      OperationId = "Standards.Add",
-      Tags = new[] { "StandardEndpoints" })
-  ]
-  public override async Task<ActionResult<AddStandardResponse>> HandleAsync(AddStandardRequest request,
-      CancellationToken cancellationToken)
-  {
+    [HttpPost(AddStandardRequest.Route)]
+    [SwaggerOperation(
+        Summary = "Adds a new Standard",
+        Description = "Adds a new Standard",
+        OperationId = "Standards.Add",
+        Tags = new[] { "StandardEndpoints" })
+    ]
+    public override async Task<ActionResult<AddStandardResponse>> HandleAsync(AddStandardRequest request,
+        CancellationToken cancellationToken)
+    {
 
-    var newStandard = new Standard(request.Level);
+        var newStandard = new Standard(request.Level);
 
-    var createdItem = await _repository.AddAsync(newStandard);
+        var createdItem = await _repository.AddAsync(newStandard);
 
-    var response = new AddStandardResponse
-    (
-        id: createdItem.Id,
-        level: createdItem.Level,
-        displayName: createdItem.DisplayName
-    );
+        var response = new AddStandardResponse
+        (
+            id: createdItem.Id,
+            level: createdItem.Level,
+            displayName: createdItem.DisplayName
+        );
 
-    return Ok(response);
-  }
+        return Ok(response);
+    }
 }

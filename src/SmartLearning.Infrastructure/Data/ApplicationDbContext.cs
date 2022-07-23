@@ -16,7 +16,7 @@ using SmartLearning.SharedKernel.Interfaces;
 
 namespace SmartLearning.Infrastructure.Data
 {
-  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         private readonly IDomainEventDispatcher? _dispatcher;
 
@@ -79,7 +79,7 @@ namespace SmartLearning.Infrastructure.Data
                                        .ToTable("UserClass")
                                        .HasKey(ug => new { ug.ClassId, ug.UserId });
 
-           
+
 
             modelBuilder.Entity<ApplicationUser>(entity => entity.ToTable(name: "Users"));
             modelBuilder.Entity<IdentityRole>(entity => entity.ToTable(name: "Roles"));
