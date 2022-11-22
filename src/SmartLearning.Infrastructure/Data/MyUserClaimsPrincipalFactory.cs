@@ -30,7 +30,7 @@ namespace SmartLearning.Infrastructure.Data
         identity.AddClaim(new Claim("StandardId", user.StandardId.ToString()));
       }
       identity.AddClaim(new Claim("avatar", user.Avatar ?? "default.jpg"));
-      //identity.AddClaim(new Claim(ClaimTypes.Role, user.AccountType.ToString()));
+      identity.AddClaim(new Claim(ClaimTypes.Role, user.AccountType.ToString()));
       identity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));
       return identity;
     }
