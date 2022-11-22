@@ -46,7 +46,7 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
         //if (!db.ToDoItems.Any())
         //{
         // Seed the database with test data.
-        SeedData.PopulateTestData(db);
+        //SeedData.PopulateTestData(db);
         //}
       }
       catch (Exception ex)

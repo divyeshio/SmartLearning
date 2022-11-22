@@ -13,8 +13,8 @@ namespace SmartLearning.Core.Entities.UsersAggregate
 {
   public class ApplicationUser : IdentityUser, IAggregateRoot
   {
-    [Key]
-    public string Id { get; set; }
+   /* [Key]
+    public string Id { get; set; } = Guid.NewGuid().ToString();*/
 
     public bool? AdminApproved { get; set; }
     [Required]
