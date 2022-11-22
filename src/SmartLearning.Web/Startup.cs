@@ -1,8 +1,10 @@
 ﻿using Ardalis.ListStartupServices;
+using Autofac;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
+using SmartLearning.Core;
 using SmartLearning.Core.Interfaces;
 using SmartLearning.Infrastructure;
 using SmartLearning.Infrastructure.Data;
@@ -24,10 +26,11 @@ public class Startup
     services.Configure<CookiePolicyOptions>(options =>
     {
       options.CheckConsentNeeded = context => true;
-      options.MinimumSameSitePolicy = SameSiteMode.None;
+      options.MinimumSameSitePolicy = SameSiteMode.Strict;
     });
 
     services.AddDbContext(Configuration.GetConnectionString("DefaultConnection"));
+
     services.AddDatabaseDeveloperPageExceptionFilter();
 
     services.AddControllersWithViews(op =>
@@ -86,11 +89,7 @@ public class Startup
     });
 
 
-    /*builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
-    {
-      containerBuilder.RegisterModule(new DefaultCoreModule());
-      containerBuilder.RegisterModule(new DefaultInfrastructureModule(builder.Environment.EnvironmentName == "Development"));
-    });*/
+    
     services.AddTransient<IEmailSender, AuthMessageSender>();
     services.AddSignalR(e =>
     {
@@ -110,6 +109,11 @@ public class Startup
     {
       app.UseDeveloperExceptionPage();
       app.UseShowAllServicesMiddleware();
+      // Enable middleware to serve generated Swagger as a JSON endpoint.
+      app.UseSwagger();
+
+      // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+      app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Smart Learning API V1"));
     }
     else
     {
@@ -121,12 +125,6 @@ public class Startup
     app.UseDefaultFiles();
     app.UseStaticFiles();
     app.UseRouting();
-
-    // Enable middleware to serve generated Swagger as a JSON endpoint.
-    app.UseSwagger();
-
-    // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Smart Learning API V1"));
 
     app.UseAuthentication();
     app.UseAuthorization();
@@ -140,9 +138,6 @@ public class Startup
     });
     app.UseCookiePolicy();
 
-
-
-
     app.UseEndpoints(endpoints =>
     {
       endpoints.MapDefaultControllerRoute();
@@ -150,23 +145,32 @@ public class Startup
       endpoints.MapHub<LiveHub>("/LiveHub");
     });
 
-    // Seed Database
-    using (var scope = app.ApplicationServices.CreateScope())
-    {
-      var services = scope.ServiceProvider;
+    SeedDatabase(app);
+  }
 
-      try
-      {
-        var context = services.GetRequiredService<ApplicationDbContext>();
-        context.Database.Migrate();
-        context.Database.EnsureCreated();
-        SeedData.Initialize(services);
-      }
-      catch (Exception ex)
-      {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred seeding the DB. {exceptionMessage}", ex.Message);
-      }
+  public void ConfigureDevelopmentContainer(ContainerBuilder builder)
+  {
+    builder.RegisterModule(new DefaultCoreModule());
+    builder.RegisterModule(new DefaultInfrastructureModule(true));
+  }
+
+  private static void SeedDatabase(IApplicationBuilder app)
+  {
+    var scope = app.ApplicationServices.CreateScope();
+    var services = scope.ServiceProvider;
+
+    try
+    {
+      var context = services.GetRequiredService<ApplicationDbContext>();
+      context.Database.Migrate();
+      context.Database.EnsureCreated();
+      SeedData.Initialize(services);
     }
+    catch (Exception ex)
+    {
+      var logger = services.GetRequiredService<ILogger<Program>>();
+      logger.LogError(ex, "An error occurred seeding the DB. {exceptionMessage}", ex.Message);
+    }
+
   }
 }

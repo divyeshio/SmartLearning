@@ -29,13 +29,13 @@ public class GetById : EndpointBaseAsync
       CancellationToken cancellationToken)
   {
     var spec = new ClassroomByIdWithUsersSpec(request.ClassroomId);
-    var entity = await _repository.GetBySpecAsync(spec);
-    if (entity == null) return NotFound();
+    var classroom = await _repository.FirstOrDefaultAsync(spec);
+    if (classroom == null) return NotFound();
 
     var response = new GetClassroomByIdResponse
     (
-        id: entity.Id,
-        name: entity.Name
+        id: classroom.Id,
+        name: classroom.Name
     );
     return Ok(response);
   }
