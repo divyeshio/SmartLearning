@@ -15,6 +15,10 @@ public static class StartupSetup
       // will be created in web project root
       );
 
+  /// <summary>
+  /// Configures Asp.Net Identity with custom options
+  /// </summary>
+  /// <param name="services"></param>
   public static void ConfigureIdentity(this IServiceCollection services) =>
     services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     {
