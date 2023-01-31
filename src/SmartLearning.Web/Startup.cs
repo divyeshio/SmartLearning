@@ -29,9 +29,10 @@ public class Startup
       options.MinimumSameSitePolicy = SameSiteMode.Strict;
     });
 
-    services.AddDbContext(Configuration.GetConnectionString("DefaultConnection"));
+    services.AddDbContext(Configuration.GetConnectionString("DefaultConnection")!);
 
     services.AddDatabaseDeveloperPageExceptionFilter();
+
 
     services.AddControllersWithViews(op =>
     {
@@ -125,6 +126,8 @@ public class Startup
     app.UseDefaultFiles();
     app.UseStaticFiles();
     app.UseRouting();
+
+    app.UserSpa
 
     app.UseAuthentication();
     app.UseAuthorization();

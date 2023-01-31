@@ -8,11 +8,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Compile Remove="Data\Config\ProjectConfiguration.cs" />
-    <Compile Remove="Data\Config\ToDoConfiguration.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.1.0" />
     <PackageReference Include="Autofac" Version="6.5.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />

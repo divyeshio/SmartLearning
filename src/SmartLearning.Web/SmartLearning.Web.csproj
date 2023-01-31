@@ -15,7 +15,6 @@
     <None Remove="Views\Project\**" />
     <None Remove="ApiModels\**" />
     <None Remove="Pages\ProjectDetails\**" />
-    <None Remove="Api\ProjectsController.cs" />
     <None Remove="Controllers\ProjectController.cs" />
     <None Remove="ViewModels\ProjectViewModel.cs" />
     <None Remove="ViewModels\ToDoItemViewModel.cs" />
@@ -26,7 +25,6 @@
     <Compile Remove="Pages\ProjectDetails\**" />
     <Content Remove="Pages\ProjectDetails\**" />
     <Content Remove="Views\Project\**" />
-    <Compile Remove="Api\ProjectsController.cs" />
     <Compile Remove="Controllers\ProjectController.cs" />
     <Compile Remove="ViewModels\ProjectViewModel.cs" />
     <Compile Remove="ViewModels\ToDoItemViewModel.cs" />
@@ -35,7 +33,6 @@
     <EmbeddedResource Remove="Views\Project\**" />
     <EmbeddedResource Remove="ApiModels\**" />
     <EmbeddedResource Remove="Pages\ProjectDetails\**" />
-    <EmbeddedResource Remove="Api\ProjectsController.cs" />
     <EmbeddedResource Remove="Controllers\ProjectController.cs" />
     <EmbeddedResource Remove="ViewModels\ProjectViewModel.cs" />
     <EmbeddedResource Remove="ViewModels\ToDoItemViewModel.cs" />
@@ -61,5 +58,12 @@
   
   <ItemGroup>
     <ProjectReference Include="..\SmartLearning.Infrastructure\SmartLearning.Infrastructure.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Handlers\Boards\" />
+    <Folder Include="Handlers\Classroom\" />
+    <Folder Include="Handlers\Subjects\" />
+    <Folder Include="Handlers\Standard\" />
   </ItemGroup>
 </Project>
