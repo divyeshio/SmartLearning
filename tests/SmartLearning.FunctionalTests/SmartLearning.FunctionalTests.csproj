@@ -29,7 +29,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="Ardalis.HttpClientTestExtensions" Version="3.0.0" />
+    <PackageReference Include="Ardalis.HttpClientTestExtensions" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
