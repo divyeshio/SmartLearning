@@ -1,7 +1,9 @@
 ﻿using System.Reflection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using MediatR;
 using MediatR.Pipeline;
+using Microsoft.Extensions.DependencyInjection;
 using SmartLearning.Core.Entities.BoardAggregate;
 using SmartLearning.Core.Interfaces;
 using SmartLearning.Infrastructure.Data;
@@ -13,70 +15,67 @@ namespace SmartLearning.Infrastructure;
 
 public class DefaultInfrastructureModule : Module
 {
-    private readonly bool _isDevelopment = false;
-    private readonly List<Assembly> _assemblies = new List<Assembly>();
+  private readonly bool _isDevelopment = false;
+  private readonly List<Assembly> _assemblies = new List<Assembly>();
 
-    public DefaultInfrastructureModule(bool isDevelopment, Assembly? callingAssembly = null)
+  public DefaultInfrastructureModule(bool isDevelopment, Assembly? callingAssembly = null)
+  {
+    _isDevelopment = isDevelopment;
+    var coreAssembly =
+      Assembly.GetAssembly(typeof(Board)); // TODO: Replace "Project" with any type from your Core project
+    var infrastructureAssembly = Assembly.GetAssembly(typeof(StartupSetup));
+    if (coreAssembly != null)
     {
-        _isDevelopment = isDevelopment;
-        var coreAssembly =
-          Assembly.GetAssembly(typeof(Board)); // TODO: Replace "Project" with any type from your Core project
-        var infrastructureAssembly = Assembly.GetAssembly(typeof(StartupSetup));
-        if (coreAssembly != null)
-        {
-            _assemblies.Add(coreAssembly);
-        }
-
-        if (infrastructureAssembly != null)
-        {
-            _assemblies.Add(infrastructureAssembly);
-        }
-
-        if (callingAssembly != null)
-        {
-            _assemblies.Add(callingAssembly);
-        }
+      _assemblies.Add(coreAssembly);
     }
 
-    protected override void Load(ContainerBuilder builder)
+    if (infrastructureAssembly != null)
     {
-        if (_isDevelopment)
-        {
-            RegisterDevelopmentOnlyDependencies(builder);
-        }
-        else
-        {
-            RegisterProductionOnlyDependencies(builder);
-        }
-
-        RegisterCommonDependencies(builder);
+      _assemblies.Add(infrastructureAssembly);
     }
 
-    private void RegisterCommonDependencies(ContainerBuilder builder)
+    if (callingAssembly != null)
     {
-        builder.RegisterGeneric(typeof(EfRepository<>))
-          .As(typeof(IRepository<>))
-          .As(typeof(IReadRepository<>))
-          .InstancePerLifetimeScope();
+      _assemblies.Add(callingAssembly);
+    }
+  }
 
-        builder
-          .RegisterType<Mediator>()
-          .As<IMediator>()
-          .InstancePerLifetimeScope();
+  protected override void Load(ContainerBuilder builder)
+  {
+    if (_isDevelopment)
+    {
+      RegisterDevelopmentOnlyDependencies(builder);
+    }
+    else
+    {
+      RegisterProductionOnlyDependencies(builder);
+    }
 
-        builder
-          .RegisterType<DomainEventDispatcher>()
-          .As<IDomainEventDispatcher>()
-          .InstancePerLifetimeScope();
+    RegisterCommonDependencies(builder);
+  }
 
-        builder.Register<ServiceFactory>(context =>
-        {
-            var c = context.Resolve<IComponentContext>();
+  private void RegisterCommonDependencies(ContainerBuilder builder)
+  {
+    builder.RegisterGeneric(typeof(EfRepository<>))
+      .As(typeof(IRepository<>))
+      .As(typeof(IReadRepository<>))
+      .InstancePerLifetimeScope();
 
-            return t => c.Resolve(t);
-        });
+    builder
+      .RegisterType<Mediator>()
+      .As<IMediator>()
+      .InstancePerLifetimeScope();
 
-        var mediatrOpenTypes = new[]
+    builder
+      .RegisterType<DomainEventDispatcher>()
+      .As<IDomainEventDispatcher>()
+      .InstancePerLifetimeScope();
+
+    var services = new ServiceCollection();
+
+    builder.Populate(services);
+
+    var mediatrOpenTypes = new[]
         {
       typeof(IRequestHandler<,>),
       typeof(IRequestExceptionHandler<,,>),
@@ -84,26 +83,26 @@ public class DefaultInfrastructureModule : Module
       typeof(INotificationHandler<>),
     };
 
-        foreach (var mediatrOpenType in mediatrOpenTypes)
-        {
-            builder
-              .RegisterAssemblyTypes(_assemblies.ToArray())
-              .AsClosedTypesOf(mediatrOpenType)
-              .AsImplementedInterfaces();
-        }
-    }
-
-    private void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)
+    foreach (var mediatrOpenType in mediatrOpenTypes)
     {
-        // NOTE: Add any development only services here
-        builder.RegisterType<EmailSender>().As<IEmailSender>()
-          .InstancePerLifetimeScope();
+      builder
+        .RegisterAssemblyTypes(_assemblies.ToArray())
+        .AsClosedTypesOf(mediatrOpenType)
+        .AsImplementedInterfaces();
     }
+  }
 
-    private void RegisterProductionOnlyDependencies(ContainerBuilder builder)
-    {
-        // NOTE: Add any production only services here
-        builder.RegisterType<EmailSender>().As<IEmailSender>()
-          .InstancePerLifetimeScope();
-    }
+  private void RegisterDevelopmentOnlyDependencies(ContainerBuilder builder)
+  {
+    // NOTE: Add any development only services here
+    builder.RegisterType<EmailSender>().As<IEmailSender>()
+      .InstancePerLifetimeScope();
+  }
+
+  private void RegisterProductionOnlyDependencies(ContainerBuilder builder)
+  {
+    // NOTE: Add any production only services here
+    builder.RegisterType<EmailSender>().As<IEmailSender>()
+      .InstancePerLifetimeScope();
+  }
 }
