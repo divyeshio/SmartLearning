@@ -26,10 +26,11 @@ public class Startup
     services.Configure<CookiePolicyOptions>(options =>
     {
       options.CheckConsentNeeded = context => true;
-      options.MinimumSameSitePolicy = SameSiteMode.None;
+      options.MinimumSameSitePolicy = SameSiteMode.Strict;
     });
 
     services.AddDbContext(Configuration.GetConnectionString("DefaultConnection"));
+
     services.AddDatabaseDeveloperPageExceptionFilter();
 
     services.AddControllersWithViews(op =>
