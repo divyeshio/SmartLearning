@@ -65,3 +65,4 @@
 *.css linguist-detectable=false
 *.php linguist-detectable=false
 *.js linguist-detectable=false
+*.html linguist-detectable=false
