@@ -1,3 +1,5 @@
+[![Build](https://github.com/divyeshio/SmartLearning/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/divyeshio/SmartLearning/actions/workflows/build.yml)
+
 Smart Learning is an online learning web app which helps students and teachers. It is made with blazing fast ASP.NET Core 7. Faculties can take Live Classes and Students can join those classes. It effectively uses Machine Learning for fraud prevention. Users can Chat with the use of Web Sockets. Also Faculties can create tests and Students can attempt them and can evaluate themselves. Faculties can upload Notes, Sample Papers, Etc. Users can turn on Multi-Factor Authentication which serves as an extra layer for security.
 
 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬:
