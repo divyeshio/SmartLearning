@@ -26,7 +26,7 @@
     <PackageReference Include="Ardalis.SmartEnum" Version="7.0.0" />
     <PackageReference Include="Ardalis.Specification" Version="7.0.0" />
     <PackageReference Include="Autofac" Version="7.1.0" />
-    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.14" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.13" />
