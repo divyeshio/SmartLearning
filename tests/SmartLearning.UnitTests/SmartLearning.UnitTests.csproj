@@ -36,7 +36,7 @@
     </PackageReference>
     <PackageReference Include="ReportGenerator" Version="5.2.0" />
     <PackageReference Include="Moq" Version="4.20.70" />
-    <PackageReference Include="xunit" Version="2.6.5" />
+    <PackageReference Include="xunit" Version="2.6.6" />
   </ItemGroup>
   
   <ItemGroup>
