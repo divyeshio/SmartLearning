@@ -51,7 +51,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="7.0.19" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.19" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="7.0.19" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.20" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" PrivateAssets="All" Version="7.0.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
